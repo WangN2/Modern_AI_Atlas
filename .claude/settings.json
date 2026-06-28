@@ -1,0 +1,18 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(git -C /Users/che.lin/Downloads/code/Modern_AI_Atlas log --oneline -10)",
+      "Bash(git -C /Users/che.lin/Downloads/code/Modern_AI_Atlas diff HEAD -- README.md)",
+      "Bash(python3.12 -m py_compile /Users/che.lin/Downloads/code/Modern_AI_Atlas/generator/build.py)",
+      "Bash(python3.12 -m py_compile /Users/che.lin/Downloads/code/Modern_AI_Atlas/generator/config.py)",
+      "Bash(python3.12 -m py_compile /Users/che.lin/Downloads/code/Modern_AI_Atlas/generator/constants.py)",
+      "Bash(python3.12 /Users/che.lin/Downloads/code/Modern_AI_Atlas/generator/build.py --help)",
+      "Bash(python3.12 -m generator.build --help)",
+      "Bash(git -C /Users/che.lin/Downloads/code/Modern_AI_Atlas status --short)",
+      "Bash(git -C /Users/che.lin/Downloads/code/Modern_AI_Atlas remote -v)",
+      "Bash(git -C /Users/che.lin/Downloads/code/Modern_AI_Atlas diff --stat)",
+      "Bash(git -C /Users/che.lin/Downloads/code/Modern_AI_Atlas log --oneline -5)",
+      "Bash(git -C /Users/che.lin/Downloads/code/Modern_AI_Atlas add .claude/settings.json AGENTS.md CLAUDE.md README.zh-CN.md generator/ rfcs/ PROJECT_STATUS.md)"
+    ]
+  }
+}
