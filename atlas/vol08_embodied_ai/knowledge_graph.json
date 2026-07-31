@@ -12,7 +12,7 @@
       "volume": "Vol.08"
     },
     "tagline": "让智能体拥有身体，感知世界，理解世界，改变世界",
-    "callout": "具身智能的本质，是智能与物理世界的深度融合，让AI不仅会思考，更能行动。 — Yann LeCun",
+    "callout": "具身智能的本质，是智能与物理世界的深度融合，让AI不仅会思考，更能行动。",
     "canvas": {
       "width": 1682,
       "height": 2524,
@@ -40,7 +40,8 @@
                 "早期机器人研究",
                 "伺服控制与反馈",
                 "机器手与移动机器人"
-              ]
+              ],
+              "image": "images/unimate_coffee.jpg"
             },
             {
               "title": "传统机器人",
@@ -50,7 +51,9 @@
                 "SLAM 与导航",
                 "视觉与感知算法",
                 "机器人操作系统 (ROS)"
-              ]
+              ],
+              "image": "images/shakey.jpg",
+              "image_focus": "top"
             },
             {
               "title": "深度学习进入感知",
@@ -90,7 +93,8 @@
                 "Vision-Language",
                 "预训练模型迁移到机器人",
                 "RT-1 等统一模型出现"
-              ]
+              ],
+              "image": "images/vla_architecture.png"
             },
             {
               "title": "通用具身智能崛起",
@@ -110,7 +114,8 @@
                 "世界模型驱动",
                 "长程任务规划",
                 "自主学习与进化"
-              ]
+              ],
+              "image": "images/ameca_humanoid.jpg"
             }
           ]
         },
@@ -242,13 +247,15 @@
               "title": "深度相机",
               "title_en": "Depth",
               "icon": "cube",
-              "color": "#4f5dd5"
+              "color": "#4f5dd5",
+              "image": "images/kinect.png"
             },
             {
               "title": "激光雷达",
               "title_en": "LiDAR",
               "icon": "target",
-              "color": "#0ea5e9"
+              "color": "#0ea5e9",
+              "image": "images/velodyne_lidar.jpg"
             },
             {
               "title": "IMU / 惯导",
@@ -278,7 +285,8 @@
               "title": "热成像相机",
               "title_en": "Thermal",
               "icon": "image",
-              "color": "#f59e0b"
+              "color": "#f59e0b",
+              "image": "images/flir_thermal.jpg"
             },
             {
               "title": "GPS / 定位",
@@ -372,7 +380,7 @@
               "node": "rt_2"
             },
             {
-              "title": "OpenVLA (2023)",
+              "title": "OpenVLA (2024)",
               "desc": "开源视觉-语言-动作模型",
               "node": "openvla"
             },
@@ -382,17 +390,17 @@
               "node": "pi_0"
             },
             {
-              "title": "GROOT (NVIDIA, 2024)",
+              "title": "GR00T (NVIDIA, 2024)",
               "desc": "通用人形机器人基础模型",
               "node": "groot"
             },
             {
-              "title": "Qwen-VLA (阿里, 2024)",
+              "title": "Qwen-VLA (阿里, 2026)",
               "desc": "通义视觉-语言-动作模型",
               "node": "qwen_vla"
             },
             {
-              "title": "EmbodiedGPT (MS, 2023)",
+              "title": "EmbodiedGPT (CUHK & 上海AI Lab, 2023)",
               "desc": "具身智能与大语言模型结合",
               "node": "embodiedgpt"
             },
@@ -422,37 +430,44 @@
                   "title": "移动机器人",
                   "title_en": "Mobile Robot",
                   "icon": "robot",
-                  "color": "#3b82f6"
+                  "color": "#3b82f6",
+                  "image": "images/amazon_warehouse_robot.jpg"
                 },
                 {
                   "title": "四足机器人",
                   "title_en": "Quadruped",
                   "icon": "robot",
-                  "color": "#22c55e"
+                  "color": "#22c55e",
+                  "image": "images/unitree_dog.jpg"
                 },
                 {
                   "title": "人形机器人",
                   "title_en": "Humanoid",
                   "icon": "person",
-                  "color": "#f59e0b"
+                  "color": "#f59e0b",
+                  "image": "images/atlas_frontview.jpg",
+                  "image_focus": "top"
                 },
                 {
                   "title": "机械臂",
                   "title_en": "Manipulator",
                   "icon": "gear",
-                  "color": "#a855f7"
+                  "color": "#a855f7",
+                  "image": "images/ur16e_arm.png"
                 },
                 {
                   "title": "空中机器人",
                   "title_en": "Aerial Robot",
                   "icon": "rocket",
-                  "color": "#0ea5e9"
+                  "color": "#0ea5e9",
+                  "image": "images/dji_phantom.jpg"
                 },
                 {
                   "title": "特种机器人",
                   "title_en": "Special Robot",
                   "icon": "robot",
-                  "color": "#64748b"
+                  "color": "#64748b",
+                  "image": "images/anymal_inspection.jpg"
                 }
               ]
             },
@@ -714,7 +729,7 @@
             },
             {
               "icon": "db",
-              "title": "Bridge Data (Google)",
+              "title": "Bridge Data (UC Berkeley)",
               "node": "bridge_data"
             },
             {
@@ -958,7 +973,7 @@
       "id": "openvla",
       "label": "OpenVLA",
       "label_en": "OpenVLA",
-      "year": 2023,
+      "year": 2024,
       "kind": "model"
     },
     {
@@ -970,8 +985,8 @@
     },
     {
       "id": "groot",
-      "label": "GROOT",
-      "label_en": "GROOT (NVIDIA)",
+      "label": "GR00T",
+      "label_en": "GR00T (NVIDIA)",
       "year": 2024,
       "kind": "model"
     },
@@ -979,7 +994,7 @@
       "id": "qwen_vla",
       "label": "Qwen-VLA",
       "label_en": "Qwen-VLA",
-      "year": 2024,
+      "year": 2026,
       "kind": "model"
     },
     {
@@ -993,7 +1008,7 @@
       "id": "gemini_robotics",
       "label": "Gemini Robotics",
       "label_en": "Gemini Robotics",
-      "year": 2024,
+      "year": 2025,
       "kind": "model"
     },
     {
@@ -1014,7 +1029,7 @@
       "id": "dreamer",
       "label": "Dreamer",
       "label_en": "Dreamer",
-      "year": 2020,
+      "year": 2019,
       "kind": "model"
     },
     {
@@ -1116,17 +1131,7 @@
     },
     {
       "source": "pi_0",
-      "target": "rt_2",
-      "relation": "converges"
-    },
-    {
-      "source": "pi_0",
       "target": "groot",
-      "relation": "converges"
-    },
-    {
-      "source": "groot",
-      "target": "pi_0",
       "relation": "converges"
     },
     {
@@ -1145,18 +1150,13 @@
       "relation": "converges"
     },
     {
-      "source": "world_model",
-      "target": "dreamer",
+      "source": "dreamer",
+      "target": "world_model",
       "relation": "inherits"
     },
     {
       "source": "jepa",
       "target": "world_model",
-      "relation": "converges"
-    },
-    {
-      "source": "world_model",
-      "target": "jepa",
       "relation": "converges"
     },
     {
@@ -1166,7 +1166,7 @@
     },
     {
       "source": "bridge_data",
-      "target": "rt_1",
+      "target": "openvla",
       "relation": "composes"
     },
     {

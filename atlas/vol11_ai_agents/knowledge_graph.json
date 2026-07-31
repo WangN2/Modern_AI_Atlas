@@ -13,7 +13,7 @@
     },
     "tagline": "自主感知 · 规划决策 · 工具使用 · 协同合作",
     "tagline_en": "Perceive, Plan, Act, and Collaborate in the Real World",
-    "callout": "AI Agent 是迈向通用人工智能（AGI）的关键一步，它让 AI 从“回答问题”走向“解决问题”。 —— Yann LeCun",
+    "callout": "AI Agent 是迈向通用人工智能（AGI）的关键一步，它让 AI 从“回答问题”走向“解决问题”。",
     "canvas": {
       "width": 2524,
       "height": 1682
@@ -439,7 +439,7 @@
     {
       "row": [
         {
-          "kind": "list",
+          "kind": "cards",
           "title": "代表性框架 / 平台",
           "subtitle": "Frameworks / Platforms",
           "weight": 0.9,
@@ -449,6 +449,7 @@
             {
               "icon": "robot",
               "title": "AutoGPT",
+              "image": "images/autogpt_dashboard.jpg",
               "node": "autogpt"
             },
             {
@@ -459,6 +460,7 @@
             {
               "icon": "network",
               "title": "LangChain",
+              "image": "images/langchain_logo.png",
               "node": "langchain"
             },
             {
@@ -474,16 +476,19 @@
             {
               "icon": "person",
               "title": "MetaGPT",
+              "image": "images/metagpt_company.jpg",
               "node": "metagpt"
             },
             {
               "icon": "speech",
               "title": "CAMEL",
+              "image": "images/camel_role_playing.png",
               "node": "camel"
             },
             {
               "icon": "flow",
               "title": "AG2",
+              "image": "images/autogen_ag2.png",
               "node": "ag2"
             }
           ],

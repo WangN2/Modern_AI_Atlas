@@ -12,7 +12,7 @@
       "volume": "Vol.07"
     },
     "tagline": "从像素到理解，连接物理世界与智能未来",
-    "callout": "计算机视觉赋予机器\"看\"的能力，让它理解世界、创造价值、改变未来。 — Fei-Fei Li",
+    "callout": "计算机视觉赋予机器\"看\"的能力，让它理解世界、创造价值、改变未来。",
     "canvas": {
       "width": 1682,
       "height": 2524,
@@ -39,7 +39,8 @@
             "边缘检测",
             "阈值分割",
             "形态学 / 传统滤波"
-          ]
+          ],
+          "image": "images/canny_valve.png"
         },
         {
           "title": "特征工程时代",
@@ -61,7 +62,8 @@
             "LeNet / SVM + HOG",
             "AdaBoost",
             "传统分类器"
-          ]
+          ],
+          "image": "images/mnist_examples.png"
         },
         {
           "title": "深度学习突破",
@@ -71,7 +73,8 @@
             "2012",
             "AlexNet 开启大规模CNN时代",
             "ImageNet 准确率大幅提升"
-          ]
+          ],
+          "image": "images/alexnet_block.png"
         },
         {
           "title": "CNN快速发展",
@@ -82,7 +85,8 @@
             "VGG, GoogLeNet",
             "ResNet, Inception / DenseNet",
             "更深、更准、更强"
-          ]
+          ],
+          "image": "images/resnet_block.png"
         },
         {
           "title": "检测与分割爆发",
@@ -93,7 +97,8 @@
             "YOLO, SSD, RetinaNet",
             "Mask R-CNN, FPN",
             "DeepLab, U-Net++ / 实例分割、语义分割"
-          ]
+          ],
+          "image": "images/mask_rcnn.png"
         },
         {
           "title": "Transformer视觉崛起",
@@ -104,7 +109,8 @@
             "ViT, DeiT, Swin",
             "MAE, BEiT, DINO",
             "视觉也进入大模型时代"
-          ]
+          ],
+          "image": "images/vision_transformer.png"
         },
         {
           "title": "视觉大模型时代",
@@ -115,7 +121,8 @@
             "SAM, SAM2 / DINOv2, SigLIP",
             "Florence, InternVL",
             "Qwen-VL Encoder / 通用视觉理解与生成"
-          ]
+          ],
+          "image": "images/sam_overview.png"
         }
       ]
     },
@@ -490,7 +497,7 @@
                 "FCN (2015)",
                 "U-Net (2015)",
                 "SegNet (2015)",
-                "DeepLab v1 (2017)",
+                "DeepLab v1 (2015)",
                 "DeepLab v3 (2017)",
                 "DeepLab v3+ (2018)",
                 "PSPNet (2017)"
@@ -538,7 +545,7 @@
                 "MoCo v1/v2/v3 (2020–2021)",
                 "BYOL (2020)",
                 "SimSiam (2021)",
-                "SwAV (2021)",
+                "SwAV (2020)",
                 "DINO (2021)"
               ]
             },
@@ -557,7 +564,7 @@
               "sublabel": "Masked Prediction",
               "color": "#0ea5e9",
               "pills": [
-                "iBOT (2023)",
+                "iBOT (2022)",
                 "JEPA (Meta, 2023)"
               ]
             }
@@ -582,7 +589,8 @@
                 "车道线检测",
                 "BEV感知",
                 "三维重建"
-              ]
+              ],
+              "image": "images/waymo_jaguar_sf.jpg"
             },
             {
               "title": "医疗影像",
@@ -594,7 +602,8 @@
                 "分割",
                 "图像生成",
                 "辅助诊断"
-              ]
+              ],
+              "image": "images/chest_xray.jpg"
             },
             {
               "title": "遥感与地理",
@@ -606,7 +615,8 @@
                 "变化检测",
                 "目标检测",
                 "三维重建"
-              ]
+              ],
+              "image": "images/landsat_cape.jpg"
             },
             {
               "title": "工业视觉",
@@ -618,7 +628,8 @@
                 "质量控制",
                 "装配检测",
                 "OCR识别"
-              ]
+              ],
+              "image": "images/factory_robots.jpg"
             },
             {
               "title": "安防监控",
@@ -630,7 +641,9 @@
                 "行为分析",
                 "目标跟踪",
                 "异常检测"
-              ]
+              ],
+              "image": "images/cctv_cameras.jpg",
+              "image_focus": "top"
             },
             {
               "title": "机器人视觉",
@@ -642,7 +655,8 @@
                 "视觉定位",
                 "SLAM",
                 "导航避障"
-              ]
+              ],
+              "image": "images/pr2_robot.jpg"
             },
             {
               "title": "多媒体内容理解",
@@ -666,7 +680,8 @@
                 "三维重建",
                 "虚拟互动",
                 "场景理解"
-              ]
+              ],
+              "image": "images/vr_headset.jpg"
             }
           ]
         }
@@ -704,7 +719,7 @@
             [
               "目标检测",
               "COCO",
-              "20万图像",
+              "33万图像",
               "多目标、多尺度检测"
             ],
             [
@@ -728,7 +743,7 @@
             [
               "语义分割",
               "Pascal Context",
-              "17万图像",
+              "约2万图像",
               "像素级标注数据集"
             ],
             [
@@ -908,7 +923,7 @@
             ],
             [
               "Google",
-              "SigLIP, ViT, PaLI, Florence"
+              "SigLIP, ViT, PaLI"
             ],
             [
               "OpenAI",
@@ -1318,7 +1333,7 @@
       "id": "deeplab_v1",
       "label": "DeepLab v1",
       "label_en": "DeepLab v1",
-      "year": 2017,
+      "year": 2015,
       "kind": "model"
     },
     {
@@ -1381,14 +1396,14 @@
       "id": "swav",
       "label": "SwAV",
       "label_en": "SwAV",
-      "year": 2021,
+      "year": 2020,
       "kind": "paper"
     },
     {
       "id": "ibot",
       "label": "iBOT",
       "label_en": "iBOT",
-      "year": 2023,
+      "year": 2022,
       "kind": "paper"
     },
     {
@@ -1441,11 +1456,6 @@
     {
       "source": "alexnet",
       "target": "googlenet",
-      "relation": "converges"
-    },
-    {
-      "source": "googlenet",
-      "target": "alexnet",
       "relation": "converges"
     },
     {
@@ -1516,11 +1526,6 @@
     {
       "source": "beit",
       "target": "mae",
-      "relation": "converges"
-    },
-    {
-      "source": "mae",
-      "target": "beit",
       "relation": "converges"
     },
     {
@@ -1614,11 +1619,6 @@
       "relation": "converges"
     },
     {
-      "source": "ssd",
-      "target": "yolo",
-      "relation": "converges"
-    },
-    {
       "source": "yolo",
       "target": "retinanet",
       "relation": "converges"
@@ -1636,11 +1636,6 @@
     {
       "source": "detr",
       "target": "faster_r_cnn",
-      "relation": "converges"
-    },
-    {
-      "source": "faster_r_cnn",
-      "target": "detr",
       "relation": "converges"
     },
     {
@@ -1691,41 +1686,6 @@
     {
       "source": "simclr",
       "target": "moco",
-      "relation": "converges"
-    },
-    {
-      "source": "moco",
-      "target": "simclr",
-      "relation": "converges"
-    },
-    {
-      "source": "moco",
-      "target": "byol",
-      "relation": "converges"
-    },
-    {
-      "source": "byol",
-      "target": "moco",
-      "relation": "converges"
-    },
-    {
-      "source": "byol",
-      "target": "simsiam",
-      "relation": "converges"
-    },
-    {
-      "source": "simsiam",
-      "target": "byol",
-      "relation": "converges"
-    },
-    {
-      "source": "simsiam",
-      "target": "swav",
-      "relation": "converges"
-    },
-    {
-      "source": "swav",
-      "target": "simsiam",
       "relation": "converges"
     },
     {

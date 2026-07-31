@@ -13,7 +13,7 @@
     },
     "tagline": "让 AI 在行动之前，先学会理解和预测世界",
     "tagline_en": "Predict the World Before Acting",
-    "callout": "世界模型的目标，不是预测一个像素，而是理解一个世界，不是生成一个视频，而是推演未来的可能。 —— Yann LeCun",
+    "callout": "世界模型的目标，不是预测一个像素，而是理解一个世界，不是生成一个视频，而是推演未来的可能。",
     "canvas": {
       "width": 2524,
       "height": 1682,
@@ -36,20 +36,20 @@
           "node": "model_based_control"
         },
         {
-          "year": "2000",
-          "title": "Kalman Filter",
-          "desc": "Particle Filter",
+          "year": "1960s–1990s",
+          "title": "Kalman / Particle Filter",
+          "desc": "状态估计方法奠基",
           "desc2": "状态估计方法快速发展",
           "node": "kalman_filter"
         },
         {
-          "year": "2013",
+          "year": "1970s–80s",
           "title": "Model Predictive Control",
-          "desc": "(MPC) 模型预测控制广泛应用",
+          "desc": "(MPC) 模型预测控制提出与工业应用",
           "node": "mpc"
         },
         {
-          "year": "2017",
+          "year": "2019",
           "title": "PlaNet",
           "desc": "学习隐空间动力学模型",
           "node": "planet"
@@ -63,7 +63,7 @@
         {
           "year": "2020",
           "title": "MuZero",
-          "desc": "无模型+模型融合突破",
+          "desc": "学习隐式模型的 model-based RL 突破",
           "node": "muzero"
         },
         {
@@ -80,16 +80,16 @@
           "node": "jepa"
         },
         {
-          "year": "2023",
+          "year": "2023–2024",
           "title": "DreamerV3 / Genie",
           "desc": "世界模型更强大",
           "desc2": "生成质量提升",
           "node": "dreamerv3"
         },
         {
-          "year": "2024",
+          "year": "2024–2025",
           "title": "Cosmos / Genie2 / PI0",
-          "desc": "OpenVLA WM / GROOT",
+          "desc": "OpenVLA / GR00T",
           "desc2": "物理+生成+具身融合加速",
           "node": "cosmos"
         },
@@ -273,17 +273,17 @@
               "node": "jepa"
             },
             {
-              "year": "2022",
+              "year": "2023",
               "name": "I-JEPA",
               "node": "i_jepa"
             },
             {
-              "year": "2023",
+              "year": "2024",
               "name": "V-JEPA",
               "node": "v_jepa"
             },
             {
-              "year": "2024",
+              "year": "2025",
               "name": "V-JEPA2",
               "node": "v_jepa2"
             }
@@ -305,7 +305,7 @@
               "node": "video_diffusion"
             },
             {
-              "year": "2023",
+              "year": "2024",
               "name": "Genie",
               "node": "genie"
             },
@@ -315,7 +315,7 @@
               "node": "genie2"
             },
             {
-              "year": "2024",
+              "year": "2025",
               "name": "Cosmos",
               "node": "cosmos"
             }
@@ -332,7 +332,7 @@
           "color": "#8b1e3f",
           "models": [
             {
-              "year": "2024",
+              "year": "2025",
               "name": "Cosmos",
               "node": "cosmos"
             },
@@ -348,7 +348,7 @@
             },
             {
               "year": "2024",
-              "name": "GROOT",
+              "name": "GR00T",
               "node": "groot"
             }
           ],
@@ -402,7 +402,7 @@
               "Physics-aware World Model 物理世界模型",
               "学习物理规律，保证物理一致性",
               "可解释性强，泛化性更好",
-              "Cosmos, Newton, PI0, GROOT"
+              "Cosmos, Newton, PI0, GR00T"
             ]
           ],
           "number": 5
@@ -470,28 +470,31 @@
             {
               "title": "Google",
               "color": "#4285f4",
+              "image": "images/genie_platformer.png",
               "items": [
                 "PlaNet (2019) 隐空间动力学模型开创者",
                 "Dreamer 系列 2019 / 2020 / 2023",
-                "Genie (2023) 可交互生成3D世界",
+                "Genie (2024) 可交互生成2D世界",
                 "Genie 2 (2024) 更强一致性与3D扩展"
               ]
             },
             {
               "title": "Meta",
               "color": "#0668e1",
+              "image": "images/vjepa_meta.png",
               "items": [
                 "JEPA (2022) 自监督表征学习",
-                "I-JEPA (2022) 图像表征学习",
-                "V-JEPA (2023) 视频表征自监督学习",
-                "V-JEPA2 (2024) 更强的时空理解能力"
+                "I-JEPA (2023) 图像表征学习",
+                "V-JEPA (2024) 视频表征自监督学习",
+                "V-JEPA2 (2025) 更强的时空理解能力"
               ]
             },
             {
               "title": "NVIDIA",
               "color": "#76b900",
+              "image": "images/cosmos_nvidia.jpg",
               "items": [
-                "Cosmos (2024) 世界基础模型平台",
+                "Cosmos (2025) 世界基础模型平台",
                 "物理一致性 + 仿真生成",
                 "支持机器人与自动驾驶"
               ]
@@ -499,14 +502,16 @@
             {
               "title": "DeepMind",
               "color": "#3b82f6",
+              "image": "images/muzero_diagram.png",
               "items": [
-                "MuZero (2020) 无模型RL突破",
+                "MuZero (2020) 学习隐式模型的 model-based RL 突破",
                 "Gato (2022) 通用智能体模型"
               ]
             },
             {
               "title": "Physical Intelligence",
               "color": "#7b5ea7",
+              "image": "images/pi0_robot.png",
               "items": [
                 "π0 (2024) 通用机器人基础模型",
                 "世界模型驱动"
@@ -515,6 +520,7 @@
             {
               "title": "Tesla",
               "color": "#e82127",
+              "image": "images/tesla_occupancy_network.png",
               "items": [
                 "Occupancy World Model (2024)",
                 "占用栅格 + 世界模型，用于自动驾驶"
@@ -523,6 +529,7 @@
             {
               "title": "OpenAI",
               "color": "#1a2b5c",
+              "image": "images/sora_tokyo_walk.jpg",
               "items": [
                 "World Model Research (2024)",
                 "世界模型研究探索"
@@ -530,7 +537,11 @@
             }
           ],
           "number": 7
-        },
+        }
+      ]
+    },
+    {
+      "row": [
         {
           "kind": "list",
           "title": "当前挑战",
@@ -587,19 +598,22 @@
           "subtitle": "Applications",
           "weight": 0.95,
           "color": "#3b82f6",
-          "columns": 2,
+          "columns": 4,
           "items": [
             {
               "title": "人形机器人",
               "title_en": "Humanoid",
               "icon": "robot",
-              "color": "#3b82f6"
+              "color": "#3b82f6",
+              "image": "images/asimo_humanoid.jpg",
+              "image_focus": "center"
             },
             {
               "title": "自动驾驶",
               "title_en": "Autonomous Driving",
               "icon": "flow",
-              "color": "#3b82f6"
+              "color": "#3b82f6",
+              "image": "images/waymo_jaguar_sf.jpg"
             },
             {
               "title": "数字孪生",
@@ -659,7 +673,7 @@
             },
             {
               "title": "BridgeData",
-              "desc": "自动驾驶场景数据集",
+              "desc": "机器人操作数据集 (UC Berkeley)",
               "node": "bridgedata"
             },
             {
@@ -809,7 +823,7 @@
     "drivers": [
       {
         "label": "Latent Dynamics（隐空间动力学）",
-        "sub": "RSSM·PlaNet·DreamerV3·Ensemble Dynamics | CaITta·Fisher·MEPO·SimMBM",
+        "sub": "RSSM·PlaNet·DreamerV3·Ensemble Dynamics | SimPLe·MBPO·MOPO·TIA",
         "color": "#22c55e"
       },
       {
@@ -824,12 +838,12 @@
       },
       {
         "label": "Physics World Models（物理规律建模）",
-        "sub": "Cosmos·Newton·Galileo·Phyformer·Neural PDE",
+        "sub": "Cosmos·Newton·FNO·FourCastNet·Earth-2·Neural PDE",
         "color": "#f59e0b"
       },
       {
         "label": "Embodied World Models（具身世界模型）",
-        "sub": "OpenVLA WM·PI0·RT-2-WM·RDT-1B·VIMA",
+        "sub": "UniPi·PI0·SuSIE·RDT-1B·VIMA",
         "color": "#14b8a6"
       },
       {
@@ -840,7 +854,8 @@
     ]
   },
   "footer": {
-    "quote_zh": "The next generation of AI will not only understand the world — it will imagine, predict, and reason about the future before acting.",
+    "quote_zh": "下一代 AI 不仅会理解世界——它会在行动之前想象、预测并推演未来。",
+    "quote_en": "The next generation of AI will not only understand the world — it will imagine, predict, and reason about the future before acting.",
     "globe": true
   },
   "nodes": [
@@ -855,14 +870,14 @@
       "id": "kalman_filter",
       "label": "卡尔曼滤波",
       "label_en": "Kalman Filter & Particle Filter",
-      "year": 2000,
+      "year": 1960,
       "kind": "concept"
     },
     {
       "id": "mpc",
       "label": "模型预测控制",
       "label_en": "Model Predictive Control (MPC)",
-      "year": 2013,
+      "year": 1980,
       "kind": "concept"
     },
     {
@@ -932,21 +947,21 @@
       "id": "i_jepa",
       "label": "I-JEPA",
       "label_en": "I-JEPA",
-      "year": 2022,
+      "year": 2023,
       "kind": "model"
     },
     {
       "id": "v_jepa",
       "label": "V-JEPA",
       "label_en": "V-JEPA",
-      "year": 2023,
+      "year": 2024,
       "kind": "model"
     },
     {
       "id": "v_jepa2",
       "label": "V-JEPA2",
       "label_en": "V-JEPA2",
-      "year": 2024,
+      "year": 2025,
       "kind": "model"
     },
     {
@@ -974,7 +989,7 @@
       "id": "genie",
       "label": "Genie",
       "label_en": "Genie",
-      "year": 2023,
+      "year": 2024,
       "kind": "model"
     },
     {
@@ -988,7 +1003,7 @@
       "id": "cosmos",
       "label": "Cosmos",
       "label_en": "NVIDIA Cosmos",
-      "year": 2024,
+      "year": 2025,
       "kind": "model"
     },
     {
@@ -1007,23 +1022,23 @@
     },
     {
       "id": "groot",
-      "label": "GROOT",
-      "label_en": "NVIDIA GROOT",
+      "label": "GR00T",
+      "label_en": "NVIDIA GR00T",
       "year": 2024,
       "kind": "model"
     },
     {
       "id": "openvla_wm",
-      "label": "OpenVLA WM",
-      "label_en": "OpenVLA World Model",
-      "year": 2024,
+      "label": "UniPi",
+      "label_en": "UniPi (Video as Policies)",
+      "year": 2023,
       "kind": "model"
     },
     {
       "id": "rt2_wm",
-      "label": "RT-2-WM",
-      "label_en": "RT-2 World Model",
-      "year": 2024,
+      "label": "SuSIE",
+      "label_en": "SuSIE",
+      "year": 2023,
       "kind": "model"
     },
     {
@@ -1098,9 +1113,9 @@
     },
     {
       "id": "galileo",
-      "label": "Galileo",
-      "label_en": "Galileo (physics WM)",
-      "year": 2024,
+      "label": "FNO",
+      "label_en": "Fourier Neural Operator",
+      "year": 2020,
       "kind": "model"
     },
     {

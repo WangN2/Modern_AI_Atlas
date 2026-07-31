@@ -38,6 +38,7 @@ from generator.graph.models import KnowledgeGraph
 from generator.layout.engine import LayoutResult, Panel
 from generator.parser.loader import KnowledgeData
 from generator.render.helpers import (
+    band_card_height,
     cards_panel_card_height,
     family_desc_lines,
     family_label_lines,
@@ -79,17 +80,34 @@ def _canvas_geometry(meta: dict[str, Any], theme: dict[str, Any]) -> dict[str, f
     }
 
 
-def _band_height(section: dict[str, Any], canvas: dict[str, Any]) -> float:
-    """Derive one era band's height from its content (cards + side lists)."""
+def _band_height(section: dict[str, Any], canvas: dict[str, Any],
+                 width: float) -> float:
+    """Derive one era band's height from its content (cards + side lists).
+
+    D1: the card height is content-driven (shared ``band_card_height``
+    helper) so the elastic image zone lands inside its aspect clamp;
+    ``band_card_h`` acts as a meta/theme override floor. Band bottom
+    padding is 8 (D1 rule 6).
+    """
     header_h = float(canvas.get("band_header_h", BAND_HEADER_H))
-    card_h = float(canvas.get("band_card_h", BAND_CARD_H))
+    side_w = float(canvas.get("band_side_w", BAND_SIDE_W))
+    cards = section.get("cards", [])
+    card_h = 0.0
+    if cards:
+        cards_w = width - 24
+        for side_key in ("left_panel", "right_panel"):
+            if section.get(side_key):
+                cards_w -= side_w + 12
+        card_w = (cards_w - (len(cards) - 1) * 10) / len(cards)
+        floor = float(canvas.get("band_card_h", 200.0))
+        card_h = band_card_height(cards, card_w, floor)
     side_h = 0.0
     for side_key in ("left_panel", "right_panel"):
         side = section.get(side_key)
         if side:
             side_h = max(side_h, 40 + SIDE_ROW_H * len(side.get("items", [])))
-    content_h = max(card_h if section.get("cards") else 0.0, side_h)
-    return header_h + content_h + 16
+    content_h = max(card_h, side_h)
+    return header_h + content_h + 8
 
 
 def _kind_height(section: dict[str, Any], canvas: dict[str, Any],
@@ -104,7 +122,7 @@ def _kind_height(section: dict[str, Any], canvas: dict[str, Any],
     kind = section.get("kind", "band")
     header = float(canvas.get("panel_header_h2", PANEL_HEADER_H))
     if kind == "band":
-        return _band_height(section, canvas)
+        return _band_height(section, canvas, width)
     if kind == "list":
         items = section.get("items", [])
         cols = max(int(section.get("columns", 1)), 1)

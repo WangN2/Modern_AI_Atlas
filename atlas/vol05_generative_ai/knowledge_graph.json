@@ -12,7 +12,7 @@
       "volume": "Vol.05"
     },
     "tagline": "让机器创造内容，开启人机共创新时代",
-    "callout": "生成式 AI 不仅重塑世界，更能创造世界。 —— Sam Altman",
+    "callout": "生成式 AI 不仅重塑世界，更能创造世界。",
     "canvas": {
       "height": 2300
     }
@@ -78,6 +78,8 @@
           "title_en": "1950s–1990s",
           "color": "#64748b",
           "desc": "使用规则与统计方法生成简单内容",
+          "image": "images/andrey_markov.jpg",
+          "image_focus": "top",
           "items": [
             "Markov 链、文法系统等早期尝试"
           ]
@@ -87,6 +89,7 @@
           "title_en": "2000s–2010s",
           "color": "#0ea5e9",
           "desc": "概率图模型发展",
+          "image": "images/rbm_diagram.png",
           "items": [
             "代表: HMM, CRF, RBM, DBN"
           ]
@@ -96,6 +99,7 @@
           "title_en": "2014–2017",
           "color": "#3b82f6",
           "desc": "深度学习推动生成模型突破",
+          "image": "images/gan_face.jpg",
           "items": [
             "代表: VAE, GAN"
           ]
@@ -105,6 +109,7 @@
           "title_en": "2018–2020",
           "color": "#6366f1",
           "desc": "大规模预训练模型涌现",
+          "image": "images/gpt2_decoder_stack.png",
           "items": [
             "代表: GPT-1/2/3, BERT, T5"
           ]
@@ -114,6 +119,7 @@
           "title_en": "2021–2022",
           "color": "#a855f7",
           "desc": "多模态与指令微调兴起",
+          "image": "images/dalle_radish.jpg",
           "items": [
             "代表: DALL-E, Stable Diffusion,",
             "ChatGPT"
@@ -124,6 +130,7 @@
           "title_en": "2023–至今",
           "color": "#c026d3",
           "desc": "更强大、更可控、更安全",
+          "image": "images/sora_tokyo_walk.jpg",
           "items": [
             "多模态、智能体与工具融合",
             "迈向通用人工智能 (AGI)"
@@ -186,6 +193,8 @@
               "icon": "speech",
               "color": "#4f46e5",
               "desc": "生成文本、对话、代码等",
+              "image": "images/chatgpt_essay.png",
+              "image_focus": "top",
               "items": [
                 "示例: GPT-4, Llama 3, Claude 3, PaLM 2"
               ]
@@ -196,6 +205,7 @@
               "icon": "image",
               "color": "#3b82f6",
               "desc": "生成图像、插画、设计等",
+              "image": "images/midjourney_opera.jpg",
               "items": [
                 "示例: DALL-E 3, Midjourney, Stable Diffusion"
               ]
@@ -226,6 +236,7 @@
               "icon": "cube",
               "color": "#06b6d4",
               "desc": "生成 3D 物体、场景等",
+              "image": "images/dreamfusion_robot_cello.jpg",
               "items": [
                 "示例: DreamFusion, Magic3D, Point-E"
               ]
@@ -295,7 +306,7 @@
             {
               "icon": "network",
               "title": "变分自编码器 (VAE)",
-              "desc": "学习潜在空间分布进行生成；如: VAE, beta-VAE · 编码器 q(z|x) → z → 解码器 p(z|a)"
+              "desc": "学习潜在空间分布进行生成；如: VAE, beta-VAE · 编码器 q(z|x) → z → 解码器 p(x|z)"
             },
             {
               "icon": "bolt",
@@ -310,7 +321,7 @@
             {
               "icon": "flow",
               "title": "流匹配模型 (Flow Matching)",
-              "desc": "学习连续变换将噪声映射到数据；如: Imagen, Flow Matching · 噪声 → 数据"
+              "desc": "学习连续变换将噪声映射到数据；如: SD3, Flux (Rectified Flow) · 噪声 → 数据"
             }
           ]
         },
@@ -920,11 +931,6 @@
       "relation": "converges"
     },
     {
-      "source": "gan",
-      "target": "vae",
-      "relation": "converges"
-    },
-    {
       "source": "diffusion_models",
       "target": "stable_diffusion",
       "relation": "inherits"
@@ -960,18 +966,8 @@
       "relation": "converges"
     },
     {
-      "source": "gpt_series",
-      "target": "bert",
-      "relation": "converges"
-    },
-    {
       "source": "t5",
       "target": "bert",
-      "relation": "converges"
-    },
-    {
-      "source": "bert",
-      "target": "t5",
       "relation": "converges"
     },
     {
@@ -991,27 +987,12 @@
     },
     {
       "source": "midjourney",
-      "target": "stable_diffusion",
-      "relation": "converges"
-    },
-    {
-      "source": "midjourney",
       "target": "pika_labs",
-      "relation": "converges"
-    },
-    {
-      "source": "pika_labs",
-      "target": "midjourney",
       "relation": "converges"
     },
     {
       "source": "pika_labs",
       "target": "runway_gen3",
-      "relation": "converges"
-    },
-    {
-      "source": "runway_gen3",
-      "target": "pika_labs",
       "relation": "converges"
     },
     {
@@ -1021,23 +1002,13 @@
     },
     {
       "source": "magic3d",
-      "target": "dreamfusion",
-      "relation": "converges"
-    },
-    {
-      "source": "magic3d",
       "target": "point_e",
-      "relation": "converges"
-    },
-    {
-      "source": "point_e",
-      "target": "magic3d",
       "relation": "converges"
     },
     {
       "source": "gpt_4",
       "target": "sora",
-      "relation": "composes"
+      "relation": "converges"
     }
   ],
   "next": {

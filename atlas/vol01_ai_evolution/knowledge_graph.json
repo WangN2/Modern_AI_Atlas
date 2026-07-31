@@ -15,7 +15,7 @@
     "title_sub": "人工智能发展全景图",
     "title_en": "AI Evolution Timeline",
     "quote": "“人工智能是人类有史以来最伟大的创造，也是我们面临的最深刻的变革。”",
-    "quote_by": "图灵"
+    "quote_by": ""
   },
   "legend": [
     {
@@ -112,7 +112,7 @@
           "image": "images/ai_winter_pdp10.jpg"
         },
         {
-          "year": "1989",
+          "year": "1986",
           "title": "Backprop",
           "title_en": "反向传播算法",
           "node": "backprop",
@@ -180,7 +180,7 @@
           "image": "images/lenet_architecture.png"
         },
         {
-          "year": "2001",
+          "year": "1997",
           "title": "LSTM",
           "title_en": "Hochreiter & Schmidhuber",
           "node": "lstm",
@@ -189,7 +189,7 @@
           "image": "images/lstm_cell.png"
         },
         {
-          "year": "2008",
+          "year": "2006",
           "title": "深度学习复兴",
           "title_en": "Deep Learning Revival",
           "node": "dl_revival",
@@ -465,7 +465,7 @@
           "image": "images/gpt4_exam_results.png"
         },
         {
-          "year": "2023",
+          "year": "2022",
           "title": "Stable Diffusion",
           "title_en": "Stability AI",
           "node": "stable_diffusion",
@@ -533,7 +533,7 @@
           "image": "images/clip_multimodal.png"
         },
         {
-          "year": "2024",
+          "year": "2025",
           "title": "World Model",
           "title_en": "V-JEPA2 / Cosmos",
           "node": "world_model",
@@ -555,7 +555,7 @@
         {
           "year": "2024",
           "title": "Embodied AI",
-          "title_en": "GROOT / Isaac",
+          "title_en": "GR00T / Isaac",
           "node": "embodied_ai",
           "desc": "具身智能突破",
           "desc2": "机器人走向通用",
@@ -730,7 +730,7 @@
       "id": "backprop",
       "label": "反向传播算法",
       "kind": "paper",
-      "year": 1989,
+      "year": 1986,
       "metadata": {
         "label_en": "Backpropagation"
       }
@@ -766,7 +766,7 @@
       "id": "lstm",
       "label": "长短期记忆网络",
       "kind": "model",
-      "year": 2001,
+      "year": 1997,
       "metadata": {
         "label_en": "LSTM"
       }
@@ -775,7 +775,7 @@
       "id": "dl_revival",
       "label": "深度学习复兴",
       "kind": "milestone",
-      "year": 2008,
+      "year": 2006,
       "metadata": {
         "label_en": "Deep Learning Revival"
       }
@@ -937,7 +937,7 @@
       "id": "stable_diffusion",
       "label": "Stable Diffusion",
       "kind": "model",
-      "year": 2023,
+      "year": 2022,
       "metadata": {
         "label_en": "Stable Diffusion"
       }
@@ -991,7 +991,7 @@
       "id": "world_model",
       "label": "世界模型 (V-JEPA2 / Cosmos)",
       "kind": "concept",
-      "year": 2024,
+      "year": 2025,
       "metadata": {
         "label_en": "World Model"
       }
@@ -1007,7 +1007,7 @@
     },
     {
       "id": "embodied_ai",
-      "label": "具身智能 (GROOT / Isaac)",
+      "label": "具身智能 (GR00T / Isaac)",
       "kind": "concept",
       "year": 2024,
       "metadata": {

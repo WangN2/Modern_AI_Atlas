@@ -12,7 +12,7 @@
       "volume": "Vol.09"
     },
     "tagline": "从感知智能到认知智能，驱动未来出行变革",
-    "callout": "自动驾驶的终极目标，不是让机器开车，而是让机器理解世界，并在复杂世界中安全地行动。—— Kai-Fu Lee",
+    "callout": "自动驾驶的终极目标，不是让机器开车，而是让机器理解世界，并在复杂世界中安全地行动。",
     "canvas": {
       "width": 1682,
       "height": 2650,
@@ -35,10 +35,11 @@
           "color": "#64748b",
           "desc": "Early Exploration",
           "items": [
-            "DARPA 自动驾驶挑战赛",
+            "ALVINN 神经网络驾驶",
             "传统算法与规则系统",
             "简单环境感知"
-          ]
+          ],
+          "image": "images/navlab.jpg"
         },
         {
           "title": "技术积累阶段",
@@ -46,10 +47,12 @@
           "color": "#0ea5e9",
           "desc": "Technology Accumulation",
           "items": [
+            "DARPA 自动驾驶挑战赛",
             "传感器技术发展",
             "SLAM 与地图构建",
             "传统机器学习应用"
-          ]
+          ],
+          "image": "images/boss_darpa.jpg"
         },
         {
           "title": "深度学习引入阶段",
@@ -71,7 +74,8 @@
             "目标检测精度大幅提升",
             "语义分割与多任务学习",
             "端到端感知系统出现"
-          ]
+          ],
+          "image": "images/yolo_detection.png"
         },
         {
           "title": "高精地图与融合阶段",
@@ -82,7 +86,8 @@
             "高精地图广泛应用",
             "多传感器融合多模态",
             "规划与控制模块化"
-          ]
+          ],
+          "image": "images/lidar_pointcloud.png"
         },
         {
           "title": "端到端转型阶段",
@@ -93,7 +98,8 @@
             "BEV 感知成为主流",
             "Transformer 进入自动驾驶",
             "端到端自动驾驶落地测试"
-          ]
+          ],
+          "image": "images/bevformer.png"
         },
         {
           "title": "大模型驱动阶段",
@@ -307,7 +313,8 @@
             "CenterPoint",
             "PV-RCNN",
             "SECOND",
-            "RT-DETR"
+            "RT-DETR",
+            "BEVFormer"
           ]
         },
         {
@@ -317,7 +324,6 @@
             "FCN",
             "DeepLab 系列",
             "SegFormer",
-            "BEVFormer",
             "Mask2Former"
           ]
         },
@@ -367,22 +373,26 @@
         {
           "title": "Tesla FSD",
           "icon": "bolt",
-          "color": "#dc2626"
+          "color": "#dc2626",
+          "image": "images/tesla_model3.jpg"
         },
         {
           "title": "Waymo Driver",
           "icon": "flow",
-          "color": "#2563eb"
+          "color": "#2563eb",
+          "image": "images/waymo_jaguar_sf.jpg"
         },
         {
           "title": "Baidu Apollo",
           "icon": "globe",
-          "color": "#2563eb"
+          "color": "#2563eb",
+          "image": "images/apollo_rt6.jpg"
         },
         {
           "title": "小鹏汽车 XNGP",
           "icon": "rocket",
-          "color": "#0ea5e9"
+          "color": "#0ea5e9",
+          "image": "images/xpeng_p7.jpg"
         },
         {
           "title": "理想汽车 AD Max",
@@ -392,7 +402,8 @@
         {
           "title": "蔚来 NIO Pilot",
           "icon": "atom",
-          "color": "#0891b2"
+          "color": "#0891b2",
+          "image": "images/nio_et5.jpg"
         },
         {
           "title": "华为 ADS",
@@ -426,7 +437,7 @@
           "weight": 1.0,
           "color": "#2563eb",
           "columns": 2,
-          "summary": "注：DIOR (2022) 按原图转录 — DIOR 实为遥感数据集",
+          "summary": "",
           "items": [
             {
               "icon": "db",
@@ -442,11 +453,11 @@
             },
             {
               "icon": "db",
-              "title": "Argoverse 2 (2019)"
+              "title": "Argoverse 2 (2021)"
             },
             {
               "icon": "db",
-              "title": "Lyft Level 5 (2020)"
+              "title": "Lyft Level 5 (2019)"
             },
             {
               "icon": "db",
@@ -454,19 +465,19 @@
             },
             {
               "icon": "db",
-              "title": "PandaSet (2021)"
+              "title": "PandaSet (2020)"
             },
             {
               "icon": "db",
-              "title": "BDD100K (2020)"
+              "title": "BDD100K (2018)"
             },
             {
               "icon": "db",
-              "title": "DIOR (2022)"
+              "title": "Cityscapes (2016)"
             },
             {
               "icon": "db",
-              "title": "OpenLane (2023)"
+              "title": "OpenLane (2022)"
             }
           ]
         },
@@ -834,7 +845,7 @@
       "id": "hivt",
       "label": "HiVT",
       "label_en": "HiVT",
-      "year": 2021,
+      "year": 2022,
       "kind": "model"
     },
     {
@@ -925,7 +936,7 @@
       "id": "drivegpt4",
       "label": "DriveGPT4",
       "label_en": "DriveGPT4",
-      "year": 2024,
+      "year": 2023,
       "kind": "model"
     },
     {
@@ -967,7 +978,7 @@
       "id": "nio_pilot",
       "label": "蔚来 NIO Pilot",
       "label_en": "NIO Pilot",
-      "year": 2020,
+      "year": 2019,
       "kind": "industry"
     },
     {
@@ -1016,21 +1027,21 @@
       "id": "bdd100k",
       "label": "BDD100K",
       "label_en": "BDD100K",
-      "year": 2020,
+      "year": 2018,
       "kind": "industry"
     },
     {
       "id": "argoverse2",
       "label": "Argoverse 2",
       "label_en": "Argoverse 2",
-      "year": 2019,
+      "year": 2021,
       "kind": "industry"
     },
     {
       "id": "lyft_l5",
       "label": "Lyft Level 5",
       "label_en": "Lyft Level 5",
-      "year": 2020,
+      "year": 2019,
       "kind": "industry"
     },
     {
@@ -1044,14 +1055,14 @@
       "id": "pandaset",
       "label": "PandaSet",
       "label_en": "PandaSet",
-      "year": 2021,
+      "year": 2020,
       "kind": "industry"
     },
     {
       "id": "openlane",
       "label": "OpenLane",
       "label_en": "OpenLane",
-      "year": 2023,
+      "year": 2022,
       "kind": "industry"
     }
   ],

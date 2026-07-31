@@ -43,23 +43,26 @@ Modern AI Atlas 旨在回答以下问题：
 
 # 🗺 图谱结构
 
-本项目按十三卷出版物级别的内容组织。
+本项目按出版物级海报系列组织。**全部 14 卷均已交付** ✅ —— 每一卷都可构建为 A0 海报，输出 SVG、PDF、PNG 三种格式（300 DPI）。
 
-| 卷号 | 主题 |
-|------|-------------------------------|
-| Vol.01 | AI 演化史 |
-| Vol.02 | Transformer 帝国 |
-| Vol.03 | 大语言模型 |
-| Vol.04 | 视觉基础模型 |
-| Vol.05 | 生成式 AI |
-| Vol.06 | 强化学习 |
-| Vol.07 | 世界模型 |
-| Vol.08 | 多模态 & 视觉语言动作模型 |
-| Vol.09 | 自动驾驶 |
-| Vol.10 | SLAM & 空间 AI |
-| Vol.11 | 具身 AI |
-| Vol.12 | AI Agent |
-| Vol.13 | 现代 AI 图谱（总览） |
+| 卷号 | 主题 | 状态 |
+|------|-------------------------------|------|
+| Vol.01 | AI 编年史（AI Evolution Timeline） | ✅ 已交付 |
+| Vol.01B | AI 基础脉络（Foundations of AI） | ✅ 已交付 |
+| Vol.02 | Transformer 帝国 | ✅ 已交付 |
+| Vol.03 | 大语言模型时代 | ✅ 已交付 |
+| Vol.04 | 多模态 AI | ✅ 已交付 |
+| Vol.05 | 生成式 AI | ✅ 已交付 |
+| Vol.06 | 强化学习 | ✅ 已交付 |
+| Vol.07 | 计算机视觉 | ✅ 已交付 |
+| Vol.08 | 具身 AI | ✅ 已交付 |
+| Vol.09 | 自动驾驶 | ✅ 已交付 |
+| Vol.10 | 世界模型 | ✅ 已交付 |
+| Vol.11 | AI Agent | ✅ 已交付 |
+| Vol.12 | AI 系统 | ✅ 已交付 |
+| Vol.13 | 通往 AGI 之路 | ✅ 已交付 |
+
+未来规划（尚未开始）：交互式网站与汇总全卷的 PDF 书籍——详见下方路线图。
 
 ---
 
@@ -120,43 +123,65 @@ PNG
 ```
 Modern_AI_Atlas/
 
-├── atlas/
+├── atlas/                      # 14 个图谱卷目录——每卷包含一个 knowledge_graph.json
+│   ├── vol01_ai_evolution/     #   （驱动每张海报的结构化知识）
+│   ├── vol01b_foundations_of_ai/
+│   ├── vol02_transformer_empire/
+│   └── ... vol03 … vol13       #   完整列表见上方「图谱结构」表格
 │
-├── knowledge/
-│
-├── generator/
+├── generator/                  # Python 生成器包——五阶段流水线
+│   ├── parser/                 # 阶段 1：安全加载并校验知识文件（JSON/YAML）
+│   ├── graph/                  # 阶段 2：构建内存中的知识图谱
+│   ├── layout/                 # 阶段 3：海报版面布局（panels 与 bands 两种模板）
+│   ├── render/                 # 阶段 4：中英双语 SVG 渲染器（深色与浅色主题）
+│   ├── exporter/               # 阶段 5：以 300 DPI 输出 SVG / PDF / PNG
+│   └── build.py                # 编排五个阶段的 CLI 入口
 │
 ├── assets/
+│   ├── themes/                 # 色彩主题（empire_dark、atlas_light、default）
+│   └── reference/              # 设计稿与参考海报（已被 gitignore）
 │
-├── docs/
-│
-└── export/
+├── docs/                       # 各卷内容规格说明 + 验收报告
+├── tests/                      # 布局/渲染检查（纯 Python 可运行，兼容 pytest）
+├── export/                     # 生成的海报：14 卷 × SVG/PDF/PNG（已被 gitignore）
+├── rfcs/                       # 设计文档
+└── requirements.txt            # cairosvg（PDF/PNG）+ pyyaml（YAML 知识文件）
 ```
+
+## 各部分如何协作
+
+每张海报都始于其卷目录下的一个 `knowledge_graph.json` 文件。生成器运行五阶段流水线——**parser → graph → layout → render → exporter**——将结构化知识转化为 A0 信息图海报，并以 300 DPI 输出 SVG、PDF、PNG 到 `export/` 目录。
+
+已交付的系列共十四卷：**Vol.01** AI 编年史、**Vol.01B** AI 基础脉络、**Vol.02** Transformer 帝国、**Vol.03** 大语言模型时代、**Vol.04** 多模态 AI、**Vol.05** 生成式 AI、**Vol.06** 强化学习、**Vol.07** 计算机视觉、**Vol.08** 具身 AI、**Vol.09** 自动驾驶、**Vol.10** 世界模型、**Vol.11** AI Agent、**Vol.12** AI 系统、**Vol.13** 通往 AGI 之路。
+
+## 快速开始
+
+```bash
+# 初始化（仅需一次）：创建虚拟环境并安装依赖
+python3.12 -m venv .venv
+.venv/bin/pip install -r requirements.txt   # PDF/PNG 导出还需原生 cairo：brew install cairo
+
+# 以任意格式构建任意一卷（svg、pdf、png）
+PYTHONPATH=$(pwd) .venv/bin/python -m generator.build atlas/vol01_ai_evolution --format png
+PYTHONPATH=$(pwd) .venv/bin/python -m generator.build atlas/vol02_transformer_empire --format pdf
+PYTHONPATH=$(pwd) .venv/bin/python -m generator.build atlas/vol13_towards_agi --format svg
+```
+
+输出文件位于 `export/<卷名>.{svg,pdf,png}`。
 
 ---
 
 # 🚀 路线图
 
-## v0.1
+## v0.1 ✅ 已交付
 
 - 设计系统
-- AI 演化史
-- Transformer 帝国
-- SVG 生成器
+- 完整的五阶段生成器流水线（300 DPI 输出 SVG → PDF → PNG）
+- 全部 14 卷海报系列（见上方「图谱结构」）
+- 内容保真验收：PASS（`docs/ACCEPTANCE_REPORT.md`）
+- 视觉验收：GO（`docs/AESTHETIC_REVIEW.md`）
 
-## v0.2
-
-- 视觉基础模型
-- 扩散模型
-- 强化学习
-
-## v0.3
-
-- 世界模型
-- 具身 AI
-- 自动驾驶
-
-## v1.0
+## v1.0（规划中）
 
 - 完整 AI 图谱
 - 交互式网站

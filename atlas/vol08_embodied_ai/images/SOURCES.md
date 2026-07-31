@@ -1,0 +1,19 @@
+# Vol.08 Card Image Sources
+
+All 13 images below are embedded as base64 data URIs into the generated SVG at render time (see `generator/render/images.py`); the SVG stays self-contained and no external requests are made when exporting PDF/PNG.
+
+| File | Card it illustrates | Source URL | What it depicts | License / attribution |
+|---|---|---|---|---|
+| unimate_coffee.jpg | 机器人学起源 (Origins of Robotics) | https://commons.wikimedia.org/wiki/File:Unimate_pouring_coffee_for_a_woman_at_Biltmore_Hotel,_1967.jpg | Unimate — the first industrial robot arm — pouring coffee at the Biltmore Hotel, 1967 | Wikimedia Commons — CC (see file page) |
+| shakey.jpg | 传统机器人 (Classical Robots) | https://commons.wikimedia.org/wiki/File:SRI_Shakey_robot,_1969,_Computer_History_Museum.jpg | Shakey the Robot (SRI, 1969) at the Computer History Museum — camera head, antenna ring, drive base; `image_focus: top` keeps the sensor head in frame | Wikimedia Commons — CC (see file page) |
+| vla_architecture.png | 大模型与多模态融合 (Vision-Language Models) | https://upload.wikimedia.org/wikipedia/commons/4/4c/General_architecture_of_a_vision-language-action_model.png | General VLA architecture: text instruction + image observation → language/vision encoders → action decoder | Wikimedia Commons — CC (see file page) |
+| ameca_humanoid.jpg | 通用物理智能 (General Physical Intelligence) | https://upload.wikimedia.org/wikipedia/commons/5/5e/Ameca_Generation_1.jpg | Engineered Arts "Ameca" humanoid robot (Generation 1); pre-cropped to head-and-shoulders band | Wikimedia Commons — CC (see file page) |
+| kinect.png | 深度相机 (Depth Camera) | https://commons.wikimedia.org/wiki/File:Xbox-360-Kinect-Standalone.png | Microsoft Kinect (Xbox 360) structured-light depth sensor — the camera that democratized RGB-D perception (photo by Evan Amos) | Wikimedia Commons — CC (see file page) |
+| velodyne_lidar.jpg | 激光雷达 (LiDAR) | https://commons.wikimedia.org/wiki/File:Velodyne_High-Def_LIDAR.jpg | Velodyne HDL spinning multi-beam LiDAR unit — the canonical robot/AV laser scanner | Wikimedia Commons — CC (see file page) |
+| flir_thermal.jpg | 热成像相机 (Thermal Camera) | https://commons.wikimedia.org/wiki/File:Flir_E8-Thermal_imaging_camera-Thermographic_camera-03ASD.jpg | FLIR E8 handheld thermal imaging camera | Wikimedia Commons — CC (see file page) |
+| amazon_warehouse_robot.jpg | 移动机器人 (Mobile Robot) | https://commons.wikimedia.org/wiki/File:Amazon_warehouse_robot_2020.JPG | Amazon Robotics (Kiva) orange warehouse drive unit — large-scale mobile-robot logistics | Wikimedia Commons — CC (see file page) |
+| unitree_dog.jpg | 四足机器人 (Quadruped) | https://commons.wikimedia.org/wiki/File:Unitree_robot_dog_-_Romanian_Land_Forces_Day_2023.jpg | Unitree quadruped robot dog outdoors, Romanian Land Forces Day 2023 | Wikimedia Commons — CC (see file page) |
+| atlas_frontview.jpg | 人形机器人 (Humanoid) | https://commons.wikimedia.org/wiki/File:Atlas_frontview_2013.jpg | Boston Dynamics Atlas humanoid (2013 DARPA Robotics Challenge configuration), front view; `image_focus: top` keeps head and torso in frame | Wikimedia Commons — CC (see file page) |
+| ur16e_arm.png | 机械臂 (Manipulator) | https://commons.wikimedia.org/wiki/File:UR16e_robot_arm.png | Universal Robots UR16e collaborative 6-DOF manipulator arm on a workbench with teach pendant | Wikimedia Commons — CC (see file page) |
+| dji_phantom.jpg | 空中机器人 (Aerial Robot) | https://commons.wikimedia.org/wiki/File:DJI_Phantom_Drone_(24109503259).jpg | DJI Phantom quadcopter in flight with gimbal camera | Wikimedia Commons — CC (see file page) |
+| anymal_inspection.jpg | 特种机器人 (Special Robot) | https://commons.wikimedia.org/wiki/File:Anymal-robot-inspection-power-grid.jpg | ANYbotics ANYmal inspection quadruped patrolling a power substation — industrial special-purpose robotics | Wikimedia Commons — CC (see file page) |

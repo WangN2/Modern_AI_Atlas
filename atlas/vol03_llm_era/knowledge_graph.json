@@ -137,7 +137,7 @@
                 "ChatGPT / GPT-3.5",
                 "GPT-4",
                 {
-                  "text": "GPT-4o / GPT-5?",
+                  "text": "GPT-4o / GPT-5",
                   "highlight": true
                 }
               ]
@@ -190,8 +190,8 @@
               "color": "#22c55e",
               "pills": [
                 "Mistral 7B",
-                "Mistral 8x7B",
-                "Mistral 8x22B",
+                "Mixtral 8x7B",
+                "Mixtral 8x22B",
                 {
                   "text": "Mistral Large",
                   "highlight": true
@@ -370,6 +370,7 @@
               "title_en": "Conversational AI",
               "icon": "person",
               "color": "#3b82f6",
+              "image": "images/chatgpt_logo_matte.png",
               "items": [
                 "聊天机器人",
                 "虚拟助手",
@@ -381,6 +382,7 @@
               "title_en": "Content Generation",
               "icon": "doc",
               "color": "#22c55e",
+              "image": "images/theatre_opera_spatial.jpg",
               "items": [
                 "文章写作",
                 "文案生成",
@@ -392,6 +394,7 @@
               "title_en": "Code Development",
               "icon": "gear",
               "color": "#f59e0b",
+              "image": "images/copilot_vscode.png",
               "items": [
                 "代码生成",
                 "代码补全",
@@ -403,6 +406,8 @@
               "title_en": "Question Answering",
               "icon": "book",
               "color": "#a855f7",
+              "image": "images/perplexity_vilnius.png",
+              "image_focus": "top",
               "items": [
                 "知识检索",
                 "文档问答",
@@ -414,6 +419,7 @@
               "title_en": "Productivity",
               "icon": "chart",
               "color": "#06b6d4",
+              "image": "images/microsoft_copilot_photo.jpg",
               "items": [
                 "总结提炼",
                 "翻译润色",
@@ -425,6 +431,7 @@
               "title_en": "Scientific Research",
               "icon": "atom",
               "color": "#64748b",
+              "image": "images/alphafold_tmem141.png",
               "items": [
                 "文献分析",
                 "假设生成",
@@ -798,7 +805,7 @@
     },
     {
       "id": "mixtral",
-      "label": "Mistral 8x7B / 8x22B",
+      "label": "Mixtral 8x7B / 8x22B",
       "label_en": "Mixtral",
       "year": 2023,
       "kind": "model"
@@ -1010,7 +1017,7 @@
     {
       "source": "palm2",
       "target": "gemini1",
-      "relation": "inherits"
+      "relation": "converges"
     },
     {
       "source": "gemini1",
@@ -1123,11 +1130,6 @@
       "relation": "converges"
     },
     {
-      "source": "dpo",
-      "target": "rlhf",
-      "relation": "converges"
-    },
-    {
       "source": "ppo",
       "target": "rlhf",
       "relation": "composes"
@@ -1148,8 +1150,8 @@
       "relation": "composes"
     },
     {
-      "source": "claude3",
-      "target": "constitutional_ai",
+      "source": "constitutional_ai",
+      "target": "claude3",
       "relation": "composes"
     },
     {

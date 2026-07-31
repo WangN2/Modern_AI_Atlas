@@ -12,7 +12,7 @@
       "volume": "Vol.04"
     },
     "tagline": "打通多种模态，连接物理世界与智能世界",
-    "callout": "多模态 AI 让机器看见、听见、理解和创造，融合多种信息模态，迈向更通用的智能。 —— Fei-Fei Li",
+    "callout": "多模态 AI 让机器看见、听见、理解和创造，融合多种信息模态，迈向更通用的智能。",
     "canvas": {
       "gap": 12,
       "margin": 32
@@ -64,6 +64,7 @@
           "title_en": "1950s–1990s",
           "color": "#64748b",
           "desc": "多模态感知与交互的早期探索",
+          "image": "images/speech_spectrogram.png",
           "items": [
             "语音识别",
             "视觉感知",
@@ -75,6 +76,7 @@
           "title_en": "1990s–2010s",
           "color": "#0ea5e9",
           "desc": "手工特征与浅层模型时代",
+          "image": "images/svm_margin.png",
           "items": [
             "特征工程",
             "SVM / HMM",
@@ -86,6 +88,7 @@
           "title_en": "2010s–2015",
           "color": "#3b82f6",
           "desc": "单模态深度模型快速发展",
+          "image": "images/alexnet_block.png",
           "items": [
             "CNN / RNN / LSTM",
             "预训练 (embedding)"
@@ -96,6 +99,7 @@
           "title_en": "2015–2018",
           "color": "#6366f1",
           "desc": "多模态深度模型涌现",
+          "image": "images/show_and_tell_captions.jpg",
           "items": [
             "多模态对齐",
             "深度融合",
@@ -107,6 +111,7 @@
           "title_en": "2019–2021",
           "color": "#a855f7",
           "desc": "大规模预训练模型出现",
+          "image": "images/clip_multimodal.png",
           "items": [
             "Transformer",
             "自监督学习",
@@ -118,6 +123,8 @@
           "title_en": "2022–至今",
           "color": "#c026d3",
           "desc": "多模态大模型快速发展与应用",
+          "image": "images/llava_chicken_nugget.png",
+          "image_focus": "center",
           "items": [
             "多模态大模型",
             "指令微调",
@@ -137,8 +144,8 @@
           "title": "早期语音合成与识别系统"
         },
         {
-          "year": "1997",
-          "title": "IBM Multimedia Search",
+          "year": "1993",
+          "title": "IBM QBIC",
           "node": "ibm_multimedia_search"
         },
         {
@@ -148,12 +155,12 @@
           "node": "alexnet"
         },
         {
-          "year": "2016",
+          "year": "2018",
           "title": "Google Audio-Visual Speech",
           "node": "google_av_speech"
         },
         {
-          "year": "2020",
+          "year": "2021",
           "title": "CLIP (OpenAI)",
           "node": "clip"
         },
@@ -418,20 +425,20 @@
           "color": "#4f46e5",
           "models": [
             {
-              "year": "2014",
+              "year": "2015",
               "name": "VQA",
               "org": "Visual Question Answering",
               "node": "vqa",
               "desc": "早期视觉问答数据集，推动多模态理解研究"
             },
             {
-              "year": "2016",
+              "year": "2015",
               "name": "Show and Tell",
               "node": "show_and_tell",
               "desc": "基于深度学习的图像描述生成模型"
             },
             {
-              "year": "2018",
+              "year": "2019",
               "name": "ViLBERT / UNITER",
               "node": "vilbert",
               "desc": "基于 Transformer 的多模态理解模型"
@@ -488,13 +495,15 @@
               "title": "医疗影像分析",
               "title_en": "Medical Imaging",
               "icon": "image",
-              "color": "#ef4444"
+              "color": "#ef4444",
+              "image": "images/chest_xray_annotated.png"
             },
             {
               "title": "自动驾驶",
               "title_en": "Autonomous Driving",
               "icon": "target",
-              "color": "#64748b"
+              "color": "#64748b",
+              "image": "images/waymo_zeekr.jpg"
             },
             {
               "title": "教育科技",
@@ -518,7 +527,8 @@
               "title": "虚拟现实",
               "title_en": "Virtual Reality",
               "icon": "cube",
-              "color": "#a855f7"
+              "color": "#a855f7",
+              "image": "images/vr_person.jpg"
             },
             {
               "title": "多模态检索",
@@ -530,7 +540,9 @@
               "title": "机器人交互",
               "title_en": "Robot Interaction",
               "icon": "robot",
-              "color": "#84cc16"
+              "color": "#84cc16",
+              "image": "images/pepper_robot.jpg",
+              "image_focus": "top"
             },
             {
               "title": "金融分析",
@@ -584,13 +596,13 @@
             [
               "VQA v2",
               "图像+文本",
-              "21万问答",
+              "~110万问答 / 20万图像",
               "视觉问答数据集"
             ],
             [
               "WebVid",
-              "图像+文本",
-              "100万视频",
+              "视频+文本",
+              "~1000万视频 (WebVid-10M)",
               "视频文本对照数据集"
             ],
             [
@@ -608,7 +620,7 @@
             [
               "Multimodal CoT",
               "多模态",
-              "~100万样本",
+              "~2.1万样本 (ScienceQA)",
               "多模态推理链数据集"
             ]
           ]
@@ -744,7 +756,7 @@
                 "LAION",
                 "Common Crawl",
                 "COCO",
-                "VawCaps",
+                "Visual Genome",
                 "AudioSet"
               ]
             },
@@ -772,28 +784,28 @@
       "id": "vqa",
       "label": "视觉问答数据集",
       "label_en": "VQA (Visual Question Answering)",
-      "year": 2014,
+      "year": 2015,
       "kind": "paper"
     },
     {
       "id": "show_and_tell",
       "label": "图像描述生成",
       "label_en": "Show and Tell",
-      "year": 2016,
+      "year": 2015,
       "kind": "paper"
     },
     {
       "id": "vilbert",
       "label": "双流多模态预训练",
       "label_en": "ViLBERT",
-      "year": 2018,
+      "year": 2019,
       "kind": "paper"
     },
     {
       "id": "uniter",
       "label": "统一多模态预训练",
       "label_en": "UNITER",
-      "year": 2018,
+      "year": 2019,
       "kind": "paper"
     },
     {
@@ -842,7 +854,7 @@
       "id": "llava",
       "label": "开源视觉指令模型",
       "label_en": "LLaVA",
-      "year": 2024,
+      "year": 2023,
       "kind": "model"
     },
     {
@@ -876,15 +888,15 @@
     {
       "id": "ibm_multimedia_search",
       "label": "早期多媒体检索",
-      "label_en": "IBM Multimedia Search",
-      "year": 1997,
+      "label_en": "IBM QBIC",
+      "year": 1993,
       "kind": "industry"
     },
     {
       "id": "google_av_speech",
       "label": "音视频语音",
       "label_en": "Google Audio-Visual Speech",
-      "year": 2016,
+      "year": 2018,
       "kind": "model"
     },
     {
@@ -904,11 +916,6 @@
     {
       "source": "vilbert",
       "target": "uniter",
-      "relation": "converges"
-    },
-    {
-      "source": "uniter",
-      "target": "vilbert",
       "relation": "converges"
     },
     {
@@ -953,17 +960,7 @@
     },
     {
       "source": "gemini",
-      "target": "gpt_4v",
-      "relation": "converges"
-    },
-    {
-      "source": "gemini",
       "target": "claude_3",
-      "relation": "converges"
-    },
-    {
-      "source": "claude_3",
-      "target": "gemini",
       "relation": "converges"
     },
     {
@@ -972,18 +969,8 @@
       "relation": "converges"
     },
     {
-      "source": "claude_3",
-      "target": "gpt_4v",
-      "relation": "converges"
-    },
-    {
       "source": "llava",
       "target": "internvl",
-      "relation": "converges"
-    },
-    {
-      "source": "internvl",
-      "target": "llava",
       "relation": "converges"
     },
     {
@@ -992,18 +979,8 @@
       "relation": "converges"
     },
     {
-      "source": "qwen_vl",
-      "target": "internvl",
-      "relation": "converges"
-    },
-    {
       "source": "llava",
       "target": "qwen_vl",
-      "relation": "converges"
-    },
-    {
-      "source": "qwen_vl",
-      "target": "llava",
       "relation": "converges"
     },
     {

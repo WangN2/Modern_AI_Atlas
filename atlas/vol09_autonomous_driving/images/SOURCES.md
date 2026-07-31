@@ -1,0 +1,16 @@
+# Vol.09 Card Image Sources
+
+All 10 images below are embedded as base64 data URIs into the generated SVG at render time (see `generator/render/images.py`); the SVG stays self-contained and no external requests are made when exporting PDF/PNG.
+
+| File | Card it illustrates | Source URL | What it depicts | License / attribution |
+|---|---|---|---|---|
+| navlab.jpg | 萌芽探索阶段 (Early Exploration) | https://commons.wikimedia.org/wiki/File:Navlab-1-5-autonomous-vehicles.jpg | CMU Navlab 1–5 autonomous vehicle lineup — the ALVINN-era self-driving research vans | Wikimedia Commons — CC (see file page) |
+| boss_darpa.jpg | 技术积累阶段 (Technology Accumulation) | https://commons.wikimedia.org/wiki/File:Carnegie_Mellon_Boss_self-driving_automobile_-_D60_Symposium_-_Defense_Advanced_Research_Projects_Agency_-_DSC05593.jpg | Carnegie Mellon "Boss" (GM Tahoe), winner of the 2007 DARPA Urban Challenge, with its full lidar/radar/camera roof rack (DARPA photo) | Wikimedia Commons — US Government work (DARPA) |
+| yolo_detection.png | 感知突破阶段 (Perception Breakthrough) | https://ar5iv.labs.arxiv.org/html/1506.02640/assets/x1.png | YOLOv1 detection pipeline: resize → single convolutional network → non-max suppression with detected person/dog/horse (Redmon et al., arXiv:1506.02640) | arXiv paper figure (CVPR 2016) |
+| lidar_pointcloud.png | 高精地图与融合阶段 (HD Map & Fusion Era) | https://commons.wikimedia.org/wiki/File:Ouster_OS1-64_lidar_point_cloud_of_intersection_of_Folsom_and_Dore_St,_San_Francisco.png | Ouster OS1-64 LiDAR point cloud of a San Francisco intersection — the raw material of HD mapping (photo by dllu) | Wikimedia Commons — CC BY-SA 4.0 |
+| bevformer.png | 端到端转型阶段 (End-to-End Transition) | https://ar5iv.labs.arxiv.org/html/2203.17270/assets/x1.png | BEVFormer: BEV queries with spatial + temporal attention over multi-camera images, producing the BEV scene representation (Li et al., arXiv:2203.17270) | arXiv paper figure (ECCV 2022) |
+| tesla_model3.jpg | Tesla FSD | https://commons.wikimedia.org/wiki/File:Tesla_Model_3_(2023)_IMG_9488_(cropped).jpg | Tesla Model 3 (2023 Highland refresh) — the camera-only FSD platform | Wikimedia Commons — CC (see file page) |
+| waymo_jaguar_sf.jpg | Waymo Driver | https://upload.wikimedia.org/wikipedia/commons/thumb/7/75/Waymo_Jaguar_I-Pace_in_San_Francisco_2023_dllu.jpg/960px-Waymo_Jaguar_I-Pace_in_San_Francisco_2023_dllu.jpg | Waymo Jaguar I-Pace robotaxi with roof sensor pod, San Francisco 2023 (photo by dllu) | Wikimedia Commons — CC BY-SA 4.0 |
+| apollo_rt6.jpg | Baidu Apollo | https://commons.wikimedia.org/wiki/File:(CHN-Hubei)_Apollo_Go_Apollo_RT6_Temporary-%E9%84%82A1395%E8%AF%95_2025-12-17.jpg | Baidu Apollo Go (萝卜快跑) RT6 purpose-built robotaxi with roof sensor pod and trial plate, Wuhan | Wikimedia Commons — CC (see file page) |
+| xpeng_p7.jpg | 小鹏汽车 XNGP | https://commons.wikimedia.org/wiki/File:XPeng_P7%2B_IAA_2025_DSC_2061_(cropped).jpg | XPeng P7+ at IAA 2025, Munich — the XNGP-equipped fastback sedan | Wikimedia Commons — CC (see file page) |
+| nio_et5.jpg | 蔚来 NIO Pilot | https://commons.wikimedia.org/wiki/File:NIO_ET5_IMG_8291.jpg | NIO ET5 with roof-mounted "watchtower" lidar pod — the NIO Pilot / NAD sensor layout | Wikimedia Commons — CC (see file page) |

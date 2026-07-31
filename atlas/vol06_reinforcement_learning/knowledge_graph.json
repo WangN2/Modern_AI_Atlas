@@ -12,7 +12,7 @@
       "volume": "Vol.06"
     },
     "tagline": "让智能体在与环境的交互中学习最优决策",
-    "callout": "强化学习关注如何学习到最优的行为策略，以最大化长期回报。 —— Richard S. Sutton"
+    "callout": "强化学习关注如何学习到最优的行为策略，以最大化长期回报。 —— Sutton & Barto（释义）"
   },
   "legend": [
     {
@@ -59,6 +59,7 @@
           "title": "早期理论探索",
           "title_en": "1950s–1980s",
           "color": "#64748b",
+          "image": "images/checkers_samuel.jpg",
           "items": [
             "最优控制理论",
             "动态规划基础",
@@ -69,6 +70,7 @@
           "title": "基础算法形成",
           "title_en": "1990s–2000s",
           "color": "#0ea5e9",
+          "image": "images/backgammon_td.jpg",
           "items": [
             "TD学习、Q学习等",
             "蒙特卡洛方法",
@@ -79,6 +81,8 @@
           "title": "深度强化学习萌芽",
           "title_en": "2010–2013",
           "color": "#3b82f6",
+          "image": "images/breakout_atari.jpg",
+          "image_focus": "top",
           "items": [
             "深度学习结合RL",
             "DQN (2013) 提出",
@@ -89,6 +93,7 @@
           "title": "快速发展与突破",
           "title_en": "2014–2017",
           "color": "#6366f1",
+          "image": "images/alphago_game4.jpg",
           "items": [
             "策略梯度方法进步",
             "A3C、DDPG、PPO",
@@ -99,6 +104,7 @@
           "title": "广泛应用与扩展",
           "title_en": "2018–2021",
           "color": "#a855f7",
+          "image": "images/anymal_robot.jpg",
           "items": [
             "多智能体强化学习",
             "离线强化学习",
@@ -109,6 +115,7 @@
           "title": "大模型时代的强化学习",
           "title_en": "2022–至今",
           "color": "#c026d3",
+          "image": "images/rlhf_three_steps.png",
           "items": [
             "大模型与RL结合 (RLHF等)",
             "通用智能体探索",
@@ -504,13 +511,16 @@
               "title": "游戏AI",
               "title_en": "Game AI",
               "icon": "target",
-              "color": "#3b82f6"
+              "color": "#3b82f6",
+              "image": "images/dota2_international.jpg"
             },
             {
               "title": "机器人控制",
               "title_en": "Robotics",
               "icon": "robot",
-              "color": "#64748b"
+              "color": "#64748b",
+              "image": "images/shadow_hand_bulb.jpg",
+              "image_focus": "top"
             },
             {
               "title": "自动驾驶",
@@ -826,7 +836,7 @@
       "id": "muzero",
       "label": "MuZero",
       "label_en": "MuZero",
-      "year": 2019,
+      "year": 2020,
       "kind": "model"
     },
     {
@@ -924,11 +934,6 @@
     {
       "source": "td3",
       "target": "sac",
-      "relation": "converges"
-    },
-    {
-      "source": "sac",
-      "target": "td3",
       "relation": "converges"
     },
     {

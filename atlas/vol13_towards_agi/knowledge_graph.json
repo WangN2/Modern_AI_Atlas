@@ -24,11 +24,11 @@
   "editorial_notes": [
     "Section 02 pillar 5: print reads '环境建解' [sic]; rendered as intended '环境建模'.",
     "Section 02 pillar 1: illegible glyph after 'Compute' [uncertain] rendered as '算力规模 Compute Scale' (the infinity glyph is not font-safe).",
-    "Section 04 阶段三: bullet kept verbatim as '规划世界任务执行' [sic — likely intended 现实世界任务执行].",
+    "Section 04 阶段三: bullet '规划世界任务执行' [sic] corrected to '现实世界任务执行' per k5 accuracy review.",
     "Section 04 阶段五: '社会…协同' [partially illegible — spec reads 社会价值?协同?] rendered as best-read '社会价值协同'.",
     "Section 03: '解决…复杂开放世界任务' [partially illegible] rendered as best-read '解决复杂开放世界任务'; other [uncertain] tails (多模态融合与世界模型加速 / 行业级智能体广泛部署 / 自我改进与持续学习能力形成闭环 / 与人类共创更美好的未来) transcribed as printed.",
     "Section 06 对齐与安全: '价值?对齐问题' [uncertain] rendered as '价值观对齐'.",
-    "Timeline: Perceptron dated 1969 as printed (poster/book year), per spec.",
+    "Timeline: Perceptron corrected to 1957 (Rosenblatt) per k5 accuracy review; 1969 is the Minsky & Papert critique, not the model.",
     "Header quote rendered zh-only in the callout (3-line cap); the full bilingual journey quote closes the poster in the footer band. Attribution '— Modern AI Atlas' omitted.",
     "Section 03 bullets keep each zh bullet above its en gloss, per spec style notes.",
     "Section 05 loop rendered as a radial hub (engine has no circular-arrow kind); center sub-items (环境建模 · 预测推演 · 想象仿真) moved into the subtitle.",
@@ -95,8 +95,9 @@
                   "title_en": "规模定律",
                   "icon": "chart",
                   "color": "#3b82f6",
+                  "image": "images/scaling_law_kaplan.png",
                   "items": [
-                    "参数规模 Data Scale",
+                    "参数规模 Parameter Scale",
                     "算力规模 Compute Scale",
                     "性能提升 Scaling Behavior"
                   ],
@@ -106,6 +107,7 @@
                   "title": "Transformer 与架构演进",
                   "icon": "flow",
                   "color": "#4f5dd5",
+                  "image": "images/transformer_architecture.png",
                   "items": [
                     "Attention 机制 架构创新",
                     "效率优化 泛化增强",
@@ -118,6 +120,7 @@
                   "title_en": "Foundation Models",
                   "icon": "doc",
                   "color": "#6366f1",
+                  "image": "images/gpt4_exam_results.png",
                   "items": [
                     "预训练 指令微调",
                     "对齐优化 涌现能力",
@@ -129,6 +132,7 @@
                   "title": "Multimodal 多模态理解",
                   "icon": "image",
                   "color": "#8b5cf6",
+                  "image": "images/clip_multimodal.png",
                   "items": [
                     "视觉理解 语言理解",
                     "语音理解",
@@ -140,6 +144,7 @@
                   "title": "World Model 世界模型",
                   "icon": "globe",
                   "color": "#a855f7",
+                  "image": "images/world_models_dream.png",
                   "items": [
                     "环境建模 物理规律",
                     "预测仿真 想象生成",
@@ -151,6 +156,7 @@
                   "title": "Embodied AI 具身智能",
                   "icon": "robot",
                   "color": "#c026d3",
+                  "image": "images/optimus_humanoid.jpg",
                   "items": [
                     "感知交互 运动控制",
                     "环境适应 任务执行",
@@ -308,7 +314,7 @@
               "node": "dartmouth_conference"
             },
             {
-              "year": "1969",
+              "year": "1957",
               "title": "感知机",
               "desc": "Perceptron",
               "node": "perceptron"
@@ -451,7 +457,7 @@
                 "自主目标规划",
                 "长期记忆与反思学习",
                 "多智能体协作",
-                "规划世界任务执行"
+                "现实世界任务执行"
               ],
               "node": "agentic_ai_stage"
             },
@@ -693,8 +699,7 @@
             "TensorFlow",
             "JAX",
             "Megatron-LM",
-            "DeepSpeed",
-            "Microsoft"
+            "DeepSpeed"
           ]
         },
         {
@@ -808,7 +813,7 @@
       "id": "perceptron",
       "label": "感知机",
       "label_en": "Perceptron",
-      "year": 1969,
+      "year": 1957,
       "kind": "milestone"
     },
     {

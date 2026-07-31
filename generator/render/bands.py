@@ -40,8 +40,16 @@ from xml.sax.saxutils import escape
 
 from generator.layout.engine import Panel
 from generator.render.helpers import (
+    band_card_caption_height,
+    band_card_caption_lines,
+    band_card_header_offset,
     card_bullet_layout,
+    card_bullet_pitch,
+    card_image_height,
+    card_step_up,
+    card_text_height,
     card_title_layout,
+    cards_geometry,
     cards_panel_card_height,
     family_desc_lines,
     family_label_lines,
@@ -1019,7 +1027,12 @@ def _schematic(kind: str, x: float, y: float, w: float, h: float,
 def _draw_side_panel(x: float, y: float, w: float, h: float,
                      side: dict[str, Any], color: str,
                      theme: dict[str, Any]) -> list[str]:
-    """Left/right bullet-list column inside a band."""
+    """Left/right bullet-list column inside a band.
+
+    D2: items justify across the full panel body — pitch clamps to
+    [30, 52] and the stack vertically centers when shorter — so the
+    panel reaches >= 90% fill at any item count.
+    """
     canvas = theme["canvas"]
     colors = theme["colors"]
     parts = [
@@ -1028,9 +1041,23 @@ def _draw_side_panel(x: float, y: float, w: float, h: float,
         f'stroke="{canvas["panel_stroke"]}" stroke-width="1"/>',
         text(x + 14, y + 28, side.get("title", ""), 17, color, bold=True),
     ]
+    items = side.get("items", [])
     max_units = (w - 30) / 14
-    parts += _bullet_list(x + 14, y + 54, side.get("items", []), color=color,
-                          theme=theme, size=14, row_h=27, max_units=max_units)
+    region_top = y + 46
+    region_h = h - 46 - 10
+    if items:
+        pitch = min(52.0, max(30.0, region_h / len(items)))
+        lines_per = [wrap_fit(item, max_units, 2) for item in items]
+        stack = sum(pitch + 15 * (len(lines) - 1) for lines in lines_per)
+        if stack > region_h and pitch > 30.0:
+            # Wrapped items make the true stack taller than n * pitch;
+            # trade pitch back down (never below the 30-unit floor).
+            pitch = max(30.0, pitch - (stack - region_h) / len(items))
+            stack = sum(pitch + 15 * (len(lines) - 1) for lines in lines_per)
+        y_off = max(0.0, (region_h - stack) / 2)
+        parts += _bullet_list(x + 14, region_top + 8 + y_off, items,
+                              color=color, theme=theme, size=14,
+                              row_h=pitch, max_units=max_units)
     return parts
 
 
@@ -1038,7 +1065,15 @@ def _draw_card(x: float, y: float, w: float, h: float,
                card: dict[str, Any], color: str,
                theme: dict[str, Any],
                images: ImageEmbedder | None = None) -> list[str]:
-    """One model/event card: year chip, titles, mini diagram, desc, citation."""
+    """One model/event card: year chip, titles, image, caption block.
+
+    D1 anatomy: the header (chip + zh/en titles) is frozen; desc and
+    citation form ONE bottom-anchored caption block with no internal
+    gap; the image is the elastic element filling everything between
+    the two, aspect-clamped to [1.25, 1.75]. Geometry is shared with
+    the layout pass via helpers (band_card_*), so a short caption never
+    opens a void and a long one never overlaps the image.
+    """
     canvas = theme["canvas"]
     colors = theme["colors"]
     pad = 8.0
@@ -1071,9 +1106,18 @@ def _draw_card(x: float, y: float, w: float, h: float,
     if title_en:
         parts.append(text(x + pad, en_y, fit(title_en, inner_w / 11), 11,
                           colors["muted"]))
-    # mini diagram area ("polaroid" photo block)
-    photo_y = en_y + 9
-    photo_h = 76.0
+    # Elastic image zone (polaroid matte + raster/ schematic fill).
+    header_h = band_card_header_offset(card, inner_w)
+    desc_lines, cite_lines = band_card_caption_lines(card, inner_w)
+    caption_h = band_card_caption_height(desc_lines, cite_lines)
+    photo_y = y + header_h
+    photo_h = h - header_h - caption_h
+    # Aspect clamp: never squarer than 1.25:1 — cap the image and let the
+    # caption follow it top-anchored (bottom void stays <= 8% by rule 3).
+    max_photo_h = inner_w / 1.25
+    top_anchored = photo_h > max_photo_h
+    if top_anchored:
+        photo_h = max_photo_h
     parts.append(f'<rect x="{fmt(x + pad)}" y="{fmt(photo_y)}" '
                  f'width="{fmt(inner_w)}" height="{fmt(photo_h)}" rx="6" '
                  f'fill="{canvas["photo_fill"]}"/>')
@@ -1091,27 +1135,18 @@ def _draw_card(x: float, y: float, w: float, h: float,
         parts += _schematic(card.get("diagram", "photo"),
                             x + pad + 6, photo_y + 6, inner_w - 12,
                             photo_h - 12, canvas["photo_ink"])
-    # description (up to 2 wrapped lines)
-    desc_y = photo_y + photo_h + 16
-    max_units = inner_w / 12
-    desc_lines: list[str] = []
-    for field in ("desc", "desc2"):
-        value = card.get(field, "")
-        if value:
-            desc_lines.extend(wrap(value, max_units))
-    for line_text in desc_lines[:2]:
-        parts.append(text(x + pad, desc_y, line_text, 12, colors["text"]))
-        desc_y += 16
-    # citation line (ellipsis on a wrap boundary when it exceeds two lines)
-    citation = card.get("citation", "")
-    if citation:
-        cite_units = inner_w / 9.5
-        cite_lines = wrap_fit(citation, cite_units, 2)
-        cite_y = y + h - (10 + 13 * (len(cite_lines) - 1))
-        for line_text in cite_lines:
-            parts.append(text(x + pad, cite_y, line_text, 9.5,
-                              colors["muted"], italic=True))
-            cite_y += 13
+    # Caption block: desc + citation as ONE unit, bottom-anchored unless
+    # the aspect clamp capped the image (then it follows the image).
+    caption_y = (photo_y + photo_h + 8) if top_anchored else (y + h - caption_h)
+    for line_text in desc_lines:
+        caption_y += 15
+        parts.append(text(x + pad, caption_y, line_text, 12, colors["text"]))
+    if desc_lines and cite_lines:
+        caption_y += 4
+    for line_text in cite_lines:
+        caption_y += 12
+        parts.append(text(x + pad, caption_y, line_text, 9.5,
+                          colors["muted"], italic=True))
     return parts
 
 
@@ -1163,8 +1198,9 @@ def _draw_band(panel: Panel, theme: dict[str, Any],
                           colors["muted"]))
 
     # -- content: side panels + card row --------------------------------------
+    # D1 rule 6: band bottom padding is 8 (was 16) to absorb card growth.
     content_y = y + header_h + 4
-    content_h = panel.height - header_h - 20
+    content_h = panel.height - header_h - 12
     cards_x = x + 12
     cards_w = w - 24
     left = payload.get("left_panel")
@@ -1210,12 +1246,17 @@ def _draw_list(panel: Panel, theme: dict[str, Any]) -> list[str]:
     col_w = (panel.width - 40 - (cols - 1) * 20) / cols
     row_h = list_row_height(items, col_w)
     per_col = math.ceil(len(items) / cols)
-    # S3 whitespace: when a row sibling stretches this panel beyond its
-    # content, center the items vertically instead of top-anchoring them
-    # above a void (the summary line stays bottom-anchored).
-    content_bottom = content_y + 10 + per_col * row_h
-    panel_bottom = panel.y + panel.height - 14
-    slack = panel_bottom - content_bottom
+    # D5 density: when a row sibling stretches this panel beyond its
+    # content, first grow the row pitch (up to 1.4x natural), then
+    # center the items vertically above any remainder (the summary line
+    # stays bottom-anchored).
+    summary = payload.get("summary", "")
+    reserve = 36 if summary else 14
+    panel_bottom = panel.y + panel.height - reserve
+    slack = panel_bottom - (content_y + 10 + per_col * row_h)
+    if slack > 0 and per_col:
+        row_h = min(row_h * 1.4, row_h + slack / per_col)
+        slack = panel_bottom - (content_y + 10 + per_col * row_h)
     y_off = slack / 2 if slack > 30 else 0.0
     for i, item in enumerate(items):
         col, row = divmod(i, per_col)
@@ -1240,7 +1281,6 @@ def _draw_list(panel: Panel, theme: dict[str, Any]) -> list[str]:
         for j, line in enumerate(desc_lines):
             parts += _text_rich(ix + 28, desc_y + j * 15, line, 11.5,
                                 colors["muted"])
-    summary = payload.get("summary", "")
     if summary:
         sy = panel.y + panel.height - 18
         parts.append(text(panel.x + panel.width / 2, sy, summary, 15, color,
@@ -1253,13 +1293,24 @@ def _draw_list(panel: Panel, theme: dict[str, Any]) -> list[str]:
 # -- section kind: cards (grid of small titled cards) -------------------------------
 
 
-def _draw_cards_panel(panel: Panel, theme: dict[str, Any]) -> list[str]:
+def _draw_cards_panel(panel: Panel, theme: dict[str, Any],
+                      images: ImageEmbedder | None = None) -> list[str]:
     """Grid of small cards (icon + zh/en title + bullets), pastel-tinted.
 
     Card titles and bullets wrap (two lines at full size, one font step
     down on narrow cards) instead of hard-ellipsizing; the uniform card
     height comes from the shared geometry helpers so layout reserves
     exactly the same vertical space.
+
+    D3 image-ready geometry: a card carrying an ``image`` key draws a
+    top image strip (42% of the card body, aspect clamped to [1.6, 2.2],
+    elastic under stretch) with the icon demoted to a 20-unit badge on
+    the strip's bottom-left corner; without ``image`` nothing is drawn
+    (no placeholder holes) and sparse cards (<= 2 bullets) get a larger
+    18-unit icon. D3 min-fill: cards whose bullets zone would cover less
+    than 55% of the body step title/bullet fonts up one step. D5: when a
+    row sibling stretches the panel, card boxes grow up to 1.4x and the
+    grid centers vertically.
     """
     colors = theme["colors"]
     canvas = theme["canvas"]
@@ -1272,11 +1323,22 @@ def _draw_cards_panel(panel: Panel, theme: dict[str, Any]) -> list[str]:
     gap = 10.0
     card_w = (panel.width - 32 - (cols - 1) * gap) / cols
     card_h = cards_panel_card_height(items, card_w)
+    rows = math.ceil(len(items) / cols) or 1
+    # D5.3 row equalization: when a row sibling stretches this panel,
+    # the card boxes grow to fill the cell and each card distributes
+    # its share of the leftover into its internal bullet pitch (or
+    # centers bullet-less content) instead of hugging the top.
+    avail = panel.y + panel.height - 10 - (content_y + 6)
+    grid_nat = rows * (card_h + gap) - gap
+    if avail > grid_nat:
+        card_h = (avail - (rows - 1) * gap) / rows
     for i, card in enumerate(items):
         row, col = divmod(i, cols)
         cx = panel.x + 16 + col * (card_w + gap)
         cy = content_y + 6 + row * (card_h + gap)
         card_color = card.get("color", color)
+        step_up = card_step_up(card, card_w)
+        geo = cards_geometry(step_up)
         # Neutral border (S5): accent lives in the icon/bullets only, so a
         # panel of mixed-color items reads as one calm grid, not confetti.
         parts.append(f'<rect x="{fmt(cx)}" y="{fmt(cy)}" width="{fmt(card_w)}" '
@@ -1285,36 +1347,78 @@ def _draw_cards_panel(panel: Panel, theme: dict[str, Any]) -> list[str]:
                      f'stroke="{canvas["card_stroke"]}" stroke-width="1.2"/>')
         title_en = card.get("title_en", "")
         icon = card.get("icon", "")
+        bullets = card.get("items", [])
+        # D5.3: the box may be taller than the text zone (row-sibling
+        # stretch). Cards with an image let the strip absorb it (elastic);
+        # cards with bullets spread it across the bullet pitch; bullet-
+        # less cards center their text zone vertically.
+        bonus = 0.0
+        center_off = 0.0
+        if not card.get("image"):
+            slack_in = max(0.0, card_h - card_text_height(card, card_w,
+                                                          step_up))
+            if bullets:
+                bonus = slack_in / len(bullets)
+            else:
+                center_off = slack_in / 2
+        # Optional top image strip (D3): rendered only when the card has
+        # an "image" key — no placeholder hole otherwise.
+        text_top = cy + center_off
+        if card.get("image"):
+            strip_w = card_w - 20
+            image_h = card_image_height(card, card_w, card_h)
+            drawn = (images.svg_image(card["image"], cx + 10, cy + 10,
+                                      strip_w, image_h,
+                                      focus=card.get("image_focus", "center"),
+                                      radius=6)
+                     if images is not None else None)
+            if drawn is not None:
+                parts += drawn
+                if icon:
+                    # 20-unit badge overlapping the strip's bottom-left.
+                    bcx, bcy = cx + 24, cy + 10 + image_h
+                    parts.append(f'<circle cx="{fmt(bcx)}" cy="{fmt(bcy)}" '
+                                 f'r="10" fill="{card_color}" '
+                                 f'stroke="{canvas["card_fill"]}" '
+                                 f'stroke-width="2"/>')
+                    parts += _icon(icon, bcx, bcy, 6,
+                                   colors.get("chip_text", "#ffffff"))
+                text_top = cy + 18 + image_h
+                icon = ""  # icon already drawn as the strip badge
         tx = cx + 12
         if icon:
-            parts += _icon(icon, cx + 18, cy + 20, 10, card_color)
+            # D3.2: sparse cards (<= 2 bullets) get an 18-unit icon.
+            icon_s = 14.0 if len(bullets) <= 2 else 10.0
+            parts += _icon(icon, cx + 18, text_top + 20, icon_s, card_color)
             tx = cx + 36
-        title_lines, title_size = card_title_layout(card, card_w, tx - cx)
+        title_lines, title_size = card_title_layout(card, card_w, tx - cx,
+                                                    step_up)
         title_fill = card_color if _is_dark(theme) else colors["title"]
         for j, line in enumerate(title_lines):
-            parts.append(text(tx, cy + 20 + j * 16, line, title_size,
-                              title_fill, bold=True))
+            parts.append(text(tx, text_top + 20 + j * geo["title_pitch"],
+                              line, title_size, title_fill, bold=True))
         if title_en:
             en_x = tx + text_width(title_lines[-1], title_size) + 8
-            en_y = cy + 19 + 16 * (len(title_lines) - 1)
+            en_y = (text_top + 19
+                    + geo["title_pitch"] * (len(title_lines) - 1))
             parts.append(text(en_x, en_y, fit(title_en, 16), 10,
                               colors["muted"]))
-        bullets = card.get("items", [])
-        by = cy + 44 + 16 * (len(title_lines) - 1)
+        by = (text_top + geo["bullets_start"]
+              + geo["title_pitch"] * (len(title_lines) - 1))
         desc = card.get("desc", "")
         if desc and bullets:
             parts.append(text(cx + 12, by, fit(desc, (card_w - 24) / 10.5),
                               10.5, colors["muted"]))
-            by += 20
+            by += geo["desc_row"]
         for bullet in bullets:
-            lines, size = card_bullet_layout(str(bullet), card_w)
-            pitch = 13.0 if size < 10 else 14.0
+            lines, size = card_bullet_layout(str(bullet), card_w, step_up)
+            pitch = card_bullet_pitch(size)
             parts.append(f'<circle cx="{fmt(cx + 16)}" cy="{fmt(by - 4)}" '
                          f'r="3" fill="{card_color}"/>')
             for j, line in enumerate(lines):
                 parts.append(text(cx + 26, by + j * pitch, line, size,
                                   colors["text"]))
-            by += pitch * (len(lines) - 1) + 18
+            by += pitch * (len(lines) - 1) + geo["bullet_row"] + bonus
         if desc and not bullets:
             for j, line in enumerate(wrap_fit(desc, (card_w - 24) / 11, 3)):
                 parts.append(text(cx + 12, by + j * 15, line, 11,
@@ -2057,20 +2161,42 @@ def _draw_radial(panel: Panel, theme: dict[str, Any]) -> list[str]:
     return parts
 
 
-def _draw_figures(panel: Panel, theme: dict[str, Any]) -> list[str]:
-    """Key-figures rows: portrait placeholder + name + description lines."""
+def _draw_figures(panel: Panel, theme: dict[str, Any],
+                  images: ImageEmbedder | None = None) -> list[str]:
+    """Key-figures rows: portrait avatar + name + description lines.
+
+    D4: the avatar glyph is a 44-unit circle (a supplied portrait
+    ``image`` fills that circle) and the N rows distribute evenly across
+    the panel body (pitch = body_h / n, clamped to [68, 96], remainder
+    centered) instead of top-packing at 68.
+    """
     colors = theme["colors"]
     canvas = theme["canvas"]
     payload = panel.payload
     color = panel.color or colors["accent"]
     parts, content_y = _panel_chrome(panel, theme, payload.get("title", ""),
                                      payload.get("subtitle", ""))
-    y = content_y + 10
-    for figure in payload.get("figures", []):
+    figures = payload.get("figures", [])
+    body_top = content_y + 6
+    body_h = panel.y + panel.height - 10 - body_top
+    pitch = 68.0
+    y = body_top
+    if figures:
+        pitch = min(96.0, max(68.0, body_h / len(figures)))
+        y = body_top + max(0.0, (body_h - pitch * len(figures)) / 2)
+    for figure in figures:
         fx = panel.x + 20
-        parts.append(f'<rect x="{fmt(fx)}" y="{fmt(y)}" width="52" '
-                     f'height="56" rx="8" fill="{canvas["photo_fill"]}"/>')
-        parts += _icon("person", fx + 26, y + 26, 16, canvas["photo_ink"])
+        acx, acy = fx + 26, y + 28
+        drawn = (images.svg_image(figure["image"], acx - 22, acy - 22, 44, 44,
+                                  focus=figure.get("image_focus", "center"),
+                                  radius=22)
+                 if images is not None and figure.get("image") else None)
+        if drawn is not None:
+            parts += drawn
+        else:
+            parts.append(f'<circle cx="{fmt(acx)}" cy="{fmt(acy)}" r="22" '
+                         f'fill="{canvas["photo_fill"]}"/>')
+            parts += _icon("person", acx, acy + 2, 13, canvas["photo_ink"])
         tx = fx + 66
         parts.append(text(tx, y + 18, figure.get("name", ""), 13.5,
                           colors["title"], bold=True))
@@ -2078,7 +2204,7 @@ def _draw_figures(panel: Panel, theme: dict[str, Any]) -> list[str]:
             parts.append(text(tx, y + 36 + j * 14,
                               fit(line, (panel.width - 110) / 10.5), 10.5,
                               colors["muted"]))
-        y += 68
+        y += pitch
     return parts
 
 
@@ -2327,6 +2453,10 @@ def _draw_section(panel: Panel, theme: dict[str, Any],
         return []
     if kind == "band":
         return _draw_band(panel, theme, images)
+    if kind == "cards":
+        return _draw_cards_panel(panel, theme, images)
+    if kind == "figures":
+        return _draw_figures(panel, theme, images)
     return renderer(panel, theme)
 
 

@@ -73,8 +73,8 @@
             { "year": "2018", "name": "BERT", "org": "Google", "desc": "Bidirectional Encoder Representations from Transformers" },
             { "year": "2019", "name": "RoBERTa", "org": "Meta", "desc": "A Robustly Optimized BERT Pretraining Approach" },
             { "year": "2020", "name": "DeBERTa", "org": "Microsoft", "desc": "Decoding-enhanced BERT with Disentangled Attention" },
-            { "year": "2022", "name": "MPNet", "org": "Microsoft", "desc": "Masked and Permuted Pre-training" },
-            { "year": "2023", "name": "E5 / GTE / BGE", "desc": "Embedding Models (BAAI, Microsoft, etc.)" }
+            { "year": "2020", "name": "MPNet", "org": "Microsoft", "desc": "Masked and Permuted Pre-training" },
+            { "year": "2022–2023", "name": "E5 / GTE / BGE", "desc": "Embedding Models (BAAI, Microsoft, etc.)" }
           ],
           "footer": ["应用: 搜索、推荐、问答、理解", "代表产品: Google Search, Bing, 等"]
         },
@@ -86,7 +86,7 @@
             { "year": "2018", "name": "GPT-1", "org": "OpenAI", "desc": "Generative Pre-trained Transformer" },
             { "year": "2019", "name": "GPT-2", "org": "OpenAI", "desc": "Scaling Laws Start Emerging" },
             { "year": "2020", "name": "GPT-3", "org": "OpenAI", "desc": "175B Parameters Few-shot Learning" },
-            { "year": "2022", "name": "GPT-4", "org": "OpenAI", "desc": "Stronger Reasoning, Multimodal" },
+            { "year": "2023", "name": "GPT-4", "org": "OpenAI", "desc": "Stronger Reasoning, Multimodal" },
             { "year": "2023+", "name": "LLaMA / Qwen / DeepSeek / Mistral", "desc": "Open-source LLMs (Meta / 阿里 / 深度求索)" }
           ],
           "footer": ["应用: 对话、写作、编程、通用智能", "代表产品: ChatGPT, Copilot, Claude, 通义千问, 等"]
@@ -139,7 +139,7 @@
                 { "year": "2021", "name": "Swin Transformer", "org": "Microsoft", "desc": "Hierarchical Vision Transformer" },
                 { "year": "2021", "name": "MAE", "org": "Meta", "desc": "Masked Autoencoders" },
                 { "year": "2021", "name": "DeiT", "org": "Facebook", "desc": "Data-efficient ViT" },
-                { "year": "2022", "name": "DINO", "org": "Meta", "desc": "Self-Distillation" },
+                { "year": "2021", "name": "DINO", "org": "Meta", "desc": "Self-Distillation" },
                 { "year": "2023", "name": "DINOv2", "org": "Meta", "desc": "Stronger Visual Features" }
               ],
               "footer": ["应用: 图像分类、检测、分割、3D 等", "代表产品: SAM, Florence-2, 等"]
@@ -169,7 +169,7 @@
               "title": "生成模型家族", "subtitle": "Diffusion / DiT",
               "models": [
                 { "year": "2022", "name": "Stable Diffusion", "org": "Stability AI", "desc": "Latent Diffusion (U-Net)" },
-                { "year": "2023", "name": "DiT", "org": "Peebles & Xie", "desc": "Diffusion Transformer" },
+                { "year": "2022", "name": "DiT", "org": "UC Berkeley / NYU", "desc": "Diffusion Transformer" },
                 { "year": "2023", "name": "PixArt / SD3 / MMDiT", "desc": "华为 / Stability AI等" },
                 { "year": "2024", "name": "Flux", "org": "Black Forest Labs" }
               ],
@@ -181,8 +181,8 @@
               "models": [
                 { "year": "2021", "name": "CLIP", "org": "OpenAI", "desc": "Contrastive Language-Image Pre-training" },
                 { "year": "2022", "name": "Flamingo", "org": "DeepMind", "desc": "Few-shot Multimodal" },
-                { "year": "2023", "name": "LLaVA", "org": "UC Berkeley", "desc": "Visual Instruction Tuning" },
-                { "year": "2024", "name": "Qwen-VL", "org": "阿里", "desc": "全模态理解" }
+                { "year": "2023", "name": "LLaVA", "org": "UW–Madison & Microsoft", "desc": "Visual Instruction Tuning" },
+                { "year": "2023", "name": "Qwen-VL", "org": "阿里", "desc": "全模态理解" }
               ],
               "footer": ["应用: 多模态理解、视觉对话、VLM等"]
             }
@@ -211,7 +211,7 @@
           "title": "产业影响", "subtitle": "Industry Impact",
           "groups": [
             { "title": "科技巨头", "items": ["Google", "OpenAI", "Meta", "Microsoft", "Baidu 百度", "阿里巴巴 Alibaba"] },
-            { "title": "开源生态", "items": ["Hugging Face", "PyTorch", "TensorFlow", "VLLM", "Transformers"] },
+            { "title": "开源生态", "items": ["Hugging Face", "PyTorch", "TensorFlow", "vLLM", "Transformers"] },
             { "title": "应用落地", "items": ["搜索推荐", "智能客服", "内容生成", "编程助手", "自动驾驶", "机器人"] }
           ]
         },
@@ -253,12 +253,12 @@
     { "id": "bert", "label": "BERT", "kind": "model", "year": 2018 },
     { "id": "roberta", "label": "RoBERTa", "kind": "model", "year": 2019 },
     { "id": "deberta", "label": "DeBERTa", "kind": "model", "year": 2020 },
-    { "id": "mpnet", "label": "MPNet", "kind": "model", "year": 2022 },
+    { "id": "mpnet", "label": "MPNet", "kind": "model", "year": 2020 },
     { "id": "e5_gte_bge", "label": "E5 / GTE / BGE 嵌入模型", "kind": "model", "year": 2023, "metadata": { "label_en": "E5 / GTE / BGE Embedding Models" } },
     { "id": "gpt1", "label": "GPT-1", "kind": "model", "year": 2018 },
     { "id": "gpt2", "label": "GPT-2", "kind": "model", "year": 2019 },
     { "id": "gpt3", "label": "GPT-3", "kind": "model", "year": 2020 },
-    { "id": "gpt4", "label": "GPT-4", "kind": "model", "year": 2022 },
+    { "id": "gpt4", "label": "GPT-4", "kind": "model", "year": 2023 },
     { "id": "llama", "label": "LLaMA", "kind": "model", "year": 2023 },
     { "id": "qwen", "label": "通义千问", "kind": "model", "year": 2023, "metadata": { "label_en": "Qwen" } },
     { "id": "deepseek", "label": "DeepSeek", "kind": "model", "year": 2023 },
@@ -287,16 +287,16 @@
     { "id": "swin", "label": "Swin Transformer", "kind": "model", "year": 2021 },
     { "id": "mae", "label": "MAE", "kind": "model", "year": 2021, "metadata": { "label_en": "Masked Autoencoders" } },
     { "id": "deit", "label": "DeiT", "kind": "model", "year": 2021, "metadata": { "label_en": "Data-efficient ViT" } },
-    { "id": "dino", "label": "DINO", "kind": "model", "year": 2022 },
+    { "id": "dino", "label": "DINO", "kind": "model", "year": 2021 },
     { "id": "dinov2", "label": "DINOv2", "kind": "model", "year": 2023 },
     { "id": "stable_diffusion", "label": "Stable Diffusion", "kind": "model", "year": 2022, "metadata": { "label_en": "Stable Diffusion (Latent Diffusion U-Net)" } },
-    { "id": "dit", "label": "DiT", "kind": "model", "year": 2023, "metadata": { "label_en": "Diffusion Transformer" } },
+    { "id": "dit", "label": "DiT", "kind": "model", "year": 2022, "metadata": { "label_en": "Diffusion Transformer" } },
     { "id": "pixart_sd3_mmdit", "label": "PixArt / SD3 / MMDiT", "kind": "model", "year": 2023 },
     { "id": "flux", "label": "Flux", "kind": "model", "year": 2024, "metadata": { "label_en": "Flux (Black Forest Labs)" } },
     { "id": "clip", "label": "CLIP", "kind": "model", "year": 2021 },
     { "id": "flamingo", "label": "Flamingo", "kind": "model", "year": 2022 },
     { "id": "llava", "label": "LLaVA", "kind": "model", "year": 2023 },
-    { "id": "qwen_vl", "label": "Qwen-VL", "kind": "model", "year": 2024 }
+    { "id": "qwen_vl", "label": "Qwen-VL", "kind": "model", "year": 2023 }
   ],
   "edges": [
     { "source": "transformer", "target": "bert", "relation": "inherits" },

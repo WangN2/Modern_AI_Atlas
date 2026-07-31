@@ -262,6 +262,7 @@
             {
               "name": "Alan Turing",
               "node": "turing",
+              "image": "images/alan_turing_1951.jpg",
               "lines": [
                 "计算机科学之父",
                 "提出“图灵测试”",
@@ -271,6 +272,7 @@
             {
               "name": "John McCarthy",
               "node": "mccarthy",
+              "image": "images/john_mccarthy_avatar.jpg",
               "lines": [
                 "AI 之父",
                 "提出“人工智能”术语",
@@ -280,6 +282,7 @@
             {
               "name": "Marvin Minsky",
               "node": "minsky",
+              "image": "images/marvin_minsky_olpc.jpg",
               "lines": [
                 "认知科学家",
                 "共同创立了",
@@ -289,6 +292,7 @@
             {
               "name": "Herbert Simon",
               "node": "simon",
+              "image": "images/herbert_simon_avatar.jpg",
               "lines": [
                 "诺贝尔奖得主",
                 "提出“有限理性”",
@@ -298,6 +302,7 @@
             {
               "name": "Allen Newell",
               "node": "newell",
+              "image": "images/allen_newell_avatar.jpg",
               "lines": [
                 "与 Simon 共同提出",
                 "逻辑理论机 (Logic Theorist)",
@@ -324,6 +329,7 @@
               "icon": "gear",
               "color": "#64748b",
               "node": "symbolicism",
+              "image": "images/symbolics_lisp_machine.jpg",
               "items": [
                 "基于规则与逻辑",
                 "专家系统",
@@ -336,6 +342,7 @@
               "icon": "network",
               "color": "#3b82f6",
               "node": "connectionism",
+              "image": "images/backprop_neural_network.png",
               "items": [
                 "神经网络模型",
                 "模式识别",
@@ -348,6 +355,7 @@
               "icon": "chart",
               "color": "#22c55e",
               "node": "statistical_learning_paradigm",
+              "image": "images/svm_margin.png",
               "items": [
                 "概率建模",
                 "数据驱动",
@@ -360,6 +368,7 @@
               "icon": "layers",
               "color": "#f59e0b",
               "node": "deep_learning_paradigm",
+              "image": "images/alexnet_block.png",
               "items": [
                 "多层神经网络",
                 "端到端学习",
@@ -372,6 +381,7 @@
               "icon": "star",
               "color": "#a855f7",
               "node": "foundation_model_paradigm",
+              "image": "images/gpt3_fewshot_scaling.png",
               "items": [
                 "预训练 + 微调",
                 "通用能力",
@@ -656,7 +666,7 @@
             "SLAM",
             "运动控制",
             "智能导航",
-            "问答系统"
+            "人机协作"
           ]
         },
         {

@@ -1,0 +1,12 @@
+# Vol.03 Card Image Sources
+
+All 6 images below are embedded as base64 data URIs into the generated SVG at render time (see `generator/render/images.py`); the SVG stays self-contained and no external requests are made when exporting PDF/PNG.
+
+| File | Card it illustrates | Source URL | What it depicts | License / attribution |
+|---|---|---|---|---|
+| chatgpt_logo_matte.png | 智能对话 (Conversational AI) | https://upload.wikimedia.org/wikipedia/commons/thumb/e/ef/ChatGPT-Logo.svg/960px-ChatGPT-Logo.svg.png | ChatGPT knot emblem centered on a #eef1f9 matte at 2:1 (offline composite, same pattern as vol01's qwen_deepseek_logos.png) so the slice-crop strip keeps the logo fully inside | Wikimedia Commons — simple logo (PD-textlogo); OpenAI trademark |
+| theatre_opera_spatial.jpg | 内容创作 (Content Generation) | https://upload.wikimedia.org/wikipedia/commons/b/bf/Th%C3%A9%C3%A2tre_D%E2%80%99op%C3%A9ra_Spatial.jpg | "Théâtre D'opéra Spatial" — Jason Allen's Midjourney-generated artwork that won the 2022 Colorado State Fair digital-art prize; the canonical AI-content-generation milestone image | Wikimedia Commons — public domain (USCO Review Board, 2023: AI-generated image not copyrightable) |
+| copilot_vscode.png | 代码开发 (Code Development) | https://upload.wikimedia.org/wikipedia/commons/1/13/VS2025_IntelliCode_%2B_Copilot.png | Visual Studio C# editor with an IntelliCode/Copilot AI completion popup ("IntelliCode suggestion based on this context") | Wikimedia Commons — public domain (per file page) |
+| perplexity_vilnius.png | 知识问答 (Question Answering) | https://upload.wikimedia.org/wikipedia/commons/6/6d/Screenshot_of_Perplexity_-_What_is_Vilnius_%282024%29.png | Perplexity AI answer page for "What is Vilnius?" (2024): sources row, answer panel, image rail — the canonical LLM answer-engine UI; rendered with image_focus "top" | Wikimedia Commons — public domain (per file page) |
+| microsoft_copilot_photo.jpg | 办公提效 (Productivity) | https://upload.wikimedia.org/wikipedia/commons/a/ad/Microsoft_Copilot.jpg | Microsoft Surface Copilot+ PC showing the "Microsoft Surface / Copilot+ PC" boot screen — AI productivity hardware | Wikimedia Commons — public domain (per file page) |
+| alphafold_tmem141.png | 科学研究 (Scientific Research) | https://upload.wikimedia.org/wikipedia/commons/c/ce/TMEM141_Predicted_Structure.png | AlphaFold-predicted tertiary structure of the TMEM141 protein, transmembrane domains highlighted in green — AI-for-science icon | Wikimedia Commons — CC0 |

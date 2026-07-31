@@ -43,23 +43,26 @@ Modern AI Atlas aims to answer questions such as:
 
 # 🗺 Atlas Structure
 
-The project is organized into thirteen publication-quality volumes.
+The project is organized into a publication-quality poster series. **All 14 volumes are delivered** ✅ — each one builds as an A0 poster in SVG, PDF, and PNG at 300 DPI.
 
-| Volume | Topic |
-|----------|-------------------------------|
-| Vol.01 | AI Evolution |
-| Vol.02 | Transformer Empire |
-| Vol.03 | Large Language Models |
-| Vol.04 | Vision Foundation Models |
-| Vol.05 | Generative AI |
-| Vol.06 | Reinforcement Learning |
-| Vol.07 | World Models |
-| Vol.08 | Multimodal & VLA |
-| Vol.09 | Autonomous Driving |
-| Vol.10 | SLAM & Spatial AI |
-| Vol.11 | Embodied AI |
-| Vol.12 | AI Agents |
-| Vol.13 | Modern AI Atlas |
+| Volume | Topic | Status |
+|----------|-------------------------------|--------|
+| Vol.01 | AI Evolution Timeline (AI 编年史) | ✅ delivered |
+| Vol.01B | Foundations of AI | ✅ delivered |
+| Vol.02 | Transformer Empire | ✅ delivered |
+| Vol.03 | The LLM Era | ✅ delivered |
+| Vol.04 | Multimodal AI | ✅ delivered |
+| Vol.05 | Generative AI | ✅ delivered |
+| Vol.06 | Reinforcement Learning | ✅ delivered |
+| Vol.07 | Computer Vision | ✅ delivered |
+| Vol.08 | Embodied AI | ✅ delivered |
+| Vol.09 | Autonomous Driving | ✅ delivered |
+| Vol.10 | World Models | ✅ delivered |
+| Vol.11 | AI Agents | ✅ delivered |
+| Vol.12 | AI Systems | ✅ delivered |
+| Vol.13 | The Road to AGI | ✅ delivered |
+
+Future plans (not yet started): an interactive website and a PDF book combining all volumes — see the Roadmap below.
 
 ---
 
@@ -120,43 +123,65 @@ Every volume follows the same publication-quality design language.
 ```
 Modern_AI_Atlas/
 
-├── atlas/
+├── atlas/                      # 14 atlas volumes — each holds a knowledge_graph.json
+│   ├── vol01_ai_evolution/     #   (the structured knowledge that drives each poster)
+│   ├── vol01b_foundations_of_ai/
+│   ├── vol02_transformer_empire/
+│   └── ... vol03 … vol13       #   full list in the Atlas Structure table above
 │
-├── knowledge/
-│
-├── generator/
+├── generator/                  # Python generator package — 5-stage pipeline
+│   ├── parser/                 # Stage 1: safe-load + validate knowledge files (JSON/YAML)
+│   ├── graph/                  # Stage 2: build the in-memory knowledge graph
+│   ├── layout/                 # Stage 3: poster layout (panels & bands templates)
+│   ├── render/                 # Stage 4: bilingual SVG renderer (dark & light themes)
+│   ├── exporter/               # Stage 5: write SVG / PDF / PNG at 300 DPI
+│   └── build.py                # CLI entry point orchestrating the five stages
 │
 ├── assets/
+│   ├── themes/                 # Color themes (empire_dark, atlas_light, default)
+│   └── reference/              # Design mockups & reference posters (gitignored)
 │
-├── docs/
-│
-└── export/
+├── docs/                       # Per-volume content specs + acceptance reports
+├── tests/                      # Layout/renderer checks (plain-python, pytest-compatible)
+├── export/                     # Generated posters: 14 volumes × SVG/PDF/PNG (gitignored)
+├── rfcs/                       # Design documents
+└── requirements.txt            # cairosvg (PDF/PNG) + pyyaml (YAML knowledge files)
 ```
+
+## How It Fits Together
+
+Every poster starts as a `knowledge_graph.json` inside its volume directory under `atlas/`. The generator runs a five-stage pipeline — **parser → graph → layout → render → exporter** — that turns that structured knowledge into an A0 infographic poster, exported as SVG, PDF, and PNG at 300 DPI into `export/`.
+
+The delivered series covers fourteen volumes: **Vol.01** AI Evolution Timeline (AI 编年史), **Vol.01B** Foundations of AI, **Vol.02** Transformer Empire, **Vol.03** The LLM Era, **Vol.04** Multimodal AI, **Vol.05** Generative AI, **Vol.06** Reinforcement Learning, **Vol.07** Computer Vision, **Vol.08** Embodied AI, **Vol.09** Autonomous Driving, **Vol.10** World Models, **Vol.11** AI Agents, **Vol.12** AI Systems, and **Vol.13** The Road to AGI.
+
+## Quick Start
+
+```bash
+# Setup (once): create the virtual environment and install dependencies
+python3.12 -m venv .venv
+.venv/bin/pip install -r requirements.txt   # PDF/PNG export also needs native cairo: brew install cairo
+
+# Build any volume in any format (svg, pdf, png)
+PYTHONPATH=$(pwd) .venv/bin/python -m generator.build atlas/vol01_ai_evolution --format png
+PYTHONPATH=$(pwd) .venv/bin/python -m generator.build atlas/vol02_transformer_empire --format pdf
+PYTHONPATH=$(pwd) .venv/bin/python -m generator.build atlas/vol13_towards_agi --format svg
+```
+
+Output lands in `export/<volume>.{svg,pdf,png}`.
 
 ---
 
 # 🚀 Roadmap
 
-## v0.1
+## v0.1 ✅ Delivered
 
 - Design System
-- AI Evolution
-- Transformer Empire
-- SVG Generator
+- Full 5-stage generator pipeline (SVG → PDF → PNG at 300 DPI)
+- Complete 14-volume poster series (see Atlas Structure above)
+- Content-fidelity acceptance: PASS (`docs/ACCEPTANCE_REPORT.md`)
+- Visual acceptance: GO (`docs/AESTHETIC_REVIEW.md`)
 
-## v0.2
-
-- Vision Foundation
-- Diffusion
-- Reinforcement Learning
-
-## v0.3
-
-- World Models
-- Embodied AI
-- Autonomous Driving
-
-## v1.0
+## v1.0 (planned)
 
 - Complete AI Atlas
 - Interactive Website

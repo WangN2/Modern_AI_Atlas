@@ -21,9 +21,9 @@
   },
   "editorial_notes": [
     "Section 03: poster prints 'DeepSpeed 高练加速框架' [sic]; normalized to 'DeepSpeed 高效训练加速框架' per spec style notes.",
-    "Section 04 张量并行: bullet kept verbatim as '拆分矩阵相乘' [sic — likely intended 拆分矩阵维度].",
-    "Section 04: column header kept verbatim as 'Mixed Precision Overlap Compression' [sic — likely intended 通信重叠 Overlap Communication].",
-    "Section 04: '优化器状态分配' / '零冗余分片' / '压缩通信量' flagged [uncertain] in spec; transcribed as printed.",
+    "Section 04 张量并行: bullet '拆分矩阵相乘' [sic] corrected to '拆分矩阵维度（张量切分）' per k5 accuracy review.",
+    "Section 04: column header 'Mixed Precision Overlap Compression' [sic] corrected to 'Overlap & Compression（计算通信重叠与压缩）' per k5 accuracy review.",
+    "Section 04: '优化器状态分配' [uncertain] corrected to '优化器状态分片' (ZeRO-1 optimizer-state sharding) per k5 accuracy review.",
     "Header quote: zh full + en first sentence; en second sentence ('AI breakthroughs come from both algorithms and systems.') omitted — badge callout renders at most 3 wrapped lines.",
     "Section 02 CUDA card title_en trimmed to 'Parallel Computing Platform' (title already carries 'CUDA'; 16-unit en cap).",
     "FlashAttention 'Q K V → On-Chip SRAM' diagram rendered as bullet 'Q/K/V On-Chip SRAM' (arrow glyph is not font-safe in card bullets).",
@@ -46,6 +46,7 @@
               "title_en": "GPU Architecture Evolution",
               "icon": "chart",
               "color": "#3b82f6",
+              "image": "images/nvidia_h100.png",
               "items": [
                 "Fermi 2010",
                 "Kepler 2012",
@@ -76,6 +77,7 @@
               "title_en": "Key Hardware Components",
               "icon": "gear",
               "color": "#0ea5e9",
+              "image": "images/hbm_schematic.png",
               "items": [
                 "GPU 并行计算核心",
                 "HBM 高带宽显存",
@@ -103,6 +105,7 @@
               "title_en": "Parallel Computing Platform",
               "icon": "cube",
               "color": "#22a06b",
+              "image": "images/cuda_thread_hierarchy.png",
               "items": [
                 "CUDA Core 计算核心",
                 "Warp 线程束 (32线程)",
@@ -156,6 +159,7 @@
               "title": "FlashAttention",
               "title_en": "高效注意力计算",
               "color": "#3b82f6",
+              "image": "images/flashattention_diagram.png",
               "items": [
                 "Q/K/V On-Chip SRAM",
                 "IO-Aware",
@@ -182,6 +186,7 @@
               "title": "DeepSpeed",
               "title_en": "高效训练加速框架",
               "color": "#6366f1",
+              "image": "images/zero_deepspeed.png",
               "items": [
                 "ZeRO-1",
                 "ZeRO-2",
@@ -199,6 +204,7 @@
               "title": "vLLM",
               "title_en": "高效推理引擎",
               "color": "#a855f7",
+              "image": "images/pagedattention_vllm.png",
               "items": [
                 "PagedAttention",
                 "Continuous Batching",
@@ -333,7 +339,7 @@
               "title_en": "Tensor Parallel",
               "color": "#3b82f6",
               "items": [
-                "拆分矩阵相乘",
+                "拆分矩阵维度（张量切分）",
                 "加速大矩阵计算"
               ]
             },
@@ -351,7 +357,7 @@
               "title_en": "Memory Optimization",
               "color": "#22c55e",
               "items": [
-                "优化器状态分配",
+                "优化器状态分片",
                 "梯度分片",
                 "零冗余分片"
               ]
@@ -393,7 +399,7 @@
               ]
             },
             {
-              "title": "Mixed Precision Overlap Compression",
+              "title": "Overlap & Compression（计算通信重叠与压缩）",
               "color": "#f59e0b",
               "items": [
                 "Overlap 计算与通信",
