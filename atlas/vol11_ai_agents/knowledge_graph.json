@@ -1,0 +1,915 @@
+{
+  "meta": {
+    "series": "Modern AI Atlas",
+    "volume": "Vol.11",
+    "title_zh": "智能体",
+    "title_en": "AI Agents",
+    "theme": "atlas_light",
+    "layout": "bands",
+    "title_style": "badge",
+    "badge": {
+      "name": "Modern AI Atlas",
+      "volume": "Vol.11"
+    },
+    "tagline": "自主感知 · 规划决策 · 工具使用 · 协同合作",
+    "tagline_en": "Perceive, Plan, Act, and Collaborate in the Real World",
+    "callout": "AI Agent 是迈向通用人工智能（AGI）的关键一步，它让 AI 从“回答问题”走向“解决问题”。 —— Yann LeCun",
+    "canvas": {
+      "width": 2524,
+      "height": 1682
+    }
+  },
+  "sections": [
+    {
+      "row": [
+        {
+          "kind": "radial",
+          "title": "AI Agent 核心能力",
+          "subtitle": "Core Capabilities",
+          "weight": 1.0,
+          "color": "#4f5dd5",
+          "center": {
+            "zh": "AI Agent",
+            "en": "智能体"
+          },
+          "branches": [
+            {
+              "label": "感知",
+              "label_en": "Perception",
+              "color": "#3b82f6",
+              "items": [
+                "理解环境与输入",
+                "多模态感知如状态理解"
+              ]
+            },
+            {
+              "label": "规划",
+              "label_en": "Planning",
+              "color": "#4f46e5",
+              "items": [
+                "分解目标",
+                "选择策略"
+              ]
+            },
+            {
+              "label": "记忆",
+              "label_en": "Memory",
+              "color": "#7b5ea7",
+              "items": [
+                "短期/长期记忆",
+                "知识检索",
+                "经验挖掘"
+              ]
+            },
+            {
+              "label": "工具使用",
+              "label_en": "Tool Use",
+              "color": "#8b5cf6",
+              "items": [
+                "调用外部工具",
+                "API / 插件 / 代码",
+                "扩展能力"
+              ]
+            },
+            {
+              "label": "行动",
+              "label_en": "Action",
+              "color": "#f59e0b",
+              "items": [
+                "与环境交互",
+                "完成任务"
+              ]
+            },
+            {
+              "label": "反思",
+              "label_en": "Reflection",
+              "color": "#f97316",
+              "items": [
+                "自我评估",
+                "总结经验",
+                "持续改进"
+              ]
+            }
+          ],
+          "number": 1
+        },
+        {
+          "stack": [
+            {
+              "kind": "chevrons",
+              "title": "智能体工作流程",
+              "subtitle": "Agent Workflow",
+              "color": "#4f5dd5",
+              "colors": [
+                "#3b82f6",
+                "#4f5dd5",
+                "#6366f1",
+                "#7b5ea7",
+                "#f59e0b",
+                "#0ea5e9",
+                "#f97316"
+              ],
+              "loop": true,
+              "steps": [
+                {
+                  "label": "目标",
+                  "label_en": "Goal"
+                },
+                {
+                  "label": "感知",
+                  "label_en": "Perceive"
+                },
+                {
+                  "label": "记忆",
+                  "label_en": "Retrieve"
+                },
+                {
+                  "label": "规划",
+                  "label_en": "Plan"
+                },
+                {
+                  "label": "行动",
+                  "label_en": "Act"
+                },
+                {
+                  "label": "观察",
+                  "label_en": "Observe"
+                },
+                {
+                  "label": "反思",
+                  "label_en": "Reflect"
+                }
+              ],
+              "number": 2
+            },
+            {
+              "kind": "cards",
+              "title": "记忆 (Memory)",
+              "subtitle": "短期 / 长期 / 结构化",
+              "color": "#7b5ea7",
+              "columns": 3,
+              "items": [
+                {
+                  "title": "短期记忆",
+                  "title_en": "Short-term",
+                  "color": "#7b5ea7",
+                  "items": [
+                    "临时上下文",
+                    "最近交互信息"
+                  ]
+                },
+                {
+                  "title": "长期记忆",
+                  "title_en": "Long-term",
+                  "color": "#7b5ea7",
+                  "items": [
+                    "知识库",
+                    "历史经验"
+                  ]
+                },
+                {
+                  "title": "结构化记忆",
+                  "title_en": "Structured",
+                  "color": "#7b5ea7",
+                  "items": [
+                    "规则 / 模板",
+                    "知识图谱"
+                  ]
+                }
+              ]
+            },
+            {
+              "kind": "pills",
+              "title": "工具 (Tools) / 环境 (Environment)",
+              "subtitle": "与外部世界持续交互，获取反馈",
+              "color": "#0ea5e9",
+              "label_w": 120,
+              "rows": [
+                {
+                  "label": "持续交互",
+                  "color": "#0ea5e9",
+                  "pills": [
+                    "工具 (Tools)",
+                    "环境 (Environment)",
+                    "获取反馈"
+                  ]
+                }
+              ]
+            }
+          ],
+          "weight": 1.35
+        },
+        {
+          "stack": [
+            {
+              "kind": "list",
+              "title": "工具使用",
+              "subtitle": "Tool Use",
+              "color": "#4f5dd5",
+              "columns": 2,
+              "items": [
+                {
+                  "icon": "target",
+                  "title": "搜索 Search",
+                  "node": "tool_use"
+                },
+                {
+                  "icon": "cube",
+                  "title": "计算器 Calculator"
+                },
+                {
+                  "icon": "gear",
+                  "title": "代码解释器 Code Interpreter"
+                },
+                {
+                  "icon": "network",
+                  "title": "API 调用 API Call"
+                },
+                {
+                  "icon": "db",
+                  "title": "数据库 Database"
+                },
+                {
+                  "icon": "doc",
+                  "title": "文件读写 File I/O"
+                },
+                {
+                  "icon": "star",
+                  "title": "更多工具 More…"
+                }
+              ],
+              "number": 3
+            },
+            {
+              "kind": "chevrons",
+              "title": "MCP 模型上下文协议",
+              "subtitle": "连接模型与外部世界的标准协议 (Model Context Protocol)",
+              "color": "#4f46e5",
+              "colors": [
+                "#3b82f6",
+                "#4f5dd5",
+                "#6366f1",
+                "#7b5ea7"
+              ],
+              "steps": [
+                {
+                  "label": "Host",
+                  "label_en": "Agent / App"
+                },
+                {
+                  "label": "MCP Client"
+                },
+                {
+                  "label": "MCP Protocol"
+                },
+                {
+                  "label": "MCP Server",
+                  "node": "mcp"
+                }
+              ],
+              "number": 4
+            },
+            {
+              "kind": "pills",
+              "title": "MCP Server — 外部资源",
+              "subtitle": "标准协议连接的工具与数据",
+              "color": "#4f46e5",
+              "label_w": 110,
+              "rows": [
+                {
+                  "label": "连接",
+                  "color": "#4f46e5",
+                  "pills": [
+                    "文件系统",
+                    "数据库",
+                    "API 服务",
+                    "向量库",
+                    "更多…"
+                  ]
+                }
+              ]
+            }
+          ],
+          "weight": 1.0
+        }
+      ]
+    },
+    {
+      "row": [
+        {
+          "kind": "cards",
+          "title": "记忆系统",
+          "subtitle": "Memory",
+          "weight": 0.95,
+          "color": "#7b5ea7",
+          "columns": 3,
+          "items": [
+            {
+              "title": "短期记忆",
+              "title_en": "Short-term Memory",
+              "icon": "bolt",
+              "color": "#7b5ea7",
+              "items": [
+                "对话上下文",
+                "最近的交互信息",
+                "临时记忆"
+              ]
+            },
+            {
+              "title": "长期记忆",
+              "title_en": "Long-term Memory",
+              "icon": "db",
+              "color": "#7b5ea7",
+              "items": [
+                "用户画像",
+                "知识库",
+                "历史经验"
+              ]
+            },
+            {
+              "title": "结构化记忆",
+              "title_en": "Structured Memory",
+              "icon": "layers",
+              "color": "#7b5ea7",
+              "items": [
+                "知识图谱",
+                "向量数据库",
+                "规则与事实"
+              ]
+            }
+          ],
+          "number": 5
+        },
+        {
+          "kind": "cards",
+          "title": "规划与推理",
+          "subtitle": "Planning & Reasoning",
+          "weight": 1.45,
+          "color": "#4f5dd5",
+          "columns": 3,
+          "items": [
+            {
+              "title": "任务分解",
+              "title_en": "Task Decomposition",
+              "icon": "layers",
+              "color": "#4f5dd5",
+              "desc": "将复杂任务分解为可执行的子任务",
+              "node": "task_decomposition"
+            },
+            {
+              "title": "推理链",
+              "title_en": "Chain of Thought",
+              "icon": "flow",
+              "color": "#4f5dd5",
+              "desc": "逐步推理，得出中间结论",
+              "node": "chain_of_thought"
+            },
+            {
+              "title": "策略规划",
+              "title_en": "Strategy Planning",
+              "icon": "target",
+              "color": "#4f5dd5",
+              "desc": "生成执行方案与行动顺序"
+            },
+            {
+              "title": "决策",
+              "title_en": "Decision Making",
+              "icon": "check",
+              "color": "#4f5dd5",
+              "desc": "选择最优行动，平衡风险与收益"
+            },
+            {
+              "title": "自我反思",
+              "title_en": "Self-Reflection",
+              "icon": "brain",
+              "color": "#4f5dd5",
+              "desc": "评估结果，改进策略",
+              "node": "self_reflection"
+            },
+            {
+              "title": "自我修正",
+              "title_en": "Self-Correction",
+              "icon": "gear",
+              "color": "#4f5dd5",
+              "desc": "发现错误，修正并重试"
+            }
+          ],
+          "number": 6
+        },
+        {
+          "kind": "chevrons",
+          "title": "多智能体协作",
+          "subtitle": "Multi-Agent Collaboration",
+          "weight": 1.1,
+          "color": "#7b5ea7",
+          "colors": [
+            "#3b82f6",
+            "#4f5dd5",
+            "#6366f1",
+            "#7b5ea7",
+            "#8b5cf6"
+          ],
+          "steps": [
+            {
+              "label": "协作式",
+              "label_en": "Collaboration · 共同完成任务"
+            },
+            {
+              "label": "辩论式",
+              "label_en": "Debate · 通过辩论达成最优决策"
+            },
+            {
+              "label": "分工式",
+              "label_en": "Division of Labor · 专业分工协作"
+            },
+            {
+              "label": "竞争式",
+              "label_en": "Competition · 相互竞争提升表现"
+            },
+            {
+              "label": "管理者-工人",
+              "label_en": "Manager-Worker · 分层管理执行",
+              "node": "manager_worker"
+            }
+          ],
+          "number": 7
+        }
+      ]
+    },
+    {
+      "row": [
+        {
+          "kind": "list",
+          "title": "代表性框架 / 平台",
+          "subtitle": "Frameworks / Platforms",
+          "weight": 0.9,
+          "color": "#4f5dd5",
+          "columns": 2,
+          "items": [
+            {
+              "icon": "robot",
+              "title": "AutoGPT",
+              "node": "autogpt"
+            },
+            {
+              "icon": "star",
+              "title": "BabyAGI",
+              "node": "babyagi"
+            },
+            {
+              "icon": "network",
+              "title": "LangChain",
+              "node": "langchain"
+            },
+            {
+              "icon": "db",
+              "title": "LlamaIndex",
+              "node": "llamaindex"
+            },
+            {
+              "icon": "bolt",
+              "title": "OpenAI Assistants API",
+              "node": "openai_assistants_api"
+            },
+            {
+              "icon": "person",
+              "title": "MetaGPT",
+              "node": "metagpt"
+            },
+            {
+              "icon": "speech",
+              "title": "CAMEL",
+              "node": "camel"
+            },
+            {
+              "icon": "flow",
+              "title": "AG2",
+              "node": "ag2"
+            }
+          ],
+          "number": 8
+        },
+        {
+          "kind": "industry",
+          "title": "AI Agent 全景架构",
+          "subtitle": "AI Agent Architecture Overview",
+          "weight": 2.6,
+          "color": "#4f5dd5",
+          "groups": [
+            {
+              "title": "输入 (Input)",
+              "items": [
+                "文本 Text",
+                "图像 Images",
+                "语音 Speech",
+                "视频 Video",
+                "传感器 Sensors",
+                "结构化数据 Structured Data"
+              ]
+            },
+            {
+              "title": "感知 (Perception)",
+              "items": [
+                "多模态理解 Multimodal Understanding",
+                "状态估计 State Estimation",
+                "意图识别 Intent Recognition",
+                "信息抽取 Information Extraction"
+              ]
+            },
+            {
+              "title": "智能体大脑 (Agent Brain)",
+              "color": "#4f5dd5",
+              "items": [
+                "记忆系统 Memory",
+                "· 短期记忆 Short-term",
+                "· 长期记忆 Long-term",
+                "· 知识库 Knowledge Base",
+                "规划与推理 Planning & Reasoning",
+                "· 任务分解 Task Decomposition",
+                "· 推理链 Chain of Thought",
+                "· 策略规划 Strategy Planning",
+                "决策与行动 Decision & Action",
+                "· 决策选择 Decision Making",
+                "· 行动生成 Action Generation",
+                "· 执行反馈 Execution Feedback"
+              ]
+            },
+            {
+              "title": "工具与环境 (Tools & Environment)",
+              "color": "#0ea5e9",
+              "items": [
+                "内置工具 Built-in Tools",
+                "· 搜索 Search",
+                "· 计算 Calculator",
+                "· 代码 Code",
+                "· 数据库 Database",
+                "外部工具 External Tools",
+                "· API / 服务",
+                "· 插件 / 组件",
+                "· 物理设备"
+              ]
+            },
+            {
+              "title": "输出 (Output)",
+              "items": [
+                "文本回复 Text Response",
+                "执行结果 Execution Result",
+                "图像生成 Image Generation",
+                "行动控制 Action Control",
+                "报告 / 可视化 Report / Visualization"
+              ]
+            }
+          ],
+          "number": 9
+        }
+      ]
+    },
+    {
+      "row": [
+        {
+          "kind": "cards",
+          "title": "当前挑战",
+          "subtitle": "Challenges",
+          "weight": 1.5,
+          "color": "#e11d48",
+          "columns": 5,
+          "items": [
+            {
+              "title": "可靠性不足",
+              "title_en": "Reliability",
+              "color": "#e11d48",
+              "desc": "幻觉与错误"
+            },
+            {
+              "title": "可解释性不足",
+              "title_en": "Interpretability",
+              "color": "#e11d48",
+              "desc": "决策过程难理解"
+            },
+            {
+              "title": "记忆局限",
+              "title_en": "Memory Limitation",
+              "color": "#e11d48",
+              "desc": "长期记忆困难"
+            },
+            {
+              "title": "任务泛化不足",
+              "title_en": "Generalization",
+              "color": "#e11d48",
+              "desc": "跨领域泛化难"
+            },
+            {
+              "title": "安全与对齐",
+              "title_en": "Safety & Alignment",
+              "color": "#e11d48",
+              "desc": "价值观对齐难"
+            },
+            {
+              "title": "工具依赖性",
+              "title_en": "Tool Dependency",
+              "color": "#e11d48",
+              "desc": "工具质量影响大"
+            },
+            {
+              "title": "环境不确定性",
+              "title_en": "Env Uncertainty",
+              "color": "#e11d48",
+              "desc": "现实环境复杂"
+            },
+            {
+              "title": "多轮交互难",
+              "title_en": "Multi-turn Difficulty",
+              "color": "#e11d48",
+              "desc": "上下文丢失"
+            },
+            {
+              "title": "成本与延迟",
+              "title_en": "Cost & Latency",
+              "color": "#e11d48",
+              "desc": "资源消耗高"
+            },
+            {
+              "title": "协作冲突",
+              "title_en": "Collaboration Conflict",
+              "color": "#e11d48",
+              "desc": "多智能体冲突"
+            }
+          ],
+          "number": 10
+        },
+        {
+          "kind": "list",
+          "title": "未来趋势",
+          "subtitle": "Future Trends",
+          "weight": 1.4,
+          "color": "#14b8a6",
+          "columns": 5,
+          "items": [
+            {
+              "icon": "brain",
+              "title": "更强的推理能力",
+              "desc": "Stronger Reasoning"
+            },
+            {
+              "icon": "db",
+              "title": "更长的上下文记忆",
+              "desc": "Longer Context Memory"
+            },
+            {
+              "icon": "rocket",
+              "title": "更自主的任务执行",
+              "desc": "Autonomous Execution"
+            },
+            {
+              "icon": "star",
+              "title": "更安全可靠的智能体",
+              "desc": "Safe & Reliable Agents"
+            },
+            {
+              "icon": "robot",
+              "title": "具身智能体",
+              "desc": "Embodied Agents",
+              "node": "embodied_agents"
+            },
+            {
+              "icon": "flow",
+              "title": "端到端学习",
+              "desc": "End-to-End Learning"
+            },
+            {
+              "icon": "image",
+              "title": "多模态理解与生成",
+              "desc": "Multimodal Understanding"
+            },
+            {
+              "icon": "person",
+              "title": "人机协作增强",
+              "desc": "Human-AI Collaboration"
+            },
+            {
+              "icon": "target",
+              "title": "通向 AGI 的关键路径",
+              "desc": "Key Path to AGI",
+              "node": "agent_to_agi"
+            }
+          ],
+          "number": 11
+        }
+      ]
+    }
+  ],
+  "footer": {
+    "quote_zh": "AI Agents 将大模型的智能与外部世界连接起来，通过感知、记忆、规划、工具使用、行动和反思，实现从“回答问题”到“解决问题”的跨越。未来，AI Agents 将是 AGI 的重要基石。",
+    "globe": true
+  },
+  "nodes": [
+    {
+      "id": "autogpt",
+      "label": "AutoGPT",
+      "label_en": "AutoGPT",
+      "year": 2023,
+      "kind": "model"
+    },
+    {
+      "id": "babyagi",
+      "label": "BabyAGI",
+      "label_en": "BabyAGI",
+      "year": 2023,
+      "kind": "model"
+    },
+    {
+      "id": "langchain",
+      "label": "LangChain",
+      "label_en": "LangChain",
+      "year": 2022,
+      "kind": "industry"
+    },
+    {
+      "id": "llamaindex",
+      "label": "LlamaIndex",
+      "label_en": "LlamaIndex",
+      "year": 2022,
+      "kind": "industry"
+    },
+    {
+      "id": "openai_assistants_api",
+      "label": "OpenAI Assistants API",
+      "label_en": "Assistants API",
+      "year": 2023,
+      "kind": "industry"
+    },
+    {
+      "id": "metagpt",
+      "label": "MetaGPT",
+      "label_en": "MetaGPT",
+      "year": 2023,
+      "kind": "model"
+    },
+    {
+      "id": "camel",
+      "label": "CAMEL",
+      "label_en": "CAMEL",
+      "year": 2023,
+      "kind": "model"
+    },
+    {
+      "id": "ag2",
+      "label": "AG2",
+      "label_en": "AG2 (AutoGen 系列)",
+      "year": 2024,
+      "kind": "model"
+    },
+    {
+      "id": "mcp",
+      "label": "模型上下文协议",
+      "label_en": "Model Context Protocol",
+      "year": 2024,
+      "kind": "concept"
+    },
+    {
+      "id": "react_loop",
+      "label": "感知-规划-行动-反思循环",
+      "label_en": "Perceive-Plan-Act-Reflect Loop",
+      "year": 2023,
+      "kind": "concept"
+    },
+    {
+      "id": "chain_of_thought",
+      "label": "推理链",
+      "label_en": "Chain of Thought",
+      "year": 2022,
+      "kind": "paper"
+    },
+    {
+      "id": "task_decomposition",
+      "label": "任务分解",
+      "label_en": "Task Decomposition",
+      "kind": "concept"
+    },
+    {
+      "id": "self_reflection",
+      "label": "自我反思与修正",
+      "label_en": "Self-Reflection & Self-Correction",
+      "kind": "concept"
+    },
+    {
+      "id": "memory_systems",
+      "label": "记忆系统",
+      "label_en": "Memory Systems (short/long/structured)",
+      "kind": "concept"
+    },
+    {
+      "id": "tool_use",
+      "label": "工具使用",
+      "label_en": "Tool Use",
+      "kind": "concept"
+    },
+    {
+      "id": "multi_agent_collaboration",
+      "label": "多智能体协作",
+      "label_en": "Multi-Agent Collaboration",
+      "kind": "concept"
+    },
+    {
+      "id": "manager_worker",
+      "label": "管理者-工人模式",
+      "label_en": "Manager-Worker Pattern",
+      "kind": "concept"
+    },
+    {
+      "id": "embodied_agents",
+      "label": "具身智能体",
+      "label_en": "Embodied Agents",
+      "year": 2025,
+      "kind": "concept"
+    },
+    {
+      "id": "agent_to_agi",
+      "label": "通向 AGI 的关键路径",
+      "label_en": "Key Path to AGI",
+      "kind": "concept"
+    }
+  ],
+  "edges": [
+    {
+      "source": "langchain",
+      "target": "autogpt",
+      "relation": "converges"
+    },
+    {
+      "source": "autogpt",
+      "target": "babyagi",
+      "relation": "converges"
+    },
+    {
+      "source": "camel",
+      "target": "metagpt",
+      "relation": "converges"
+    },
+    {
+      "source": "metagpt",
+      "target": "manager_worker",
+      "relation": "composes"
+    },
+    {
+      "source": "multi_agent_collaboration",
+      "target": "manager_worker",
+      "relation": "composes"
+    },
+    {
+      "source": "chain_of_thought",
+      "target": "task_decomposition",
+      "relation": "converges"
+    },
+    {
+      "source": "chain_of_thought",
+      "target": "self_reflection",
+      "relation": "converges"
+    },
+    {
+      "source": "mcp",
+      "target": "tool_use",
+      "relation": "composes"
+    },
+    {
+      "source": "react_loop",
+      "target": "memory_systems",
+      "relation": "composes"
+    },
+    {
+      "source": "react_loop",
+      "target": "tool_use",
+      "relation": "composes"
+    },
+    {
+      "source": "autogpt",
+      "target": "ag2",
+      "relation": "converges"
+    },
+    {
+      "source": "camel",
+      "target": "ag2",
+      "relation": "converges"
+    },
+    {
+      "source": "embodied_agents",
+      "target": "agent_to_agi",
+      "relation": "converges"
+    },
+    {
+      "source": "multi_agent_collaboration",
+      "target": "agent_to_agi",
+      "relation": "converges"
+    },
+    {
+      "source": "memory_systems",
+      "target": "react_loop",
+      "relation": "composes"
+    }
+  ],
+  "next": {
+    "label": "NEXT",
+    "title": "Vol.12 AI 系统",
+    "desc": "从芯片到集群：构建高效、可扩展、可推理的大模型系统"
+  }
+}

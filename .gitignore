@@ -19,3 +19,6 @@ Thumbs.db
 
 # Project output
 export/
+
+# Reference posters (local-only design targets, 31MB)
+assets/reference/

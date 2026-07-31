@@ -1,0 +1,975 @@
+{
+  "meta": {
+    "series": "Modern AI Atlas",
+    "volume": "Vol.06",
+    "title_zh": "强化学习",
+    "title_en": "Reinforcement Learning",
+    "theme": "atlas_light",
+    "layout": "bands",
+    "title_style": "badge",
+    "badge": {
+      "name": "Modern AI Atlas",
+      "volume": "Vol.06"
+    },
+    "tagline": "让智能体在与环境的交互中学习最优决策",
+    "callout": "强化学习关注如何学习到最优的行为策略，以最大化长期回报。 —— Richard S. Sutton"
+  },
+  "legend": [
+    {
+      "icon": "cube",
+      "label": "状态 State",
+      "color": "#3b82f6"
+    },
+    {
+      "icon": "bolt",
+      "label": "动作 Action",
+      "color": "#f59e0b"
+    },
+    {
+      "icon": "star",
+      "label": "奖励 Reward",
+      "color": "#22c55e"
+    },
+    {
+      "icon": "flow",
+      "label": "策略 Policy",
+      "color": "#4f46e5"
+    },
+    {
+      "icon": "chart",
+      "label": "价值 Value",
+      "color": "#a855f7"
+    },
+    {
+      "icon": "globe",
+      "label": "环境 Environment",
+      "color": "#0ea5e9"
+    }
+  ],
+  "legend_position": "bottom",
+  "sections": [
+    {
+      "kind": "cards",
+      "title": "强化学习发展时间线",
+      "subtitle": "Timeline",
+      "color": "#4f46e5",
+      "columns": 6,
+      "items": [
+        {
+          "title": "早期理论探索",
+          "title_en": "1950s–1980s",
+          "color": "#64748b",
+          "items": [
+            "最优控制理论",
+            "动态规划基础",
+            "试错学习思想"
+          ]
+        },
+        {
+          "title": "基础算法形成",
+          "title_en": "1990s–2000s",
+          "color": "#0ea5e9",
+          "items": [
+            "TD学习、Q学习等",
+            "蒙特卡洛方法",
+            "策略梯度方法"
+          ]
+        },
+        {
+          "title": "深度强化学习萌芽",
+          "title_en": "2010–2013",
+          "color": "#3b82f6",
+          "items": [
+            "深度学习结合RL",
+            "DQN (2013) 提出",
+            "解决高维状态问题"
+          ]
+        },
+        {
+          "title": "快速发展与突破",
+          "title_en": "2014–2017",
+          "color": "#6366f1",
+          "items": [
+            "策略梯度方法进步",
+            "A3C、DDPG、PPO",
+            "AlphaGo战胜人类"
+          ]
+        },
+        {
+          "title": "广泛应用与扩展",
+          "title_en": "2018–2021",
+          "color": "#a855f7",
+          "items": [
+            "多智能体强化学习",
+            "离线强化学习",
+            "在机器人、游戏等领域落地"
+          ]
+        },
+        {
+          "title": "大模型时代的强化学习",
+          "title_en": "2022–至今",
+          "color": "#c026d3",
+          "items": [
+            "大模型与RL结合 (RLHF等)",
+            "通用智能体探索",
+            "更高效、稳定、安全的RL"
+          ]
+        }
+      ]
+    },
+    {
+      "row": [
+        {
+          "kind": "list",
+          "title": "强化学习核心要素",
+          "subtitle": "Core Elements",
+          "weight": 0.95,
+          "color": "#4f46e5",
+          "items": [
+            {
+              "icon": "robot",
+              "title": "智能体 (Agent)",
+              "desc": "学习并与环境交互的决策者"
+            },
+            {
+              "icon": "globe",
+              "title": "环境 (Environment)",
+              "desc": "智能体所处的外部世界"
+            },
+            {
+              "icon": "cube",
+              "title": "状态 (State, s)",
+              "desc": "环境在某一时刻的描述"
+            },
+            {
+              "icon": "bolt",
+              "title": "动作 (Action, a)",
+              "desc": "智能体可执行的行为"
+            },
+            {
+              "icon": "star",
+              "title": "奖励 (Reward, r)",
+              "desc": "环境对智能体行为的反馈"
+            },
+            {
+              "icon": "flow",
+              "title": "策略 (Policy, pi)",
+              "desc": "从状态到动作的映射"
+            },
+            {
+              "icon": "chart",
+              "title": "价值函数 (Value Function)",
+              "desc": "评估状态或状态-动作对的好坏"
+            },
+            {
+              "icon": "layers",
+              "title": "回报 (Return)",
+              "desc": "从某时刻起累积的未来奖励"
+            },
+            {
+              "icon": "gear",
+              "title": "折扣因子 (Discount Factor, gamma)",
+              "desc": "平衡短期与长期回报的权重"
+            }
+          ]
+        },
+        {
+          "weight": 1.05,
+          "stack": [
+            {
+              "kind": "chevrons",
+              "title": "强化学习交互流程",
+              "subtitle": "RL Loop",
+              "color": "#3b82f6",
+              "colors": [
+                "#3b82f6",
+                "#4f46e5",
+                "#a855f7",
+                "#0ea5e9"
+              ],
+              "loop": true,
+              "steps": [
+                {
+                  "label": "智能体 Agent",
+                  "label_en": "policy pi"
+                },
+                {
+                  "label": "动作 Action",
+                  "label_en": "a_t"
+                },
+                {
+                  "label": "环境 Environment",
+                  "label_en": "s_t · r_t"
+                },
+                {
+                  "label": "反馈 Feedback",
+                  "label_en": "r_(t+1), s_(t+1)"
+                }
+              ]
+            },
+            {
+              "kind": "list",
+              "title": "强化学习问题类型",
+              "subtitle": "Problem Settings",
+              "color": "#0ea5e9",
+              "items": [
+                {
+                  "icon": "person",
+                  "title": "单智能体 (Single-Agent RL)",
+                  "desc": "单个智能体与环境交互"
+                },
+                {
+                  "icon": "network",
+                  "title": "多智能体 (Multi-Agent RL)",
+                  "desc": "多个智能体共同学习或竞争"
+                },
+                {
+                  "icon": "cube",
+                  "title": "离散动作空间 (Discrete Action)",
+                  "desc": "动作空间是离散集合"
+                },
+                {
+                  "icon": "curve",
+                  "title": "连续动作空间 (Continuous Action)",
+                  "desc": "动作空间是连续的实数空间"
+                },
+                {
+                  "icon": "image",
+                  "title": "部分可观测 (POMDP)",
+                  "desc": "智能体无法直接观测完整状态"
+                },
+                {
+                  "icon": "db",
+                  "title": "离线强化学习 (Offline RL)",
+                  "desc": "从已有数据中学习策略"
+                },
+                {
+                  "icon": "check",
+                  "title": "安全强化学习 (Safe RL)",
+                  "desc": "在满足安全约束下学习最优策略"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "weight": 1.0,
+          "stack": [
+            {
+              "kind": "pills",
+              "title": "主要强化学习范式",
+              "subtitle": "Main RL Paradigms",
+              "color": "#4f46e5",
+              "label_w": 210,
+              "rows": [
+                {
+                  "label": "值函数方法",
+                  "sublabel": "Value-Based · 学习最优价值函数",
+                  "color": "#4f46e5",
+                  "pills": [
+                    "Q-Learning",
+                    "DQN",
+                    "Double DQN"
+                  ]
+                },
+                {
+                  "label": "策略梯度方法",
+                  "sublabel": "Policy-Based · 直接优化策略参数",
+                  "color": "#22c55e",
+                  "pills": [
+                    "REINFORCE",
+                    "A2C / A3C",
+                    "PPO"
+                  ]
+                },
+                {
+                  "label": "演员-评论家方法",
+                  "sublabel": "Actor-Critic · 值函数＋策略",
+                  "color": "#f59e0b",
+                  "pills": [
+                    "DDPG",
+                    "TD3",
+                    "SAC"
+                  ]
+                },
+                {
+                  "label": "模型驱动方法",
+                  "sublabel": "Model-Based · 学习模型并规划",
+                  "color": "#ef4444",
+                  "pills": [
+                    "Dyna-Q",
+                    "MCTS",
+                    "MuZero"
+                  ]
+                }
+              ]
+            },
+            {
+              "kind": "list",
+              "title": "探索与利用",
+              "subtitle": "Exploration vs Exploitation",
+              "color": "#f59e0b",
+              "items": [
+                {
+                  "icon": "rocket",
+                  "title": "探索 (Exploration)",
+                  "desc": "尝试未知动作，获取更多信息"
+                },
+                {
+                  "icon": "target",
+                  "title": "利用 (Exploitation)",
+                  "desc": "选择当前最优动作，获得最大回报"
+                },
+                {
+                  "icon": "gear",
+                  "title": "常见方法",
+                  "desc": "epsilon-贪心策略、Softmax策略、UCB、熵正则化等"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "row": [
+        {
+          "kind": "list",
+          "title": "马尔可夫决策过程",
+          "subtitle": "Markov Decision Process (MDP)",
+          "weight": 1.0,
+          "color": "#4f46e5",
+          "items": [
+            {
+              "icon": "layers",
+              "title": "建模为 MDP: (S, A, P, R, gamma)"
+            },
+            {
+              "icon": "cube",
+              "title": "S: 状态空间 · A: 动作空间"
+            },
+            {
+              "icon": "flow",
+              "title": "P: 状态转移概率 P(s'|s,a)"
+            },
+            {
+              "icon": "star",
+              "title": "R: 奖励函数 R(s,a,s')"
+            },
+            {
+              "icon": "gear",
+              "title": "gamma in [0,1): 折扣因子"
+            },
+            {
+              "icon": "target",
+              "title": "目标: 找到最优策略 pi*"
+            },
+            {
+              "icon": "chart",
+              "title": "最大化 J(pi) = E[ sum_t gamma^t r_t ]"
+            }
+          ]
+        },
+        {
+          "kind": "list",
+          "title": "贝尔曼方程",
+          "subtitle": "Bellman Equation",
+          "weight": 1.0,
+          "color": "#3b82f6",
+          "items": [
+            {
+              "icon": "chart",
+              "title": "状态价值函数 V^pi(s)",
+              "desc": "V^pi(s) = E_pi[ r + gamma V^pi(s') | s ]"
+            },
+            {
+              "icon": "chart",
+              "title": "动作价值函数 Q^pi(s,a)",
+              "desc": "Q^pi(s,a) = E_pi[ r + gamma Q^pi(s',a') | s,a ]"
+            },
+            {
+              "icon": "star",
+              "title": "最优贝尔曼方程 V*(s)",
+              "desc": "V*(s) = max_a sum_{s',r} P(s',r|s,a) [ r + gamma V*(s') ]"
+            },
+            {
+              "icon": "star",
+              "title": "最优贝尔曼方程 Q*(s,a)",
+              "desc": "Q*(s,a) = sum_{s',r} P(s',r|s,a) [ r + gamma max_{a'} Q*(s',a') ]"
+            }
+          ]
+        },
+        {
+          "kind": "list",
+          "title": "价值函数与策略的关系",
+          "subtitle": "Value-Policy Relationship",
+          "weight": 1.0,
+          "color": "#a855f7",
+          "items": [
+            {
+              "icon": "flow",
+              "title": "价值函数指导策略改进",
+              "desc": "评估 (Evaluation): 估计 V^pi 或 Q^pi"
+            },
+            {
+              "icon": "gear",
+              "title": "改进 (Improvement)",
+              "desc": "更新策略 pi <- pi'"
+            },
+            {
+              "icon": "bolt",
+              "title": "策略改进提升价值函数",
+              "desc": "更好的策略 pi' 带来更高的期望回报"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "row": [
+        {
+          "kind": "table",
+          "title": "经典算法对比",
+          "subtitle": "Algorithm Comparison",
+          "weight": 1.5,
+          "color": "#4f46e5",
+          "columns": [
+            "算法",
+            "类型",
+            "特点",
+            "优点",
+            "缺点"
+          ],
+          "col_widths": [
+            0.8,
+            0.78,
+            1.35,
+            1.1,
+            1.25
+          ],
+          "rows": [
+            [
+              "Q-Learning",
+              "值函数",
+              "基于表格的Q学习",
+              "简单、收敛性好",
+              "高维状态空间不适用"
+            ],
+            [
+              "DQN",
+              "值函数",
+              "深度神经网络近似Q函数",
+              "能处理高维输入",
+              "样本效率低、易过估计"
+            ],
+            [
+              "REINFORCE",
+              "策略梯度",
+              "纯策略梯度方法",
+              "实现简单",
+              "方差大、收敛慢"
+            ],
+            [
+              "PPO",
+              "策略梯度",
+              "剪切策略梯度优化",
+              "稳定性好、易实现",
+              "需调参"
+            ],
+            [
+              "DDPG",
+              "演员-评论家",
+              "确定性策略梯度",
+              "适用于连续动作",
+              "对超参敏感"
+            ],
+            [
+              "SAC",
+              "演员-评论家",
+              "最大熵强化学习",
+              "样本效率高、稳定",
+              "计算复杂度较高"
+            ]
+          ]
+        },
+        {
+          "kind": "cards",
+          "title": "强化学习应用领域",
+          "subtitle": "Applications",
+          "weight": 0.95,
+          "color": "#3b82f6",
+          "columns": 2,
+          "items": [
+            {
+              "title": "游戏AI",
+              "title_en": "Game AI",
+              "icon": "target",
+              "color": "#3b82f6"
+            },
+            {
+              "title": "机器人控制",
+              "title_en": "Robotics",
+              "icon": "robot",
+              "color": "#64748b"
+            },
+            {
+              "title": "自动驾驶",
+              "title_en": "Self-Driving",
+              "icon": "flow",
+              "color": "#0ea5e9"
+            },
+            {
+              "title": "推荐系统",
+              "title_en": "Recommender",
+              "icon": "star",
+              "color": "#a855f7"
+            },
+            {
+              "title": "金融交易",
+              "title_en": "Finance",
+              "icon": "chart",
+              "color": "#eab308"
+            },
+            {
+              "title": "资源分配",
+              "title_en": "Resource Allocation",
+              "icon": "layers",
+              "color": "#22c55e"
+            },
+            {
+              "title": "医疗决策",
+              "title_en": "Medical Decision",
+              "icon": "doc",
+              "color": "#ef4444"
+            },
+            {
+              "title": "工业控制",
+              "title_en": "Industrial Control",
+              "icon": "gear",
+              "color": "#06b6d4"
+            },
+            {
+              "title": "实验设计",
+              "title_en": "Experiment Design",
+              "icon": "atom",
+              "color": "#84cc16"
+            },
+            {
+              "title": "…",
+              "title_en": "More",
+              "color": "#94a3b8"
+            }
+          ]
+        },
+        {
+          "weight": 0.8,
+          "stack": [
+            {
+              "kind": "list",
+              "title": "主要挑战",
+              "subtitle": "Challenges",
+              "color": "#dc2626",
+              "items": [
+                {
+                  "icon": "db",
+                  "title": "样本效率低"
+                },
+                {
+                  "icon": "bolt",
+                  "title": "训练不稳定"
+                },
+                {
+                  "icon": "target",
+                  "title": "探索难度大"
+                },
+                {
+                  "icon": "gear",
+                  "title": "安全性问题"
+                },
+                {
+                  "icon": "book",
+                  "title": "可解释性不足"
+                }
+              ]
+            },
+            {
+              "kind": "list",
+              "title": "未来方向",
+              "subtitle": "Future Directions",
+              "color": "#16a34a",
+              "marker": "check",
+              "items": [
+                {
+                  "title": "高效探索方法"
+                },
+                {
+                  "title": "离线强化学习"
+                },
+                {
+                  "title": "多模态与大模型融合"
+                },
+                {
+                  "title": "通用智能体"
+                },
+                {
+                  "title": "安全与对齐强化学习"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "row": [
+        {
+          "kind": "list",
+          "title": "重要数据集与基准",
+          "subtitle": "Benchmarks & Environments",
+          "weight": 1.0,
+          "color": "#4f46e5",
+          "items": [
+            {
+              "icon": "gear",
+              "title": "仿真环境 (Simulators)",
+              "desc": "Atari (游戏) · MuJoCo (机器人) · OpenAI Gym (经典控制) · PyBullet (机器人仿真)"
+            },
+            {
+              "icon": "db",
+              "title": "真实场景数据集 (Datasets)",
+              "desc": "D4RL (离线RL) · RoboSuite (机器人操作) · Meta-World (机器人操作) · RL Unplugged (教育)"
+            }
+          ]
+        },
+        {
+          "kind": "chevrons",
+          "title": "强化学习学习路径",
+          "subtitle": "Learning Roadmap",
+          "weight": 1.45,
+          "color": "#4f46e5",
+          "colors": [
+            "#64748b",
+            "#0ea5e9",
+            "#3b82f6",
+            "#6366f1",
+            "#a855f7"
+          ],
+          "loop": true,
+          "illustration": "earth",
+          "caption": "持续迭代与复盘",
+          "steps": [
+            {
+              "label": "基础知识",
+              "label_en": "概率论、线性代数、最优化"
+            },
+            {
+              "label": "理解核心概念",
+              "label_en": "MDP、回报、价值函数等"
+            },
+            {
+              "label": "掌握经典算法",
+              "label_en": "Q-Learning、策略梯度等"
+            },
+            {
+              "label": "实践与调参",
+              "label_en": "环境选择、超参优化"
+            },
+            {
+              "label": "深入研究前沿",
+              "label_en": "最新算法、应用落地"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "footer": {
+    "quote_zh": "强化学习让智能体在与环境的不断交互中学习最优行为，是迈向通用人工智能的重要基石。",
+    "quote_en": "Reinforcement Learning empowers agents to learn optimal behaviors through interaction, laying a crucial foundation towards Artificial General Intelligence.",
+    "globe": true
+  },
+  "nodes": [
+    {
+      "id": "dynamic_programming",
+      "label": "动态规划",
+      "label_en": "Dynamic Programming (Bellman)",
+      "year": 1957,
+      "kind": "concept"
+    },
+    {
+      "id": "mdp",
+      "label": "马尔可夫决策过程",
+      "label_en": "Markov Decision Process",
+      "year": 1957,
+      "kind": "concept"
+    },
+    {
+      "id": "monte_carlo_rl",
+      "label": "蒙特卡洛方法",
+      "label_en": "Monte Carlo Methods",
+      "year": 1980,
+      "kind": "concept"
+    },
+    {
+      "id": "td_learning",
+      "label": "时序差分学习",
+      "label_en": "TD Learning",
+      "year": 1988,
+      "kind": "milestone"
+    },
+    {
+      "id": "q_learning",
+      "label": "Q学习",
+      "label_en": "Q-Learning",
+      "year": 1992,
+      "kind": "milestone"
+    },
+    {
+      "id": "policy_gradient",
+      "label": "策略梯度",
+      "label_en": "Policy Gradient",
+      "year": 1992,
+      "kind": "concept"
+    },
+    {
+      "id": "reinforce",
+      "label": "REINFORCE",
+      "label_en": "REINFORCE",
+      "year": 1992,
+      "kind": "paper"
+    },
+    {
+      "id": "dyna_q",
+      "label": "Dyna-Q",
+      "label_en": "Dyna-Q",
+      "year": 1990,
+      "kind": "model"
+    },
+    {
+      "id": "mcts",
+      "label": "蒙特卡洛树搜索",
+      "label_en": "MCTS",
+      "year": 2006,
+      "kind": "concept"
+    },
+    {
+      "id": "dqn",
+      "label": "深度Q网络",
+      "label_en": "DQN",
+      "year": 2013,
+      "kind": "milestone"
+    },
+    {
+      "id": "double_dqn",
+      "label": "Double DQN",
+      "label_en": "Double DQN",
+      "year": 2015,
+      "kind": "paper"
+    },
+    {
+      "id": "ddpg",
+      "label": "确定性策略梯度",
+      "label_en": "DDPG",
+      "year": 2015,
+      "kind": "paper"
+    },
+    {
+      "id": "a3c",
+      "label": "异步演员-评论家",
+      "label_en": "A3C / A2C",
+      "year": 2016,
+      "kind": "paper"
+    },
+    {
+      "id": "trpo",
+      "label": "信赖域策略优化",
+      "label_en": "TRPO",
+      "year": 2015,
+      "kind": "paper"
+    },
+    {
+      "id": "ppo",
+      "label": "近端策略优化",
+      "label_en": "PPO",
+      "year": 2017,
+      "kind": "milestone"
+    },
+    {
+      "id": "td3",
+      "label": "孪生延迟DDPG",
+      "label_en": "TD3",
+      "year": 2018,
+      "kind": "paper"
+    },
+    {
+      "id": "sac",
+      "label": "柔性演员-评论家",
+      "label_en": "SAC",
+      "year": 2018,
+      "kind": "paper"
+    },
+    {
+      "id": "alphago",
+      "label": "AlphaGo",
+      "label_en": "AlphaGo",
+      "year": 2016,
+      "kind": "milestone"
+    },
+    {
+      "id": "alphago_zero",
+      "label": "AlphaGo Zero",
+      "label_en": "AlphaGo Zero",
+      "year": 2017,
+      "kind": "model"
+    },
+    {
+      "id": "muzero",
+      "label": "MuZero",
+      "label_en": "MuZero",
+      "year": 2019,
+      "kind": "model"
+    },
+    {
+      "id": "offline_rl",
+      "label": "离线强化学习",
+      "label_en": "Offline RL",
+      "year": 2020,
+      "kind": "concept"
+    },
+    {
+      "id": "safe_rl",
+      "label": "安全强化学习",
+      "label_en": "Safe RL",
+      "year": 2021,
+      "kind": "concept"
+    },
+    {
+      "id": "multi_agent_rl",
+      "label": "多智能体强化学习",
+      "label_en": "Multi-Agent RL",
+      "year": 2018,
+      "kind": "concept"
+    },
+    {
+      "id": "rlhf",
+      "label": "人类反馈强化学习",
+      "label_en": "RLHF",
+      "year": 2022,
+      "kind": "milestone"
+    },
+    {
+      "id": "decision_transformer",
+      "label": "决策Transformer",
+      "label_en": "Decision Transformer",
+      "year": 2021,
+      "kind": "paper"
+    }
+  ],
+  "edges": [
+    {
+      "source": "dynamic_programming",
+      "target": "q_learning",
+      "relation": "inherits"
+    },
+    {
+      "source": "td_learning",
+      "target": "q_learning",
+      "relation": "inherits"
+    },
+    {
+      "source": "q_learning",
+      "target": "dqn",
+      "relation": "inherits"
+    },
+    {
+      "source": "dqn",
+      "target": "double_dqn",
+      "relation": "inherits"
+    },
+    {
+      "source": "policy_gradient",
+      "target": "reinforce",
+      "relation": "inherits"
+    },
+    {
+      "source": "reinforce",
+      "target": "a3c",
+      "relation": "inherits"
+    },
+    {
+      "source": "a3c",
+      "target": "ppo",
+      "relation": "converges"
+    },
+    {
+      "source": "trpo",
+      "target": "ppo",
+      "relation": "inherits"
+    },
+    {
+      "source": "policy_gradient",
+      "target": "ddpg",
+      "relation": "inherits"
+    },
+    {
+      "source": "ddpg",
+      "target": "td3",
+      "relation": "inherits"
+    },
+    {
+      "source": "ddpg",
+      "target": "sac",
+      "relation": "converges"
+    },
+    {
+      "source": "td3",
+      "target": "sac",
+      "relation": "converges"
+    },
+    {
+      "source": "sac",
+      "target": "td3",
+      "relation": "converges"
+    },
+    {
+      "source": "dyna_q",
+      "target": "muzero",
+      "relation": "converges"
+    },
+    {
+      "source": "mcts",
+      "target": "alphago",
+      "relation": "composes"
+    },
+    {
+      "source": "dqn",
+      "target": "alphago",
+      "relation": "converges"
+    },
+    {
+      "source": "alphago",
+      "target": "alphago_zero",
+      "relation": "inherits"
+    },
+    {
+      "source": "alphago_zero",
+      "target": "muzero",
+      "relation": "inherits"
+    },
+    {
+      "source": "q_learning",
+      "target": "offline_rl",
+      "relation": "converges"
+    },
+    {
+      "source": "ppo",
+      "target": "rlhf",
+      "relation": "composes"
+    }
+  ],
+  "next": {
+    "label": "NEXT",
+    "title": "Vol.07 计算机视觉",
+    "desc": "从像素到理解，连接物理世界与智能未来"
+  }
+}

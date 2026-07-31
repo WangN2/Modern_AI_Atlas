@@ -1,0 +1,1762 @@
+{
+  "meta": {
+    "series": "Modern AI Atlas",
+    "volume": "Vol.07",
+    "title_zh": "计算机视觉",
+    "title_en": "Computer Vision",
+    "theme": "atlas_light",
+    "layout": "bands",
+    "title_style": "badge",
+    "badge": {
+      "name": "Modern AI Atlas",
+      "volume": "Vol.07"
+    },
+    "tagline": "从像素到理解，连接物理世界与智能未来",
+    "callout": "计算机视觉赋予机器\"看\"的能力，让它理解世界、创造价值、改变未来。 — Fei-Fei Li",
+    "canvas": {
+      "width": 1682,
+      "height": 2524,
+      "gap": 9,
+      "margin": 24
+    }
+  },
+  "sections": [
+    {
+      "kind": "cards",
+      "number": 1,
+      "number_style": "circle",
+      "title": "计算机视觉发展时间线",
+      "subtitle": "Timeline: 1970s – 2026+",
+      "color": "#1a2b5c",
+      "columns": 6,
+      "items": [
+        {
+          "title": "图像处理时代",
+          "title_en": "Image Processing Era",
+          "color": "#64748b",
+          "items": [
+            "1970s–1980s",
+            "边缘检测",
+            "阈值分割",
+            "形态学 / 传统滤波"
+          ]
+        },
+        {
+          "title": "特征工程时代",
+          "title_en": "Feature Engineering Era",
+          "color": "#0ea5e9",
+          "items": [
+            "1990s",
+            "SIFT / SURF",
+            "HOG / LBP",
+            "颜色直方图"
+          ]
+        },
+        {
+          "title": "浅层学习时代",
+          "title_en": "Shallow Learning Era",
+          "color": "#3b82f6",
+          "items": [
+            "2000s",
+            "LeNet / SVM + HOG",
+            "AdaBoost",
+            "传统分类器"
+          ]
+        },
+        {
+          "title": "深度学习突破",
+          "title_en": "Deep Learning Breakthrough",
+          "color": "#4f5dd5",
+          "items": [
+            "2012",
+            "AlexNet 开启大规模CNN时代",
+            "ImageNet 准确率大幅提升"
+          ]
+        },
+        {
+          "title": "CNN快速发展",
+          "title_en": "CNN Rapid Growth",
+          "color": "#6366f1",
+          "items": [
+            "2014–2016",
+            "VGG, GoogLeNet",
+            "ResNet, Inception / DenseNet",
+            "更深、更准、更强"
+          ]
+        },
+        {
+          "title": "检测与分割爆发",
+          "title_en": "Detection & Segmentation Boom",
+          "color": "#a855f7",
+          "items": [
+            "2017–2019",
+            "YOLO, SSD, RetinaNet",
+            "Mask R-CNN, FPN",
+            "DeepLab, U-Net++ / 实例分割、语义分割"
+          ]
+        },
+        {
+          "title": "Transformer视觉崛起",
+          "title_en": "Transformer for Vision",
+          "color": "#c026d3",
+          "items": [
+            "2020–2022",
+            "ViT, DeiT, Swin",
+            "MAE, BEiT, DINO",
+            "视觉也进入大模型时代"
+          ]
+        },
+        {
+          "title": "视觉大模型时代",
+          "title_en": "Vision Foundation Models Era",
+          "color": "#db2777",
+          "items": [
+            "2023–2026+",
+            "SAM, SAM2 / DINOv2, SigLIP",
+            "Florence, InternVL",
+            "Qwen-VL Encoder / 通用视觉理解与生成"
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "pills",
+      "number": 2,
+      "number_style": "circle",
+      "title": "视觉技术全景图",
+      "subtitle": "CV Technology Landscape",
+      "color": "#3b82f6",
+      "label_w": 130,
+      "rows": [
+        {
+          "label": "基础任务",
+          "sublabel": "Tasks",
+          "color": "#3b82f6",
+          "pills": [
+            "分类 Classification",
+            "检测 Detection",
+            "分割 Segmentation",
+            "生成 Generation",
+            "匹配 Matching",
+            "三维视觉 3D Vision",
+            "视频理解 Video Understanding"
+          ]
+        },
+        {
+          "label": "核心技术",
+          "sublabel": "Methods",
+          "color": "#4f5dd5",
+          "pills": [
+            "CNN 卷积神经网络",
+            "Transformer 视觉Transformer",
+            "自监督学习 Self-supervised Learning",
+            "多模态视觉 Multimodal Vision",
+            "基础模型 Vision Foundation Models"
+          ]
+        },
+        {
+          "label": "使能技术",
+          "sublabel": "Enablers",
+          "color": "#0ea5e9",
+          "pills": [
+            "大规模数据 Large-scale Data",
+            "高性能计算 High Performance Computing",
+            "优化算法 Optimization",
+            "标注与评估 Annotation & Evaluation"
+          ]
+        },
+        {
+          "label": "应用领域",
+          "sublabel": "Applications",
+          "color": "#22c55e",
+          "pills": [
+            "自动驾驶 Autonomous Driving",
+            "医疗影像 Medical Imaging",
+            "遥感 Remote Sensing",
+            "工业检测 Industrial Inspection",
+            "安防监控 Surveillance",
+            "机器人 Robotics",
+            "人机交互 Human-Computer Interaction",
+            "多模态AI Multimodal AI"
+          ]
+        }
+      ]
+    },
+    {
+      "row": [
+        {
+          "kind": "cards",
+          "number": 3,
+          "number_style": "circle",
+          "title": "技术路线演化",
+          "subtitle": "Evolution of Paradigms",
+          "color": "#4f5dd5",
+          "columns": 2,
+          "items": [
+            {
+              "title": "手工特征时代",
+              "title_en": "Hand-crafted Feature Era",
+              "icon": "target",
+              "color": "#64748b",
+              "items": [
+                "1970s–1990s",
+                "依赖人工设计特征",
+                "SIFT / HOG / Haar"
+              ]
+            },
+            {
+              "title": "CNN时代",
+              "title_en": "CNN Era",
+              "icon": "layers",
+              "color": "#3b82f6",
+              "items": [
+                "2012–2016",
+                "端到端学习",
+                "特征自动提取"
+              ]
+            },
+            {
+              "title": "Transformer时代",
+              "title_en": "Transformer Era",
+              "icon": "network",
+              "color": "#a855f7",
+              "items": [
+                "2017–2021",
+                "全局建模",
+                "更强泛化能力"
+              ]
+            },
+            {
+              "title": "基础模型时代",
+              "title_en": "Foundation Model Era",
+              "icon": "brain",
+              "color": "#db2777",
+              "items": [
+                "2022–现在",
+                "大规模预训练",
+                "通用视觉理解"
+              ]
+            }
+          ]
+        },
+        {
+          "kind": "family",
+          "number": 4,
+          "number_style": "circle",
+          "title": "CNN家族演化树",
+          "subtitle": "CNN Family Tree",
+          "weight": 1.0,
+          "color": "#22c55e",
+          "compact": true,
+          "models": [
+            {
+              "year": "1998",
+              "name": "LeNet",
+              "node": "lenet"
+            },
+            {
+              "year": "2012",
+              "name": "AlexNet",
+              "node": "alexnet"
+            },
+            {
+              "year": "2014",
+              "name": "VGG",
+              "node": "vgg"
+            },
+            {
+              "year": "2014",
+              "name": "GoogLeNet",
+              "node": "googlenet"
+            },
+            {
+              "year": "2015",
+              "name": "ResNet",
+              "node": "resnet"
+            },
+            {
+              "year": "2017",
+              "name": "DenseNet",
+              "node": "densenet"
+            },
+            {
+              "year": "2019",
+              "name": "EfficientNet",
+              "node": "efficientnet"
+            },
+            {
+              "year": "2022",
+              "name": "ConvNeXt",
+              "node": "convnext"
+            },
+            {
+              "year": "2022",
+              "name": "RepLKNet",
+              "node": "replknet"
+            }
+          ],
+          "footer": [
+            "侧支: RegNet (2020) · ResNeXt (2017)",
+            "MobileNet (2017) · MobileNetV3 (2019)",
+            "ShuffleNet (2018)"
+          ]
+        },
+        {
+          "kind": "family",
+          "number": 5,
+          "number_style": "circle",
+          "title": "Vision Transformer 家族",
+          "subtitle": "Vision Transformer Family",
+          "weight": 1.0,
+          "color": "#3b82f6",
+          "compact": true,
+          "models": [
+            {
+              "year": "2020",
+              "name": "ViT",
+              "node": "vit"
+            },
+            {
+              "year": "2021",
+              "name": "DeiT",
+              "node": "deit"
+            },
+            {
+              "year": "2021",
+              "name": "Swin Transformer",
+              "node": "swin_transformer"
+            },
+            {
+              "year": "2021",
+              "name": "BEiT",
+              "node": "beit"
+            },
+            {
+              "year": "2021",
+              "name": "MAE",
+              "node": "mae"
+            },
+            {
+              "year": "2021",
+              "name": "DINO",
+              "node": "dino"
+            },
+            {
+              "year": "2023",
+              "name": "DINOv2",
+              "node": "dinov2"
+            },
+            {
+              "year": "2023",
+              "name": "SigLIP",
+              "node": "siglip"
+            },
+            {
+              "year": "2023",
+              "name": "EVA",
+              "node": "eva"
+            },
+            {
+              "year": "2023",
+              "name": "SAM Encoder",
+              "node": "sam_encoder"
+            }
+          ]
+        },
+        {
+          "kind": "list",
+          "number": 6,
+          "number_style": "circle",
+          "title": "视觉大模型与基础模型",
+          "subtitle": "Vision Foundation Models",
+          "weight": 1.15,
+          "color": "#a855f7",
+          "items": [
+            {
+              "icon": "image",
+              "title": "SAM (Meta AI, 2023)",
+              "desc": "通用分割模型",
+              "node": "sam"
+            },
+            {
+              "icon": "video",
+              "title": "SAM 2 (Meta AI, 2024)",
+              "desc": "视频分割模型",
+              "node": "sam_2"
+            },
+            {
+              "icon": "network",
+              "title": "CLIP (OpenAI, 2021)",
+              "desc": "跨模态对齐模型",
+              "node": "clip"
+            },
+            {
+              "icon": "network",
+              "title": "SigLIP (Google, 2023)",
+              "desc": "更简洁的图文对齐",
+              "node": "siglip"
+            },
+            {
+              "icon": "layers",
+              "title": "Florence (Microsoft, 2021)",
+              "desc": "多任务视觉基础模型",
+              "node": "florence"
+            },
+            {
+              "icon": "image",
+              "title": "InternVL (上海人工智能实验室, 2023)",
+              "desc": "多模态视觉理解",
+              "node": "internvl"
+            },
+            {
+              "icon": "image",
+              "title": "Qwen-VL Vision Encoder (阿里巴巴, 2023)",
+              "desc": "通用视觉编码器",
+              "node": "qwen_vl_encoder"
+            },
+            {
+              "icon": "star",
+              "title": "DINOv2 (Meta AI, 2023)",
+              "desc": "自监督视觉基础模型",
+              "node": "dinov2"
+            }
+          ],
+          "columns": 2
+        }
+      ]
+    },
+    {
+      "row": [
+        {
+          "kind": "pills",
+          "number": 7,
+          "number_style": "circle",
+          "title": "目标检测发展路线",
+          "subtitle": "Object Detection Lineage",
+          "color": "#f59e0b",
+          "label_w": 200,
+          "rows": [
+            {
+              "label": "Two-Stage",
+              "sublabel": "两阶段",
+              "color": "#f59e0b",
+              "pills": [
+                "R-CNN (2014)",
+                "Fast R-CNN (2015)",
+                "Faster R-CNN (2015)",
+                "Mask R-CNN (2017)"
+              ]
+            },
+            {
+              "label": "One-Stage",
+              "sublabel": "单阶段",
+              "color": "#f97316",
+              "pills": [
+                "YOLO (2016)",
+                "YOLOv2 (2017)",
+                "YOLOv3 (2018)",
+                "YOLOv4 (2020)",
+                "YOLOv8 (2023)",
+                "SSD (2016)",
+                "RetinaNet (2017)"
+              ]
+            },
+            {
+              "label": "Transformer-Based",
+              "sublabel": "基于Transformer",
+              "color": "#a855f7",
+              "pills": [
+                "DETR (2020)",
+                "Deformable DETR (2021)",
+                "RT-DETR (2023)"
+              ]
+            }
+          ]
+        },
+        {
+          "kind": "pills",
+          "number": 8,
+          "number_style": "circle",
+          "title": "语义/实例分割发展路线",
+          "subtitle": "Segmentation Lineage",
+          "color": "#f97316",
+          "label_w": 200,
+          "rows": [
+            {
+              "label": "语义分割",
+              "sublabel": "Semantic",
+              "color": "#f97316",
+              "pills": [
+                "FCN (2015)",
+                "U-Net (2015)",
+                "SegNet (2015)",
+                "DeepLab v1 (2017)",
+                "DeepLab v3 (2017)",
+                "DeepLab v3+ (2018)",
+                "PSPNet (2017)"
+              ]
+            },
+            {
+              "label": "实例分割",
+              "sublabel": "Instance",
+              "color": "#ef4444",
+              "pills": [
+                "Mask R-CNN (2017)",
+                "Panoptic FPN (2019)"
+              ]
+            },
+            {
+              "label": "通用分割",
+              "sublabel": "Universal",
+              "color": "#db2777",
+              "pills": [
+                "SAM (2023)",
+                "SAM 2 (2024)"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "row": [
+        {
+          "kind": "pills",
+          "number": 9,
+          "number_style": "circle",
+          "title": "自监督学习发展路线",
+          "subtitle": "Self-supervised Learning",
+          "color": "#22c55e",
+          "label_w": 200,
+          "rows": [
+            {
+              "label": "对比学习",
+              "sublabel": "Contrastive",
+              "color": "#22c55e",
+              "pills": [
+                "SimCLR (2020)",
+                "MoCo v1/v2/v3 (2020–2021)",
+                "BYOL (2020)",
+                "SimSiam (2021)",
+                "SwAV (2021)",
+                "DINO (2021)"
+              ]
+            },
+            {
+              "label": "生成式预训练",
+              "sublabel": "Generative",
+              "color": "#65a30d",
+              "pills": [
+                "MAE (2021)",
+                "BEiT (2021)",
+                "DINOv2 (2023)"
+              ]
+            },
+            {
+              "label": "掩码预测与蒸馏",
+              "sublabel": "Masked Prediction",
+              "color": "#0ea5e9",
+              "pills": [
+                "iBOT (2023)",
+                "JEPA (Meta, 2023)"
+              ]
+            }
+          ]
+        },
+        {
+          "kind": "cards",
+          "number": 10,
+          "number_style": "circle",
+          "title": "视觉应用领域",
+          "subtitle": "Applications of Computer Vision",
+          "color": "#4f5dd5",
+          "columns": 4,
+          "items": [
+            {
+              "title": "自动驾驶",
+              "title_en": "Autonomous Driving",
+              "icon": "target",
+              "color": "#3b82f6",
+              "items": [
+                "目标检测",
+                "车道线检测",
+                "BEV感知",
+                "三维重建"
+              ]
+            },
+            {
+              "title": "医疗影像",
+              "title_en": "Medical Imaging",
+              "icon": "image",
+              "color": "#ef4444",
+              "items": [
+                "病灶检测",
+                "分割",
+                "图像生成",
+                "辅助诊断"
+              ]
+            },
+            {
+              "title": "遥感与地理",
+              "title_en": "Remote Sensing",
+              "icon": "globe",
+              "color": "#22c55e",
+              "items": [
+                "地物分类",
+                "变化检测",
+                "目标检测",
+                "三维重建"
+              ]
+            },
+            {
+              "title": "工业视觉",
+              "title_en": "Industrial Vision",
+              "icon": "gear",
+              "color": "#f59e0b",
+              "items": [
+                "缺陷检测",
+                "质量控制",
+                "装配检测",
+                "OCR识别"
+              ]
+            },
+            {
+              "title": "安防监控",
+              "title_en": "Surveillance",
+              "icon": "video",
+              "color": "#64748b",
+              "items": [
+                "人脸识别",
+                "行为分析",
+                "目标跟踪",
+                "异常检测"
+              ]
+            },
+            {
+              "title": "机器人视觉",
+              "title_en": "Robotics Vision",
+              "icon": "robot",
+              "color": "#84cc16",
+              "items": [
+                "三维感知",
+                "视觉定位",
+                "SLAM",
+                "导航避障"
+              ]
+            },
+            {
+              "title": "多媒体内容理解",
+              "title_en": "Multimedia Understanding",
+              "icon": "doc",
+              "color": "#a855f7",
+              "items": [
+                "图像描述",
+                "视觉问答",
+                "图文检索",
+                "内容生成"
+              ]
+            },
+            {
+              "title": "AR/VR/MR 增强现实",
+              "title_en": "Augmented Reality",
+              "icon": "cube",
+              "color": "#06b6d4",
+              "items": [
+                "三维感知",
+                "三维重建",
+                "虚拟互动",
+                "场景理解"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "row": [
+        {
+          "kind": "table",
+          "number": 11,
+          "number_style": "circle",
+          "title": "经典数据集",
+          "subtitle": "Datasets",
+          "weight": 1.1,
+          "color": "#0ea5e9",
+          "columns": [
+            "任务",
+            "数据集",
+            "规模",
+            "简介"
+          ],
+          "col_widths": [
+            0.9,
+            1.1,
+            1.0,
+            1.6
+          ],
+          "rows": [
+            [
+              "图像分类",
+              "ImageNet",
+              "~1400万图像",
+              "最著名的大规模分类数据集"
+            ],
+            [
+              "目标检测",
+              "COCO",
+              "20万图像",
+              "多目标、多尺度检测"
+            ],
+            [
+              "目标检测",
+              "PASCAL VOC",
+              "2万图像",
+              "经典检测数据集"
+            ],
+            [
+              "实例分割",
+              "ADE20K",
+              "25K图像",
+              "场景解析分割"
+            ],
+            [
+              "语义分割",
+              "Cityscapes",
+              "5K图像",
+              "自动驾驶场景分割"
+            ],
+            [
+              "语义分割",
+              "Pascal Context",
+              "17万图像",
+              "像素级标注数据集"
+            ],
+            [
+              "人脸识别",
+              "LFW",
+              "1.3万张人脸",
+              "人脸验证基准"
+            ],
+            [
+              "遥感",
+              "DIOR",
+              "2.3万图像",
+              "遥感目标检测"
+            ],
+            [
+              "视频理解",
+              "Kinetics-700",
+              "65万视频",
+              "大规模动作识别"
+            ],
+            [
+              "3D 视觉",
+              "ScanNet",
+              "250万视角",
+              "三维重建与理解"
+            ]
+          ]
+        },
+        {
+          "kind": "table",
+          "number": 12,
+          "number_style": "circle",
+          "title": "重要基准",
+          "subtitle": "Benchmarks",
+          "weight": 0.9,
+          "color": "#4f5dd5",
+          "columns": [
+            "任务",
+            "基准",
+            "评价指标"
+          ],
+          "col_widths": [
+            1.0,
+            1.0,
+            1.3
+          ],
+          "rows": [
+            [
+              "图像分类",
+              "ImageNet",
+              "Top-1 Accuracy"
+            ],
+            [
+              "目标检测",
+              "COCO",
+              "mAP (AP@[.5:.95])"
+            ],
+            [
+              "实例分割",
+              "PASCAL",
+              "mAP (mask)"
+            ],
+            [
+              "语义分割",
+              "ADE20K",
+              "mIoU"
+            ],
+            [
+              "图像分割",
+              "Cityscapes",
+              "mIoU"
+            ],
+            [
+              "人脸识别",
+              "LFW",
+              "Accuracy"
+            ],
+            [
+              "视频理解",
+              "Kinetics",
+              "Top-1 Accuracy"
+            ],
+            [
+              "多模态检索",
+              "Flickr30K",
+              "Recall@K"
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "row": [
+        {
+          "kind": "table",
+          "number": 13,
+          "number_style": "circle",
+          "title": "代表性论文",
+          "subtitle": "Key Papers",
+          "weight": 1.35,
+          "color": "#64748b",
+          "columns": [
+            "年份",
+            "论文 Paper"
+          ],
+          "col_widths": [
+            0.4,
+            3.0
+          ],
+          "rows": [
+            [
+              "2012",
+              "AlexNet: ImageNet Classification with Deep CNNs"
+            ],
+            [
+              "2014",
+              "Very Deep Convolutional Networks for Large-Scale Image Recognition (VGG)"
+            ],
+            [
+              "2015",
+              "Deep Residual Learning for Image Recognition (ResNet)"
+            ],
+            [
+              "2016",
+              "You Only Look Once: Unified, Real-Time Object Detection (YOLOv1)"
+            ],
+            [
+              "2017",
+              "Mask R-CNN"
+            ],
+            [
+              "2017",
+              "Attention Is All You Need (Transformer)"
+            ],
+            [
+              "2020",
+              "An Image is Worth 16x16 Words: Transformers for Image Recognition (ViT)"
+            ],
+            [
+              "2021",
+              "Masked Autoencoders Are Scalable Vision Learners (MAE)"
+            ],
+            [
+              "2021",
+              "Emerging Properties in Self-Supervised Vision Transformers (DINO)"
+            ],
+            [
+              "2023",
+              "Segment Anything (SAM)"
+            ],
+            [
+              "2023",
+              "DINOv2: Learning Robust Visual Features without Supervision"
+            ]
+          ]
+        },
+        {
+          "kind": "table",
+          "number": 14,
+          "number_style": "circle",
+          "title": "代表公司与开源项目",
+          "subtitle": "Companies & Open Source",
+          "weight": 1.2,
+          "color": "#1a2b5c",
+          "columns": [
+            "公司/机构",
+            "Models / Projects"
+          ],
+          "col_widths": [
+            0.65,
+            2.6
+          ],
+          "rows": [
+            [
+              "Meta",
+              "SAM, SAM 2, DINOv2, LLaMA Vision"
+            ],
+            [
+              "Google",
+              "SigLIP, ViT, PaLI, Florence"
+            ],
+            [
+              "OpenAI",
+              "CLIP"
+            ],
+            [
+              "Microsoft",
+              "Florence, U-Former"
+            ],
+            [
+              "NVIDIA",
+              "NeMo Vision, Cosmos"
+            ],
+            [
+              "阿里巴巴",
+              "Qwen-VL, Qwen-VL-Chat"
+            ],
+            [
+              "开源框架",
+              "PyTorch, TensorFlow, MMEngine, Detectron2,"
+            ],
+            [
+              "",
+              "MMDetection, OpenMMLab, timm, Hugging Face Transformers"
+            ]
+          ]
+        },
+        {
+          "kind": "list",
+          "number": 15,
+          "number_style": "circle",
+          "title": "未来趋势",
+          "subtitle": "Future Trends",
+          "weight": 1.0,
+          "color": "#a855f7",
+          "marker": "check",
+          "items": [
+            {
+              "title": "1. 视觉基础模型 (更大、更通用)",
+              "desc": "Vision Foundation Models"
+            },
+            {
+              "title": "2. 多模态视觉理解与生成",
+              "desc": "Multimodal Vision Understanding & Generation"
+            },
+            {
+              "title": "3. 自监督与无监督学习",
+              "desc": "Self-supervised & Unsupervised Learning"
+            },
+            {
+              "title": "4. 3D/4D 视觉与世界建模",
+              "desc": "3D/4D Vision & World Modeling"
+            },
+            {
+              "title": "5. 具身智能与机器人视觉",
+              "desc": "Embodied AI & Robotics Vision"
+            },
+            {
+              "title": "6. 高效模型与边缘部署",
+              "desc": "Efficient Models & Edge Deployment"
+            },
+            {
+              "title": "7. 跨模态融合 (图文、语言、科学等)",
+              "desc": "Cross-domain Integration"
+            }
+          ],
+          "columns": 2
+        }
+      ]
+    }
+  ],
+  "footer": {
+    "quote_zh": "计算机视觉正在从\"看清\"走向\"理解\"，从专用走向通用，从感知走向智能。",
+    "quote_en": "Computer Vision is evolving from \"seeing\" to \"understanding\", from task-specific to general-purpose, from perception to intelligence."
+  },
+  "nodes": [
+    {
+      "id": "lenet",
+      "label": "LeNet",
+      "label_en": "LeNet",
+      "year": 1998,
+      "kind": "model"
+    },
+    {
+      "id": "alexnet",
+      "label": "AlexNet",
+      "label_en": "AlexNet",
+      "year": 2012,
+      "kind": "milestone"
+    },
+    {
+      "id": "vgg",
+      "label": "VGG",
+      "label_en": "VGG",
+      "year": 2014,
+      "kind": "model"
+    },
+    {
+      "id": "googlenet",
+      "label": "GoogLeNet",
+      "label_en": "GoogLeNet",
+      "year": 2014,
+      "kind": "model"
+    },
+    {
+      "id": "resnet",
+      "label": "ResNet",
+      "label_en": "ResNet",
+      "year": 2015,
+      "kind": "milestone"
+    },
+    {
+      "id": "densenet",
+      "label": "DenseNet",
+      "label_en": "DenseNet",
+      "year": 2017,
+      "kind": "model"
+    },
+    {
+      "id": "efficientnet",
+      "label": "EfficientNet",
+      "label_en": "EfficientNet",
+      "year": 2019,
+      "kind": "model"
+    },
+    {
+      "id": "convnext",
+      "label": "ConvNeXt",
+      "label_en": "ConvNeXt",
+      "year": 2022,
+      "kind": "model"
+    },
+    {
+      "id": "replknet",
+      "label": "RepLKNet",
+      "label_en": "RepLKNet",
+      "year": 2022,
+      "kind": "model"
+    },
+    {
+      "id": "regnet",
+      "label": "RegNet",
+      "label_en": "RegNet",
+      "year": 2020,
+      "kind": "model"
+    },
+    {
+      "id": "resnext",
+      "label": "ResNeXt",
+      "label_en": "ResNeXt",
+      "year": 2017,
+      "kind": "model"
+    },
+    {
+      "id": "mobilenet",
+      "label": "MobileNet",
+      "label_en": "MobileNet",
+      "year": 2017,
+      "kind": "model"
+    },
+    {
+      "id": "mobilenetv3",
+      "label": "MobileNetV3",
+      "label_en": "MobileNetV3",
+      "year": 2019,
+      "kind": "model"
+    },
+    {
+      "id": "shufflenet",
+      "label": "ShuffleNet",
+      "label_en": "ShuffleNet",
+      "year": 2018,
+      "kind": "model"
+    },
+    {
+      "id": "vit",
+      "label": "Vision Transformer",
+      "label_en": "ViT",
+      "year": 2020,
+      "kind": "milestone"
+    },
+    {
+      "id": "deit",
+      "label": "DeiT",
+      "label_en": "DeiT",
+      "year": 2021,
+      "kind": "model"
+    },
+    {
+      "id": "swin_transformer",
+      "label": "Swin Transformer",
+      "label_en": "Swin Transformer",
+      "year": 2021,
+      "kind": "model"
+    },
+    {
+      "id": "beit",
+      "label": "BEiT",
+      "label_en": "BEiT",
+      "year": 2021,
+      "kind": "model"
+    },
+    {
+      "id": "mae",
+      "label": "掩码自编码器",
+      "label_en": "MAE",
+      "year": 2021,
+      "kind": "milestone"
+    },
+    {
+      "id": "dino",
+      "label": "DINO",
+      "label_en": "DINO",
+      "year": 2021,
+      "kind": "model"
+    },
+    {
+      "id": "dinov2",
+      "label": "DINOv2",
+      "label_en": "DINOv2",
+      "year": 2023,
+      "kind": "model"
+    },
+    {
+      "id": "siglip",
+      "label": "SigLIP",
+      "label_en": "SigLIP",
+      "year": 2023,
+      "kind": "model"
+    },
+    {
+      "id": "eva",
+      "label": "EVA",
+      "label_en": "EVA",
+      "year": 2023,
+      "kind": "model"
+    },
+    {
+      "id": "sam_encoder",
+      "label": "SAM 图像编码器",
+      "label_en": "SAM Encoder",
+      "year": 2023,
+      "kind": "model"
+    },
+    {
+      "id": "sam",
+      "label": "万物分割",
+      "label_en": "SAM",
+      "year": 2023,
+      "kind": "milestone"
+    },
+    {
+      "id": "sam_2",
+      "label": "SAM 2",
+      "label_en": "SAM 2",
+      "year": 2024,
+      "kind": "model"
+    },
+    {
+      "id": "clip",
+      "label": "图文对比预训练",
+      "label_en": "CLIP",
+      "year": 2021,
+      "kind": "milestone"
+    },
+    {
+      "id": "florence",
+      "label": "Florence",
+      "label_en": "Florence",
+      "year": 2021,
+      "kind": "model"
+    },
+    {
+      "id": "internvl",
+      "label": "InternVL",
+      "label_en": "InternVL",
+      "year": 2023,
+      "kind": "model"
+    },
+    {
+      "id": "qwen_vl_encoder",
+      "label": "Qwen-VL 视觉编码器",
+      "label_en": "Qwen-VL Vision Encoder",
+      "year": 2023,
+      "kind": "model"
+    },
+    {
+      "id": "r_cnn",
+      "label": "R-CNN",
+      "label_en": "R-CNN",
+      "year": 2014,
+      "kind": "paper"
+    },
+    {
+      "id": "fast_r_cnn",
+      "label": "Fast R-CNN",
+      "label_en": "Fast R-CNN",
+      "year": 2015,
+      "kind": "paper"
+    },
+    {
+      "id": "faster_r_cnn",
+      "label": "Faster R-CNN",
+      "label_en": "Faster R-CNN",
+      "year": 2015,
+      "kind": "paper"
+    },
+    {
+      "id": "mask_r_cnn",
+      "label": "Mask R-CNN",
+      "label_en": "Mask R-CNN",
+      "year": 2017,
+      "kind": "paper"
+    },
+    {
+      "id": "yolo",
+      "label": "YOLO",
+      "label_en": "YOLO",
+      "year": 2016,
+      "kind": "model"
+    },
+    {
+      "id": "yolov2",
+      "label": "YOLOv2",
+      "label_en": "YOLOv2",
+      "year": 2017,
+      "kind": "model"
+    },
+    {
+      "id": "yolov3",
+      "label": "YOLOv3",
+      "label_en": "YOLOv3",
+      "year": 2018,
+      "kind": "model"
+    },
+    {
+      "id": "yolov4",
+      "label": "YOLOv4",
+      "label_en": "YOLOv4",
+      "year": 2020,
+      "kind": "model"
+    },
+    {
+      "id": "yolov8",
+      "label": "YOLOv8",
+      "label_en": "YOLOv8",
+      "year": 2023,
+      "kind": "model"
+    },
+    {
+      "id": "ssd",
+      "label": "SSD",
+      "label_en": "SSD",
+      "year": 2016,
+      "kind": "model"
+    },
+    {
+      "id": "retinanet",
+      "label": "RetinaNet",
+      "label_en": "RetinaNet",
+      "year": 2017,
+      "kind": "model"
+    },
+    {
+      "id": "detr",
+      "label": "DETR",
+      "label_en": "DETR",
+      "year": 2020,
+      "kind": "model"
+    },
+    {
+      "id": "deformable_detr",
+      "label": "Deformable DETR",
+      "label_en": "Deformable DETR",
+      "year": 2021,
+      "kind": "model"
+    },
+    {
+      "id": "rt_detr",
+      "label": "RT-DETR",
+      "label_en": "RT-DETR",
+      "year": 2023,
+      "kind": "model"
+    },
+    {
+      "id": "fcn",
+      "label": "全卷积网络",
+      "label_en": "FCN",
+      "year": 2015,
+      "kind": "paper"
+    },
+    {
+      "id": "u_net",
+      "label": "U-Net",
+      "label_en": "U-Net",
+      "year": 2015,
+      "kind": "model"
+    },
+    {
+      "id": "segnet",
+      "label": "SegNet",
+      "label_en": "SegNet",
+      "year": 2015,
+      "kind": "model"
+    },
+    {
+      "id": "deeplab_v1",
+      "label": "DeepLab v1",
+      "label_en": "DeepLab v1",
+      "year": 2017,
+      "kind": "model"
+    },
+    {
+      "id": "deeplab_v3",
+      "label": "DeepLab v3",
+      "label_en": "DeepLab v3",
+      "year": 2017,
+      "kind": "model"
+    },
+    {
+      "id": "deeplab_v3plus",
+      "label": "DeepLab v3+",
+      "label_en": "DeepLab v3+",
+      "year": 2018,
+      "kind": "model"
+    },
+    {
+      "id": "pspnet",
+      "label": "PSPNet",
+      "label_en": "PSPNet",
+      "year": 2017,
+      "kind": "model"
+    },
+    {
+      "id": "panoptic_fpn",
+      "label": "Panoptic FPN",
+      "label_en": "Panoptic FPN",
+      "year": 2019,
+      "kind": "model"
+    },
+    {
+      "id": "simclr",
+      "label": "SimCLR",
+      "label_en": "SimCLR",
+      "year": 2020,
+      "kind": "paper"
+    },
+    {
+      "id": "moco",
+      "label": "MoCo v1/v2/v3",
+      "label_en": "MoCo",
+      "year": 2020,
+      "kind": "paper"
+    },
+    {
+      "id": "byol",
+      "label": "BYOL",
+      "label_en": "BYOL",
+      "year": 2020,
+      "kind": "paper"
+    },
+    {
+      "id": "simsiam",
+      "label": "SimSiam",
+      "label_en": "SimSiam",
+      "year": 2021,
+      "kind": "paper"
+    },
+    {
+      "id": "swav",
+      "label": "SwAV",
+      "label_en": "SwAV",
+      "year": 2021,
+      "kind": "paper"
+    },
+    {
+      "id": "ibot",
+      "label": "iBOT",
+      "label_en": "iBOT",
+      "year": 2023,
+      "kind": "paper"
+    },
+    {
+      "id": "jepa",
+      "label": "联合嵌入预测架构",
+      "label_en": "JEPA",
+      "year": 2023,
+      "kind": "concept"
+    },
+    {
+      "id": "sift",
+      "label": "SIFT 特征",
+      "label_en": "SIFT",
+      "year": 1999,
+      "kind": "concept"
+    },
+    {
+      "id": "hog",
+      "label": "HOG 特征",
+      "label_en": "HOG",
+      "year": 2005,
+      "kind": "concept"
+    },
+    {
+      "id": "svm_hog_pipeline",
+      "label": "SVM+HOG 流水线",
+      "label_en": "SVM + HOG",
+      "year": 2005,
+      "kind": "concept"
+    },
+    {
+      "id": "adaboost",
+      "label": "AdaBoost",
+      "label_en": "AdaBoost",
+      "year": 2001,
+      "kind": "concept"
+    }
+  ],
+  "edges": [
+    {
+      "source": "lenet",
+      "target": "alexnet",
+      "relation": "inherits"
+    },
+    {
+      "source": "alexnet",
+      "target": "vgg",
+      "relation": "converges"
+    },
+    {
+      "source": "alexnet",
+      "target": "googlenet",
+      "relation": "converges"
+    },
+    {
+      "source": "googlenet",
+      "target": "alexnet",
+      "relation": "converges"
+    },
+    {
+      "source": "vgg",
+      "target": "resnet",
+      "relation": "converges"
+    },
+    {
+      "source": "resnet",
+      "target": "densenet",
+      "relation": "converges"
+    },
+    {
+      "source": "resnet",
+      "target": "resnext",
+      "relation": "inherits"
+    },
+    {
+      "source": "resnext",
+      "target": "regnet",
+      "relation": "inherits"
+    },
+    {
+      "source": "resnet",
+      "target": "convnext",
+      "relation": "composes"
+    },
+    {
+      "source": "resnet",
+      "target": "efficientnet",
+      "relation": "converges"
+    },
+    {
+      "source": "resnet",
+      "target": "replknet",
+      "relation": "converges"
+    },
+    {
+      "source": "resnet",
+      "target": "mobilenet",
+      "relation": "converges"
+    },
+    {
+      "source": "mobilenet",
+      "target": "mobilenetv3",
+      "relation": "inherits"
+    },
+    {
+      "source": "googlenet",
+      "target": "shufflenet",
+      "relation": "converges"
+    },
+    {
+      "source": "vit",
+      "target": "deit",
+      "relation": "inherits"
+    },
+    {
+      "source": "vit",
+      "target": "swin_transformer",
+      "relation": "converges"
+    },
+    {
+      "source": "vit",
+      "target": "beit",
+      "relation": "converges"
+    },
+    {
+      "source": "beit",
+      "target": "mae",
+      "relation": "converges"
+    },
+    {
+      "source": "mae",
+      "target": "beit",
+      "relation": "converges"
+    },
+    {
+      "source": "vit",
+      "target": "dino",
+      "relation": "inherits"
+    },
+    {
+      "source": "dino",
+      "target": "dinov2",
+      "relation": "inherits"
+    },
+    {
+      "source": "clip",
+      "target": "siglip",
+      "relation": "inherits"
+    },
+    {
+      "source": "mae",
+      "target": "sam_encoder",
+      "relation": "inherits"
+    },
+    {
+      "source": "vit",
+      "target": "clip",
+      "relation": "composes"
+    },
+    {
+      "source": "clip",
+      "target": "internvl",
+      "relation": "converges"
+    },
+    {
+      "source": "clip",
+      "target": "florence",
+      "relation": "converges"
+    },
+    {
+      "source": "mae",
+      "target": "ibot",
+      "relation": "converges"
+    },
+    {
+      "source": "mae",
+      "target": "jepa",
+      "relation": "converges"
+    },
+    {
+      "source": "dino",
+      "target": "jepa",
+      "relation": "converges"
+    },
+    {
+      "source": "r_cnn",
+      "target": "fast_r_cnn",
+      "relation": "inherits"
+    },
+    {
+      "source": "fast_r_cnn",
+      "target": "faster_r_cnn",
+      "relation": "inherits"
+    },
+    {
+      "source": "faster_r_cnn",
+      "target": "mask_r_cnn",
+      "relation": "inherits"
+    },
+    {
+      "source": "yolo",
+      "target": "yolov2",
+      "relation": "inherits"
+    },
+    {
+      "source": "yolov2",
+      "target": "yolov3",
+      "relation": "inherits"
+    },
+    {
+      "source": "yolov3",
+      "target": "yolov4",
+      "relation": "inherits"
+    },
+    {
+      "source": "yolov4",
+      "target": "yolov8",
+      "relation": "inherits"
+    },
+    {
+      "source": "yolo",
+      "target": "ssd",
+      "relation": "converges"
+    },
+    {
+      "source": "ssd",
+      "target": "yolo",
+      "relation": "converges"
+    },
+    {
+      "source": "yolo",
+      "target": "retinanet",
+      "relation": "converges"
+    },
+    {
+      "source": "detr",
+      "target": "deformable_detr",
+      "relation": "inherits"
+    },
+    {
+      "source": "deformable_detr",
+      "target": "rt_detr",
+      "relation": "inherits"
+    },
+    {
+      "source": "detr",
+      "target": "faster_r_cnn",
+      "relation": "converges"
+    },
+    {
+      "source": "faster_r_cnn",
+      "target": "detr",
+      "relation": "converges"
+    },
+    {
+      "source": "fcn",
+      "target": "u_net",
+      "relation": "converges"
+    },
+    {
+      "source": "fcn",
+      "target": "segnet",
+      "relation": "converges"
+    },
+    {
+      "source": "fcn",
+      "target": "deeplab_v1",
+      "relation": "converges"
+    },
+    {
+      "source": "fcn",
+      "target": "pspnet",
+      "relation": "converges"
+    },
+    {
+      "source": "deeplab_v1",
+      "target": "deeplab_v3",
+      "relation": "inherits"
+    },
+    {
+      "source": "deeplab_v3",
+      "target": "deeplab_v3plus",
+      "relation": "inherits"
+    },
+    {
+      "source": "mask_r_cnn",
+      "target": "panoptic_fpn",
+      "relation": "inherits"
+    },
+    {
+      "source": "mae",
+      "target": "sam",
+      "relation": "composes"
+    },
+    {
+      "source": "sam",
+      "target": "sam_2",
+      "relation": "inherits"
+    },
+    {
+      "source": "simclr",
+      "target": "moco",
+      "relation": "converges"
+    },
+    {
+      "source": "moco",
+      "target": "simclr",
+      "relation": "converges"
+    },
+    {
+      "source": "moco",
+      "target": "byol",
+      "relation": "converges"
+    },
+    {
+      "source": "byol",
+      "target": "moco",
+      "relation": "converges"
+    },
+    {
+      "source": "byol",
+      "target": "simsiam",
+      "relation": "converges"
+    },
+    {
+      "source": "simsiam",
+      "target": "byol",
+      "relation": "converges"
+    },
+    {
+      "source": "simsiam",
+      "target": "swav",
+      "relation": "converges"
+    },
+    {
+      "source": "swav",
+      "target": "simsiam",
+      "relation": "converges"
+    },
+    {
+      "source": "moco",
+      "target": "dino",
+      "relation": "converges"
+    },
+    {
+      "source": "sift",
+      "target": "svm_hog_pipeline",
+      "relation": "converges"
+    },
+    {
+      "source": "hog",
+      "target": "svm_hog_pipeline",
+      "relation": "composes"
+    },
+    {
+      "source": "svm_hog_pipeline",
+      "target": "adaboost",
+      "relation": "converges"
+    },
+    {
+      "source": "svm_hog_pipeline",
+      "target": "alexnet",
+      "relation": "converges"
+    }
+  ],
+  "next": {
+    "label": "NEXT",
+    "title": "Vol.08 具身智能",
+    "desc": "让智能体拥有身体，感知世界，理解世界，改变世界"
+  }
+}

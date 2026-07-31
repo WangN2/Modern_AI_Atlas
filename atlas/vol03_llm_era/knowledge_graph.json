@@ -1,0 +1,1175 @@
+{
+  "meta": {
+    "series": "Modern AI Atlas",
+    "volume": "Vol.03",
+    "title_zh": "大语言模型时代",
+    "title_en": "The LLM Era",
+    "theme": "atlas_light",
+    "layout": "bands",
+    "title_style": "badge",
+    "badge": {
+      "name": "Modern AI Atlas",
+      "volume": "Vol.03"
+    },
+    "tagline": "从规模扩展到智能涌现：理解、生成与对齐的新时代",
+    "tagline_en": "From Scaling to Emergence: Understanding, Generation and Alignment",
+    "callout": "大语言模型不仅改变了NLP，它正在重塑所有软件与知识工作的底层范式。",
+    "canvas": {
+      "width": 2524,
+      "height": 1682
+    }
+  },
+  "sections": [
+    {
+      "kind": "timeline",
+      "title": "大语言模型发展时间线",
+      "subtitle": "里程碑 Milestones",
+      "color": "#4f5dd5",
+      "rocket": true,
+      "milestones": [
+        {
+          "year": "2017",
+          "title": "Transformer",
+          "desc": "Attention Is All You Need",
+          "node": "transformer"
+        },
+        {
+          "year": "2018",
+          "title": "GPT-1",
+          "desc": "预训练+微调范式",
+          "desc2": "117M参数",
+          "node": "gpt1"
+        },
+        {
+          "year": "2019",
+          "title": "GPT-2",
+          "desc": "无监督预训练",
+          "desc2": "15亿参数",
+          "node": "gpt2"
+        },
+        {
+          "year": "2020",
+          "title": "GPT-3",
+          "desc": "涌现能力初现",
+          "desc2": "1750亿参数",
+          "node": "gpt3"
+        },
+        {
+          "year": "2021",
+          "title": "Codex",
+          "desc": "代码生成",
+          "desc2": "12B参数",
+          "node": "codex"
+        },
+        {
+          "year": "2021",
+          "title": "InstructGPT",
+          "desc": "RLHF对齐",
+          "desc2": "人类反馈强化学习",
+          "node": "instructgpt"
+        },
+        {
+          "year": "2022",
+          "title": "ChatGPT",
+          "desc": "对话交互",
+          "desc2": "现象级应用",
+          "node": "chatgpt"
+        },
+        {
+          "year": "2023",
+          "title": "GPT-4 / PaLM 2 / Claude 2",
+          "desc": "更强理解与推理",
+          "desc2": "多模态初步融合",
+          "node": "gpt4"
+        },
+        {
+          "year": "2023",
+          "title": "Llama 2",
+          "desc": "开源浪潮",
+          "desc2": "70B参数",
+          "node": "llama2"
+        },
+        {
+          "year": "2024",
+          "title": "GPT-4o / Claude 3 / Gemini 1.5",
+          "desc": "多模态原生",
+          "desc2": "长上下文突破",
+          "node": "gpt4o"
+        },
+        {
+          "year": "2024+",
+          "title": "迈向AGI",
+          "desc": "更强推理、记忆与行动",
+          "desc2": "系统级能力涌现",
+          "node": "agi"
+        }
+      ]
+    },
+    {
+      "row": [
+        {
+          "kind": "pills",
+          "title": "大语言模型生态图谱",
+          "subtitle": "Model Family Tree",
+          "weight": 1.45,
+          "color": "#3b82f6",
+          "label_w": 132,
+          "col_header": [
+            "2018",
+            "2019",
+            "2020",
+            "2021",
+            "2022",
+            "2023",
+            "2024+"
+          ],
+          "rows": [
+            {
+              "label": "OpenAI",
+              "sublabel": "闭源 Proprietary",
+              "color": "#3b82f6",
+              "pills": [
+                "GPT-1",
+                "GPT-2",
+                "GPT-3",
+                "Codex",
+                "InstructGPT",
+                "ChatGPT / GPT-3.5",
+                "GPT-4",
+                {
+                  "text": "GPT-4o / GPT-5?",
+                  "highlight": true
+                }
+              ]
+            },
+            {
+              "label": "Google",
+              "color": "#3b82f6",
+              "pills": [
+                "BERT",
+                "T5",
+                "PaLM",
+                "PaLM 2",
+                "PaLM 2-Codey",
+                "Gemini 1.0",
+                {
+                  "text": "Gemini 1.5 / 2.0",
+                  "highlight": true
+                }
+              ]
+            },
+            {
+              "label": "Anthropic",
+              "color": "#3b82f6",
+              "pills": [
+                "Claude 1",
+                "Claude 2",
+                {
+                  "text": "Claude 3 / 3.5",
+                  "highlight": true
+                }
+              ]
+            },
+            {
+              "label": "Meta (Llama)",
+              "sublabel": "开源 Open Source",
+              "color": "#22c55e",
+              "pills": [
+                "Llama 1 (7B/13B/33B/65B)",
+                "Llama 2 (7B/13B/70B)",
+                "Llama 3 (8B/70B)",
+                "Llama 3.1 (8B/70B/405B)",
+                {
+                  "text": "Llama 3.2 (多模态)",
+                  "highlight": true
+                }
+              ]
+            },
+            {
+              "label": "Mistral AI",
+              "color": "#22c55e",
+              "pills": [
+                "Mistral 7B",
+                "Mistral 8x7B",
+                "Mistral 8x22B",
+                {
+                  "text": "Mistral Large",
+                  "highlight": true
+                }
+              ]
+            },
+            {
+              "label": "其他开源",
+              "color": "#22c55e",
+              "pills": [
+                "Bloom",
+                "GPT-NeoX",
+                "Falcon",
+                "Yi / Qwen / Baichuan / InternLM / DeepSeek",
+                {
+                  "text": "持续演进",
+                  "highlight": true
+                }
+              ]
+            },
+            {
+              "label": "Platforms",
+              "sublabel": "API / 云服务",
+              "color": "#a855f7",
+              "pills": [
+                "OpenAI API",
+                "Azure OpenAI",
+                "Google Vertex AI",
+                "AWS Bedrock",
+                "Anthropic API",
+                "其他平台"
+              ]
+            }
+          ]
+        },
+        {
+          "kind": "arch",
+          "title": "大语言模型核心架构",
+          "subtitle": "Transformer 解码器结构 (Decoder-Only)",
+          "weight": 1.05,
+          "color": "#4f5dd5",
+          "input_label": "输入 Tokens",
+          "embedding": "Token & Position Embedding",
+          "layers": [
+            "RMSNorm",
+            "Masked Multi-Head Self-Attention",
+            "⊕ Residual",
+            "RMSNorm",
+            "Feed Forward (MLP)",
+            "⊕ Residual"
+          ],
+          "repeat": "× N Layers",
+          "output_layers": [
+            "Linear",
+            "RMSNorm"
+          ],
+          "output_label": "输出概率 (Next Token)",
+          "token_table": {
+            "title": "预训练目标 — 下一词预测 (Next Token Prediction)",
+            "rows": [
+              {
+                "label": "Tokens",
+                "color": "#3b82f6",
+                "cells": [
+                  "The",
+                  "cat",
+                  "sat",
+                  "on",
+                  "the",
+                  "mat",
+                  ""
+                ]
+              },
+              {
+                "label": "预测",
+                "color": "#a855f7",
+                "cells": [
+                  "The",
+                  "cat",
+                  "sat",
+                  "on",
+                  "the",
+                  "mat",
+                  "<eos>"
+                ],
+                "highlight": [
+                  6
+                ]
+              }
+            ]
+          },
+          "align_title": "对齐技术演进",
+          "align_flow": [
+            "SFT 监督微调",
+            "Reward Model 奖励模型",
+            "RLHF / DPO / PPO 强化学习优化"
+          ],
+          "abilities_title": "能力涌现 (Emergent Abilities)",
+          "abilities": [
+            "上下文学习 ICL",
+            "推理 Reasoning",
+            "指令遵循 Instruct",
+            "工具使用 Tool Use",
+            "多轮对话 Dialogue",
+            "代码生成 CodeGen"
+          ]
+        },
+        {
+          "stack": [
+            {
+              "kind": "list",
+              "title": "Scaling 三大维度",
+              "subtitle": "Model · Data · Compute",
+              "color": "#4f5dd5",
+              "items": [
+                {
+                  "icon": "cube",
+                  "title": "模型规模 (Model Size)",
+                  "desc": "参数量 ↑",
+                  "node": "scaling_law"
+                },
+                {
+                  "icon": "db",
+                  "title": "数据规模 (Data Scale)",
+                  "desc": "数据量 ↑"
+                },
+                {
+                  "icon": "bolt",
+                  "title": "计算规模 (Compute Scale)",
+                  "desc": "算力 ↑"
+                }
+              ],
+              "summary": "三者协同推动性能持续提升"
+            },
+            {
+              "kind": "curve",
+              "title": "涌现能力阶梯",
+              "subtitle": "能力随规模呈现非线性增长",
+              "color": "#a855f7",
+              "ticks": [
+                "10⁸",
+                "10⁹",
+                "10¹⁰",
+                "10¹¹",
+                "10¹²",
+                "10¹³⁺"
+              ],
+              "x_label": "模型规模 (参数量) Model Scale",
+              "y_label": "能力 (Ability)",
+              "stages": [
+                "基础能力 (记忆/补全)",
+                "上下文学习 ICL",
+                "复杂推理 Reasoning",
+                "工具使用 Tool Use",
+                "通用智能 AGI 潜力"
+              ],
+              "node": "emergent_abilities"
+            }
+          ],
+          "weight": 1.0
+        }
+      ]
+    },
+    {
+      "row": [
+        {
+          "kind": "cards",
+          "title": "主要应用场景",
+          "subtitle": "Application Scenarios",
+          "weight": 1.05,
+          "color": "#3b82f6",
+          "columns": 2,
+          "items": [
+            {
+              "title": "智能对话",
+              "title_en": "Conversational AI",
+              "icon": "person",
+              "color": "#3b82f6",
+              "items": [
+                "聊天机器人",
+                "虚拟助手",
+                "客户服务"
+              ]
+            },
+            {
+              "title": "内容创作",
+              "title_en": "Content Generation",
+              "icon": "doc",
+              "color": "#22c55e",
+              "items": [
+                "文章写作",
+                "文案生成",
+                "创意激发"
+              ]
+            },
+            {
+              "title": "代码开发",
+              "title_en": "Code Development",
+              "icon": "gear",
+              "color": "#f59e0b",
+              "items": [
+                "代码生成",
+                "代码补全",
+                "调试助手"
+              ]
+            },
+            {
+              "title": "知识问答",
+              "title_en": "Question Answering",
+              "icon": "book",
+              "color": "#a855f7",
+              "items": [
+                "知识检索",
+                "文档问答",
+                "教育辅导"
+              ]
+            },
+            {
+              "title": "办公提效",
+              "title_en": "Productivity",
+              "icon": "chart",
+              "color": "#06b6d4",
+              "items": [
+                "总结提炼",
+                "翻译润色",
+                "流程自动化"
+              ]
+            },
+            {
+              "title": "科学研究",
+              "title_en": "Scientific Research",
+              "icon": "atom",
+              "color": "#64748b",
+              "items": [
+                "文献分析",
+                "假设生成",
+                "实验设计"
+              ]
+            }
+          ]
+        },
+        {
+          "kind": "pills",
+          "title": "关键技术栈",
+          "subtitle": "Key Technology Stack",
+          "weight": 0.95,
+          "color": "#4f5dd5",
+          "label_w": 118,
+          "rows": [
+            {
+              "label": "预训练",
+              "sublabel": "Pre-training",
+              "color": "#3b82f6",
+              "pills": [
+                "分布式训练",
+                "大规模数据处理",
+                "混合精度",
+                "梯度优化"
+              ]
+            },
+            {
+              "label": "微调",
+              "sublabel": "Fine-tuning",
+              "color": "#22c55e",
+              "pills": [
+                "SFT",
+                "LoRA",
+                "QLoRA",
+                "Adapter",
+                "Prompt Tuning"
+              ]
+            },
+            {
+              "label": "对齐",
+              "sublabel": "Alignment",
+              "color": "#a855f7",
+              "pills": [
+                "RLHF",
+                "DPO",
+                "PPO",
+                "Reward Model",
+                "Constitutional AI"
+              ]
+            },
+            {
+              "label": "推理加速",
+              "sublabel": "Inference",
+              "color": "#f59e0b",
+              "pills": [
+                "量化 (INT8/4)",
+                "KV Cache",
+                "TensorRT",
+                "vLLM",
+                "FlashAttention"
+              ]
+            },
+            {
+              "label": "评估",
+              "sublabel": "Evaluation",
+              "color": "#06b6d4",
+              "pills": [
+                "基准测试",
+                "人类评估",
+                "安全评估",
+                "红队测试"
+              ]
+            }
+          ]
+        },
+        {
+          "kind": "cards",
+          "title": "挑战与风险",
+          "subtitle": "Challenges & Risks",
+          "weight": 0.95,
+          "color": "#e11d48",
+          "columns": 2,
+          "items": [
+            {
+              "title": "幻觉问题",
+              "title_en": "Hallucination",
+              "items": [
+                "生成不实信息",
+                "缺乏事实依据"
+              ]
+            },
+            {
+              "title": "偏见与公平",
+              "title_en": "Bias & Fairness",
+              "items": [
+                "数据偏见",
+                "歧视与不公平"
+              ]
+            },
+            {
+              "title": "安全与对齐",
+              "title_en": "Safety & Alignment",
+              "items": [
+                "越狱攻击",
+                "有害内容生成"
+              ]
+            },
+            {
+              "title": "隐私与版权",
+              "title_en": "Privacy & IP",
+              "items": [
+                "数据隐私",
+                "版权争议"
+              ]
+            },
+            {
+              "title": "成本与能耗",
+              "title_en": "Cost & Energy",
+              "items": [
+                "训练成本高",
+                "能耗巨大"
+              ]
+            },
+            {
+              "title": "可解释性",
+              "title_en": "Interpretability",
+              "items": [
+                "黑箱模型",
+                "难以解释"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "list",
+      "title": "基础支撑",
+      "subtitle": "Foundations",
+      "color": "#f59e0b",
+      "columns": 5,
+      "items": [
+        {
+          "icon": "cube",
+          "title": "硬件算力",
+          "desc": "GPU / TPU / NPU"
+        },
+        {
+          "icon": "db",
+          "title": "数据资源",
+          "desc": "高质量语料库"
+        },
+        {
+          "icon": "book",
+          "title": "开源生态",
+          "desc": "PyTorch / TensorFlow / Hugging Face"
+        },
+        {
+          "icon": "network",
+          "title": "社区协作",
+          "desc": "模型共享与创新"
+        },
+        {
+          "icon": "star",
+          "title": "资金与人才",
+          "desc": "持续投入与研究"
+        }
+      ]
+    },
+    {
+      "kind": "chevrons",
+      "title": "未来展望",
+      "subtitle": "The Road to AGI",
+      "color": "#4f5dd5",
+      "colors": [
+        "#3b82f6",
+        "#6366f1",
+        "#8b5cf6",
+        "#a855f7",
+        "#c026d3",
+        "#f59e0b"
+      ],
+      "label_color": "#1a2b5c",
+      "illustration": "earth",
+      "caption": "迈向AGI的星辰大海",
+      "steps": [
+        {
+          "label": "更长上下文",
+          "label_en": "Longer Context"
+        },
+        {
+          "label": "多模态统一",
+          "label_en": "Omni-modal"
+        },
+        {
+          "label": "记忆增强",
+          "label_en": "Memory"
+        },
+        {
+          "label": "推理增强",
+          "label_en": "Reasoning"
+        },
+        {
+          "label": "智能体系统",
+          "label_en": "Agentic AI",
+          "node": "agentic_ai"
+        },
+        {
+          "label": "通用人工智能",
+          "label_en": "AGI",
+          "node": "agi"
+        }
+      ]
+    }
+  ],
+  "nodes": [
+    {
+      "id": "transformer",
+      "label": "Transformer",
+      "label_en": "Transformer",
+      "year": 2017,
+      "kind": "paper"
+    },
+    {
+      "id": "gpt1",
+      "label": "GPT-1",
+      "label_en": "GPT-1",
+      "year": 2018,
+      "kind": "model"
+    },
+    {
+      "id": "gpt2",
+      "label": "GPT-2",
+      "label_en": "GPT-2",
+      "year": 2019,
+      "kind": "model"
+    },
+    {
+      "id": "gpt3",
+      "label": "GPT-3",
+      "label_en": "GPT-3",
+      "year": 2020,
+      "kind": "model"
+    },
+    {
+      "id": "codex",
+      "label": "Codex",
+      "label_en": "Codex",
+      "year": 2021,
+      "kind": "model"
+    },
+    {
+      "id": "instructgpt",
+      "label": "InstructGPT",
+      "label_en": "InstructGPT",
+      "year": 2021,
+      "kind": "model"
+    },
+    {
+      "id": "chatgpt",
+      "label": "ChatGPT (GPT-3.5)",
+      "label_en": "ChatGPT",
+      "year": 2022,
+      "kind": "industry"
+    },
+    {
+      "id": "gpt4",
+      "label": "GPT-4",
+      "label_en": "GPT-4",
+      "year": 2023,
+      "kind": "model"
+    },
+    {
+      "id": "gpt4o",
+      "label": "GPT-4o",
+      "label_en": "GPT-4o",
+      "year": 2024,
+      "kind": "model"
+    },
+    {
+      "id": "bert",
+      "label": "BERT",
+      "label_en": "BERT",
+      "year": 2018,
+      "kind": "model"
+    },
+    {
+      "id": "t5",
+      "label": "T5",
+      "label_en": "T5",
+      "year": 2019,
+      "kind": "model"
+    },
+    {
+      "id": "palm",
+      "label": "PaLM",
+      "label_en": "PaLM",
+      "year": 2022,
+      "kind": "model"
+    },
+    {
+      "id": "palm2",
+      "label": "PaLM 2 (含 Codey)",
+      "label_en": "PaLM 2",
+      "year": 2023,
+      "kind": "model"
+    },
+    {
+      "id": "gemini1",
+      "label": "Gemini 1.0",
+      "label_en": "Gemini 1.0",
+      "year": 2023,
+      "kind": "model"
+    },
+    {
+      "id": "gemini15",
+      "label": "Gemini 1.5",
+      "label_en": "Gemini 1.5",
+      "year": 2024,
+      "kind": "model"
+    },
+    {
+      "id": "claude1",
+      "label": "Claude 1",
+      "label_en": "Claude 1",
+      "year": 2023,
+      "kind": "model"
+    },
+    {
+      "id": "claude2",
+      "label": "Claude 2",
+      "label_en": "Claude 2",
+      "year": 2023,
+      "kind": "model"
+    },
+    {
+      "id": "claude3",
+      "label": "Claude 3 / 3.5",
+      "label_en": "Claude 3",
+      "year": 2024,
+      "kind": "model"
+    },
+    {
+      "id": "llama1",
+      "label": "Llama 1",
+      "label_en": "Llama 1",
+      "year": 2023,
+      "kind": "model"
+    },
+    {
+      "id": "llama2",
+      "label": "Llama 2",
+      "label_en": "Llama 2",
+      "year": 2023,
+      "kind": "model"
+    },
+    {
+      "id": "llama3",
+      "label": "Llama 3 / 3.1 / 3.2",
+      "label_en": "Llama 3",
+      "year": 2024,
+      "kind": "model"
+    },
+    {
+      "id": "mistral7b",
+      "label": "Mistral 7B",
+      "label_en": "Mistral 7B",
+      "year": 2023,
+      "kind": "model"
+    },
+    {
+      "id": "mixtral",
+      "label": "Mistral 8x7B / 8x22B",
+      "label_en": "Mixtral",
+      "year": 2023,
+      "kind": "model"
+    },
+    {
+      "id": "mistral_large",
+      "label": "Mistral Large",
+      "label_en": "Mistral Large",
+      "year": 2024,
+      "kind": "model"
+    },
+    {
+      "id": "bloom",
+      "label": "BLOOM",
+      "label_en": "BLOOM",
+      "year": 2022,
+      "kind": "model"
+    },
+    {
+      "id": "gpt_neox",
+      "label": "GPT-NeoX",
+      "label_en": "GPT-NeoX",
+      "year": 2022,
+      "kind": "model"
+    },
+    {
+      "id": "falcon",
+      "label": "Falcon",
+      "label_en": "Falcon",
+      "year": 2023,
+      "kind": "model"
+    },
+    {
+      "id": "yi",
+      "label": "Yi",
+      "label_en": "Yi",
+      "year": 2023,
+      "kind": "model"
+    },
+    {
+      "id": "qwen",
+      "label": "Qwen",
+      "label_en": "Qwen",
+      "year": 2023,
+      "kind": "model"
+    },
+    {
+      "id": "baichuan",
+      "label": "Baichuan",
+      "label_en": "Baichuan",
+      "year": 2023,
+      "kind": "model"
+    },
+    {
+      "id": "internlm",
+      "label": "InternLM",
+      "label_en": "InternLM",
+      "year": 2023,
+      "kind": "model"
+    },
+    {
+      "id": "deepseek",
+      "label": "DeepSeek",
+      "label_en": "DeepSeek",
+      "year": 2023,
+      "kind": "model"
+    },
+    {
+      "id": "next_token_prediction",
+      "label": "下一词预测",
+      "label_en": "Next Token Prediction",
+      "kind": "concept"
+    },
+    {
+      "id": "sft",
+      "label": "监督微调",
+      "label_en": "SFT",
+      "kind": "concept"
+    },
+    {
+      "id": "reward_model",
+      "label": "奖励模型",
+      "label_en": "Reward Model",
+      "kind": "concept"
+    },
+    {
+      "id": "rlhf",
+      "label": "RLHF",
+      "label_en": "RLHF",
+      "kind": "concept"
+    },
+    {
+      "id": "dpo",
+      "label": "DPO",
+      "label_en": "DPO",
+      "kind": "concept"
+    },
+    {
+      "id": "ppo",
+      "label": "PPO",
+      "label_en": "PPO",
+      "kind": "concept"
+    },
+    {
+      "id": "lora",
+      "label": "LoRA / QLoRA",
+      "label_en": "LoRA",
+      "kind": "concept"
+    },
+    {
+      "id": "in_context_learning",
+      "label": "上下文学习",
+      "label_en": "In-context Learning",
+      "kind": "concept"
+    },
+    {
+      "id": "scaling_law",
+      "label": "规模化定律",
+      "label_en": "Scaling Law",
+      "kind": "concept"
+    },
+    {
+      "id": "emergent_abilities",
+      "label": "能力涌现",
+      "label_en": "Emergent Abilities",
+      "kind": "concept"
+    },
+    {
+      "id": "constitutional_ai",
+      "label": "Constitutional AI",
+      "label_en": "Constitutional AI",
+      "kind": "concept"
+    },
+    {
+      "id": "agentic_ai",
+      "label": "智能体系统",
+      "label_en": "Agentic AI",
+      "year": 2024,
+      "kind": "concept"
+    },
+    {
+      "id": "agi",
+      "label": "通用人工智能",
+      "label_en": "AGI",
+      "kind": "milestone"
+    }
+  ],
+  "edges": [
+    {
+      "source": "transformer",
+      "target": "gpt1",
+      "relation": "inherits"
+    },
+    {
+      "source": "gpt1",
+      "target": "gpt2",
+      "relation": "inherits"
+    },
+    {
+      "source": "gpt2",
+      "target": "gpt3",
+      "relation": "inherits"
+    },
+    {
+      "source": "gpt3",
+      "target": "codex",
+      "relation": "inherits"
+    },
+    {
+      "source": "gpt3",
+      "target": "instructgpt",
+      "relation": "inherits"
+    },
+    {
+      "source": "instructgpt",
+      "target": "chatgpt",
+      "relation": "inherits"
+    },
+    {
+      "source": "chatgpt",
+      "target": "gpt4",
+      "relation": "inherits"
+    },
+    {
+      "source": "gpt4",
+      "target": "gpt4o",
+      "relation": "inherits"
+    },
+    {
+      "source": "transformer",
+      "target": "bert",
+      "relation": "inherits"
+    },
+    {
+      "source": "bert",
+      "target": "t5",
+      "relation": "converges"
+    },
+    {
+      "source": "t5",
+      "target": "palm",
+      "relation": "converges"
+    },
+    {
+      "source": "palm",
+      "target": "palm2",
+      "relation": "inherits"
+    },
+    {
+      "source": "palm2",
+      "target": "gemini1",
+      "relation": "inherits"
+    },
+    {
+      "source": "gemini1",
+      "target": "gemini15",
+      "relation": "inherits"
+    },
+    {
+      "source": "gpt3",
+      "target": "claude1",
+      "relation": "converges"
+    },
+    {
+      "source": "claude1",
+      "target": "claude2",
+      "relation": "inherits"
+    },
+    {
+      "source": "claude2",
+      "target": "claude3",
+      "relation": "inherits"
+    },
+    {
+      "source": "gpt3",
+      "target": "llama1",
+      "relation": "converges"
+    },
+    {
+      "source": "llama1",
+      "target": "llama2",
+      "relation": "inherits"
+    },
+    {
+      "source": "llama2",
+      "target": "llama3",
+      "relation": "inherits"
+    },
+    {
+      "source": "llama1",
+      "target": "mistral7b",
+      "relation": "converges"
+    },
+    {
+      "source": "mistral7b",
+      "target": "mixtral",
+      "relation": "inherits"
+    },
+    {
+      "source": "mixtral",
+      "target": "mistral_large",
+      "relation": "inherits"
+    },
+    {
+      "source": "gpt3",
+      "target": "bloom",
+      "relation": "converges"
+    },
+    {
+      "source": "gpt3",
+      "target": "gpt_neox",
+      "relation": "converges"
+    },
+    {
+      "source": "bloom",
+      "target": "falcon",
+      "relation": "converges"
+    },
+    {
+      "source": "llama2",
+      "target": "yi",
+      "relation": "converges"
+    },
+    {
+      "source": "llama2",
+      "target": "qwen",
+      "relation": "converges"
+    },
+    {
+      "source": "llama2",
+      "target": "baichuan",
+      "relation": "converges"
+    },
+    {
+      "source": "llama2",
+      "target": "internlm",
+      "relation": "converges"
+    },
+    {
+      "source": "llama2",
+      "target": "deepseek",
+      "relation": "converges"
+    },
+    {
+      "source": "gpt3",
+      "target": "sft",
+      "relation": "composes"
+    },
+    {
+      "source": "sft",
+      "target": "reward_model",
+      "relation": "composes"
+    },
+    {
+      "source": "reward_model",
+      "target": "rlhf",
+      "relation": "composes"
+    },
+    {
+      "source": "rlhf",
+      "target": "dpo",
+      "relation": "converges"
+    },
+    {
+      "source": "dpo",
+      "target": "rlhf",
+      "relation": "converges"
+    },
+    {
+      "source": "ppo",
+      "target": "rlhf",
+      "relation": "composes"
+    },
+    {
+      "source": "gpt3",
+      "target": "lora",
+      "relation": "composes"
+    },
+    {
+      "source": "scaling_law",
+      "target": "emergent_abilities",
+      "relation": "converges"
+    },
+    {
+      "source": "transformer",
+      "target": "next_token_prediction",
+      "relation": "composes"
+    },
+    {
+      "source": "claude3",
+      "target": "constitutional_ai",
+      "relation": "composes"
+    },
+    {
+      "source": "gpt4o",
+      "target": "agentic_ai",
+      "relation": "converges"
+    },
+    {
+      "source": "agentic_ai",
+      "target": "agi",
+      "relation": "converges"
+    }
+  ],
+  "next": {
+    "label": "NEXT",
+    "title": "Vol.04 多模态 AI",
+    "desc": "打通多种模态，连接物理世界与智能世界"
+  },
+  "footer": {
+    "quote_zh": "从规模扩展到智能涌现，从理解语言到对齐价值。",
+    "quote_en": "From scaling to emergence, from understanding language to aligning values."
+  }
+}

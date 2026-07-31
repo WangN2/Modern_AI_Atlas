@@ -1,0 +1,1183 @@
+{
+  "meta": {
+    "series": "Modern AI Atlas",
+    "volume": "Vol.08",
+    "title_zh": "具身智能",
+    "title_en": "Embodied AI",
+    "theme": "atlas_light",
+    "layout": "bands",
+    "title_style": "badge",
+    "badge": {
+      "name": "Modern AI Atlas",
+      "volume": "Vol.08"
+    },
+    "tagline": "让智能体拥有身体，感知世界，理解世界，改变世界",
+    "callout": "具身智能的本质，是智能与物理世界的深度融合，让AI不仅会思考，更能行动。 — Yann LeCun",
+    "canvas": {
+      "width": 1682,
+      "height": 2524,
+      "gap": 10,
+      "margin": 28
+    }
+  },
+  "sections": [
+    {
+      "row": [
+        {
+          "kind": "cards",
+          "number": 1,
+          "number_style": "circle",
+          "title": "具身智能发展时间线",
+          "subtitle": "Timeline",
+          "color": "#1a2b5c",
+          "columns": 4,
+          "items": [
+            {
+              "title": "机器人学起源",
+              "title_en": "1950s–1980s",
+              "color": "#64748b",
+              "items": [
+                "早期机器人研究",
+                "伺服控制与反馈",
+                "机器手与移动机器人"
+              ]
+            },
+            {
+              "title": "传统机器人",
+              "title_en": "1990s–2000s",
+              "color": "#0ea5e9",
+              "items": [
+                "SLAM 与导航",
+                "视觉与感知算法",
+                "机器人操作系统 (ROS)"
+              ]
+            },
+            {
+              "title": "深度学习进入感知",
+              "title_en": "2010–2012",
+              "color": "#3b82f6",
+              "items": [
+                "深度学习突破视觉",
+                "3D 感知与语义理解",
+                "大规模数据集出现"
+              ]
+            },
+            {
+              "title": "强化学习驱动控制",
+              "title_en": "2013–2016",
+              "color": "#4f5dd5",
+              "items": [
+                "Deep RL 用于控制",
+                "端到端学习尝试",
+                "Sim2Real 概念提出"
+              ]
+            },
+            {
+              "title": "模仿学习与数据驱动",
+              "title_en": "2017–2019",
+              "color": "#6366f1",
+              "items": [
+                "Imitation Learning",
+                "行为克隆 (BC)、GAIL",
+                "大规模示范数据集"
+              ]
+            },
+            {
+              "title": "大模型与多模态融合",
+              "title_en": "2020–2022",
+              "color": "#a855f7",
+              "items": [
+                "Vision-Language",
+                "预训练模型迁移到机器人",
+                "RT-1 等统一模型出现"
+              ]
+            },
+            {
+              "title": "通用具身智能崛起",
+              "title_en": "2023–2024",
+              "color": "#c026d3",
+              "items": [
+                "RT-2, OpenVLA, π0",
+                "大规模多模态数据",
+                "世界模型 + VLA"
+              ]
+            },
+            {
+              "title": "通用物理智能",
+              "title_en": "2025+ 未来",
+              "color": "#db2777",
+              "items": [
+                "世界模型驱动",
+                "长程任务规划",
+                "自主学习与进化"
+              ]
+            }
+          ]
+        },
+        {
+          "kind": "cards",
+          "number": 2,
+          "number_style": "circle",
+          "title": "具身智能系统架构",
+          "subtitle": "Embodied AI System Architecture",
+          "color": "#4f5dd5",
+          "columns": 3,
+          "items": [
+            {
+              "title": "感知层",
+              "title_en": "Perception",
+              "icon": "sensor",
+              "color": "#0ea5e9",
+              "items": [
+                "视觉 Vision",
+                "听觉 Audio",
+                "触觉 Touch",
+                "力觉 Force",
+                "惯导 IMU",
+                "激光雷达 LiDAR",
+                "位置 GPS / UWB",
+                "编码器 Encoder",
+                "其他传感器"
+              ]
+            },
+            {
+              "title": "认知层（大脑）",
+              "title_en": "Cognition (Brain)",
+              "icon": "brain",
+              "color": "#a855f7",
+              "items": [
+                "多模态理解 VLM / VLA",
+                "世界模型 World Model",
+                "任务规划 Task Planning",
+                "决策推理 Reasoning",
+                "运动控制 Motion Control",
+                "操作控制 Manipulation",
+                "导航控制 Navigation",
+                "交互控制 Interaction"
+              ]
+            },
+            {
+              "title": "身体层",
+              "title_en": "Body",
+              "icon": "robot",
+              "color": "#f59e0b",
+              "items": [
+                "移动能力 Locomotion",
+                "操作能力 Manipulation",
+                "交互能力 Interaction"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "row": [
+        {
+          "kind": "table",
+          "number": 3,
+          "number_style": "circle",
+          "title": "具身智能技术栈",
+          "subtitle": "Technology Stack",
+          "color": "#3b82f6",
+          "columns": [
+            "能力 Capability",
+            "技术 Techniques"
+          ],
+          "col_widths": [
+            1.0,
+            2.2
+          ],
+          "rows": [
+            [
+              "语言理解 Language",
+              "LLM, Instruction Following, Tool Use"
+            ],
+            [
+              "视觉理解 Vision",
+              "CNN, ViT, DINO, SAM, Depth Estimation"
+            ],
+            [
+              "多模态理解 Multimodal",
+              "CLIP, SigLIP, Qwen-VL, LLaVA"
+            ],
+            [
+              "世界模型 World Model",
+              "JEPA, Dreamer, Video Gen, Diffusion"
+            ],
+            [
+              "决策与规划 Planning",
+              "Task Decomposition, HTN, MCTS, POMDP"
+            ],
+            [
+              "控制与执行 Control",
+              "Motion Planning, MPC, PID, RL Control"
+            ],
+            [
+              "数据与训练 Data & Training",
+              "Simulation, Real Data, Imitation, RLHF"
+            ],
+            [
+              "部署与落地 Deployment",
+              "ROS2, Isaac Sim, Real Robot, Edge AI"
+            ]
+          ]
+        },
+        {
+          "kind": "cards",
+          "number": 4,
+          "number_style": "circle",
+          "title": "具身智能感知系统",
+          "subtitle": "Perception System",
+          "color": "#0ea5e9",
+          "columns": 6,
+          "items": [
+            {
+              "title": "RGB 相机",
+              "title_en": "Camera",
+              "icon": "image",
+              "color": "#3b82f6"
+            },
+            {
+              "title": "深度相机",
+              "title_en": "Depth",
+              "icon": "cube",
+              "color": "#4f5dd5"
+            },
+            {
+              "title": "激光雷达",
+              "title_en": "LiDAR",
+              "icon": "target",
+              "color": "#0ea5e9"
+            },
+            {
+              "title": "IMU / 惯导",
+              "title_en": "IMU",
+              "icon": "sensor",
+              "color": "#06b6d4"
+            },
+            {
+              "title": "触觉传感器",
+              "title_en": "Touch",
+              "icon": "sensor",
+              "color": "#22c55e"
+            },
+            {
+              "title": "力/力矩传感器",
+              "title_en": "Force / Torque",
+              "icon": "gear",
+              "color": "#84cc16"
+            },
+            {
+              "title": "麦克风阵列",
+              "title_en": "Audio",
+              "icon": "audio",
+              "color": "#a855f7"
+            },
+            {
+              "title": "热成像相机",
+              "title_en": "Thermal",
+              "icon": "image",
+              "color": "#f59e0b"
+            },
+            {
+              "title": "GPS / 定位",
+              "title_en": "GPS",
+              "icon": "globe",
+              "color": "#f97316"
+            },
+            {
+              "title": "编码器",
+              "title_en": "Encoder",
+              "icon": "gear",
+              "color": "#64748b"
+            },
+            {
+              "title": "温湿度 / 环境",
+              "title_en": "Environment",
+              "icon": "sensor",
+              "color": "#14b8a6"
+            },
+            {
+              "title": "其他传感器",
+              "title_en": "Others",
+              "icon": "sensor",
+              "color": "#94a3b8"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "row": [
+        {
+          "kind": "list",
+          "number": 5,
+          "number_style": "circle",
+          "title": "具身智能\"大脑\"模型",
+          "subtitle": "Embodied Brain Models",
+          "weight": 0.8,
+          "color": "#a855f7",
+          "items": [
+            {
+              "icon": "doc",
+              "title": "指令输入 Instruction"
+            },
+            {
+              "icon": "brain",
+              "title": "大语言模型 LLM"
+            },
+            {
+              "icon": "image",
+              "title": "视觉-语言模型 VLM"
+            },
+            {
+              "icon": "robot",
+              "title": "具身智能模型 VLA (Vision-Language-Action)"
+            },
+            {
+              "icon": "globe",
+              "title": "世界模型 World Model"
+            },
+            {
+              "icon": "flow",
+              "title": "规划器 Planner"
+            },
+            {
+              "icon": "gear",
+              "title": "控制器 Controller"
+            },
+            {
+              "icon": "bolt",
+              "title": "动作输出 Action Output"
+            }
+          ]
+        },
+        {
+          "kind": "list",
+          "title": "代表模型",
+          "subtitle": "Representative Models",
+          "weight": 1.2,
+          "color": "#4f5dd5",
+          "columns": 2,
+          "items": [
+            {
+              "title": "RT-1 (Google, 2022)",
+              "desc": "首个视觉-语言-动作统一模型",
+              "node": "rt_1"
+            },
+            {
+              "title": "RT-2 (Google, 2023)",
+              "desc": "大规模多模态数据训练 + VLA",
+              "node": "rt_2"
+            },
+            {
+              "title": "OpenVLA (2023)",
+              "desc": "开源视觉-语言-动作模型",
+              "node": "openvla"
+            },
+            {
+              "title": "π0 (Physical Intelligence, 2024)",
+              "desc": "通用机器人基础模型",
+              "node": "pi_0"
+            },
+            {
+              "title": "GROOT (NVIDIA, 2024)",
+              "desc": "通用人形机器人基础模型",
+              "node": "groot"
+            },
+            {
+              "title": "Qwen-VLA (阿里, 2024)",
+              "desc": "通义视觉-语言-动作模型",
+              "node": "qwen_vla"
+            },
+            {
+              "title": "EmbodiedGPT (MS, 2023)",
+              "desc": "具身智能与大语言模型结合",
+              "node": "embodiedgpt"
+            },
+            {
+              "title": "Gemini Robotics (Google)",
+              "desc": "多模态 + 推理 + 规划",
+              "node": "gemini_robotics"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "row": [
+        {
+          "stack": [
+            {
+              "kind": "cards",
+              "number": 6,
+              "number_style": "circle",
+              "title": "具身智能载体形态",
+              "subtitle": "Embodiment Forms",
+              "color": "#f59e0b",
+              "columns": 6,
+              "items": [
+                {
+                  "title": "移动机器人",
+                  "title_en": "Mobile Robot",
+                  "icon": "robot",
+                  "color": "#3b82f6"
+                },
+                {
+                  "title": "四足机器人",
+                  "title_en": "Quadruped",
+                  "icon": "robot",
+                  "color": "#22c55e"
+                },
+                {
+                  "title": "人形机器人",
+                  "title_en": "Humanoid",
+                  "icon": "person",
+                  "color": "#f59e0b"
+                },
+                {
+                  "title": "机械臂",
+                  "title_en": "Manipulator",
+                  "icon": "gear",
+                  "color": "#a855f7"
+                },
+                {
+                  "title": "空中机器人",
+                  "title_en": "Aerial Robot",
+                  "icon": "rocket",
+                  "color": "#0ea5e9"
+                },
+                {
+                  "title": "特种机器人",
+                  "title_en": "Special Robot",
+                  "icon": "robot",
+                  "color": "#64748b"
+                }
+              ]
+            },
+            {
+              "kind": "pills",
+              "title": "核心能力",
+              "subtitle": "Core Capabilities",
+              "color": "#f59e0b",
+              "label_w": 10,
+              "rows": [
+                {
+                  "color": "#f59e0b",
+                  "pills": [
+                    "导航移动 Navigation",
+                    "物体操作 Manipulation",
+                    "抓取操作 Grasping",
+                    "工具使用 Tool Use",
+                    "人机交互 Human Interaction",
+                    "环境适应 Environment Adaptation"
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "kind": "pills",
+          "number": 7,
+          "number_style": "circle",
+          "title": "具身智能数据与训练",
+          "subtitle": "Data & Training",
+          "color": "#06b6d4",
+          "label_w": 170,
+          "rows": [
+            {
+              "label": "数据来源",
+              "sublabel": "Data Sources",
+              "color": "#06b6d4",
+              "pills": [
+                "真实机器人数据 Real Robot Data",
+                "遥操作数据 Teleoperation Data",
+                "仿真数据 Simulation Data",
+                "互联网数据 Internet Data"
+              ]
+            },
+            {
+              "label": "训练范式",
+              "sublabel": "Training Paradigms",
+              "color": "#3b82f6",
+              "pills": [
+                "模仿学习 (BC)",
+                "强化学习 (RL)",
+                "离线强化学习 (Offline RL)",
+                "自监督学习 (SSL)",
+                "多任务联合学习 (MTL)"
+              ]
+            },
+            {
+              "label": "Sim2Real",
+              "sublabel": "Sim-to-Real",
+              "color": "#a855f7",
+              "pills": [
+                "域随机化 Domain Randomization",
+                "风格迁移 Style Transfer",
+                "世界模型 World Model",
+                "课程式学习 Curriculum Learning"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "row": [
+        {
+          "kind": "list",
+          "number": 8,
+          "number_style": "circle",
+          "title": "当前存在的挑战",
+          "subtitle": "Challenges",
+          "weight": 1.0,
+          "color": "#dc2626",
+          "columns": 2,
+          "items": [
+            {
+              "icon": "flow",
+              "title": "长程任务规划与泛化能力不足"
+            },
+            {
+              "icon": "image",
+              "title": "复杂环境感知与理解仍不完备"
+            },
+            {
+              "icon": "gear",
+              "title": "通用操作能力不足、灵巧操作困难"
+            },
+            {
+              "icon": "cube",
+              "title": "Sim2Real Gap 依然明显"
+            },
+            {
+              "icon": "db",
+              "title": "高质量数据集严重不足"
+            },
+            {
+              "icon": "target",
+              "title": "安全性与可靠性挑战"
+            },
+            {
+              "icon": "bolt",
+              "title": "能耗与硬件限制"
+            },
+            {
+              "icon": "doc",
+              "title": "模型可解释性与可控性不足"
+            },
+            {
+              "icon": "person",
+              "title": "伦理与社会影响"
+            },
+            {
+              "icon": "chart",
+              "title": "高昂研发成本、商业化落地困难"
+            }
+          ]
+        },
+        {
+          "kind": "list",
+          "number": 9,
+          "number_style": "circle",
+          "title": "未来趋势",
+          "subtitle": "Future Trends",
+          "weight": 1.0,
+          "color": "#16a34a",
+          "marker": "check",
+          "illustration": "brain",
+          "items": [
+            {
+              "title": "通用具身基础模型 (Embodied Foundation Model)"
+            },
+            {
+              "title": "世界模型驱动的自主智能体 (World Model + Agent)"
+            },
+            {
+              "title": "大规模多模态数据与自监督学习"
+            },
+            {
+              "title": "人机协作与具身智能社会化"
+            },
+            {
+              "title": "更强的跨场景泛化能力"
+            },
+            {
+              "title": "更高效的训练与推理 (边缘 + 云协同)"
+            },
+            {
+              "title": "走向通用物理智能 (General Physical Intelligence)"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "row": [
+        {
+          "kind": "cards",
+          "number": 10,
+          "number_style": "circle",
+          "title": "代表性公司与机构",
+          "subtitle": "Companies & Labs",
+          "weight": 1.05,
+          "color": "#1a2b5c",
+          "columns": 3,
+          "items": [
+            {
+              "title": "NVIDIA",
+              "color": "#22c55e"
+            },
+            {
+              "title": "Google DeepMind",
+              "color": "#3b82f6"
+            },
+            {
+              "title": "OpenAI",
+              "color": "#1a2b5c"
+            },
+            {
+              "title": "TESLA",
+              "color": "#dc2626"
+            },
+            {
+              "title": "FIGURE",
+              "color": "#64748b"
+            },
+            {
+              "title": "Physical Intelligence",
+              "color": "#a855f7"
+            },
+            {
+              "title": "Agility Robotics",
+              "color": "#0ea5e9"
+            },
+            {
+              "title": "Boston Dynamics",
+              "color": "#f59e0b"
+            },
+            {
+              "title": "UNITREE",
+              "color": "#84cc16"
+            },
+            {
+              "title": "Fourier",
+              "color": "#06b6d4"
+            },
+            {
+              "title": "EngineAI",
+              "color": "#4f5dd5"
+            },
+            {
+              "title": "智元机器人 (Zhiyuan)",
+              "color": "#db2777"
+            },
+            {
+              "title": "银河通用 (Galaxy)",
+              "color": "#6366f1"
+            },
+            {
+              "title": "普渡科技 (Pudu)",
+              "color": "#f97316"
+            },
+            {
+              "title": "优必选 (UBTECH)",
+              "color": "#14b8a6"
+            },
+            {
+              "title": "更多公司持续加入中…",
+              "color": "#94a3b8"
+            }
+          ]
+        },
+        {
+          "kind": "list",
+          "number": 11,
+          "number_style": "circle",
+          "title": "关键数据集",
+          "subtitle": "Key Datasets",
+          "weight": 0.95,
+          "color": "#0ea5e9",
+          "items": [
+            {
+              "icon": "db",
+              "title": "RT-1 Dataset (Google)",
+              "node": "rt_1"
+            },
+            {
+              "icon": "db",
+              "title": "Open X-Embodiment",
+              "node": "open_x_embodiment"
+            },
+            {
+              "icon": "db",
+              "title": "Bridge Data (Google)",
+              "node": "bridge_data"
+            },
+            {
+              "icon": "db",
+              "title": "RoboNet"
+            },
+            {
+              "icon": "db",
+              "title": "ALOHA Dataset",
+              "node": "aloha"
+            },
+            {
+              "icon": "db",
+              "title": "Ego4D"
+            },
+            {
+              "icon": "db",
+              "title": "DROID Dataset",
+              "node": "droid"
+            },
+            {
+              "icon": "db",
+              "title": "RH20T Dataset"
+            },
+            {
+              "icon": "db",
+              "title": "CALVIN Dataset"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "row": [
+        {
+          "stack": [
+            {
+              "kind": "chevrons",
+              "number": 12,
+              "number_style": "circle",
+              "title": "技术路线演化",
+              "subtitle": "Evolutionary Roadmap",
+              "color": "#4f5dd5",
+              "colors": [
+                "#64748b",
+                "#4f5dd5",
+                "#3b82f6",
+                "#0ea5e9",
+                "#06b6d4",
+                "#22c55e",
+                "#84cc16",
+                "#a855f7",
+                "#c026d3"
+              ],
+              "steps": [
+                {
+                  "label": "基于规则",
+                  "label_en": "Rule-based"
+                },
+                {
+                  "label": "经典机器人",
+                  "label_en": "Classical Robotics"
+                },
+                {
+                  "label": "SLAM 与导航",
+                  "label_en": "SLAM & Navigation"
+                },
+                {
+                  "label": "深度学习",
+                  "label_en": "Deep Learning"
+                },
+                {
+                  "label": "深度强化学习",
+                  "label_en": "Deep RL"
+                },
+                {
+                  "label": "视觉-语言",
+                  "label_en": "Vision-Language"
+                },
+                {
+                  "label": "VLA 模型",
+                  "label_en": "VLA Model"
+                },
+                {
+                  "label": "世界模型",
+                  "label_en": "World Model"
+                },
+                {
+                  "label": "通用具身智能",
+                  "label_en": "General Embodied AI"
+                }
+              ]
+            },
+            {
+              "kind": "pills",
+              "title": "能力持续提升",
+              "subtitle": "Capability Growth",
+              "color": "#22c55e",
+              "label_w": 10,
+              "rows": [
+                {
+                  "color": "#22c55e",
+                  "pills": [
+                    "感知 Perception",
+                    "理解 Understanding",
+                    "推理 Reasoning",
+                    "规划 Planning",
+                    "行动 Action",
+                    "自主进化 Self-Evolution"
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "kind": "cards",
+          "number": 13,
+          "number_style": "circle",
+          "title": "学习路线",
+          "subtitle": "Learning Roadmap",
+          "color": "#22c55e",
+          "columns": 4,
+          "items": [
+            {
+              "title": "1. 基础知识",
+              "color": "#64748b",
+              "items": [
+                "数学、编程、控制、机器人学"
+              ]
+            },
+            {
+              "title": "2. 感知基础",
+              "color": "#0ea5e9",
+              "items": [
+                "计算机视觉、传感器融合"
+              ]
+            },
+            {
+              "title": "3. 学习方法",
+              "color": "#3b82f6",
+              "items": [
+                "机器学习、深度学习"
+              ]
+            },
+            {
+              "title": "4. 强化学习",
+              "color": "#4f5dd5",
+              "items": [
+                "RL 理论与算法"
+              ]
+            },
+            {
+              "title": "5. 多模态与大模型",
+              "color": "#a855f7",
+              "items": [
+                "VLM、世界模型、VLA"
+              ]
+            },
+            {
+              "title": "6. 机器人实践",
+              "color": "#f59e0b",
+              "items": [
+                "ROS、仿真、硬件开发"
+              ]
+            },
+            {
+              "title": "7. 项目实践",
+              "color": "#22c55e",
+              "items": [
+                "数据采集、训练、部署"
+              ]
+            },
+            {
+              "title": "8. 持续迭代",
+              "color": "#16a34a",
+              "items": [
+                "优化、评估、创新"
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "footer": {
+    "quote_zh": "具身智能是AI的下一个前沿：让智能体拥有身体，感知世界，理解世界，改变世界。",
+    "quote_en": "Embodied AI is the next frontier of AI: Empowering intelligence with a body to perceive, understand, and change the physical world."
+  },
+  "nodes": [
+    {
+      "id": "ros",
+      "label": "机器人操作系统",
+      "label_en": "ROS",
+      "year": 2007,
+      "kind": "industry"
+    },
+    {
+      "id": "slam",
+      "label": "同步定位与建图",
+      "label_en": "SLAM",
+      "year": 1995,
+      "kind": "concept"
+    },
+    {
+      "id": "sim2real",
+      "label": "仿真到现实",
+      "label_en": "Sim2Real",
+      "year": 2016,
+      "kind": "concept"
+    },
+    {
+      "id": "behavior_cloning",
+      "label": "行为克隆",
+      "label_en": "Behavior Cloning (BC)",
+      "year": 2017,
+      "kind": "concept"
+    },
+    {
+      "id": "gail",
+      "label": "生成对抗模仿学习",
+      "label_en": "GAIL",
+      "year": 2016,
+      "kind": "paper"
+    },
+    {
+      "id": "rt_1",
+      "label": "RT-1",
+      "label_en": "RT-1 (Robotics Transformer)",
+      "year": 2022,
+      "kind": "milestone"
+    },
+    {
+      "id": "rt_2",
+      "label": "RT-2",
+      "label_en": "RT-2 (VLA)",
+      "year": 2023,
+      "kind": "milestone"
+    },
+    {
+      "id": "openvla",
+      "label": "OpenVLA",
+      "label_en": "OpenVLA",
+      "year": 2023,
+      "kind": "model"
+    },
+    {
+      "id": "pi_0",
+      "label": "π0",
+      "label_en": "π0 (Physical Intelligence)",
+      "year": 2024,
+      "kind": "milestone"
+    },
+    {
+      "id": "groot",
+      "label": "GROOT",
+      "label_en": "GROOT (NVIDIA)",
+      "year": 2024,
+      "kind": "model"
+    },
+    {
+      "id": "qwen_vla",
+      "label": "Qwen-VLA",
+      "label_en": "Qwen-VLA",
+      "year": 2024,
+      "kind": "model"
+    },
+    {
+      "id": "embodiedgpt",
+      "label": "EmbodiedGPT",
+      "label_en": "EmbodiedGPT",
+      "year": 2023,
+      "kind": "model"
+    },
+    {
+      "id": "gemini_robotics",
+      "label": "Gemini Robotics",
+      "label_en": "Gemini Robotics",
+      "year": 2024,
+      "kind": "model"
+    },
+    {
+      "id": "vla",
+      "label": "视觉-语言-动作模型",
+      "label_en": "VLA (Vision-Language-Action)",
+      "year": 2023,
+      "kind": "concept"
+    },
+    {
+      "id": "world_model",
+      "label": "世界模型",
+      "label_en": "World Model",
+      "year": 2024,
+      "kind": "concept"
+    },
+    {
+      "id": "dreamer",
+      "label": "Dreamer",
+      "label_en": "Dreamer",
+      "year": 2020,
+      "kind": "model"
+    },
+    {
+      "id": "jepa",
+      "label": "联合嵌入预测架构",
+      "label_en": "JEPA (Meta)",
+      "year": 2023,
+      "kind": "concept"
+    },
+    {
+      "id": "open_x_embodiment",
+      "label": "Open X-Embodiment",
+      "label_en": "Open X-Embodiment",
+      "year": 2023,
+      "kind": "paper"
+    },
+    {
+      "id": "bridge_data",
+      "label": "Bridge Data",
+      "label_en": "Bridge Data",
+      "year": 2022,
+      "kind": "paper"
+    },
+    {
+      "id": "droid",
+      "label": "DROID 数据集",
+      "label_en": "DROID Dataset",
+      "year": 2024,
+      "kind": "paper"
+    },
+    {
+      "id": "aloha",
+      "label": "ALOHA",
+      "label_en": "ALOHA (斯坦福双臂平台)",
+      "year": 2023,
+      "kind": "industry"
+    },
+    {
+      "id": "mobile_aloha",
+      "label": "Mobile ALOHA",
+      "label_en": "Mobile ALOHA",
+      "year": 2024,
+      "kind": "industry"
+    },
+    {
+      "id": "clip",
+      "label": "图文对比预训练",
+      "label_en": "CLIP",
+      "year": 2021,
+      "kind": "milestone"
+    },
+    {
+      "id": "vlm",
+      "label": "视觉-语言模型",
+      "label_en": "VLM",
+      "year": 2023,
+      "kind": "concept"
+    },
+    {
+      "id": "gemini",
+      "label": "Gemini",
+      "label_en": "Gemini",
+      "year": 2023,
+      "kind": "model"
+    },
+    {
+      "id": "llm",
+      "label": "大语言模型",
+      "label_en": "LLM",
+      "year": 2022,
+      "kind": "concept"
+    }
+  ],
+  "edges": [
+    {
+      "source": "rt_1",
+      "target": "rt_2",
+      "relation": "inherits"
+    },
+    {
+      "source": "rt_2",
+      "target": "openvla",
+      "relation": "converges"
+    },
+    {
+      "source": "clip",
+      "target": "vla",
+      "relation": "composes"
+    },
+    {
+      "source": "vlm",
+      "target": "rt_2",
+      "relation": "composes"
+    },
+    {
+      "source": "rt_2",
+      "target": "pi_0",
+      "relation": "converges"
+    },
+    {
+      "source": "pi_0",
+      "target": "rt_2",
+      "relation": "converges"
+    },
+    {
+      "source": "pi_0",
+      "target": "groot",
+      "relation": "converges"
+    },
+    {
+      "source": "groot",
+      "target": "pi_0",
+      "relation": "converges"
+    },
+    {
+      "source": "gemini",
+      "target": "gemini_robotics",
+      "relation": "inherits"
+    },
+    {
+      "source": "llm",
+      "target": "embodiedgpt",
+      "relation": "composes"
+    },
+    {
+      "source": "gail",
+      "target": "behavior_cloning",
+      "relation": "converges"
+    },
+    {
+      "source": "world_model",
+      "target": "dreamer",
+      "relation": "inherits"
+    },
+    {
+      "source": "jepa",
+      "target": "world_model",
+      "relation": "converges"
+    },
+    {
+      "source": "world_model",
+      "target": "jepa",
+      "relation": "converges"
+    },
+    {
+      "source": "open_x_embodiment",
+      "target": "openvla",
+      "relation": "composes"
+    },
+    {
+      "source": "bridge_data",
+      "target": "rt_1",
+      "relation": "composes"
+    },
+    {
+      "source": "aloha",
+      "target": "mobile_aloha",
+      "relation": "inherits"
+    }
+  ],
+  "next": {
+    "label": "NEXT",
+    "title": "Vol.09 自动驾驶",
+    "desc": "从感知智能到认知智能，驱动未来出行变革"
+  }
+}

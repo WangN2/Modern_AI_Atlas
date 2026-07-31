@@ -1,0 +1,1185 @@
+{
+  "meta": {
+    "series": "Modern AI Atlas",
+    "volume": "Vol.09",
+    "title_zh": "自动驾驶",
+    "title_en": "Autonomous Driving",
+    "theme": "atlas_light",
+    "layout": "bands",
+    "title_style": "badge",
+    "badge": {
+      "name": "Modern AI Atlas",
+      "volume": "Vol.09"
+    },
+    "tagline": "从感知智能到认知智能，驱动未来出行变革",
+    "callout": "自动驾驶的终极目标，不是让机器开车，而是让机器理解世界，并在复杂世界中安全地行动。—— Kai-Fu Lee",
+    "canvas": {
+      "width": 1682,
+      "height": 2650,
+      "gap": 12,
+      "margin": 32
+    }
+  },
+  "sections": [
+    {
+      "kind": "cards",
+      "number": 1,
+      "title": "自动驾驶发展时间线",
+      "subtitle": "Timeline: 1980s — 2026+",
+      "color": "#3b82f6",
+      "columns": 7,
+      "items": [
+        {
+          "title": "萌芽探索阶段",
+          "title_en": "1980s–1990s",
+          "color": "#64748b",
+          "desc": "Early Exploration",
+          "items": [
+            "DARPA 自动驾驶挑战赛",
+            "传统算法与规则系统",
+            "简单环境感知"
+          ]
+        },
+        {
+          "title": "技术积累阶段",
+          "title_en": "2000–2010",
+          "color": "#0ea5e9",
+          "desc": "Technology Accumulation",
+          "items": [
+            "传感器技术发展",
+            "SLAM 与地图构建",
+            "传统机器学习应用"
+          ]
+        },
+        {
+          "title": "深度学习引入阶段",
+          "title_en": "2011–2014",
+          "color": "#3b82f6",
+          "desc": "Deep Learning Emergence",
+          "items": [
+            "AlexNet 推动视觉突破",
+            "深度 CNN 应用于感知",
+            "KITTI 数据集发布"
+          ]
+        },
+        {
+          "title": "感知突破阶段",
+          "title_en": "2015–2017",
+          "color": "#2563eb",
+          "desc": "Perception Breakthrough",
+          "items": [
+            "目标检测精度大幅提升",
+            "语义分割与多任务学习",
+            "端到端感知系统出现"
+          ]
+        },
+        {
+          "title": "高精地图与融合阶段",
+          "title_en": "2018–2020",
+          "color": "#4f46e5",
+          "desc": "HD Map & Fusion Era",
+          "items": [
+            "高精地图广泛应用",
+            "多传感器融合多模态",
+            "规划与控制模块化"
+          ]
+        },
+        {
+          "title": "端到端转型阶段",
+          "title_en": "2021–2023",
+          "color": "#6366f1",
+          "desc": "End-to-End Transition",
+          "items": [
+            "BEV 感知成为主流",
+            "Transformer 进入自动驾驶",
+            "端到端自动驾驶落地测试"
+          ]
+        },
+        {
+          "title": "大模型驱动阶段",
+          "title_en": "2024–2026+",
+          "color": "#7c3aed",
+          "desc": "Foundation Model Era",
+          "items": [
+            "VLM + 世界模型上车",
+            "端到端大模型",
+            "真实世界大规模商业化"
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "industry",
+      "number": 2,
+      "title": "自动驾驶系统架构",
+      "subtitle": "System Architecture",
+      "color": "#2563eb",
+      "groups": [
+        {
+          "title": "传感器输入 (Sensor Input)",
+          "color": "#0ea5e9",
+          "items": [
+            "摄像头 Camera",
+            "激光雷达 LiDAR",
+            "毫米波雷达 Radar",
+            "超声波雷达 USS",
+            "IMU / GNSS",
+            "高精地图 HD Map"
+          ]
+        },
+        {
+          "title": "感知 (Perception)",
+          "color": "#2563eb",
+          "items": [
+            "目标检测 Detection",
+            "语义分割 Segmentation",
+            "车道线检测 Lane Detection",
+            "深度估计 Depth Estimation",
+            "多目标跟踪 Tracking",
+            "可行驶区域 Drivable Area"
+          ]
+        },
+        {
+          "title": "定位与建图 (Localization & Mapping)",
+          "color": "#4f46e5",
+          "items": [
+            "SLAM",
+            "定位 Localization",
+            "高精地图 HD Map"
+          ]
+        },
+        {
+          "title": "预测 (Prediction)",
+          "color": "#6366f1",
+          "items": [
+            "目标预测 Object Prediction",
+            "轨迹预测 Trajectory Prediction",
+            "场景预测 Scene Prediction"
+          ]
+        },
+        {
+          "title": "规划 (Planning)",
+          "color": "#7c3aed",
+          "items": [
+            "全局规划 Global Planning",
+            "行为规划 Behavior Planning",
+            "路径规划 Path Planning"
+          ]
+        },
+        {
+          "title": "控制 (Control)",
+          "color": "#0891b2",
+          "items": [
+            "转向控制 Steering",
+            "加速控制 Acceleration",
+            "制动控制 Braking"
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "cards",
+      "number": 3,
+      "title": "技术路线演进",
+      "subtitle": "Evolutionary Roadmap",
+      "color": "#2563eb",
+      "columns": 5,
+      "items": [
+        {
+          "title": "模块化",
+          "title_en": "Modular Pipeline",
+          "color": "#64748b",
+          "desc": "2010s",
+          "items": [
+            "分模块设计",
+            "规则 + 传统算法",
+            "高精地图依赖"
+          ]
+        },
+        {
+          "title": "感知主导",
+          "title_en": "Perception-Centric",
+          "color": "#0ea5e9",
+          "desc": "2016–2019",
+          "items": [
+            "深度学习感知",
+            "多任务学习",
+            "模块化规划控制"
+          ]
+        },
+        {
+          "title": "BEV + 融合",
+          "title_en": "BEV + Fusion",
+          "color": "#3b82f6",
+          "desc": "2020–2022",
+          "items": [
+            "BEV 表示",
+            "多传感器融合",
+            "端到端组件出现"
+          ]
+        },
+        {
+          "title": "端到端",
+          "title_en": "End-to-End",
+          "color": "#4f46e5",
+          "desc": "2022–2024",
+          "items": [
+            "端到端模型",
+            "不依赖高精地图",
+            "大规模数据驱动"
+          ]
+        },
+        {
+          "title": "大模型时代",
+          "title_en": "Foundation Model Era",
+          "color": "#7c3aed",
+          "desc": "2024+",
+          "items": [
+            "VLM + 世界模型",
+            "通用场景理解",
+            "自主决策与泛化"
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "industry",
+      "number": 4,
+      "title": "感知技术全景",
+      "subtitle": "Perception Panorama",
+      "color": "#0891b2",
+      "groups": [
+        {
+          "title": "数据输入 (Input)",
+          "color": "#0ea5e9",
+          "items": [
+            "街景相机图像 Street Image",
+            "点云渲染 Point Cloud"
+          ]
+        },
+        {
+          "title": "感知任务 (Perception Tasks)",
+          "color": "#2563eb",
+          "items": [
+            "3D 目标检测 3D Detection",
+            "语义分割 Semantic Segmentation",
+            "车道线检测 Lane Detection",
+            "可行驶区域 Drivable Area",
+            "深度估计 Depth Estimation",
+            "实例分割 Instance Segmentation"
+          ]
+        },
+        {
+          "title": "BEV 表示 (BEV Representation)",
+          "color": "#4f46e5",
+          "items": [
+            "BEV Grid 鸟瞰网格图",
+            "HD Map"
+          ]
+        },
+        {
+          "title": "输出结果 (Output)",
+          "color": "#6366f1",
+          "items": [
+            "3D检测结果",
+            "语义分割结果",
+            "车道线结果",
+            "可行驶区域",
+            "深度图",
+            "实例分割结果"
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "industry",
+      "number": 5,
+      "title": "代表性算法与模型",
+      "subtitle": "Representative Algorithms & Models",
+      "color": "#2563eb",
+      "groups": [
+        {
+          "title": "检测 (Detection)",
+          "color": "#2563eb",
+          "items": [
+            "R-CNN 系列",
+            "YOLO 系列",
+            "CenterPoint",
+            "PV-RCNN",
+            "SECOND",
+            "RT-DETR"
+          ]
+        },
+        {
+          "title": "分割 (Segmentation)",
+          "color": "#0ea5e9",
+          "items": [
+            "FCN",
+            "DeepLab 系列",
+            "SegFormer",
+            "BEVFormer",
+            "Mask2Former"
+          ]
+        },
+        {
+          "title": "预测 (Prediction)",
+          "color": "#4f46e5",
+          "items": [
+            "Social LSTM",
+            "VectorNet",
+            "HiVT",
+            "MTR",
+            "MotionLM"
+          ]
+        },
+        {
+          "title": "规划 (Planning)",
+          "color": "#6366f1",
+          "items": [
+            "A* / D* Lite",
+            "Hybrid A*",
+            "Lattice Planner",
+            "ILQR",
+            "CHOMP / STOMP"
+          ]
+        },
+        {
+          "title": "端到端 (End-to-End)",
+          "color": "#7c3aed",
+          "items": [
+            "UniAD",
+            "VAD",
+            "EMMA",
+            "DriveGPT4",
+            "Tesla FSD"
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "cards",
+      "number": 6,
+      "title": "主流自动驾驶公司与方案",
+      "subtitle": "Companies & Solutions",
+      "color": "#2563eb",
+      "columns": 5,
+      "items": [
+        {
+          "title": "Tesla FSD",
+          "icon": "bolt",
+          "color": "#dc2626"
+        },
+        {
+          "title": "Waymo Driver",
+          "icon": "flow",
+          "color": "#2563eb"
+        },
+        {
+          "title": "Baidu Apollo",
+          "icon": "globe",
+          "color": "#2563eb"
+        },
+        {
+          "title": "小鹏汽车 XNGP",
+          "icon": "rocket",
+          "color": "#0ea5e9"
+        },
+        {
+          "title": "理想汽车 AD Max",
+          "icon": "star",
+          "color": "#f59e0b"
+        },
+        {
+          "title": "蔚来 NIO Pilot",
+          "icon": "atom",
+          "color": "#0891b2"
+        },
+        {
+          "title": "华为 ADS",
+          "icon": "network",
+          "color": "#dc2626"
+        },
+        {
+          "title": "Momenta Mpilot",
+          "icon": "brain",
+          "color": "#4f46e5"
+        },
+        {
+          "title": "智己汽车 IM AD",
+          "icon": "cube",
+          "color": "#6366f1"
+        },
+        {
+          "title": "滴滴自动驾驶 Didi Neuron",
+          "icon": "target",
+          "color": "#f59e0b"
+        }
+      ]
+    },
+    {
+      "row": [
+        {
+          "kind": "list",
+          "number": 7,
+          "title": "关键数据集",
+          "subtitle": "Key Datasets",
+          "weight": 1.0,
+          "color": "#2563eb",
+          "columns": 2,
+          "summary": "注：DIOR (2022) 按原图转录 — DIOR 实为遥感数据集",
+          "items": [
+            {
+              "icon": "db",
+              "title": "KITTI (2012)"
+            },
+            {
+              "icon": "db",
+              "title": "nuScenes (2019)"
+            },
+            {
+              "icon": "db",
+              "title": "Waymo Open Dataset (2019)"
+            },
+            {
+              "icon": "db",
+              "title": "Argoverse 2 (2019)"
+            },
+            {
+              "icon": "db",
+              "title": "Lyft Level 5 (2020)"
+            },
+            {
+              "icon": "db",
+              "title": "ONCE (2021)"
+            },
+            {
+              "icon": "db",
+              "title": "PandaSet (2021)"
+            },
+            {
+              "icon": "db",
+              "title": "BDD100K (2020)"
+            },
+            {
+              "icon": "db",
+              "title": "DIOR (2022)"
+            },
+            {
+              "icon": "db",
+              "title": "OpenLane (2023)"
+            }
+          ]
+        },
+        {
+          "kind": "pills",
+          "number": 8,
+          "title": "评价指标",
+          "subtitle": "Evaluation Metrics",
+          "weight": 1.0,
+          "color": "#2563eb",
+          "label_w": 120,
+          "rows": [
+            {
+              "label": "检测类",
+              "sublabel": "Detection",
+              "color": "#2563eb",
+              "pills": [
+                "mAP",
+                "NDS",
+                "AMOTA"
+              ]
+            },
+            {
+              "label": "分割类",
+              "sublabel": "Segmentation",
+              "color": "#0ea5e9",
+              "pills": [
+                "mIoU",
+                "mAcc",
+                "Dice"
+              ]
+            },
+            {
+              "label": "预测类",
+              "sublabel": "Prediction",
+              "color": "#4f46e5",
+              "pills": [
+                "minADE",
+                "minFDE",
+                "HOTA"
+              ]
+            },
+            {
+              "label": "规划控制类",
+              "sublabel": "Planning & Control",
+              "color": "#6366f1",
+              "pills": [
+                "L2 距离",
+                "碰撞率",
+                "成功率"
+              ]
+            },
+            {
+              "label": "综合指标",
+              "sublabel": "Overall",
+              "color": "#7c3aed",
+              "pills": [
+                "安全性",
+                "舒适性",
+                "效率性"
+              ]
+            }
+          ]
+        },
+        {
+          "kind": "list",
+          "number": 9,
+          "title": "当前面临的挑战",
+          "subtitle": "Open Challenges",
+          "color": "#dc2626",
+          "columns": 2,
+          "items": [
+            {
+              "icon": "target",
+              "title": "长尾场景与极端场景泛化能力不足"
+            },
+            {
+              "icon": "bolt",
+              "title": "感知错误导致的级联风险"
+            },
+            {
+              "icon": "network",
+              "title": "预测的不确定性与交互博弈难题"
+            },
+            {
+              "icon": "globe",
+              "title": "高精地图成本高、更新难、覆盖不足"
+            },
+            {
+              "icon": "flow",
+              "title": "Sim2Real Gap 与域迁移困难"
+            },
+            {
+              "icon": "doc",
+              "title": "数据隐私、合规与安全问题"
+            },
+            {
+              "icon": "book",
+              "title": "大规模端到端模型的可解释性不足"
+            },
+            {
+              "icon": "gear",
+              "title": "算力需求巨大，成本与能耗高"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "row": [
+        {
+          "kind": "list",
+          "number": 10,
+          "title": "未来趋势",
+          "subtitle": "Future Trends",
+          "weight": 1.05,
+          "color": "#16a34a",
+          "marker": "check",
+          "items": [
+            {
+              "title": "大模型驱动的自动驾驶（VLM + World Model）"
+            },
+            {
+              "title": "无图化（Mapless）与轻地图方案"
+            },
+            {
+              "title": "端到端自动驾驶大模型"
+            },
+            {
+              "title": "多模态融合与自监督学习"
+            },
+            {
+              "title": "车路协同（V2X）与智慧交通"
+            },
+            {
+              "title": "更安全、更可解释、更可靠的自动驾驶"
+            }
+          ]
+        },
+        {
+          "kind": "cards",
+          "number": 11,
+          "title": "典型场景应用",
+          "subtitle": "Typical Applications",
+          "weight": 1.0,
+          "color": "#2563eb",
+          "columns": 2,
+          "items": [
+            {
+              "title": "城市道路 Urban Road",
+              "icon": "globe",
+              "color": "#2563eb"
+            },
+            {
+              "title": "高速公路 Highway",
+              "icon": "flow",
+              "color": "#0ea5e9"
+            },
+            {
+              "title": "自动泊车 Auto Parking",
+              "icon": "target",
+              "color": "#4f46e5"
+            },
+            {
+              "title": "Robotaxi 自动驾驶出租车",
+              "icon": "robot",
+              "color": "#6366f1"
+            },
+            {
+              "title": "干线物流 Autonomous Trucking",
+              "icon": "layers",
+              "color": "#7c3aed"
+            },
+            {
+              "title": "矿区/港口 Industrial & Mining",
+              "icon": "gear",
+              "color": "#0891b2"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "chevrons",
+      "number": 12,
+      "title": "学习路线图",
+      "subtitle": "Learning Roadmap",
+      "color": "#2563eb",
+      "colors": [
+        "#64748b",
+        "#0ea5e9",
+        "#3b82f6",
+        "#2563eb",
+        "#4f46e5",
+        "#6366f1",
+        "#7c3aed"
+      ],
+      "illustration": "earth",
+      "caption": "从基础理论到工程实践",
+      "steps": [
+        {
+          "label": "基础知识",
+          "label_en": "数学、编程、线性代数"
+        },
+        {
+          "label": "机器学习基础",
+          "label_en": "ML Basics"
+        },
+        {
+          "label": "计算机视觉",
+          "label_en": "CV"
+        },
+        {
+          "label": "深度学习",
+          "label_en": "Deep Learning"
+        },
+        {
+          "label": "自动驾驶核心",
+          "label_en": "感知 / 定位 / 规划"
+        },
+        {
+          "label": "仿真与工具",
+          "label_en": "CARLA / ROS"
+        },
+        {
+          "label": "工程实践",
+          "label_en": "项目实战"
+        }
+      ]
+    }
+  ],
+  "footer": {
+    "quote_zh": "自动驾驶的本质是：让机器理解世界，在复杂、不确定的环境中做出安全、智能的决策。",
+    "quote_en": "The essence of autonomous driving is to enable machines to understand the world and make safe and intelligent decisions in complex and uncertain environments.",
+    "globe": true
+  },
+  "nodes": [
+    {
+      "id": "darpa_challenge",
+      "label": "DARPA 自动驾驶挑战赛",
+      "label_en": "DARPA Grand Challenge",
+      "year": 2004,
+      "kind": "milestone"
+    },
+    {
+      "id": "slam",
+      "label": "SLAM 与地图构建",
+      "label_en": "SLAM",
+      "year": 2000,
+      "kind": "concept"
+    },
+    {
+      "id": "alexnet",
+      "label": "AlexNet",
+      "label_en": "AlexNet",
+      "year": 2012,
+      "kind": "model"
+    },
+    {
+      "id": "kitti",
+      "label": "KITTI 数据集",
+      "label_en": "KITTI",
+      "year": 2012,
+      "kind": "industry"
+    },
+    {
+      "id": "rcnn_family",
+      "label": "R-CNN 系列",
+      "label_en": "R-CNN family",
+      "year": 2014,
+      "kind": "model"
+    },
+    {
+      "id": "yolo_family",
+      "label": "YOLO 系列",
+      "label_en": "YOLO family",
+      "year": 2016,
+      "kind": "model"
+    },
+    {
+      "id": "fcn",
+      "label": "FCN",
+      "label_en": "Fully Convolutional Network",
+      "year": 2015,
+      "kind": "model"
+    },
+    {
+      "id": "deeplab_family",
+      "label": "DeepLab 系列",
+      "label_en": "DeepLab family",
+      "year": 2016,
+      "kind": "model"
+    },
+    {
+      "id": "social_lstm",
+      "label": "Social LSTM",
+      "label_en": "Social LSTM",
+      "year": 2016,
+      "kind": "model"
+    },
+    {
+      "id": "second",
+      "label": "SECOND",
+      "label_en": "SECOND",
+      "year": 2018,
+      "kind": "model"
+    },
+    {
+      "id": "pointpillars_centerpoint",
+      "label": "CenterPoint",
+      "label_en": "CenterPoint",
+      "year": 2020,
+      "kind": "model"
+    },
+    {
+      "id": "pv_rcnn",
+      "label": "PV-RCNN",
+      "label_en": "PV-RCNN",
+      "year": 2020,
+      "kind": "model"
+    },
+    {
+      "id": "nuscenes",
+      "label": "nuScenes",
+      "label_en": "nuScenes",
+      "year": 2019,
+      "kind": "industry"
+    },
+    {
+      "id": "waymo_open_dataset",
+      "label": "Waymo Open Dataset",
+      "label_en": "Waymo Open Dataset",
+      "year": 2019,
+      "kind": "industry"
+    },
+    {
+      "id": "bev_perception",
+      "label": "BEV 感知",
+      "label_en": "BEV Perception",
+      "year": 2021,
+      "kind": "concept"
+    },
+    {
+      "id": "bevformer",
+      "label": "BEVFormer",
+      "label_en": "BEVFormer",
+      "year": 2022,
+      "kind": "model"
+    },
+    {
+      "id": "transformer",
+      "label": "Transformer",
+      "label_en": "Transformer",
+      "year": 2017,
+      "kind": "paper"
+    },
+    {
+      "id": "vectornet",
+      "label": "VectorNet",
+      "label_en": "VectorNet",
+      "year": 2020,
+      "kind": "model"
+    },
+    {
+      "id": "hivt",
+      "label": "HiVT",
+      "label_en": "HiVT",
+      "year": 2021,
+      "kind": "model"
+    },
+    {
+      "id": "mtr",
+      "label": "MTR",
+      "label_en": "MTR",
+      "year": 2022,
+      "kind": "model"
+    },
+    {
+      "id": "motionlm",
+      "label": "MotionLM",
+      "label_en": "MotionLM",
+      "year": 2023,
+      "kind": "model"
+    },
+    {
+      "id": "segformer",
+      "label": "SegFormer",
+      "label_en": "SegFormer",
+      "year": 2021,
+      "kind": "model"
+    },
+    {
+      "id": "mask2former",
+      "label": "Mask2Former",
+      "label_en": "Mask2Former",
+      "year": 2022,
+      "kind": "model"
+    },
+    {
+      "id": "rt_detr",
+      "label": "RT-DETR",
+      "label_en": "RT-DETR",
+      "year": 2023,
+      "kind": "model"
+    },
+    {
+      "id": "hybrid_a_star",
+      "label": "Hybrid A*",
+      "label_en": "Hybrid A*",
+      "year": 2010,
+      "kind": "concept"
+    },
+    {
+      "id": "lattice_planner",
+      "label": "Lattice Planner",
+      "label_en": "Lattice Planner",
+      "year": 2010,
+      "kind": "concept"
+    },
+    {
+      "id": "ilqr",
+      "label": "ILQR",
+      "label_en": "iLQR",
+      "year": 2010,
+      "kind": "concept"
+    },
+    {
+      "id": "chomp_stomp",
+      "label": "CHOMP / STOMP",
+      "label_en": "CHOMP/STOMP",
+      "year": 2010,
+      "kind": "concept"
+    },
+    {
+      "id": "uniad",
+      "label": "UniAD",
+      "label_en": "UniAD",
+      "year": 2023,
+      "kind": "model"
+    },
+    {
+      "id": "vad",
+      "label": "VAD",
+      "label_en": "VAD",
+      "year": 2023,
+      "kind": "model"
+    },
+    {
+      "id": "emma",
+      "label": "EMMA",
+      "label_en": "EMMA (Waymo)",
+      "year": 2024,
+      "kind": "model"
+    },
+    {
+      "id": "drivegpt4",
+      "label": "DriveGPT4",
+      "label_en": "DriveGPT4",
+      "year": 2024,
+      "kind": "model"
+    },
+    {
+      "id": "tesla_fsd",
+      "label": "Tesla FSD",
+      "label_en": "Tesla FSD",
+      "year": 2020,
+      "kind": "industry"
+    },
+    {
+      "id": "waymo_driver",
+      "label": "Waymo Driver",
+      "label_en": "Waymo Driver",
+      "year": 2018,
+      "kind": "industry"
+    },
+    {
+      "id": "baidu_apollo",
+      "label": "百度 Apollo",
+      "label_en": "Baidu Apollo",
+      "year": 2017,
+      "kind": "industry"
+    },
+    {
+      "id": "xpeng_xngp",
+      "label": "小鹏 XNGP",
+      "label_en": "Xpeng XNGP",
+      "year": 2023,
+      "kind": "industry"
+    },
+    {
+      "id": "li_auto_ad_max",
+      "label": "理想 AD Max",
+      "label_en": "Li Auto AD Max",
+      "year": 2023,
+      "kind": "industry"
+    },
+    {
+      "id": "nio_pilot",
+      "label": "蔚来 NIO Pilot",
+      "label_en": "NIO Pilot",
+      "year": 2020,
+      "kind": "industry"
+    },
+    {
+      "id": "huawei_ads",
+      "label": "华为 ADS",
+      "label_en": "Huawei ADS",
+      "year": 2021,
+      "kind": "industry"
+    },
+    {
+      "id": "momenta_mpilot",
+      "label": "Momenta Mpilot",
+      "label_en": "Momenta Mpilot",
+      "year": 2020,
+      "kind": "industry"
+    },
+    {
+      "id": "im_ad",
+      "label": "智己 IM AD",
+      "label_en": "IM AD",
+      "year": 2022,
+      "kind": "industry"
+    },
+    {
+      "id": "didi_neuron",
+      "label": "滴滴自动驾驶 Didi Neuron",
+      "label_en": "Didi Neuron",
+      "year": 2023,
+      "kind": "industry"
+    },
+    {
+      "id": "vlm_world_model_ad",
+      "label": "VLM + 世界模型上车",
+      "label_en": "VLM + World Model for AD",
+      "year": 2024,
+      "kind": "concept"
+    },
+    {
+      "id": "occupancy_network",
+      "label": "占用网络",
+      "label_en": "Occupancy Network",
+      "year": 2022,
+      "kind": "concept"
+    },
+    {
+      "id": "bdd100k",
+      "label": "BDD100K",
+      "label_en": "BDD100K",
+      "year": 2020,
+      "kind": "industry"
+    },
+    {
+      "id": "argoverse2",
+      "label": "Argoverse 2",
+      "label_en": "Argoverse 2",
+      "year": 2019,
+      "kind": "industry"
+    },
+    {
+      "id": "lyft_l5",
+      "label": "Lyft Level 5",
+      "label_en": "Lyft Level 5",
+      "year": 2020,
+      "kind": "industry"
+    },
+    {
+      "id": "once",
+      "label": "ONCE",
+      "label_en": "ONCE",
+      "year": 2021,
+      "kind": "industry"
+    },
+    {
+      "id": "pandaset",
+      "label": "PandaSet",
+      "label_en": "PandaSet",
+      "year": 2021,
+      "kind": "industry"
+    },
+    {
+      "id": "openlane",
+      "label": "OpenLane",
+      "label_en": "OpenLane",
+      "year": 2023,
+      "kind": "industry"
+    }
+  ],
+  "edges": [
+    {
+      "source": "alexnet",
+      "target": "rcnn_family",
+      "relation": "inherits"
+    },
+    {
+      "source": "rcnn_family",
+      "target": "pv_rcnn",
+      "relation": "inherits"
+    },
+    {
+      "source": "second",
+      "target": "pv_rcnn",
+      "relation": "converges"
+    },
+    {
+      "source": "second",
+      "target": "pointpillars_centerpoint",
+      "relation": "inherits"
+    },
+    {
+      "source": "fcn",
+      "target": "deeplab_family",
+      "relation": "inherits"
+    },
+    {
+      "source": "deeplab_family",
+      "target": "segformer",
+      "relation": "converges"
+    },
+    {
+      "source": "segformer",
+      "target": "mask2former",
+      "relation": "converges"
+    },
+    {
+      "source": "transformer",
+      "target": "bevformer",
+      "relation": "composes"
+    },
+    {
+      "source": "bev_perception",
+      "target": "bevformer",
+      "relation": "inherits"
+    },
+    {
+      "source": "social_lstm",
+      "target": "vectornet",
+      "relation": "converges"
+    },
+    {
+      "source": "vectornet",
+      "target": "hivt",
+      "relation": "converges"
+    },
+    {
+      "source": "hivt",
+      "target": "mtr",
+      "relation": "converges"
+    },
+    {
+      "source": "mtr",
+      "target": "motionlm",
+      "relation": "converges"
+    },
+    {
+      "source": "bevformer",
+      "target": "uniad",
+      "relation": "composes"
+    },
+    {
+      "source": "transformer",
+      "target": "uniad",
+      "relation": "composes"
+    },
+    {
+      "source": "uniad",
+      "target": "vad",
+      "relation": "inherits"
+    },
+    {
+      "source": "vad",
+      "target": "emma",
+      "relation": "converges"
+    },
+    {
+      "source": "transformer",
+      "target": "emma",
+      "relation": "composes"
+    },
+    {
+      "source": "vlm_world_model_ad",
+      "target": "emma",
+      "relation": "converges"
+    },
+    {
+      "source": "vlm_world_model_ad",
+      "target": "drivegpt4",
+      "relation": "converges"
+    },
+    {
+      "source": "tesla_fsd",
+      "target": "emma",
+      "relation": "converges"
+    },
+    {
+      "source": "hybrid_a_star",
+      "target": "uniad",
+      "relation": "converges"
+    },
+    {
+      "source": "lattice_planner",
+      "target": "uniad",
+      "relation": "converges"
+    },
+    {
+      "source": "kitti",
+      "target": "nuscenes",
+      "relation": "converges"
+    }
+  ],
+  "next": {
+    "label": "NEXT",
+    "title": "Vol.10 世界模型",
+    "desc": "让 AI 在行动之前，先学会理解和预测世界"
+  }
+}

@@ -1,0 +1,1320 @@
+{
+  "meta": {
+    "series": "Modern AI Atlas",
+    "volume": "Vol.10",
+    "title_zh": "世界模型",
+    "title_en": "World Models",
+    "theme": "atlas_light",
+    "layout": "bands",
+    "title_style": "badge",
+    "badge": {
+      "name": "Modern AI Atlas",
+      "volume": "Vol.10"
+    },
+    "tagline": "让 AI 在行动之前，先学会理解和预测世界",
+    "tagline_en": "Predict the World Before Acting",
+    "callout": "世界模型的目标，不是预测一个像素，而是理解一个世界，不是生成一个视频，而是推演未来的可能。 —— Yann LeCun",
+    "canvas": {
+      "width": 2524,
+      "height": 1682,
+      "gap": 12,
+      "margin": 32
+    }
+  },
+  "sections": [
+    {
+      "kind": "timeline",
+      "title": "世界模型发展史",
+      "subtitle": "Timeline",
+      "color": "#4f5dd5",
+      "rocket": true,
+      "milestones": [
+        {
+          "year": "1980s",
+          "title": "Model-based Control",
+          "desc": "基于模型控制的短期阶段",
+          "node": "model_based_control"
+        },
+        {
+          "year": "2000",
+          "title": "Kalman Filter",
+          "desc": "Particle Filter",
+          "desc2": "状态估计方法快速发展",
+          "node": "kalman_filter"
+        },
+        {
+          "year": "2013",
+          "title": "Model Predictive Control",
+          "desc": "(MPC) 模型预测控制广泛应用",
+          "node": "mpc"
+        },
+        {
+          "year": "2017",
+          "title": "PlaNet",
+          "desc": "学习隐空间动力学模型",
+          "node": "planet"
+        },
+        {
+          "year": "2019",
+          "title": "Dreamer",
+          "desc": "端到端学习世界模型",
+          "node": "dreamer"
+        },
+        {
+          "year": "2020",
+          "title": "MuZero",
+          "desc": "无模型+模型融合突破",
+          "node": "muzero"
+        },
+        {
+          "year": "2021",
+          "title": "Decision Transformer",
+          "desc": "序列建模驱动决策",
+          "node": "decision_transformer"
+        },
+        {
+          "year": "2022",
+          "title": "Video Prediction / JEPA",
+          "desc": "视频预测兴起",
+          "desc2": "自监督表示突破",
+          "node": "jepa"
+        },
+        {
+          "year": "2023",
+          "title": "DreamerV3 / Genie",
+          "desc": "世界模型更强大",
+          "desc2": "生成质量提升",
+          "node": "dreamerv3"
+        },
+        {
+          "year": "2024",
+          "title": "Cosmos / Genie2 / PI0",
+          "desc": "OpenVLA WM / GROOT",
+          "desc2": "物理+生成+具身融合加速",
+          "node": "cosmos"
+        },
+        {
+          "year": "2025+",
+          "title": "General World Model",
+          "desc": "通用世界模型，迈向 AGI",
+          "node": "general_world_model"
+        }
+      ],
+      "number": 1
+    },
+    {
+      "kind": "chevrons",
+      "title": "世界模型技术路线",
+      "subtitle": "Technology Roadmap",
+      "color": "#4f5dd5",
+      "colors": [
+        "#3b82f6",
+        "#4f5dd5",
+        "#6366f1",
+        "#7b5ea7",
+        "#8b5cf6",
+        "#a855f7",
+        "#c026d3",
+        "#0ea5e9"
+      ],
+      "steps": [
+        {
+          "label": "物理模型",
+          "label_en": "Physics Model"
+        },
+        {
+          "label": "动态模型",
+          "label_en": "Dynamic Model"
+        },
+        {
+          "label": "隐空间动力学",
+          "label_en": "Latent Dynamics"
+        },
+        {
+          "label": "预测模型",
+          "label_en": "Predictive Model"
+        },
+        {
+          "label": "视频生成",
+          "label_en": "Video Generation"
+        },
+        {
+          "label": "生成式世界模型",
+          "label_en": "Generative World Model"
+        },
+        {
+          "label": "具身世界模型",
+          "label_en": "Embodied World Model"
+        },
+        {
+          "label": "通用世界模型",
+          "label_en": "General World Model",
+          "node": "general_world_model"
+        }
+      ],
+      "number": 2
+    },
+    {
+      "kind": "industry",
+      "title": "世界模型系统架构",
+      "subtitle": "System Architecture",
+      "color": "#0ea5e9",
+      "groups": [
+        {
+          "title": "输入 Input",
+          "items": [
+            "Camera",
+            "LiDAR",
+            "Proprioception 本体感知",
+            "Audio",
+            "…"
+          ]
+        },
+        {
+          "title": "编码器 Encoder",
+          "items": [
+            "Vision Encoder 视觉编码器",
+            "Modality Encoder 多模态编码器"
+          ]
+        },
+        {
+          "title": "世界模型 World Model",
+          "items": [
+            "学习世界的演化",
+            "Dynamics Model 隐空间",
+            "Reward Model 奖励模型"
+          ]
+        },
+        {
+          "title": "未来预测 Future Prediction",
+          "items": [
+            "Frame t+1",
+            "Frame t+2",
+            "…",
+            "Frame t+H"
+          ]
+        },
+        {
+          "title": "规划 Planner",
+          "items": [
+            "优化未来轨迹"
+          ]
+        },
+        {
+          "title": "策略 Policy",
+          "items": [
+            "输出最优动作"
+          ]
+        },
+        {
+          "title": "机器人执行 Robot Action",
+          "items": [
+            "机械臂 + 移动机器人"
+          ]
+        }
+      ],
+      "number": 3
+    },
+    {
+      "kind": "band",
+      "number": 4,
+      "title": "四大世界模型家族",
+      "subtitle": "Four Model Families",
+      "color": "#8b5cf6"
+    },
+    {
+      "row": [
+        {
+          "kind": "family",
+          "title": "Latent Dynamics 家族",
+          "subtitle": "以 RSSM 为核心",
+          "color": "#2fa84f",
+          "models": [
+            {
+              "year": "2018",
+              "name": "RSSM",
+              "node": "rssm"
+            },
+            {
+              "year": "2019",
+              "name": "PlaNet",
+              "node": "planet"
+            },
+            {
+              "year": "2019",
+              "name": "Dreamer",
+              "node": "dreamer"
+            },
+            {
+              "year": "2020",
+              "name": "DreamerV2",
+              "node": "dreamerv2"
+            },
+            {
+              "year": "2023",
+              "name": "DreamerV3",
+              "node": "dreamerv3"
+            }
+          ],
+          "footer": [
+            "RSSM 隐状态空间模型主线 (Google / DeepMind)"
+          ],
+          "compact": true
+        },
+        {
+          "kind": "family",
+          "title": "JEPA 家族",
+          "subtitle": "自监督表征学习",
+          "color": "#7b5ea7",
+          "models": [
+            {
+              "year": "2022",
+              "name": "JEPA",
+              "node": "jepa"
+            },
+            {
+              "year": "2022",
+              "name": "I-JEPA",
+              "node": "i_jepa"
+            },
+            {
+              "year": "2023",
+              "name": "V-JEPA",
+              "node": "v_jepa"
+            },
+            {
+              "year": "2024",
+              "name": "V-JEPA2",
+              "node": "v_jepa2"
+            }
+          ],
+          "footer": [
+            "自监督联合嵌入预测 (Meta)"
+          ],
+          "compact": true
+        },
+        {
+          "kind": "family",
+          "title": "生成式世界模型家族",
+          "subtitle": "视频生成路线",
+          "color": "#d94f5c",
+          "models": [
+            {
+              "year": "2022",
+              "name": "Video Diffusion",
+              "node": "video_diffusion"
+            },
+            {
+              "year": "2023",
+              "name": "Genie",
+              "node": "genie"
+            },
+            {
+              "year": "2024",
+              "name": "Genie 2",
+              "node": "genie2"
+            },
+            {
+              "year": "2024",
+              "name": "Cosmos",
+              "node": "cosmos"
+            }
+          ],
+          "footer": [
+            "视频生成即世界预测"
+          ],
+          "compact": true
+        },
+        {
+          "kind": "family",
+          "title": "物理世界模型家族",
+          "subtitle": "物理规律建模",
+          "color": "#8b1e3f",
+          "models": [
+            {
+              "year": "2024",
+              "name": "Cosmos",
+              "node": "cosmos"
+            },
+            {
+              "year": "2024",
+              "name": "Newton",
+              "node": "newton"
+            },
+            {
+              "year": "2024",
+              "name": "π0 (PI0)",
+              "node": "pi0"
+            },
+            {
+              "year": "2024",
+              "name": "GROOT",
+              "node": "groot"
+            }
+          ],
+          "footer": [
+            "物理规律与一致性建模"
+          ],
+          "compact": true
+        }
+      ]
+    },
+    {
+      "row": [
+        {
+          "kind": "table",
+          "title": "四大技术路线对比",
+          "subtitle": "Four Major Paradigms",
+          "weight": 1.3,
+          "color": "#4f5dd5",
+          "columns": [
+            "技术路线 Paradigm",
+            "核心思想 Core Idea",
+            "优势 Strengths",
+            "代表模型 Models"
+          ],
+          "col_widths": [
+            1.15,
+            1.5,
+            1.35,
+            1.35
+          ],
+          "rows": [
+            [
+              "Latent Dynamics 隐空间动力学",
+              "学习隐空间中的世界动力学模型",
+              "高效压缩表征，适合长时序预测",
+              "PlaNet, Dreamer, DreamerV3"
+            ],
+            [
+              "Predictive Representation 预测式表征学习",
+              "通过预测未来学习世界的通用表示",
+              "强泛化能力，不依赖标签",
+              "JEPA, I-JEPA, V-JEPA, V-JEPA2"
+            ],
+            [
+              "Video Generation 视频生成",
+              "直接生成未来的视频帧",
+              "生成质量高，直观可视化",
+              "Genie, Genie2, VideoPoet"
+            ],
+            [
+              "Physics-aware World Model 物理世界模型",
+              "学习物理规律，保证物理一致性",
+              "可解释性强，泛化性更好",
+              "Cosmos, Newton, PI0, GROOT"
+            ]
+          ],
+          "number": 5
+        },
+        {
+          "kind": "cards",
+          "title": "未来趋势",
+          "subtitle": "Future Trends",
+          "weight": 1.0,
+          "color": "#14b8a6",
+          "columns": 2,
+          "items": [
+            {
+              "title": "通用世界模型",
+              "title_en": "General World Model",
+              "icon": "globe",
+              "color": "#14b8a6",
+              "desc": "构建统一、可泛化的世界模型"
+            },
+            {
+              "title": "物理一致性建模",
+              "title_en": "Physics-aware Modeling",
+              "icon": "atom",
+              "color": "#14b8a6",
+              "desc": "将物理规律融入世界模型"
+            },
+            {
+              "title": "视频生成即预测",
+              "icon": "video",
+              "color": "#14b8a6",
+              "desc": "(Video Generation as Prediction) 生成式模型成为世界预测的通用范式"
+            },
+            {
+              "title": "世界模型 + Agent 深度融合",
+              "title_en": "World Model + Agent",
+              "icon": "robot",
+              "color": "#14b8a6"
+            },
+            {
+              "title": "世界模型驱动具身智能",
+              "title_en": "Embodied World Models",
+              "icon": "gear",
+              "color": "#14b8a6"
+            },
+            {
+              "title": "通向 AGI 的核心能力",
+              "icon": "target",
+              "color": "#14b8a6",
+              "desc": "(Prediction -> Planning -> Action) 理解世界，推演未来，预见行动"
+            }
+          ],
+          "number": 6
+        }
+      ]
+    },
+    {
+      "row": [
+        {
+          "kind": "cards",
+          "title": "代表模型一览",
+          "subtitle": "Representative Models",
+          "color": "#3b82f6",
+          "columns": 7,
+          "items": [
+            {
+              "title": "Google",
+              "color": "#4285f4",
+              "items": [
+                "PlaNet (2019) 隐空间动力学模型开创者",
+                "Dreamer 系列 2019 / 2020 / 2023",
+                "Genie (2023) 可交互生成3D世界",
+                "Genie 2 (2024) 更强一致性与3D扩展"
+              ]
+            },
+            {
+              "title": "Meta",
+              "color": "#0668e1",
+              "items": [
+                "JEPA (2022) 自监督表征学习",
+                "I-JEPA (2022) 图像表征学习",
+                "V-JEPA (2023) 视频表征自监督学习",
+                "V-JEPA2 (2024) 更强的时空理解能力"
+              ]
+            },
+            {
+              "title": "NVIDIA",
+              "color": "#76b900",
+              "items": [
+                "Cosmos (2024) 世界基础模型平台",
+                "物理一致性 + 仿真生成",
+                "支持机器人与自动驾驶"
+              ]
+            },
+            {
+              "title": "DeepMind",
+              "color": "#3b82f6",
+              "items": [
+                "MuZero (2020) 无模型RL突破",
+                "Gato (2022) 通用智能体模型"
+              ]
+            },
+            {
+              "title": "Physical Intelligence",
+              "color": "#7b5ea7",
+              "items": [
+                "π0 (2024) 通用机器人基础模型",
+                "世界模型驱动"
+              ]
+            },
+            {
+              "title": "Tesla",
+              "color": "#e82127",
+              "items": [
+                "Occupancy World Model (2024)",
+                "占用栅格 + 世界模型，用于自动驾驶"
+              ]
+            },
+            {
+              "title": "OpenAI",
+              "color": "#1a2b5c",
+              "items": [
+                "World Model Research (2024)",
+                "世界模型研究探索"
+              ]
+            }
+          ],
+          "number": 7
+        },
+        {
+          "kind": "list",
+          "title": "当前挑战",
+          "subtitle": "Current Challenges",
+          "weight": 1.05,
+          "color": "#e11d48",
+          "columns": 2,
+          "items": [
+            {
+              "title": "1. 长时间预测误差累积",
+              "desc": "Error Accumulation"
+            },
+            {
+              "title": "2. 物理一致性不足",
+              "desc": "Physics Consistency"
+            },
+            {
+              "title": "3. 泛化能力有限",
+              "desc": "Generalization"
+            },
+            {
+              "title": "4. 长时序规划困难",
+              "desc": "Long Horizon Planning"
+            },
+            {
+              "title": "5. 世界模型与控制器耦合不足",
+              "desc": "Planning-Control Gap"
+            },
+            {
+              "title": "6. 多模态世界建模困难",
+              "desc": "Vision + Language + Action"
+            },
+            {
+              "title": "7. 数据规模不足",
+              "desc": "Real-world Data"
+            },
+            {
+              "title": "8. Sim2Real Gap"
+            },
+            {
+              "title": "9. 可解释性不足",
+              "desc": "Lack of Interpretability"
+            },
+            {
+              "title": "10. 实时推理成本高",
+              "desc": "High Computational Cost"
+            }
+          ],
+          "number": 8
+        },
+        {
+          "kind": "cards",
+          "title": "应用场景",
+          "subtitle": "Applications",
+          "weight": 0.95,
+          "color": "#3b82f6",
+          "columns": 2,
+          "items": [
+            {
+              "title": "人形机器人",
+              "title_en": "Humanoid",
+              "icon": "robot",
+              "color": "#3b82f6"
+            },
+            {
+              "title": "自动驾驶",
+              "title_en": "Autonomous Driving",
+              "icon": "flow",
+              "color": "#3b82f6"
+            },
+            {
+              "title": "数字孪生",
+              "title_en": "Digital Twin",
+              "icon": "layers",
+              "color": "#3b82f6"
+            },
+            {
+              "title": "AI 智能体",
+              "title_en": "AI Agent",
+              "icon": "brain",
+              "color": "#3b82f6"
+            },
+            {
+              "title": "游戏 AI",
+              "title_en": "Game AI",
+              "icon": "target",
+              "color": "#3b82f6"
+            },
+            {
+              "title": "工业机器人",
+              "title_en": "Industrial Robotics",
+              "icon": "gear",
+              "color": "#3b82f6"
+            },
+            {
+              "title": "仿真训练",
+              "title_en": "Simulation",
+              "icon": "cube",
+              "color": "#3b82f6"
+            },
+            {
+              "title": "XR / 元宇宙",
+              "title_en": "XR / Metaverse",
+              "icon": "globe",
+              "color": "#3b82f6"
+            }
+          ],
+          "number": 9
+        }
+      ]
+    },
+    {
+      "row": [
+        {
+          "kind": "list",
+          "title": "关键数据集",
+          "subtitle": "Key Datasets",
+          "weight": 1.0,
+          "color": "#f59e0b",
+          "columns": 3,
+          "items": [
+            {
+              "title": "Ego4D",
+              "desc": "大规模第一人称视频数据集",
+              "node": "ego4d"
+            },
+            {
+              "title": "BridgeData",
+              "desc": "自动驾驶场景数据集",
+              "node": "bridgedata"
+            },
+            {
+              "title": "Open X-Embodiment",
+              "desc": "机器人数据集",
+              "node": "open_x_embodiment"
+            },
+            {
+              "title": "RT-1 Dataset",
+              "desc": "机器人动作指令数据集",
+              "node": "rt1_dataset"
+            },
+            {
+              "title": "Waymo Open Dataset",
+              "desc": "自动驾驶数据集"
+            },
+            {
+              "title": "nuScenes",
+              "desc": "多模态自动驾驶数据集"
+            },
+            {
+              "title": "CALVIN",
+              "desc": "机器人操作行为数据集",
+              "node": "calvin"
+            },
+            {
+              "title": "RoboNet",
+              "desc": "机器人操作视频数据集",
+              "node": "robonet"
+            },
+            {
+              "title": "Habitat",
+              "desc": "3D 环境导航数据集",
+              "node": "habitat"
+            }
+          ],
+          "number": 10
+        },
+        {
+          "stack": [
+            {
+              "kind": "pills",
+              "title": "学习路线",
+              "subtitle": "Learning Path",
+              "color": "#4f5dd5",
+              "label_w": 200,
+              "rows": [
+                {
+                  "label": "进阶路径",
+                  "sublabel": "Learning Path",
+                  "color": "#4f5dd5",
+                  "pills": [
+                    {
+                      "text": "控制理论 Control Theory"
+                    },
+                    {
+                      "text": "RL Reinforcement Learning"
+                    },
+                    {
+                      "text": "Transformer 架构"
+                    },
+                    {
+                      "text": "扩散模型 Diffusion Model"
+                    },
+                    {
+                      "text": "视频生成 Video Generation"
+                    },
+                    {
+                      "text": "JEPA 世界模型"
+                    },
+                    {
+                      "text": "物理世界模型 Cosmos"
+                    },
+                    {
+                      "text": "具身智能 Embodied AI",
+                      "highlight": true
+                    }
+                  ]
+                }
+              ],
+              "number": 11
+            },
+            {
+              "kind": "pills",
+              "title": "技术路线演化",
+              "subtitle": "Evolutionary Roadmap",
+              "color": "#0ea5e9",
+              "label_w": 200,
+              "rows": [
+                {
+                  "label": "从物理到表征",
+                  "sublabel": "Physics to Representation",
+                  "color": "#0ea5e9",
+                  "pills": [
+                    {
+                      "text": "物理规律 Physics"
+                    },
+                    {
+                      "text": "控制理论 Control Theory"
+                    },
+                    {
+                      "text": "状态估计 State Estimation"
+                    },
+                    {
+                      "text": "基于模型的RL Model-based RL"
+                    },
+                    {
+                      "text": "隐空间动力学 Latent Dynamics",
+                      "highlight": true
+                    }
+                  ]
+                },
+                {
+                  "label": "从生成到通用",
+                  "sublabel": "Generation to AGI",
+                  "color": "#7b5ea7",
+                  "pills": [
+                    {
+                      "text": "Transformer"
+                    },
+                    {
+                      "text": "扩散模型 Diffusion"
+                    },
+                    {
+                      "text": "视频生成 Video Generation"
+                    },
+                    {
+                      "text": "具身世界模型 Embodied World Model"
+                    },
+                    {
+                      "text": "通用人工智能 AGI",
+                      "highlight": true
+                    }
+                  ]
+                }
+              ],
+              "number": 12
+            }
+          ],
+          "weight": 2.0
+        }
+      ]
+    }
+  ],
+  "mainline": {
+    "title": "世界模型全景地图 (World Model Landscape)",
+    "drivers": [
+      {
+        "label": "Latent Dynamics（隐空间动力学）",
+        "sub": "RSSM·PlaNet·DreamerV3·Ensemble Dynamics | CaITta·Fisher·MEPO·SimMBM",
+        "color": "#22c55e"
+      },
+      {
+        "label": "Predictive Representation（表征学习）",
+        "sub": "JEPA·I-JEPA·V-JEPA·V-JEPA2·MAE·BEIT",
+        "color": "#a855f7"
+      },
+      {
+        "label": "Video World Models（视频生成）",
+        "sub": "Video Diffusion·Genie·Genie 2·VideoPoet·Sora (Research)",
+        "color": "#ef4444"
+      },
+      {
+        "label": "Physics World Models（物理规律建模）",
+        "sub": "Cosmos·Newton·Galileo·Phyformer·Neural PDE",
+        "color": "#f59e0b"
+      },
+      {
+        "label": "Embodied World Models（具身世界模型）",
+        "sub": "OpenVLA WM·PI0·RT-2-WM·RDT-1B·VIMA",
+        "color": "#14b8a6"
+      },
+      {
+        "label": "Occupancy World Models（占用栅格/场景）",
+        "sub": "Occupancy World Model·BEVFormer·UniAD·Wayve WM·DriveDreamer",
+        "color": "#3b82f6"
+      }
+    ]
+  },
+  "footer": {
+    "quote_zh": "The next generation of AI will not only understand the world — it will imagine, predict, and reason about the future before acting.",
+    "globe": true
+  },
+  "nodes": [
+    {
+      "id": "model_based_control",
+      "label": "基于模型的控制",
+      "label_en": "Model-based Control",
+      "year": 1980,
+      "kind": "concept"
+    },
+    {
+      "id": "kalman_filter",
+      "label": "卡尔曼滤波",
+      "label_en": "Kalman Filter & Particle Filter",
+      "year": 2000,
+      "kind": "concept"
+    },
+    {
+      "id": "mpc",
+      "label": "模型预测控制",
+      "label_en": "Model Predictive Control (MPC)",
+      "year": 2013,
+      "kind": "concept"
+    },
+    {
+      "id": "rssm",
+      "label": "RSSM",
+      "label_en": "Recurrent State-Space Model",
+      "year": 2018,
+      "kind": "paper"
+    },
+    {
+      "id": "planet",
+      "label": "PlaNet",
+      "label_en": "PlaNet",
+      "year": 2019,
+      "kind": "model"
+    },
+    {
+      "id": "dreamer",
+      "label": "Dreamer",
+      "label_en": "Dreamer",
+      "year": 2019,
+      "kind": "model"
+    },
+    {
+      "id": "dreamerv2",
+      "label": "DreamerV2",
+      "label_en": "DreamerV2",
+      "year": 2020,
+      "kind": "model"
+    },
+    {
+      "id": "dreamerv3",
+      "label": "DreamerV3",
+      "label_en": "DreamerV3",
+      "year": 2023,
+      "kind": "model"
+    },
+    {
+      "id": "muzero",
+      "label": "MuZero",
+      "label_en": "MuZero",
+      "year": 2020,
+      "kind": "model"
+    },
+    {
+      "id": "decision_transformer",
+      "label": "Decision Transformer",
+      "label_en": "Decision Transformer",
+      "year": 2021,
+      "kind": "model"
+    },
+    {
+      "id": "gato",
+      "label": "Gato",
+      "label_en": "Gato",
+      "year": 2022,
+      "kind": "model"
+    },
+    {
+      "id": "jepa",
+      "label": "JEPA",
+      "label_en": "Joint-Embedding Predictive Architecture",
+      "year": 2022,
+      "kind": "paper"
+    },
+    {
+      "id": "i_jepa",
+      "label": "I-JEPA",
+      "label_en": "I-JEPA",
+      "year": 2022,
+      "kind": "model"
+    },
+    {
+      "id": "v_jepa",
+      "label": "V-JEPA",
+      "label_en": "V-JEPA",
+      "year": 2023,
+      "kind": "model"
+    },
+    {
+      "id": "v_jepa2",
+      "label": "V-JEPA2",
+      "label_en": "V-JEPA2",
+      "year": 2024,
+      "kind": "model"
+    },
+    {
+      "id": "video_diffusion",
+      "label": "视频扩散模型",
+      "label_en": "Video Diffusion",
+      "year": 2022,
+      "kind": "model"
+    },
+    {
+      "id": "videopoet",
+      "label": "VideoPoet",
+      "label_en": "VideoPoet",
+      "year": 2023,
+      "kind": "model"
+    },
+    {
+      "id": "sora",
+      "label": "Sora",
+      "label_en": "Sora (Research)",
+      "year": 2024,
+      "kind": "model"
+    },
+    {
+      "id": "genie",
+      "label": "Genie",
+      "label_en": "Genie",
+      "year": 2023,
+      "kind": "model"
+    },
+    {
+      "id": "genie2",
+      "label": "Genie 2",
+      "label_en": "Genie 2",
+      "year": 2024,
+      "kind": "model"
+    },
+    {
+      "id": "cosmos",
+      "label": "Cosmos",
+      "label_en": "NVIDIA Cosmos",
+      "year": 2024,
+      "kind": "model"
+    },
+    {
+      "id": "newton",
+      "label": "Newton",
+      "label_en": "Newton",
+      "year": 2024,
+      "kind": "model"
+    },
+    {
+      "id": "pi0",
+      "label": "π0",
+      "label_en": "PI0 (Physical Intelligence)",
+      "year": 2024,
+      "kind": "model"
+    },
+    {
+      "id": "groot",
+      "label": "GROOT",
+      "label_en": "NVIDIA GROOT",
+      "year": 2024,
+      "kind": "model"
+    },
+    {
+      "id": "openvla_wm",
+      "label": "OpenVLA WM",
+      "label_en": "OpenVLA World Model",
+      "year": 2024,
+      "kind": "model"
+    },
+    {
+      "id": "rt2_wm",
+      "label": "RT-2-WM",
+      "label_en": "RT-2 World Model",
+      "year": 2024,
+      "kind": "model"
+    },
+    {
+      "id": "rdt_1b",
+      "label": "RDT-1B",
+      "label_en": "RDT-1B",
+      "year": 2024,
+      "kind": "model"
+    },
+    {
+      "id": "vima",
+      "label": "VIMA",
+      "label_en": "VIMA",
+      "year": 2022,
+      "kind": "model"
+    },
+    {
+      "id": "occupancy_world_model",
+      "label": "占用世界模型",
+      "label_en": "Occupancy World Model (Tesla)",
+      "year": 2024,
+      "kind": "model"
+    },
+    {
+      "id": "bevformer",
+      "label": "BEVFormer",
+      "label_en": "BEVFormer",
+      "year": 2022,
+      "kind": "model"
+    },
+    {
+      "id": "uniad",
+      "label": "UniAD",
+      "label_en": "UniAD",
+      "year": 2023,
+      "kind": "model"
+    },
+    {
+      "id": "wayve_wm",
+      "label": "Wayve WM",
+      "label_en": "Wayve World Model",
+      "year": 2024,
+      "kind": "model"
+    },
+    {
+      "id": "drivedreamer",
+      "label": "DriveDreamer",
+      "label_en": "DriveDreamer",
+      "year": 2023,
+      "kind": "model"
+    },
+    {
+      "id": "mae",
+      "label": "MAE",
+      "label_en": "Masked Autoencoder",
+      "year": 2021,
+      "kind": "model"
+    },
+    {
+      "id": "beit",
+      "label": "BEiT",
+      "label_en": "BEiT",
+      "year": 2021,
+      "kind": "model"
+    },
+    {
+      "id": "ensemble_dynamics",
+      "label": "Ensemble Dynamics",
+      "label_en": "Ensemble Dynamics",
+      "year": 2020,
+      "kind": "concept"
+    },
+    {
+      "id": "galileo",
+      "label": "Galileo",
+      "label_en": "Galileo (physics WM)",
+      "year": 2024,
+      "kind": "model"
+    },
+    {
+      "id": "neural_pde",
+      "label": "Neural PDE",
+      "label_en": "Neural PDE",
+      "year": 2021,
+      "kind": "concept"
+    },
+    {
+      "id": "general_world_model",
+      "label": "通用世界模型",
+      "label_en": "General World Model",
+      "year": 2025,
+      "kind": "concept"
+    },
+    {
+      "id": "ego4d",
+      "label": "Ego4D",
+      "label_en": "Ego4D",
+      "kind": "industry"
+    },
+    {
+      "id": "bridgedata",
+      "label": "BridgeData",
+      "label_en": "BridgeData",
+      "kind": "industry"
+    },
+    {
+      "id": "open_x_embodiment",
+      "label": "Open X-Embodiment",
+      "label_en": "Open X-Embodiment",
+      "kind": "industry"
+    },
+    {
+      "id": "rt1_dataset",
+      "label": "RT-1 Dataset",
+      "label_en": "RT-1 Dataset",
+      "kind": "industry"
+    },
+    {
+      "id": "calvin",
+      "label": "CALVIN",
+      "label_en": "CALVIN",
+      "kind": "industry"
+    },
+    {
+      "id": "robonet",
+      "label": "RoboNet",
+      "label_en": "RoboNet",
+      "kind": "industry"
+    },
+    {
+      "id": "habitat",
+      "label": "Habitat",
+      "label_en": "Habitat",
+      "kind": "industry"
+    }
+  ],
+  "edges": [
+    {
+      "source": "rssm",
+      "target": "planet",
+      "relation": "inherits"
+    },
+    {
+      "source": "planet",
+      "target": "dreamer",
+      "relation": "inherits"
+    },
+    {
+      "source": "dreamer",
+      "target": "dreamerv2",
+      "relation": "inherits"
+    },
+    {
+      "source": "dreamerv2",
+      "target": "dreamerv3",
+      "relation": "inherits"
+    },
+    {
+      "source": "jepa",
+      "target": "i_jepa",
+      "relation": "inherits"
+    },
+    {
+      "source": "i_jepa",
+      "target": "v_jepa",
+      "relation": "inherits"
+    },
+    {
+      "source": "v_jepa",
+      "target": "v_jepa2",
+      "relation": "inherits"
+    },
+    {
+      "source": "mae",
+      "target": "i_jepa",
+      "relation": "converges"
+    },
+    {
+      "source": "beit",
+      "target": "i_jepa",
+      "relation": "converges"
+    },
+    {
+      "source": "video_diffusion",
+      "target": "genie",
+      "relation": "inherits"
+    },
+    {
+      "source": "genie",
+      "target": "genie2",
+      "relation": "inherits"
+    },
+    {
+      "source": "genie2",
+      "target": "cosmos",
+      "relation": "converges"
+    },
+    {
+      "source": "video_diffusion",
+      "target": "sora",
+      "relation": "converges"
+    },
+    {
+      "source": "sora",
+      "target": "genie2",
+      "relation": "converges"
+    },
+    {
+      "source": "cosmos",
+      "target": "newton",
+      "relation": "converges"
+    },
+    {
+      "source": "newton",
+      "target": "pi0",
+      "relation": "converges"
+    },
+    {
+      "source": "pi0",
+      "target": "groot",
+      "relation": "converges"
+    },
+    {
+      "source": "muzero",
+      "target": "planet",
+      "relation": "converges"
+    },
+    {
+      "source": "decision_transformer",
+      "target": "dreamer",
+      "relation": "converges"
+    },
+    {
+      "source": "dreamerv3",
+      "target": "general_world_model",
+      "relation": "converges"
+    },
+    {
+      "source": "v_jepa2",
+      "target": "general_world_model",
+      "relation": "converges"
+    },
+    {
+      "source": "cosmos",
+      "target": "general_world_model",
+      "relation": "converges"
+    },
+    {
+      "source": "bevformer",
+      "target": "uniad",
+      "relation": "composes"
+    },
+    {
+      "source": "occupancy_world_model",
+      "target": "drivedreamer",
+      "relation": "converges"
+    },
+    {
+      "source": "wayve_wm",
+      "target": "drivedreamer",
+      "relation": "converges"
+    },
+    {
+      "source": "openvla_wm",
+      "target": "pi0",
+      "relation": "converges"
+    },
+    {
+      "source": "rt2_wm",
+      "target": "openvla_wm",
+      "relation": "converges"
+    },
+    {
+      "source": "vima",
+      "target": "rt2_wm",
+      "relation": "converges"
+    },
+    {
+      "source": "cosmos",
+      "target": "groot",
+      "relation": "composes"
+    },
+    {
+      "source": "gato",
+      "target": "pi0",
+      "relation": "converges"
+    }
+  ],
+  "next": {
+    "label": "NEXT",
+    "title": "Vol.11 智能体",
+    "desc": "自主感知 · 规划决策 · 工具使用 · 协同合作"
+  }
+}

@@ -13,7 +13,7 @@ import sys
 from pathlib import Path
 from typing import Sequence
 
-from generator import constants
+from generator import constants, exporter, graph, layout, parser, render
 from generator.config import ATLAS_DIR
 
 logger = logging.getLogger(__name__)
@@ -96,12 +96,26 @@ def build(atlas_path: str, *, fmt: str = "svg", output: Path | None = None) -> N
     logger.info("Building atlas volume: %s", atlas_dir.name)
     logger.info("Output format: %s", fmt)
 
-    # TODO: wire up pipeline stages once implemented
-    # 1. parser.load(atlas_dir)
-    # 2. graph.build(parsed_data)
-    # 3. layout.compute(graph)
-    # 4. render.draw(layout)
-    # 5. exporter.export(render, fmt=fmt, output=output)
+    # Stage 1: Parse — read YAML/JSON knowledge files
+    knowledge = parser.load(atlas_dir)
+
+    # Stage 2: Graph — construct in-memory knowledge graph
+    knowledge_graph = graph.build(knowledge)
+
+    # The knowledge file's meta section selects the theme and layout
+    # template; empire_dark + the Vol.02 panel template stay the default.
+    meta = knowledge.extras.get("meta", {})
+    theme_name = meta.get("theme", constants.DEFAULT_THEME)
+    theme = render.load_theme(theme_name)
+
+    # Stage 3: Layout — compute poster panel positions
+    positions = layout.compute(knowledge_graph, theme, knowledge=knowledge)
+
+    # Stage 4: Render — draw to SVG canvas
+    svg = render.draw(positions, theme, knowledge)
+
+    # Stage 5: Export — convert to target format
+    exporter.export(svg, fmt=fmt, output=output, volume_name=atlas_dir.name)
 
     logger.info("Build complete.")
 
@@ -110,7 +124,15 @@ def main(argv: Sequence[str] | None = None) -> None:
     """CLI entry point."""
     args = _parse_args(argv)
     _setup_logging(verbose=args.verbose)
-    build(args.atlas_path, fmt=args.format, output=args.output)
+    try:
+        build(args.atlas_path, fmt=args.format, output=args.output)
+    except (
+        parser.KnowledgeLoadError,
+        graph.GraphBuildError,
+        exporter.ExportError,
+    ) as exc:
+        logger.error("%s", exc)
+        sys.exit(1)
 
 
 if __name__ == "__main__":

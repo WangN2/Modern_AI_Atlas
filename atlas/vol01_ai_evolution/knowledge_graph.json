@@ -1,0 +1,1189 @@
+{
+  "meta": {
+    "layout": "bands",
+    "theme": "empire_dark",
+    "canvas": {
+      "width": 1682,
+      "height": 2524,
+      "band_card_h": 238,
+      "gap": 14,
+      "margin": 34
+    },
+    "series": "AI Technology Bible",
+    "volume": "Volume 01",
+    "title_zh": "AI 编年史 (1950-2026)",
+    "title_sub": "人工智能发展全景图",
+    "title_en": "AI Evolution Timeline",
+    "quote": "“人工智能是人类有史以来最伟大的创造，也是我们面临的最深刻的变革。”",
+    "quote_by": "图灵"
+  },
+  "legend": [
+    {
+      "icon": "milestone",
+      "label": "里程碑事件",
+      "color": "#3b82f6"
+    },
+    {
+      "icon": "gear",
+      "label": "关键技术突破",
+      "color": "#22c55e"
+    },
+    {
+      "icon": "atom",
+      "label": "代表性模型/算法",
+      "color": "#f97316"
+    },
+    {
+      "icon": "book",
+      "label": "重要论文",
+      "color": "#6366f1"
+    },
+    {
+      "icon": "factory",
+      "label": "工业落地/应用",
+      "color": "#a855f7"
+    }
+  ],
+  "sections": [
+    {
+      "number": 1,
+      "title": "AI 萌芽时代",
+      "years": "1950-1989",
+      "subtitle": "从思想到符号主义",
+      "color": "#3b82f6",
+      "left_panel": {
+        "title": "时代特征",
+        "items": [
+          "以符号推理为主",
+          "依赖人工设计规则",
+          "缺乏学习能力",
+          "计算资源极度有限"
+        ]
+      },
+      "cards": [
+        {
+          "year": "1950",
+          "title": "图灵测试",
+          "title_en": "Alan Turing",
+          "node": "turing_test",
+          "desc": "提出“机器能思考吗？”",
+          "citation": "论文: Computing Machinery and Intelligence (1950)",
+          "diagram": "board",
+          "image": "images/alan_turing_1951.jpg"
+        },
+        {
+          "year": "1956",
+          "title": "达特茅斯会议",
+          "title_en": "Dartmouth Conference",
+          "node": "dartmouth_conference",
+          "desc": "AI 正式诞生",
+          "desc2": "标志: 人工智能这个学科的诞生",
+          "diagram": "conference",
+          "image": "images/dartmouth_1956.jpg"
+        },
+        {
+          "year": "1966",
+          "title": "ELIZA",
+          "title_en": "聊天机器人",
+          "node": "eliza",
+          "desc": "第一个聊天机器人程序",
+          "desc2": "开创人机对话研究",
+          "diagram": "chat",
+          "image": "images/eliza_conversation.png"
+        },
+        {
+          "year": "1970s",
+          "title": "专家系统",
+          "title_en": "Expert Systems",
+          "node": "expert_systems",
+          "desc": "符号主义达到巅峰",
+          "desc2": "广泛应用于工业、医疗",
+          "diagram": "rules",
+          "image": "images/symbolics_lisp_machine.jpg"
+        },
+        {
+          "year": "1980s",
+          "title": "AI Winter",
+          "title_en": "第一次AI寒冬",
+          "node": "ai_winter",
+          "desc": "期望过高，投入减少",
+          "desc2": "研究进入低谷",
+          "diagram": "curve",
+          "image": "images/ai_winter_pdp10.jpg"
+        },
+        {
+          "year": "1989",
+          "title": "Backprop",
+          "title_en": "反向传播算法",
+          "node": "backprop",
+          "desc": "推动神经网络重新崛起",
+          "desc2": "为深度学习奠基",
+          "diagram": "net",
+          "image": "images/backprop_neural_network.png"
+        }
+      ],
+      "right_panel": {
+        "title": "为什么失败?",
+        "items": [
+          "规则难以穷尽",
+          "缺乏学习能力",
+          "无法处理不确定性",
+          "计算能力不足",
+          "数据稀缺"
+        ]
+      }
+    },
+    {
+      "number": 2,
+      "title": "机器学习时代",
+      "years": "1990-2011",
+      "subtitle": "从统计学习到特征学习",
+      "color": "#22c55e",
+      "left_panel": {
+        "title": "时代特征",
+        "items": [
+          "数据驱动思想兴起",
+          "统计学习方法主导",
+          "特征工程依赖人工",
+          "模型泛化能力提升"
+        ]
+      },
+      "cards": [
+        {
+          "year": "1990",
+          "title": "统计学习",
+          "title_en": "Statistical Learning",
+          "node": "statistical_learning",
+          "desc": "机器学习理论基础建立",
+          "desc2": "VC理论、结构风险最小化",
+          "diagram": "curve",
+          "image": "images/overfitting_generalization.png"
+        },
+        {
+          "year": "1995",
+          "title": "SVM 支持向量机",
+          "title_en": "Vapnik",
+          "node": "svm",
+          "desc": "小样本学习方法突破",
+          "desc2": "高维空间有效分类",
+          "diagram": "margin",
+          "image": "images/svm_margin.png"
+        },
+        {
+          "year": "1998",
+          "title": "CNN",
+          "title_en": "LeCun",
+          "node": "cnn_lenet",
+          "desc": "卷积神经网络提出",
+          "desc2": "用于手写数字识别",
+          "diagram": "conv",
+          "image": "images/lenet_architecture.png"
+        },
+        {
+          "year": "2001",
+          "title": "LSTM",
+          "title_en": "Hochreiter & Schmidhuber",
+          "node": "lstm",
+          "desc": "解决RNN长序列依赖问题",
+          "diagram": "lstm",
+          "image": "images/lstm_cell.png"
+        },
+        {
+          "year": "2008",
+          "title": "深度学习复兴",
+          "title_en": "Deep Learning Revival",
+          "node": "dl_revival",
+          "desc": "大数据 + GPU 驱动",
+          "desc2": "深度学习再次兴起",
+          "diagram": "gpu",
+          "image": "images/geforce_8800_gtx.jpg"
+        },
+        {
+          "year": "2011",
+          "title": "Google Brain",
+          "title_en": "深度神经网络",
+          "node": "google_brain",
+          "desc": "大规模神经网络",
+          "desc2": "开启产业化应用",
+          "diagram": "brain",
+          "image": "images/google_brain_cat_faces.png"
+        }
+      ],
+      "right_panel": {
+        "title": "关键推动力",
+        "items": [
+          "算法理论发展",
+          "计算能力提升",
+          "数据规模增长",
+          "特征学习能力增强"
+        ]
+      }
+    },
+    {
+      "number": 3,
+      "title": "深度学习革命",
+      "years": "2012-2016",
+      "subtitle": "从感知智能到端到端学习",
+      "color": "#f97316",
+      "left_panel": {
+        "title": "时代特征",
+        "items": [
+          "深度网络性能突破",
+          "端到端学习兴起",
+          "感知任务全面领先",
+          "Attention 机制诞生"
+        ]
+      },
+      "cards": [
+        {
+          "year": "2012",
+          "title": "AlexNet",
+          "title_en": "Krizhevsky",
+          "node": "alexnet",
+          "desc": "ImageNet冠军",
+          "desc2": "深度学习里程碑",
+          "citation": "论文: ImageNet Classification with Deep Convolutional Neural Networks (NIPS 2012)",
+          "diagram": "conv",
+          "image": "images/alexnet_block.png"
+        },
+        {
+          "year": "2013",
+          "title": "Word2Vec",
+          "title_en": "Mikolov",
+          "node": "word2vec",
+          "desc": "词向量革命",
+          "desc2": "让文字拥有语义空间",
+          "citation": "论文: Efficient Estimation of Word Representations in Vector Space (ICLR 2013)",
+          "diagram": "embedding",
+          "image": "images/word2vec_cbow_skipgram.png"
+        },
+        {
+          "year": "2014",
+          "title": "Seq2Seq",
+          "title_en": "Sutskever",
+          "node": "seq2seq",
+          "desc": "序列到序列模型",
+          "desc2": "机器翻译重大突破",
+          "citation": "论文: Sequence to Sequence Learning with Neural Networks (NIPS 2014)",
+          "diagram": "encoder",
+          "image": "images/seq2seq_architecture.png"
+        },
+        {
+          "year": "2015",
+          "title": "ResNet",
+          "title_en": "He et al.",
+          "node": "resnet",
+          "desc": "残差网络提出",
+          "desc2": "突破超深网络极限",
+          "citation": "论文: Deep Residual Learning for Image Recognition (CVPR 2016)",
+          "diagram": "residual",
+          "image": "images/resnet_block.png"
+        },
+        {
+          "year": "2015",
+          "title": "Attention",
+          "title_en": "Bahdanau",
+          "node": "attention_bahdanau",
+          "desc": "注意力机制提出",
+          "desc2": "解决长距离依赖",
+          "citation": "论文: Neural Machine Translation by Jointly Learning to Align and Translate (ICLR 2015)",
+          "diagram": "attention",
+          "image": "images/attention_alignment.png"
+        },
+        {
+          "year": "2016",
+          "title": "AlphaGo",
+          "title_en": "DeepMind",
+          "node": "alphago",
+          "desc": "深度学习 + 强化学习",
+          "desc2": "战胜人类顶尖棋手",
+          "diagram": "go",
+          "image": "images/alphago_game4.jpg"
+        }
+      ],
+      "right_panel": {
+        "title": "革命意义",
+        "items": [
+          "感知任务超越人类",
+          "端到端学习成为主流",
+          "Attention 打开新时代",
+          "为 Transformer 铺路"
+        ]
+      }
+    },
+    {
+      "number": 4,
+      "title": "Transformer时代",
+      "years": "2017-2020",
+      "subtitle": "统一架构，开启大模型时代",
+      "color": "#6366f1",
+      "left_panel": {
+        "title": "时代特征",
+        "items": [
+          "注意力机制为核心",
+          "并行计算能力强",
+          "可扩展性极佳",
+          "大模型时代开启"
+        ]
+      },
+      "cards": [
+        {
+          "year": "2017",
+          "title": "Transformer",
+          "title_en": "Vaswani et al.",
+          "node": "transformer",
+          "desc": "Attention Is All You Need",
+          "desc2": "奠定基石架构",
+          "citation": "论文: Attention Is All You Need (NeurIPS 2017)",
+          "diagram": "encoder",
+          "image": "images/transformer_architecture.png"
+        },
+        {
+          "year": "2018",
+          "title": "BERT",
+          "title_en": "Google",
+          "node": "bert",
+          "desc": "双向预训练",
+          "desc2": "NLP 范式革命",
+          "citation": "论文: BERT: Pre-training of Deep Bidirectional Transformers for Language Understanding (NAACL 2019)",
+          "diagram": "stack",
+          "image": "images/bert_embeddings.png"
+        },
+        {
+          "year": "2019",
+          "title": "GPT-2",
+          "title_en": "OpenAI",
+          "node": "gpt2",
+          "desc": "大规模无监督预训练",
+          "desc2": "生成能力惊人",
+          "citation": "论文: Language Models are Unsupervised Multitask Learners (2019)",
+          "diagram": "stack",
+          "image": "images/gpt2_decoder_stack.png"
+        },
+        {
+          "year": "2019",
+          "title": "T5",
+          "title_en": "Google",
+          "node": "t5",
+          "desc": "统一文本到文本框架",
+          "desc2": "支持多种任务",
+          "citation": "论文: Exploring the Limits of Transfer Learning with a Unified Text-to-Text Transformer (JMLR 2020)",
+          "diagram": "encoder",
+          "image": "images/t5_text_to_text.png"
+        },
+        {
+          "year": "2020",
+          "title": "GPT-3",
+          "title_en": "OpenAI",
+          "node": "gpt3",
+          "desc": "1750亿参数",
+          "desc2": "Scaling Law 惊现",
+          "citation": "论文: Language Models are Few-Shot Learners (NeurIPS 2020)",
+          "diagram": "stack",
+          "image": "images/gpt3_fewshot_scaling.png"
+        },
+        {
+          "year": "2020",
+          "title": "Vision Transformer (ViT)",
+          "title_en": "Google",
+          "node": "vit",
+          "desc": "将Transformer扩展到图像",
+          "desc2": "打破CNN垄断",
+          "citation": "论文: An Image is Worth 16x16 Words: Transformers for Image Recognition at Scale (ICLR 2021)",
+          "diagram": "grid",
+          "image": "images/vision_transformer.png"
+        }
+      ],
+      "right_panel": {
+        "title": "核心突破",
+        "items": [
+          "统一架构",
+          "预训练 + 微调范式",
+          "Scaling Law出现",
+          "多模态融合开始"
+        ]
+      }
+    },
+    {
+      "number": 5,
+      "title": "Foundation Model时代",
+      "years": "2021-2023",
+      "subtitle": "大模型爆发，能力涌现",
+      "color": "#a855f7",
+      "left_panel": {
+        "title": "时代特征",
+        "items": [
+          "模型规模指数级增长",
+          "涌现能力出现",
+          "多模态模型涌现",
+          "应用生态爆发"
+        ]
+      },
+      "cards": [
+        {
+          "year": "2021",
+          "title": "InstructGPT",
+          "title_en": "OpenAI",
+          "node": "instructgpt",
+          "desc": "指令微调",
+          "desc2": "模型更可用",
+          "citation": "论文: Training language models to follow instructions with human feedback (2022)",
+          "diagram": "rl_loop",
+          "image": "images/instructgpt_winrate.png"
+        },
+        {
+          "year": "2022",
+          "title": "RLHF",
+          "title_en": "OpenAI",
+          "node": "rlhf",
+          "desc": "人类反馈强化学习",
+          "desc2": "对齐人类价值",
+          "citation": "论文: Deep Reinforcement Learning from Human Preferences (NeurIPS 2017)（应用于大模型对齐）",
+          "diagram": "feedback",
+          "image": "images/rlhf_three_steps.png"
+        },
+        {
+          "year": "2022",
+          "title": "ChatGPT",
+          "title_en": "OpenAI",
+          "node": "chatgpt",
+          "desc": "对话式AI爆发",
+          "desc2": "全球用户破亿",
+          "citation": "产品: ChatGPT (2022.11发布)",
+          "diagram": "chat",
+          "image": "images/chatgpt_logo.png"
+        },
+        {
+          "year": "2023",
+          "title": "GPT-4",
+          "title_en": "OpenAI",
+          "node": "gpt4",
+          "desc": "多模态能力增强",
+          "desc2": "更强推理能力",
+          "citation": "论文/产品: GPT-4 (2023.3发布)",
+          "diagram": "multimodal",
+          "image": "images/gpt4_exam_results.png"
+        },
+        {
+          "year": "2023",
+          "title": "Stable Diffusion",
+          "title_en": "Stability AI",
+          "node": "stable_diffusion",
+          "desc": "开源文生图模型",
+          "desc2": "AIGC 爆发",
+          "citation": "产品: Stable Diffusion (2022.8发布)",
+          "diagram": "diffusion",
+          "image": "images/sd_astronaut_horse.webp"
+        },
+        {
+          "year": "2023",
+          "title": "SAM / DINOv2",
+          "title_en": "Meta",
+          "node": "sam",
+          "desc": "分割 + 一切",
+          "desc2": "视觉表征革命 · CV 大模型诞生",
+          "citation": "论文: SAM (2023) DINOv2 (CVPR 2023)",
+          "diagram": "grid",
+          "image": "images/sam_overview.png"
+        }
+      ],
+      "right_panel": {
+        "title": "时代意义",
+        "items": [
+          "Foundation Model 成为新范式",
+          "AI 从单点能力走向通用能力",
+          "生态与应用爆发"
+        ]
+      }
+    },
+    {
+      "number": 6,
+      "title": "Foundation AI时代",
+      "years": "2024-Now",
+      "subtitle": "走向通用智能与物理世界",
+      "color": "#14b8a6",
+      "left_panel": {
+        "title": "时代特征",
+        "items": [
+          "多模态深度融合",
+          "世界模型兴起",
+          "具身智能发展",
+          "走向物理世界与AGI"
+        ]
+      },
+      "cards": [
+        {
+          "year": "2024",
+          "title": "Qwen / DeepSeek",
+          "title_en": "通义千问 / 深度求索",
+          "node": "qwen",
+          "desc": "开源大模型崛起",
+          "desc2": "国产模型群崭露头角",
+          "diagram": "stack",
+          "image": "images/qwen_deepseek_logos.png"
+        },
+        {
+          "year": "2024",
+          "title": "Multimodal Models",
+          "title_en": "多模态大模型",
+          "node": "multimodal_models",
+          "desc": "图文音视频融合",
+          "desc2": "统一多模态理解",
+          "diagram": "multimodal",
+          "image": "images/clip_multimodal.png"
+        },
+        {
+          "year": "2024",
+          "title": "World Model",
+          "title_en": "V-JEPA2 / Cosmos",
+          "node": "world_model",
+          "desc": "预测物理世界",
+          "desc2": "从表示到生成",
+          "diagram": "globe",
+          "image": "images/blue_marble_earth.jpg"
+        },
+        {
+          "year": "2024",
+          "title": "VLA / OpenVLA",
+          "title_en": "Qwen-VLA / π0",
+          "node": "vla_openvla",
+          "desc": "视觉-语言-动作模型",
+          "desc2": "连接感知与行动",
+          "diagram": "flow",
+          "image": "images/vla_architecture.png"
+        },
+        {
+          "year": "2024",
+          "title": "Embodied AI",
+          "title_en": "GROOT / Isaac",
+          "node": "embodied_ai",
+          "desc": "具身智能突破",
+          "desc2": "机器人走向通用",
+          "diagram": "robot",
+          "image": "images/ameca_humanoid.jpg",
+          "image_focus": "bottom"
+        },
+        {
+          "year": "2024+",
+          "title": "AutoDriving",
+          "title_en": "UniAD / End-to-End",
+          "node": "autodriving_uniad",
+          "desc": "端到端自动驾驶",
+          "desc2": "迈向完全自动化",
+          "diagram": "road",
+          "image": "images/waymo_jaguar_sf.jpg"
+        }
+      ],
+      "right_panel": {
+        "title": "未来趋势",
+        "items": [
+          "通用人工智能 (AGI)",
+          "物理世界操作",
+          "自主智能体 (Agent)",
+          "人机共生未来"
+        ]
+      }
+    }
+  ],
+  "mainline": {
+    "title": "AI 技术发展主线",
+    "stages": [
+      {
+        "label": "Rule Based AI",
+        "sub": "规则驱动",
+        "color": "#3b82f6"
+      },
+      {
+        "label": "Machine Learning",
+        "sub": "机器学习",
+        "color": "#22c55e"
+      },
+      {
+        "label": "Deep Learning",
+        "sub": "深度学习",
+        "color": "#f97316"
+      },
+      {
+        "label": "Transformer",
+        "sub": "统一架构",
+        "color": "#6366f1"
+      },
+      {
+        "label": "Foundation Model",
+        "sub": "基础模型",
+        "color": "#a855f7"
+      },
+      {
+        "label": "Foundation AI",
+        "sub": "迈向通用智能",
+        "color": "#14b8a6"
+      }
+    ],
+    "axis": [
+      "1950s",
+      "1960s",
+      "1970s-1980s",
+      "1990s",
+      "2010s",
+      "2017",
+      "2020",
+      "2023",
+      "2026+"
+    ],
+    "drivers": [
+      {
+        "label": "计算能力提升",
+        "sub": "从机械计算到电子计算",
+        "color": "#22c55e"
+      },
+      {
+        "label": "算法创新",
+        "sub": "从规则到学习",
+        "color": "#3b82f6"
+      },
+      {
+        "label": "数据爆发",
+        "sub": "互联网+移动应用数据",
+        "color": "#22c55e"
+      },
+      {
+        "label": "深度学习突破",
+        "sub": "GPU + 大数据",
+        "color": "#3b82f6"
+      },
+      {
+        "label": "规模化定律",
+        "sub": "Scaling Law",
+        "color": "#a855f7"
+      },
+      {
+        "label": "多模态融合",
+        "sub": "世界模型",
+        "color": "#a855f7"
+      },
+      {
+        "label": "自主智能体",
+        "sub": "物理世界交互",
+        "color": "#14b8a6"
+      }
+    ]
+  },
+  "insights": [
+    "智能涌现与突破",
+    "范式变革智能",
+    "规模是突破智能的关键",
+    "跨领域融合产生新物种"
+  ],
+  "quote": "未来已来，唯变不变。",
+  "next": {
+    "label": "NEXT",
+    "title": "Vol.02 Transformer 帝国",
+    "desc": "技术架构、架构演化与模型家族全图谱"
+  },
+  "nodes": [
+    {
+      "id": "turing_test",
+      "label": "图灵测试",
+      "kind": "milestone",
+      "year": 1950,
+      "metadata": {
+        "label_en": "Turing Test"
+      }
+    },
+    {
+      "id": "dartmouth_conference",
+      "label": "达特茅斯会议",
+      "kind": "milestone",
+      "year": 1956,
+      "metadata": {
+        "label_en": "Dartmouth Conference"
+      }
+    },
+    {
+      "id": "eliza",
+      "label": "ELIZA 聊天机器人",
+      "kind": "model",
+      "year": 1966,
+      "metadata": {
+        "label_en": "ELIZA"
+      }
+    },
+    {
+      "id": "expert_systems",
+      "label": "专家系统",
+      "kind": "model",
+      "year": 1970,
+      "metadata": {
+        "label_en": "Expert Systems"
+      }
+    },
+    {
+      "id": "ai_winter",
+      "label": "第一次AI寒冬",
+      "kind": "industry",
+      "year": 1980,
+      "metadata": {
+        "label_en": "AI Winter"
+      }
+    },
+    {
+      "id": "backprop",
+      "label": "反向传播算法",
+      "kind": "paper",
+      "year": 1989,
+      "metadata": {
+        "label_en": "Backpropagation"
+      }
+    },
+    {
+      "id": "statistical_learning",
+      "label": "统计学习",
+      "kind": "concept",
+      "year": 1990,
+      "metadata": {
+        "label_en": "Statistical Learning"
+      }
+    },
+    {
+      "id": "svm",
+      "label": "支持向量机",
+      "kind": "model",
+      "year": 1995,
+      "metadata": {
+        "label_en": "SVM"
+      }
+    },
+    {
+      "id": "cnn_lenet",
+      "label": "卷积神经网络 (LeCun)",
+      "kind": "model",
+      "year": 1998,
+      "metadata": {
+        "label_en": "CNN / LeNet"
+      }
+    },
+    {
+      "id": "lstm",
+      "label": "长短期记忆网络",
+      "kind": "model",
+      "year": 2001,
+      "metadata": {
+        "label_en": "LSTM"
+      }
+    },
+    {
+      "id": "dl_revival",
+      "label": "深度学习复兴",
+      "kind": "milestone",
+      "year": 2008,
+      "metadata": {
+        "label_en": "Deep Learning Revival"
+      }
+    },
+    {
+      "id": "google_brain",
+      "label": "Google Brain 深度神经网络",
+      "kind": "industry",
+      "year": 2011,
+      "metadata": {
+        "label_en": "Google Brain"
+      }
+    },
+    {
+      "id": "alexnet",
+      "label": "AlexNet",
+      "kind": "model",
+      "year": 2012,
+      "metadata": {
+        "label_en": "AlexNet"
+      }
+    },
+    {
+      "id": "word2vec",
+      "label": "Word2Vec",
+      "kind": "model",
+      "year": 2013,
+      "metadata": {
+        "label_en": "Word2Vec"
+      }
+    },
+    {
+      "id": "seq2seq",
+      "label": "序列到序列模型",
+      "kind": "model",
+      "year": 2014,
+      "metadata": {
+        "label_en": "Seq2Seq"
+      }
+    },
+    {
+      "id": "resnet",
+      "label": "残差网络",
+      "kind": "model",
+      "year": 2015,
+      "metadata": {
+        "label_en": "ResNet"
+      }
+    },
+    {
+      "id": "attention_bahdanau",
+      "label": "注意力机制",
+      "kind": "paper",
+      "year": 2015,
+      "metadata": {
+        "label_en": "Attention (Bahdanau)"
+      }
+    },
+    {
+      "id": "alphago",
+      "label": "AlphaGo",
+      "kind": "milestone",
+      "year": 2016,
+      "metadata": {
+        "label_en": "AlphaGo"
+      }
+    },
+    {
+      "id": "transformer",
+      "label": "Transformer",
+      "kind": "paper",
+      "year": 2017,
+      "metadata": {
+        "label_en": "Transformer"
+      }
+    },
+    {
+      "id": "bert",
+      "label": "BERT",
+      "kind": "model",
+      "year": 2018,
+      "metadata": {
+        "label_en": "BERT"
+      }
+    },
+    {
+      "id": "gpt2",
+      "label": "GPT-2",
+      "kind": "model",
+      "year": 2019,
+      "metadata": {
+        "label_en": "GPT-2"
+      }
+    },
+    {
+      "id": "t5",
+      "label": "T5",
+      "kind": "model",
+      "year": 2019,
+      "metadata": {
+        "label_en": "T5"
+      }
+    },
+    {
+      "id": "gpt3",
+      "label": "GPT-3",
+      "kind": "model",
+      "year": 2020,
+      "metadata": {
+        "label_en": "GPT-3"
+      }
+    },
+    {
+      "id": "vit",
+      "label": "Vision Transformer",
+      "kind": "model",
+      "year": 2020,
+      "metadata": {
+        "label_en": "ViT"
+      }
+    },
+    {
+      "id": "instructgpt",
+      "label": "InstructGPT",
+      "kind": "model",
+      "year": 2021,
+      "metadata": {
+        "label_en": "InstructGPT"
+      }
+    },
+    {
+      "id": "rlhf",
+      "label": "人类反馈强化学习",
+      "kind": "concept",
+      "year": 2022,
+      "metadata": {
+        "label_en": "RLHF"
+      }
+    },
+    {
+      "id": "chatgpt",
+      "label": "ChatGPT",
+      "kind": "industry",
+      "year": 2022,
+      "metadata": {
+        "label_en": "ChatGPT"
+      }
+    },
+    {
+      "id": "gpt4",
+      "label": "GPT-4",
+      "kind": "model",
+      "year": 2023,
+      "metadata": {
+        "label_en": "GPT-4"
+      }
+    },
+    {
+      "id": "stable_diffusion",
+      "label": "Stable Diffusion",
+      "kind": "model",
+      "year": 2023,
+      "metadata": {
+        "label_en": "Stable Diffusion"
+      }
+    },
+    {
+      "id": "sam",
+      "label": "分割一切模型",
+      "kind": "model",
+      "year": 2023,
+      "metadata": {
+        "label_en": "SAM"
+      }
+    },
+    {
+      "id": "dinov2",
+      "label": "DINOv2",
+      "kind": "model",
+      "year": 2023,
+      "metadata": {
+        "label_en": "DINOv2"
+      }
+    },
+    {
+      "id": "qwen",
+      "label": "通义千问",
+      "kind": "model",
+      "year": 2024,
+      "metadata": {
+        "label_en": "Qwen"
+      }
+    },
+    {
+      "id": "deepseek",
+      "label": "深度求索 DeepSeek",
+      "kind": "model",
+      "year": 2024,
+      "metadata": {
+        "label_en": "DeepSeek"
+      }
+    },
+    {
+      "id": "multimodal_models",
+      "label": "多模态大模型",
+      "kind": "concept",
+      "year": 2024,
+      "metadata": {
+        "label_en": "Multimodal Models"
+      }
+    },
+    {
+      "id": "world_model",
+      "label": "世界模型 (V-JEPA2 / Cosmos)",
+      "kind": "concept",
+      "year": 2024,
+      "metadata": {
+        "label_en": "World Model"
+      }
+    },
+    {
+      "id": "vla_openvla",
+      "label": "视觉-语言-动作模型",
+      "kind": "model",
+      "year": 2024,
+      "metadata": {
+        "label_en": "VLA / OpenVLA"
+      }
+    },
+    {
+      "id": "embodied_ai",
+      "label": "具身智能 (GROOT / Isaac)",
+      "kind": "concept",
+      "year": 2024,
+      "metadata": {
+        "label_en": "Embodied AI"
+      }
+    },
+    {
+      "id": "autodriving_uniad",
+      "label": "端到端自动驾驶",
+      "kind": "industry",
+      "year": 2024,
+      "metadata": {
+        "label_en": "UniAD / End-to-End"
+      }
+    }
+  ],
+  "edges": [
+    {
+      "source": "backprop",
+      "target": "cnn_lenet",
+      "relation": "inherits"
+    },
+    {
+      "source": "backprop",
+      "target": "lstm",
+      "relation": "inherits"
+    },
+    {
+      "source": "statistical_learning",
+      "target": "svm",
+      "relation": "inherits"
+    },
+    {
+      "source": "cnn_lenet",
+      "target": "alexnet",
+      "relation": "inherits"
+    },
+    {
+      "source": "lstm",
+      "target": "seq2seq",
+      "relation": "inherits"
+    },
+    {
+      "source": "seq2seq",
+      "target": "attention_bahdanau",
+      "relation": "inherits"
+    },
+    {
+      "source": "attention_bahdanau",
+      "target": "transformer",
+      "relation": "inherits"
+    },
+    {
+      "source": "cnn_lenet",
+      "target": "resnet",
+      "relation": "inherits"
+    },
+    {
+      "source": "alexnet",
+      "target": "resnet",
+      "relation": "inherits"
+    },
+    {
+      "source": "word2vec",
+      "target": "transformer",
+      "relation": "converges"
+    },
+    {
+      "source": "transformer",
+      "target": "bert",
+      "relation": "inherits"
+    },
+    {
+      "source": "transformer",
+      "target": "gpt2",
+      "relation": "inherits"
+    },
+    {
+      "source": "transformer",
+      "target": "t5",
+      "relation": "inherits"
+    },
+    {
+      "source": "transformer",
+      "target": "vit",
+      "relation": "inherits"
+    },
+    {
+      "source": "gpt2",
+      "target": "gpt3",
+      "relation": "inherits"
+    },
+    {
+      "source": "gpt3",
+      "target": "instructgpt",
+      "relation": "inherits"
+    },
+    {
+      "source": "instructgpt",
+      "target": "chatgpt",
+      "relation": "inherits"
+    },
+    {
+      "source": "chatgpt",
+      "target": "gpt4",
+      "relation": "inherits"
+    },
+    {
+      "source": "gpt3",
+      "target": "rlhf",
+      "relation": "composes"
+    },
+    {
+      "source": "rlhf",
+      "target": "instructgpt",
+      "relation": "composes"
+    },
+    {
+      "source": "resnet",
+      "target": "stable_diffusion",
+      "relation": "composes"
+    },
+    {
+      "source": "transformer",
+      "target": "stable_diffusion",
+      "relation": "composes"
+    },
+    {
+      "source": "vit",
+      "target": "sam",
+      "relation": "inherits"
+    },
+    {
+      "source": "vit",
+      "target": "dinov2",
+      "relation": "converges"
+    },
+    {
+      "source": "transformer",
+      "target": "qwen",
+      "relation": "inherits"
+    },
+    {
+      "source": "transformer",
+      "target": "deepseek",
+      "relation": "inherits"
+    },
+    {
+      "source": "gpt4",
+      "target": "multimodal_models",
+      "relation": "inherits"
+    },
+    {
+      "source": "transformer",
+      "target": "vla_openvla",
+      "relation": "composes"
+    },
+    {
+      "source": "multimodal_models",
+      "target": "world_model",
+      "relation": "converges"
+    },
+    {
+      "source": "world_model",
+      "target": "embodied_ai",
+      "relation": "converges"
+    },
+    {
+      "source": "vla_openvla",
+      "target": "embodied_ai",
+      "relation": "composes"
+    },
+    {
+      "source": "transformer",
+      "target": "autodriving_uniad",
+      "relation": "composes"
+    }
+  ]
+}

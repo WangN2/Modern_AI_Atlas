@@ -1,0 +1,39 @@
+{
+  "name": "default",
+  "description": "Default light publication theme for the Modern AI Atlas.",
+  "canvas": {
+    "background": "#f7f5f0",
+    "margin": 120,
+    "header_height": 170,
+    "node_width": 320,
+    "node_height": 120,
+    "node_gap_x": 60,
+    "corner_radius": 14
+  },
+  "colors": {
+    "ink": "#1a2332",
+    "ink_muted": "#5b6572",
+    "card_fill": "#ffffff",
+    "card_stroke": "#d8d4cc",
+    "edge": "#9aa5b1",
+    "lane_label": "#8a8578",
+    "title": "#14202e"
+  },
+  "kinds": {
+    "paper":   { "color": "#2563eb", "label": "Paper" },
+    "model":   { "color": "#7c3aed", "label": "Model" },
+    "concept": { "color": "#0891b2", "label": "Concept" },
+    "event":   { "color": "#d97706", "label": "Event" },
+    "default": { "color": "#475569", "label": "Other" }
+  },
+  "typography": {
+    "font_family": "Helvetica, Arial, 'PingFang SC', 'Microsoft YaHei', sans-serif",
+    "title_size": 64,
+    "subtitle_size": 28,
+    "node_title_size": 30,
+    "node_meta_size": 22,
+    "lane_label_size": 26,
+    "edge_label_size": 20,
+    "legend_size": 24
+  }
+}

@@ -1,0 +1,1048 @@
+{
+  "meta": {
+    "series": "Modern AI Atlas",
+    "volume": "Vol.05",
+    "title_zh": "生成式 AI",
+    "title_en": "Generative AI",
+    "theme": "atlas_light",
+    "layout": "bands",
+    "title_style": "badge",
+    "badge": {
+      "name": "Modern AI Atlas",
+      "volume": "Vol.05"
+    },
+    "tagline": "让机器创造内容，开启人机共创新时代",
+    "callout": "生成式 AI 不仅重塑世界，更能创造世界。 —— Sam Altman",
+    "canvas": {
+      "height": 2300
+    }
+  },
+  "legend": [
+    {
+      "icon": "text",
+      "label": "文本 Text",
+      "color": "#1a2b5c"
+    },
+    {
+      "icon": "image",
+      "label": "图像 Image",
+      "color": "#3b82f6"
+    },
+    {
+      "icon": "audio",
+      "label": "音频 Audio",
+      "color": "#a855f7"
+    },
+    {
+      "icon": "video",
+      "label": "视频 Video",
+      "color": "#0ea5e9"
+    },
+    {
+      "icon": "cube",
+      "label": "3D 3D",
+      "color": "#06b6d4"
+    },
+    {
+      "icon": "doc",
+      "label": "代码 Code",
+      "color": "#64748b"
+    },
+    {
+      "icon": "brain",
+      "label": "模型 Model",
+      "color": "#4f46e5"
+    },
+    {
+      "icon": "gear",
+      "label": "工具 Tools",
+      "color": "#f59e0b"
+    },
+    {
+      "icon": "star",
+      "label": "应用 Application",
+      "color": "#22c55e"
+    }
+  ],
+  "legend_position": "bottom",
+  "sections": [
+    {
+      "kind": "cards",
+      "title": "生成式 AI 发展时间线",
+      "subtitle": "Timeline",
+      "color": "#4f46e5",
+      "columns": 6,
+      "items": [
+        {
+          "title": "早期萌芽阶段",
+          "title_en": "1950s–1990s",
+          "color": "#64748b",
+          "desc": "使用规则与统计方法生成简单内容",
+          "items": [
+            "Markov 链、文法系统等早期尝试"
+          ]
+        },
+        {
+          "title": "概率图模型阶段",
+          "title_en": "2000s–2010s",
+          "color": "#0ea5e9",
+          "desc": "概率图模型发展",
+          "items": [
+            "代表: HMM, CRF, RBM, DBN"
+          ]
+        },
+        {
+          "title": "深度生成模型阶段",
+          "title_en": "2014–2017",
+          "color": "#3b82f6",
+          "desc": "深度学习推动生成模型突破",
+          "items": [
+            "代表: VAE, GAN"
+          ]
+        },
+        {
+          "title": "预训练大模型阶段",
+          "title_en": "2018–2020",
+          "color": "#6366f1",
+          "desc": "大规模预训练模型涌现",
+          "items": [
+            "代表: GPT-1/2/3, BERT, T5"
+          ]
+        },
+        {
+          "title": "大模型生成突破阶段",
+          "title_en": "2021–2022",
+          "color": "#a855f7",
+          "desc": "多模态与指令微调兴起",
+          "items": [
+            "代表: DALL-E, Stable Diffusion,",
+            "ChatGPT"
+          ]
+        },
+        {
+          "title": "通用生成智能阶段",
+          "title_en": "2023–至今",
+          "color": "#c026d3",
+          "desc": "更强大、更可控、更安全",
+          "items": [
+            "多模态、智能体与工具融合",
+            "迈向通用人工智能 (AGI)"
+          ]
+        }
+      ]
+    },
+    {
+      "row": [
+        {
+          "kind": "list",
+          "title": "生成式 AI 核心概念",
+          "subtitle": "Core Concepts",
+          "weight": 0.95,
+          "color": "#4f46e5",
+          "items": [
+            {
+              "icon": "star",
+              "title": "生成 (Generation)",
+              "desc": "从随机分布中学习，生成新的内容"
+            },
+            {
+              "icon": "target",
+              "title": "条件生成 (Conditional Generation)",
+              "desc": "在给定条件（文本/图像等）下生成内容"
+            },
+            {
+              "icon": "network",
+              "title": "潜在表示学习 (Representation Learning)",
+              "desc": "学习数据的潜在分布与特征表示"
+            },
+            {
+              "icon": "bolt",
+              "title": "创造与多样性 (Creativity & Diversity)",
+              "desc": "生成新颖、多样、富有创意的内容"
+            },
+            {
+              "icon": "gear",
+              "title": "可控性 (Controllability)",
+              "desc": "通过提示、参数等方式控制生成结果"
+            },
+            {
+              "icon": "check",
+              "title": "对齐与安全 (Evaluation & Alignment)",
+              "desc": "评估生成质量，确保安全、对齐人类价值"
+            }
+          ]
+        },
+        {
+          "kind": "cards",
+          "title": "主流生成式模型类型",
+          "subtitle": "Main Generative Model Types",
+          "weight": 1.4,
+          "color": "#3b82f6",
+          "columns": 2,
+          "items": [
+            {
+              "title": "语言大模型",
+              "title_en": "LLMs",
+              "icon": "speech",
+              "color": "#4f46e5",
+              "desc": "生成文本、对话、代码等",
+              "items": [
+                "示例: GPT-4, Llama 3, Claude 3, PaLM 2"
+              ]
+            },
+            {
+              "title": "图像生成模型",
+              "title_en": "Image",
+              "icon": "image",
+              "color": "#3b82f6",
+              "desc": "生成图像、插画、设计等",
+              "items": [
+                "示例: DALL-E 3, Midjourney, Stable Diffusion"
+              ]
+            },
+            {
+              "title": "音频生成模型",
+              "title_en": "Audio",
+              "icon": "audio",
+              "color": "#a855f7",
+              "desc": "生成音乐、语音、音效等",
+              "items": [
+                "示例: MusicLM, ElevenLabs, Suno"
+              ]
+            },
+            {
+              "title": "视频生成模型",
+              "title_en": "Video",
+              "icon": "video",
+              "color": "#0ea5e9",
+              "desc": "生成视频、动画、特效等",
+              "items": [
+                "示例: Sora, Pika Labs, Runway Gen-3"
+              ]
+            },
+            {
+              "title": "3D 生成模型",
+              "title_en": "3D",
+              "icon": "cube",
+              "color": "#06b6d4",
+              "desc": "生成 3D 物体、场景等",
+              "items": [
+                "示例: DreamFusion, Magic3D, Point-E"
+              ]
+            },
+            {
+              "title": "多模态生成模型",
+              "title_en": "Multimodal",
+              "icon": "layers",
+              "color": "#c026d3",
+              "desc": "跨模态理解与内容生成",
+              "items": [
+                "示例: GPT-4V, Gemini 1.5, Claude 3, Flamingo"
+              ]
+            }
+          ]
+        },
+        {
+          "kind": "list",
+          "title": "生成过程",
+          "subtitle": "The Generative Process",
+          "weight": 0.95,
+          "color": "#f59e0b",
+          "items": [
+            {
+              "icon": "doc",
+              "title": "1. 需求输入 (Input)",
+              "desc": "用户输入提示、条件或数据"
+            },
+            {
+              "icon": "brain",
+              "title": "2. 理解与建模 (Modeling)",
+              "desc": "模型理解输入，建立生成分布"
+            },
+            {
+              "icon": "star",
+              "title": "3. 生成 (Generation)",
+              "desc": "从分布中采样，生成内容"
+            },
+            {
+              "icon": "gear",
+              "title": "4. 优化与筛选 (Refinement)",
+              "desc": "对结果进行优化、筛选与调整"
+            },
+            {
+              "icon": "rocket",
+              "title": "5. 输出与应用 (Output & Use)",
+              "desc": "输出结果并应用于实际场景"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "row": [
+        {
+          "kind": "list",
+          "title": "技术基础与关键方法",
+          "subtitle": "Technical Foundations",
+          "weight": 1.1,
+          "color": "#4f46e5",
+          "items": [
+            {
+              "icon": "flow",
+              "title": "自回归模型 (AutoRegressive)",
+              "desc": "基于历史生成下一个元素；如: GPT 系列 · x1 → x2 → x3 → … → xn"
+            },
+            {
+              "icon": "network",
+              "title": "变分自编码器 (VAE)",
+              "desc": "学习潜在空间分布进行生成；如: VAE, beta-VAE · 编码器 q(z|x) → z → 解码器 p(z|a)"
+            },
+            {
+              "icon": "bolt",
+              "title": "生成对抗网络 (GAN)",
+              "desc": "生成器与判别器对抗训练；如: GAN, StyleGAN · 噪声 z → 生成器 G → 图像 → 判别器 D → 真/假"
+            },
+            {
+              "icon": "layers",
+              "title": "扩散模型 (Diffusion Models)",
+              "desc": "通过逐步去噪生成高质量内容；如: Stable Diffusion, DALL-E 3 · 噪声 → 去噪步骤 → 图像"
+            },
+            {
+              "icon": "flow",
+              "title": "流匹配模型 (Flow Matching)",
+              "desc": "学习连续变换将噪声映射到数据；如: Imagen, Flow Matching · 噪声 → 数据"
+            }
+          ]
+        },
+        {
+          "kind": "pills",
+          "title": "生成式 AI 典型架构",
+          "subtitle": "Typical Architectures",
+          "weight": 1.05,
+          "color": "#3b82f6",
+          "label_w": 150,
+          "rows": [
+            {
+              "label": "Transformer 架构",
+              "sublabel": "自注意力机制，长序列建模",
+              "color": "#4f46e5",
+              "pills": [
+                "输入嵌入",
+                "Transformer Block x N",
+                "输出层"
+              ]
+            },
+            {
+              "label": "编码器-解码器",
+              "sublabel": "用于条件生成、机器翻译等",
+              "color": "#0ea5e9",
+              "pills": [
+                "编码器",
+                "上下文向量",
+                "解码器"
+              ]
+            },
+            {
+              "label": "扩散模型架构",
+              "sublabel": "U-Net ＋ 时间步嵌入",
+              "color": "#a855f7",
+              "pills": [
+                "噪声",
+                "去噪 U-Net",
+                "图像"
+              ]
+            },
+            {
+              "label": "多模态融合架构",
+              "sublabel": "跨模态编码＋融合＋解码",
+              "color": "#c026d3",
+              "pills": [
+                "文本 / 音频",
+                "融合模块",
+                "生成"
+              ]
+            }
+          ]
+        },
+        {
+          "stack": [
+            {
+              "kind": "cards",
+              "title": "应用场景",
+              "subtitle": "Applications",
+              "color": "#22c55e",
+              "columns": 3,
+              "items": [
+                {
+                  "title": "内容创作",
+                  "icon": "doc",
+                  "color": "#3b82f6",
+                  "desc": "文章、故事、诗歌等"
+                },
+                {
+                  "title": "图像设计",
+                  "icon": "image",
+                  "color": "#22c55e",
+                  "desc": "插画、海报、Logo 等"
+                },
+                {
+                  "title": "音乐创作",
+                  "icon": "audio",
+                  "color": "#a855f7",
+                  "desc": "作曲、编曲、音乐生成"
+                },
+                {
+                  "title": "视频制作",
+                  "icon": "video",
+                  "color": "#0ea5e9",
+                  "desc": "视频生成、剪辑、特效"
+                },
+                {
+                  "title": "代码生成",
+                  "icon": "gear",
+                  "color": "#64748b",
+                  "desc": "代码编写、注释、调试"
+                },
+                {
+                  "title": "虚拟人/数字人",
+                  "icon": "person",
+                  "color": "#ec4899",
+                  "desc": "数字人生成与驱动"
+                },
+                {
+                  "title": "游戏开发",
+                  "icon": "target",
+                  "color": "#f59e0b",
+                  "desc": "场景、角色、剧情生成"
+                },
+                {
+                  "title": "教育学习",
+                  "icon": "book",
+                  "color": "#84cc16",
+                  "desc": "个性化内容生成"
+                },
+                {
+                  "title": "科学研究",
+                  "icon": "atom",
+                  "color": "#06b6d4",
+                  "desc": "分子、蛋白质、材料生成"
+                }
+              ]
+            },
+            {
+              "kind": "list",
+              "title": "更多领域",
+              "subtitle": "More Domains",
+              "color": "#64748b",
+              "columns": 3,
+              "items": [
+                "营销广告",
+                "电商",
+                "金融",
+                "医疗健康",
+                "建筑设计",
+                "工业制造"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "row": [
+        {
+          "kind": "table",
+          "title": "重要数据集",
+          "subtitle": "Key Datasets",
+          "weight": 1.0,
+          "color": "#4f46e5",
+          "columns": [
+            "类型",
+            "数据集",
+            "简介"
+          ],
+          "col_widths": [
+            0.75,
+            1.05,
+            1.5
+          ],
+          "rows": [
+            [
+              "文本",
+              "C4",
+              "大规模清洗文本数据集"
+            ],
+            [
+              "文本",
+              "The Pile",
+              "多领域、多语言文本数据集"
+            ],
+            [
+              "代码",
+              "CodeParrot",
+              "GitHub 代码数据集"
+            ],
+            [
+              "图像",
+              "LAION-5B",
+              "大规模图像-文本对数据集"
+            ],
+            [
+              "图像",
+              "COCO",
+              "图像识别与描述数据集"
+            ],
+            [
+              "音频",
+              "LibriTTS",
+              "语音合成数据集"
+            ],
+            [
+              "视频",
+              "WebVid-10M",
+              "大规模视频数据集"
+            ],
+            [
+              "多模态",
+              "CC3M",
+              "图像-文本对数据集"
+            ]
+          ]
+        },
+        {
+          "kind": "list",
+          "title": "评估指标",
+          "subtitle": "Evaluation Metrics",
+          "weight": 1.0,
+          "color": "#0ea5e9",
+          "items": [
+            {
+              "icon": "text",
+              "title": "文本生成",
+              "desc": "Perplexity (PPL); BLEU, ROUGE, METEOR; BERTScore, GPTScore"
+            },
+            {
+              "icon": "image",
+              "title": "图像生成",
+              "desc": "FID (Frechet Inception Distance); IS (Inception Score); CLIP Score"
+            },
+            {
+              "icon": "audio",
+              "title": "音频生成",
+              "desc": "MOS (Mean Opinion Score); FAD (Frechet Audio Distance); Mel Cepstral Distortion"
+            },
+            {
+              "icon": "check",
+              "title": "通用评估",
+              "desc": "人类评估（主观质量）；安全性评估（有害内容、偏见等）；对齐性评估（价值观对齐）"
+            }
+          ]
+        },
+        {
+          "kind": "list",
+          "title": "主要挑战",
+          "subtitle": "Challenges",
+          "weight": 0.7,
+          "color": "#dc2626",
+          "items": [
+            {
+              "icon": "db",
+              "title": "数据隐私与安全"
+            },
+            {
+              "icon": "doc",
+              "title": "生成内容真伪难辨"
+            },
+            {
+              "icon": "target",
+              "title": "偏见与公平性"
+            },
+            {
+              "icon": "gear",
+              "title": "可控性与可解释性"
+            },
+            {
+              "icon": "bolt",
+              "title": "高昂的算力成本"
+            },
+            {
+              "icon": "book",
+              "title": "法律与伦理问题"
+            }
+          ]
+        },
+        {
+          "kind": "list",
+          "title": "未来趋势",
+          "subtitle": "Future Trends",
+          "weight": 0.85,
+          "color": "#16a34a",
+          "marker": "check",
+          "items": [
+            {
+              "title": "更强大的多模态生成与理解能力"
+            },
+            {
+              "title": "更高效的模型（小型化、轻量化、边缘化）"
+            },
+            {
+              "title": "更可控、可解释、可靠的生成式系统"
+            },
+            {
+              "title": "AI 智能体与工具使用能力增强"
+            },
+            {
+              "title": "与物理世界的深度融合"
+            },
+            {
+              "title": "迈向通用人工智能 (AGI)"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "industry",
+      "title": "生成式 AI 生态系统",
+      "subtitle": "Ecosystem",
+      "color": "#4f46e5",
+      "groups": [
+        {
+          "title": "基础模型 (Model Providers)",
+          "color": "#4f46e5",
+          "items": [
+            "OpenAI",
+            "Google",
+            "Meta",
+            "Anthropic"
+          ]
+        },
+        {
+          "title": "开源社区 (Open Source)",
+          "color": "#f59e0b",
+          "items": [
+            "Hugging Face",
+            "ModelScope",
+            "LLaMA",
+            "Falcon"
+          ]
+        },
+        {
+          "title": "开发工具 (Tools & Platforms)",
+          "color": "#0ea5e9",
+          "items": [
+            "LangChain",
+            "LlamaIndex",
+            "Weights & Biases",
+            "Ray",
+            "Pinecone"
+          ]
+        },
+        {
+          "title": "应用生态 (Applications)",
+          "color": "#22c55e",
+          "items": [
+            "ChatGPT",
+            "Midjourney",
+            "Notion AI",
+            "GitHub Copilot"
+          ]
+        }
+      ]
+    }
+  ],
+  "footer": {
+    "quote_zh": "生成式 AI 正在重塑内容生产的方式，释放人类的创造力，推动社会进入智能共创的新时代。",
+    "quote_en": "Generative AI is reshaping how we create, enabling human creativity, and driving us into a new era of intelligent co-creation.",
+    "globe": true
+  },
+  "nodes": [
+    {
+      "id": "markov_chain",
+      "label": "马尔可夫链",
+      "label_en": "Markov Chain",
+      "year": 1950,
+      "kind": "concept"
+    },
+    {
+      "id": "hmm",
+      "label": "隐马尔可夫模型",
+      "label_en": "HMM",
+      "year": 1970,
+      "kind": "model"
+    },
+    {
+      "id": "crf",
+      "label": "条件随机场",
+      "label_en": "CRF",
+      "year": 2001,
+      "kind": "model"
+    },
+    {
+      "id": "rbm",
+      "label": "受限玻尔兹曼机",
+      "label_en": "RBM",
+      "year": 2006,
+      "kind": "model"
+    },
+    {
+      "id": "dbn",
+      "label": "深度信念网络",
+      "label_en": "DBN",
+      "year": 2006,
+      "kind": "model"
+    },
+    {
+      "id": "vae",
+      "label": "变分自编码器",
+      "label_en": "VAE",
+      "year": 2014,
+      "kind": "milestone"
+    },
+    {
+      "id": "gan",
+      "label": "生成对抗网络",
+      "label_en": "GAN",
+      "year": 2014,
+      "kind": "milestone"
+    },
+    {
+      "id": "stylegan",
+      "label": "风格生成网络",
+      "label_en": "StyleGAN",
+      "year": 2018,
+      "kind": "model"
+    },
+    {
+      "id": "gpt_series",
+      "label": "GPT 系列",
+      "label_en": "GPT-1/2/3",
+      "year": 2018,
+      "kind": "milestone"
+    },
+    {
+      "id": "bert",
+      "label": "双向编码器",
+      "label_en": "BERT",
+      "year": 2018,
+      "kind": "milestone"
+    },
+    {
+      "id": "t5",
+      "label": "统一文本到文本",
+      "label_en": "T5",
+      "year": 2019,
+      "kind": "model"
+    },
+    {
+      "id": "dall_e",
+      "label": "文本到图像",
+      "label_en": "DALL-E",
+      "year": 2021,
+      "kind": "model"
+    },
+    {
+      "id": "stable_diffusion",
+      "label": "潜在扩散模型",
+      "label_en": "Stable Diffusion",
+      "year": 2022,
+      "kind": "milestone"
+    },
+    {
+      "id": "chatgpt",
+      "label": "对话生成",
+      "label_en": "ChatGPT",
+      "year": 2022,
+      "kind": "milestone"
+    },
+    {
+      "id": "dall_e_3",
+      "label": "文本到图像 v3",
+      "label_en": "DALL-E 3",
+      "year": 2023,
+      "kind": "model"
+    },
+    {
+      "id": "midjourney",
+      "label": "图像生成服务",
+      "label_en": "Midjourney",
+      "year": 2022,
+      "kind": "industry"
+    },
+    {
+      "id": "gpt_4",
+      "label": "大语言模型",
+      "label_en": "GPT-4",
+      "year": 2023,
+      "kind": "milestone"
+    },
+    {
+      "id": "llama_3",
+      "label": "开源大模型",
+      "label_en": "Llama 3",
+      "year": 2024,
+      "kind": "model"
+    },
+    {
+      "id": "claude_3",
+      "label": "大语言模型",
+      "label_en": "Claude 3",
+      "year": 2023,
+      "kind": "model"
+    },
+    {
+      "id": "palm_2",
+      "label": "大语言模型",
+      "label_en": "PaLM 2",
+      "year": 2023,
+      "kind": "model"
+    },
+    {
+      "id": "musiclm",
+      "label": "音乐生成",
+      "label_en": "MusicLM",
+      "year": 2023,
+      "kind": "model"
+    },
+    {
+      "id": "suno",
+      "label": "音乐生成",
+      "label_en": "Suno",
+      "year": 2023,
+      "kind": "industry"
+    },
+    {
+      "id": "elevenlabs",
+      "label": "语音合成",
+      "label_en": "ElevenLabs",
+      "year": 2023,
+      "kind": "industry"
+    },
+    {
+      "id": "sora",
+      "label": "视频生成",
+      "label_en": "Sora",
+      "year": 2024,
+      "kind": "milestone"
+    },
+    {
+      "id": "pika_labs",
+      "label": "视频生成",
+      "label_en": "Pika Labs",
+      "year": 2023,
+      "kind": "industry"
+    },
+    {
+      "id": "runway_gen3",
+      "label": "视频生成",
+      "label_en": "Runway Gen-3",
+      "year": 2024,
+      "kind": "industry"
+    },
+    {
+      "id": "dreamfusion",
+      "label": "文本到 3D",
+      "label_en": "DreamFusion",
+      "year": 2022,
+      "kind": "paper"
+    },
+    {
+      "id": "magic3d",
+      "label": "文本到 3D",
+      "label_en": "Magic3D",
+      "year": 2022,
+      "kind": "paper"
+    },
+    {
+      "id": "point_e",
+      "label": "点云生成",
+      "label_en": "Point-E",
+      "year": 2022,
+      "kind": "model"
+    },
+    {
+      "id": "gpt_4v",
+      "label": "多模态大模型",
+      "label_en": "GPT-4V",
+      "year": 2023,
+      "kind": "model"
+    },
+    {
+      "id": "gemini_1_5",
+      "label": "多模态大模型",
+      "label_en": "Gemini 1.5",
+      "year": 2024,
+      "kind": "model"
+    },
+    {
+      "id": "flamingo",
+      "label": "少样本多模态",
+      "label_en": "Flamingo",
+      "year": 2022,
+      "kind": "model"
+    },
+    {
+      "id": "imagen",
+      "label": "文本到图像",
+      "label_en": "Imagen",
+      "year": 2022,
+      "kind": "model"
+    },
+    {
+      "id": "flow_matching",
+      "label": "流匹配",
+      "label_en": "Flow Matching",
+      "year": 2022,
+      "kind": "concept"
+    },
+    {
+      "id": "diffusion_models",
+      "label": "扩散模型",
+      "label_en": "Diffusion Models",
+      "year": 2020,
+      "kind": "concept"
+    }
+  ],
+  "edges": [
+    {
+      "source": "rbm",
+      "target": "dbn",
+      "relation": "inherits"
+    },
+    {
+      "source": "gan",
+      "target": "stylegan",
+      "relation": "inherits"
+    },
+    {
+      "source": "vae",
+      "target": "gan",
+      "relation": "converges"
+    },
+    {
+      "source": "gan",
+      "target": "vae",
+      "relation": "converges"
+    },
+    {
+      "source": "diffusion_models",
+      "target": "stable_diffusion",
+      "relation": "inherits"
+    },
+    {
+      "source": "diffusion_models",
+      "target": "dall_e_3",
+      "relation": "converges"
+    },
+    {
+      "source": "diffusion_models",
+      "target": "imagen",
+      "relation": "inherits"
+    },
+    {
+      "source": "flow_matching",
+      "target": "stable_diffusion",
+      "relation": "converges"
+    },
+    {
+      "source": "gpt_series",
+      "target": "chatgpt",
+      "relation": "inherits"
+    },
+    {
+      "source": "chatgpt",
+      "target": "gpt_4",
+      "relation": "inherits"
+    },
+    {
+      "source": "bert",
+      "target": "gpt_series",
+      "relation": "converges"
+    },
+    {
+      "source": "gpt_series",
+      "target": "bert",
+      "relation": "converges"
+    },
+    {
+      "source": "t5",
+      "target": "bert",
+      "relation": "converges"
+    },
+    {
+      "source": "bert",
+      "target": "t5",
+      "relation": "converges"
+    },
+    {
+      "source": "gpt_series",
+      "target": "dall_e",
+      "relation": "composes"
+    },
+    {
+      "source": "stable_diffusion",
+      "target": "sora",
+      "relation": "converges"
+    },
+    {
+      "source": "stable_diffusion",
+      "target": "midjourney",
+      "relation": "converges"
+    },
+    {
+      "source": "midjourney",
+      "target": "stable_diffusion",
+      "relation": "converges"
+    },
+    {
+      "source": "midjourney",
+      "target": "pika_labs",
+      "relation": "converges"
+    },
+    {
+      "source": "pika_labs",
+      "target": "midjourney",
+      "relation": "converges"
+    },
+    {
+      "source": "pika_labs",
+      "target": "runway_gen3",
+      "relation": "converges"
+    },
+    {
+      "source": "runway_gen3",
+      "target": "pika_labs",
+      "relation": "converges"
+    },
+    {
+      "source": "dreamfusion",
+      "target": "magic3d",
+      "relation": "converges"
+    },
+    {
+      "source": "magic3d",
+      "target": "dreamfusion",
+      "relation": "converges"
+    },
+    {
+      "source": "magic3d",
+      "target": "point_e",
+      "relation": "converges"
+    },
+    {
+      "source": "point_e",
+      "target": "magic3d",
+      "relation": "converges"
+    },
+    {
+      "source": "gpt_4",
+      "target": "sora",
+      "relation": "composes"
+    }
+  ],
+  "next": {
+    "label": "NEXT",
+    "title": "Vol.06 强化学习",
+    "desc": "让智能体在与环境的交互中学习最优决策"
+  }
+}

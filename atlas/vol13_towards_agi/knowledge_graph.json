@@ -1,0 +1,1307 @@
+{
+  "meta": {
+    "series": "Modern AI Atlas",
+    "volume": "Vol.13",
+    "title_zh": "迈向 AGI",
+    "title_en": "Towards AGI",
+    "theme": "atlas_light",
+    "layout": "bands",
+    "title_style": "badge",
+    "badge": {
+      "name": "Modern AI Atlas",
+      "volume": "Vol.13"
+    },
+    "tagline": "技术演进 · 路线图 · 未来十年展望",
+    "tagline_en": "Evolution · Roadmap · The Next Decade",
+    "callout": "通向 AGI 的道路，是理解世界、创造价值、与人协作的旅程。",
+    "canvas": {
+      "width": 2524,
+      "height": 1682,
+      "gap": 10,
+      "margin": 28
+    }
+  },
+  "editorial_notes": [
+    "Section 02 pillar 5: print reads '环境建解' [sic]; rendered as intended '环境建模'.",
+    "Section 02 pillar 1: illegible glyph after 'Compute' [uncertain] rendered as '算力规模 Compute Scale' (the infinity glyph is not font-safe).",
+    "Section 04 阶段三: bullet kept verbatim as '规划世界任务执行' [sic — likely intended 现实世界任务执行].",
+    "Section 04 阶段五: '社会…协同' [partially illegible — spec reads 社会价值?协同?] rendered as best-read '社会价值协同'.",
+    "Section 03: '解决…复杂开放世界任务' [partially illegible] rendered as best-read '解决复杂开放世界任务'; other [uncertain] tails (多模态融合与世界模型加速 / 行业级智能体广泛部署 / 自我改进与持续学习能力形成闭环 / 与人类共创更美好的未来) transcribed as printed.",
+    "Section 06 对齐与安全: '价值?对齐问题' [uncertain] rendered as '价值观对齐'.",
+    "Timeline: Perceptron dated 1969 as printed (poster/book year), per spec.",
+    "Header quote rendered zh-only in the callout (3-line cap); the full bilingual journey quote closes the poster in the footer band. Attribution '— Modern AI Atlas' omitted.",
+    "Section 03 bullets keep each zh bullet above its en gloss, per spec style notes.",
+    "Section 05 loop rendered as a radial hub (engine has no circular-arrow kind); center sub-items (环境建模 · 预测推演 · 想象仿真) moved into the subtitle.",
+    "Section 08 grand summary rendered as a dark mainline band: six bilingual satellite nodes + an AGI axis strip stand in for the neon ring orbit."
+  ],
+  "sections": [
+    {
+      "row": [
+        {
+          "stack": [
+            {
+              "kind": "pills",
+              "number": 1,
+              "title": "AI 发展总时间线",
+              "subtitle": "AI Development Timeline",
+              "color": "#4f5dd5",
+              "label_w": 170,
+              "rows": [
+                {
+                  "label": "早期探索",
+                  "sublabel": "Early Era",
+                  "color": "#64748b",
+                  "pills": [
+                    {
+                      "text": "起源探索 1950s–70s Foundations"
+                    },
+                    {
+                      "text": "专家系统 1980s–90s Expert Systems"
+                    },
+                    {
+                      "text": "机器学习 2000s Machine Learning"
+                    }
+                  ]
+                },
+                {
+                  "label": "现代阶段",
+                  "sublabel": "Modern Era",
+                  "color": "#4f5dd5",
+                  "pills": [
+                    {
+                      "text": "深度学习 2010s Deep Learning"
+                    },
+                    {
+                      "text": "大模型时代 2020s Foundation Models"
+                    },
+                    {
+                      "text": "迈向 AGI 2030s+ Towards AGI",
+                      "highlight": true
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "kind": "cards",
+              "number": 2,
+              "title": "AGI 核心技术支柱",
+              "subtitle": "Core Technology Pillars",
+              "color": "#3b82f6",
+              "columns": 4,
+              "items": [
+                {
+                  "title": "Scaling Law",
+                  "title_en": "规模定律",
+                  "icon": "chart",
+                  "color": "#3b82f6",
+                  "items": [
+                    "参数规模 Data Scale",
+                    "算力规模 Compute Scale",
+                    "性能提升 Scaling Behavior"
+                  ],
+                  "node": "scaling_law"
+                },
+                {
+                  "title": "Transformer 与架构演进",
+                  "icon": "flow",
+                  "color": "#4f5dd5",
+                  "items": [
+                    "Attention 机制 架构创新",
+                    "效率优化 泛化增强",
+                    "多模态扩展"
+                  ],
+                  "node": "transformer"
+                },
+                {
+                  "title": "LLM 大模型",
+                  "title_en": "Foundation Models",
+                  "icon": "doc",
+                  "color": "#6366f1",
+                  "items": [
+                    "预训练 指令微调",
+                    "对齐优化 涌现能力",
+                    "知识融合"
+                  ],
+                  "node": "llm_pillar"
+                },
+                {
+                  "title": "Multimodal 多模态理解",
+                  "icon": "image",
+                  "color": "#8b5cf6",
+                  "items": [
+                    "视觉理解 语言理解",
+                    "语音理解",
+                    "多模态融合"
+                  ],
+                  "node": "multimodal_pillar"
+                },
+                {
+                  "title": "World Model 世界模型",
+                  "icon": "globe",
+                  "color": "#a855f7",
+                  "items": [
+                    "环境建模 物理规律",
+                    "预测仿真 想象生成",
+                    "世界理解 决策规划"
+                  ],
+                  "node": "world_model_pillar"
+                },
+                {
+                  "title": "Embodied AI 具身智能",
+                  "icon": "robot",
+                  "color": "#c026d3",
+                  "items": [
+                    "感知交互 运动控制",
+                    "环境适应 任务执行",
+                    "身体智能"
+                  ],
+                  "node": "embodied_ai_pillar"
+                },
+                {
+                  "title": "AI Agent 智能体",
+                  "icon": "person",
+                  "color": "#f59e0b",
+                  "items": [
+                    "自主决策 目标规划",
+                    "工具使用 记忆反思",
+                    "协作学习"
+                  ],
+                  "node": "ai_agent_pillar"
+                },
+                {
+                  "title": "AI Systems 系统与工程",
+                  "icon": "gear",
+                  "color": "#22c55e",
+                  "items": [
+                    "高效训练 推理优化",
+                    "分布式系统 资源调度",
+                    "工程化落地"
+                  ],
+                  "node": "ai_systems_pillar"
+                }
+              ]
+            },
+            {
+              "kind": "pills",
+              "title": "要素公式 · 安全底座",
+              "subtitle": "Formula & Safety",
+              "color": "#22c55e",
+              "label_w": 90,
+              "rows": [
+                {
+                  "label": "要素公式",
+                  "sublabel": "Formula",
+                  "color": "#3b82f6",
+                  "pills": [
+                    "数据 (Data)",
+                    "算力 (Compute)",
+                    "算法 (Algorithms)",
+                    "工程 (Engineering)",
+                    "智能涌现 (Emergent Intelligence)"
+                  ]
+                },
+                {
+                  "label": "安全底座",
+                  "sublabel": "Safety",
+                  "color": "#22c55e",
+                  "pills": [
+                    "安全对齐 Safety & Alignment",
+                    "伦理治理 Ethics & Governance",
+                    "可靠可控 Reliability & Controllability"
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "kind": "cards",
+          "number": 3,
+          "title": "未来十年预测 (2026–2035)",
+          "subtitle": "The Next Decade",
+          "weight": 1.0,
+          "color": "#6366f1",
+          "columns": 3,
+          "items": [
+            {
+              "title": "2026–2027 能力跃升",
+              "title_en": "Capability Leap",
+              "color": "#3b82f6",
+              "items": [
+                "更大规模模型与更低成本训练",
+                "Larger models, lower training cost",
+                "Agent 成为主流生产力工具",
+                "Agents become mainstream productivity tools",
+                "多模态融合与世界模型加速",
+                "Multimodal fusion & world model acceleration"
+              ]
+            },
+            {
+              "title": "2028–2029 智能体普及",
+              "title_en": "Agentic AI Era",
+              "color": "#4f5dd5",
+              "items": [
+                "长时记忆与自主规划能力增强",
+                "Stronger long-term memory & planning",
+                "工具生态成熟，自动化能力大幅提升",
+                "Mature tool ecosystem, big automation boost",
+                "行业级智能体广泛部署",
+                "Industry-grade agents widely deployed"
+              ]
+            },
+            {
+              "title": "2030–2031 通用助理",
+              "title_en": "Universal Assistant",
+              "color": "#6366f1",
+              "items": [
+                "跨领域知识融合，理解更接近人类",
+                "Cross-domain knowledge integration",
+                "个性化、主动式服务成为常态",
+                "Personalized & proactive services",
+                "人机协作升级",
+                "Human-AI collaboration upgrade"
+              ]
+            },
+            {
+              "title": "2032–2033 通用智能雏形",
+              "title_en": "AGI Emergence",
+              "color": "#8b5cf6",
+              "items": [
+                "复杂推理与创造力显著增强",
+                "Stronger reasoning & creativity",
+                "具身智能突破，物理世界深度交互",
+                "Embodied AI breakthroughs",
+                "自我改进与持续学习能力形成闭环",
+                "Self-improvement & lifelong learning"
+              ]
+            },
+            {
+              "title": "2034–2035 走向 AGI",
+              "title_en": "Towards AGI",
+              "color": "#a855f7",
+              "items": [
+                "通用智能系统具备自主目标与价值判断",
+                "Autonomous goals & value alignment",
+                "解决复杂开放世界任务",
+                "Solve most real-world tasks",
+                "与人类共创更美好的未来",
+                "Co-create a better future with humans"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "row": [
+        {
+          "kind": "timeline",
+          "title": "发展里程碑",
+          "subtitle": "Milestones",
+          "color": "#4f5dd5",
+          "milestones": [
+            {
+              "year": "1956",
+              "title": "达特茅斯会议",
+              "desc": "Dartmouth Conference",
+              "node": "dartmouth_conference"
+            },
+            {
+              "year": "1969",
+              "title": "感知机",
+              "desc": "Perceptron",
+              "node": "perceptron"
+            },
+            {
+              "year": "1986",
+              "title": "反向传播",
+              "desc": "Backprop",
+              "node": "backprop"
+            },
+            {
+              "year": "1997",
+              "title": "深蓝击败卡斯帕罗夫",
+              "desc": "Deep Blue",
+              "node": "deep_blue"
+            },
+            {
+              "year": "2006",
+              "title": "深度学习复兴",
+              "desc": "Deep Learning Revival",
+              "node": "dl_revival"
+            },
+            {
+              "year": "2012",
+              "title": "AlexNet 突破",
+              "desc": "ImageNet Win",
+              "node": "alexnet"
+            },
+            {
+              "year": "2017",
+              "title": "Transformer",
+              "desc": "架构提出",
+              "node": "transformer"
+            },
+            {
+              "year": "2020",
+              "title": "GPT-3 发布",
+              "desc": "GPT-3",
+              "node": "gpt3"
+            },
+            {
+              "year": "2022",
+              "title": "ChatGPT 发布",
+              "desc": "ChatGPT",
+              "node": "chatgpt"
+            },
+            {
+              "year": "2024+",
+              "title": "多模态 & Agent",
+              "desc": "迈向通用智能",
+              "desc2": "Towards AGI",
+              "node": "multimodal_agent_2024"
+            }
+          ]
+        },
+        {
+          "kind": "pills",
+          "title": "能力与规模趋势",
+          "subtitle": "Capability & Scale Trend",
+          "color": "#3b82f6",
+          "label_w": 10,
+          "rows": [
+            {
+              "color": "#3b82f6",
+              "pills": [
+                "规则驱动 Rules Based",
+                "特征工程 Feature Engineering",
+                "统计学习 Statistical Learning",
+                "深度神经网络 Deep Neural Networks",
+                "大模型预训练 Pre-trained LLMs",
+                "通用智能系统 AGI Systems"
+              ]
+            },
+            {
+              "color": "#6366f1",
+              "pills": [
+                "小数据 Small Data",
+                "中等数据 Medium Data",
+                "大数据 Big Data",
+                "海量数据 Huge Data",
+                "万亿参数 Trillion Parameters",
+                "持续学习 Continual Learning"
+              ]
+            },
+            {
+              "color": "#a855f7",
+              "pills": [
+                "弱泛化 Weak Generalization",
+                "任务特定 Task Specific",
+                "监督学习 Supervised Learning",
+                "表示学习 Representation Learning",
+                "涌现能力 Emergent Abilities",
+                "自主智能体 Autonomous Agents"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "row": [
+        {
+          "kind": "cards",
+          "number": 4,
+          "title": "AGI 技术路线图",
+          "subtitle": "AGI Roadmap",
+          "weight": 1.5,
+          "color": "#4f5dd5",
+          "columns": 5,
+          "items": [
+            {
+              "title": "阶段一：感知智能",
+              "title_en": "Perception AI (2020–2022)",
+              "color": "#3b82f6",
+              "items": [
+                "大规模预训练模型",
+                "基础视觉能力涌现",
+                "单模态理解与生成",
+                "对齐与安全初步探索"
+              ],
+              "node": "perception_ai_stage"
+            },
+            {
+              "title": "阶段二：认知智能",
+              "title_en": "Cognitive AI (2023–2025)",
+              "color": "#6366f1",
+              "items": [
+                "多模态理解与推理",
+                "复杂任务规划能力",
+                "知识增强与记忆系统",
+                "工具使用与外部系统交互"
+              ],
+              "node": "cognitive_ai_stage"
+            },
+            {
+              "title": "阶段三：智能体智能",
+              "title_en": "Agentic AI (2026–2028)",
+              "color": "#f97316",
+              "items": [
+                "自主目标规划",
+                "长期记忆与反思学习",
+                "多智能体协作",
+                "规划世界任务执行"
+              ],
+              "node": "agentic_ai_stage"
+            },
+            {
+              "title": "阶段四：通用智能",
+              "title_en": "General AI (2029–2032)",
+              "color": "#8b5cf6",
+              "items": [
+                "通用推理与创造力",
+                "跨领域知识迁移",
+                "具身智能深度融合",
+                "自我进化与持续学习"
+              ],
+              "node": "general_ai_stage"
+            },
+            {
+              "title": "阶段五：超级智能",
+              "title_en": "Superintelligence (2033+)",
+              "color": "#a855f7",
+              "items": [
+                "超越人类的综合能力",
+                "自主探究与创新",
+                "社会价值协同",
+                "安全可控的超级智能"
+              ],
+              "node": "superintelligence_stage"
+            }
+          ]
+        },
+        {
+          "kind": "pills",
+          "title": "持续迭代",
+          "subtitle": "Continuous Iteration",
+          "weight": 1.0,
+          "color": "#22c55e",
+          "label_w": 90,
+          "rows": [
+            {
+              "label": "迭代引擎",
+              "sublabel": "Engine",
+              "color": "#22c55e",
+              "pills": [
+                "数据飞轮 (Data Flywheel)",
+                "模型迭代 (Model Iteration)",
+                "反馈闭环 (Feedback Loop)"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "row": [
+        {
+          "kind": "radial",
+          "number": 5,
+          "title": "具身智能 + 世界模型闭环",
+          "subtitle": "Embodied AI + World Model Loop · 环境建模 · 预测推演 · 想象仿真",
+          "weight": 1.0,
+          "color": "#8b5cf6",
+          "center": {
+            "zh": "世界模型",
+            "en": "World Model"
+          },
+          "branches": [
+            {
+              "label": "感知",
+              "label_en": "Perception",
+              "color": "#3b82f6",
+              "items": [
+                "多模态感知输入",
+                "视觉 / 听觉 / 触觉 …"
+              ]
+            },
+            {
+              "label": "理解",
+              "label_en": "Understanding",
+              "color": "#6366f1",
+              "items": [
+                "语义理解",
+                "状态估计",
+                "场景 / 物体 / 关系 …"
+              ]
+            },
+            {
+              "label": "决策规划",
+              "label_en": "Planning",
+              "color": "#8b5cf6",
+              "items": [
+                "目标拆解",
+                "策略生成",
+                "推理 / 规划 / 决策 …"
+              ]
+            },
+            {
+              "label": "行动执行",
+              "label_en": "Action",
+              "color": "#a855f7",
+              "items": [
+                "控制与交互执行",
+                "运动 / 操作 / 交互 …"
+              ]
+            }
+          ]
+        },
+        {
+          "kind": "cards",
+          "number": 6,
+          "title": "迈向 AGI 的关键挑战",
+          "subtitle": "Key Challenges",
+          "weight": 1.0,
+          "color": "#e11d48",
+          "columns": 4,
+          "items": [
+            {
+              "title": "数据与知识",
+              "title_en": "Data & Knowledge",
+              "icon": "db",
+              "color": "#3b82f6",
+              "items": [
+                "高质量数据稀缺",
+                "知识时效性"
+              ]
+            },
+            {
+              "title": "推理与泛化",
+              "title_en": "Reasoning & Generalization",
+              "icon": "brain",
+              "color": "#4f5dd5",
+              "items": [
+                "复杂推理能力",
+                "跨域泛化能力"
+              ]
+            },
+            {
+              "title": "对齐与安全",
+              "title_en": "Alignment & Safety",
+              "icon": "target",
+              "color": "#e11d48",
+              "items": [
+                "价值观对齐",
+                "安全可控性"
+              ]
+            },
+            {
+              "title": "计算资源",
+              "title_en": "Compute Resources",
+              "icon": "bolt",
+              "color": "#f59e0b",
+              "items": [
+                "算力成本高",
+                "能源与可持续性"
+              ]
+            },
+            {
+              "title": "长期记忆",
+              "title_en": "Long-term Memory",
+              "icon": "doc",
+              "color": "#6366f1",
+              "items": [
+                "持久记忆建模",
+                "高效检索与更新"
+              ]
+            },
+            {
+              "title": "具身与物理世界",
+              "title_en": "Embodiment & Physical World",
+              "icon": "robot",
+              "color": "#a855f7",
+              "items": [
+                "物理交互理解",
+                "鲁棒性与适应性"
+              ]
+            },
+            {
+              "title": "评估与基准",
+              "title_en": "Evaluation & Benchmark",
+              "icon": "chart",
+              "color": "#0ea5e9",
+              "items": [
+                "通用评估体系",
+                "局限性识别"
+              ]
+            },
+            {
+              "title": "伦理与治理",
+              "title_en": "Ethics & Governance",
+              "icon": "globe",
+              "color": "#22c55e",
+              "items": [
+                "伦理风险应对",
+                "社会影响治理"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "pills",
+      "number": 7,
+      "title": "AGI 生态全景图",
+      "subtitle": "AGI Ecosystem Panorama",
+      "color": "#f59e0b",
+      "label_w": 260,
+      "rows": [
+        {
+          "label": "基础模型",
+          "sublabel": "Foundation Models",
+          "color": "#3b82f6",
+          "pills": [
+            "OpenAI",
+            "Google",
+            "Meta",
+            "ANTHROPIC",
+            "Alibaba",
+            "Baidu 百度"
+          ]
+        },
+        {
+          "label": "数据与工具",
+          "sublabel": "Data & Tools",
+          "color": "#0ea5e9",
+          "pills": [
+            "Kaggle",
+            "Hugging Face",
+            "Pinecone",
+            "Weaviate",
+            "Weights & Biases",
+            "LangChain"
+          ]
+        },
+        {
+          "label": "训练与框架",
+          "sublabel": "Training & Frameworks",
+          "color": "#4f5dd5",
+          "pills": [
+            "PyTorch",
+            "TensorFlow",
+            "JAX",
+            "Megatron-LM",
+            "DeepSpeed",
+            "Microsoft"
+          ]
+        },
+        {
+          "label": "推理与部署",
+          "sublabel": "Inference & Deployment",
+          "color": "#6366f1",
+          "pills": [
+            "vLLM",
+            "SGLang",
+            "Triton Inference Server",
+            "NVIDIA TensorRT",
+            "ONNX Runtime",
+            "OpenVINO"
+          ]
+        },
+        {
+          "label": "基础设施",
+          "sublabel": "Infrastructure",
+          "color": "#8b5cf6",
+          "pills": [
+            "NVIDIA",
+            "AMD",
+            "AWS",
+            "Azure",
+            "Google Cloud",
+            "CoreWeave"
+          ]
+        },
+        {
+          "label": "应用与场景",
+          "sublabel": "Applications",
+          "color": "#a855f7",
+          "pills": [
+            "办公协作 Office & Productivity",
+            "教育学习 Education",
+            "医疗健康 Healthcare",
+            "工业制造 Industry",
+            "娱乐创作 Entertainment",
+            "科研探索 Science Research"
+          ]
+        },
+        {
+          "label": "开放生态",
+          "sublabel": "Open Ecosystem",
+          "color": "#f59e0b",
+          "pills": [
+            "GitHub",
+            "OpenAI API",
+            "Hugging Face Hub",
+            "Model Context Protocol",
+            "开源社区 Open Communities",
+            "开发者生态 Developer Ecosystem"
+          ]
+        }
+      ]
+    }
+  ],
+  "mainline": {
+    "title": "Modern AI Atlas 总结图 The Grand Summary",
+    "stages": [
+      {
+        "label": "理解世界",
+        "sub": "Understand the World",
+        "color": "#22d3ee"
+      },
+      {
+        "label": "创造价值",
+        "sub": "Create Value",
+        "color": "#3b82f6"
+      },
+      {
+        "label": "自主决策",
+        "sub": "Autonomous Decision",
+        "color": "#6366f1"
+      },
+      {
+        "label": "与人协作",
+        "sub": "Collaborate with Humans",
+        "color": "#8b5cf6"
+      },
+      {
+        "label": "安全可靠",
+        "sub": "Safe & Reliable",
+        "color": "#22c55e"
+      },
+      {
+        "label": "持续学习",
+        "sub": "Continual Learning",
+        "color": "#f59e0b"
+      }
+    ],
+    "axis": [
+      "AGI · 通用人工智能 · Artificial General Intelligence"
+    ],
+    "number": 8
+  },
+  "footer": {
+    "quote_zh": "通向 AGI 的道路，是理解世界、创造价值、与人协作的旅程。",
+    "quote_en": "The path to AGI is a journey to understand the world, create value, and collaborate with humans.",
+    "globe": true
+  },
+  "nodes": [
+    {
+      "id": "dartmouth_conference",
+      "label": "达特茅斯会议",
+      "label_en": "Dartmouth Conference",
+      "year": 1956,
+      "kind": "milestone"
+    },
+    {
+      "id": "perceptron",
+      "label": "感知机",
+      "label_en": "Perceptron",
+      "year": 1969,
+      "kind": "milestone"
+    },
+    {
+      "id": "backprop",
+      "label": "反向传播",
+      "label_en": "Backpropagation",
+      "year": 1986,
+      "kind": "milestone"
+    },
+    {
+      "id": "deep_blue",
+      "label": "深蓝",
+      "label_en": "Deep Blue",
+      "year": 1997,
+      "kind": "milestone"
+    },
+    {
+      "id": "dl_revival",
+      "label": "深度学习复兴",
+      "label_en": "Deep Learning Revival",
+      "year": 2006,
+      "kind": "milestone"
+    },
+    {
+      "id": "alexnet",
+      "label": "AlexNet",
+      "label_en": "AlexNet",
+      "year": 2012,
+      "kind": "model"
+    },
+    {
+      "id": "transformer",
+      "label": "Transformer",
+      "label_en": "Transformer",
+      "year": 2017,
+      "kind": "paper"
+    },
+    {
+      "id": "gpt3",
+      "label": "GPT-3",
+      "label_en": "GPT-3",
+      "year": 2020,
+      "kind": "model"
+    },
+    {
+      "id": "chatgpt",
+      "label": "ChatGPT",
+      "label_en": "ChatGPT",
+      "year": 2022,
+      "kind": "model"
+    },
+    {
+      "id": "multimodal_agent_2024",
+      "label": "多模态 & Agent",
+      "label_en": "Multimodal & Agent",
+      "year": 2024,
+      "kind": "concept"
+    },
+    {
+      "id": "scaling_law",
+      "label": "规模定律",
+      "label_en": "Scaling Law",
+      "year": 2020,
+      "kind": "paper"
+    },
+    {
+      "id": "llm_pillar",
+      "label": "大模型",
+      "label_en": "Foundation Models (LLM)",
+      "kind": "concept"
+    },
+    {
+      "id": "multimodal_pillar",
+      "label": "多模态理解",
+      "label_en": "Multimodal Understanding",
+      "kind": "concept"
+    },
+    {
+      "id": "world_model_pillar",
+      "label": "世界模型",
+      "label_en": "World Model",
+      "kind": "concept"
+    },
+    {
+      "id": "embodied_ai_pillar",
+      "label": "具身智能",
+      "label_en": "Embodied AI",
+      "kind": "concept"
+    },
+    {
+      "id": "ai_agent_pillar",
+      "label": "智能体",
+      "label_en": "AI Agent",
+      "kind": "concept"
+    },
+    {
+      "id": "ai_systems_pillar",
+      "label": "系统与工程",
+      "label_en": "AI Systems",
+      "kind": "concept"
+    },
+    {
+      "id": "perception_ai_stage",
+      "label": "感知智能",
+      "label_en": "Perception AI",
+      "year": 2020,
+      "kind": "concept"
+    },
+    {
+      "id": "cognitive_ai_stage",
+      "label": "认知智能",
+      "label_en": "Cognitive AI",
+      "year": 2023,
+      "kind": "concept"
+    },
+    {
+      "id": "agentic_ai_stage",
+      "label": "智能体智能",
+      "label_en": "Agentic AI",
+      "year": 2026,
+      "kind": "concept"
+    },
+    {
+      "id": "general_ai_stage",
+      "label": "通用智能",
+      "label_en": "General AI",
+      "year": 2029,
+      "kind": "concept"
+    },
+    {
+      "id": "superintelligence_stage",
+      "label": "超级智能",
+      "label_en": "Superintelligence",
+      "year": 2033,
+      "kind": "concept"
+    },
+    {
+      "id": "data_flywheel",
+      "label": "数据飞轮",
+      "label_en": "Data Flywheel",
+      "kind": "concept"
+    },
+    {
+      "id": "embodied_world_model_loop",
+      "label": "具身智能+世界模型闭环",
+      "label_en": "Embodied AI + World Model Loop",
+      "kind": "concept"
+    },
+    {
+      "id": "agi",
+      "label": "通用人工智能",
+      "label_en": "Artificial General Intelligence",
+      "year": 2035,
+      "kind": "concept"
+    },
+    {
+      "id": "openai",
+      "label": "OpenAI",
+      "label_en": "OpenAI",
+      "kind": "industry"
+    },
+    {
+      "id": "google",
+      "label": "Google",
+      "label_en": "Google",
+      "kind": "industry"
+    },
+    {
+      "id": "meta",
+      "label": "Meta",
+      "label_en": "Meta",
+      "kind": "industry"
+    },
+    {
+      "id": "anthropic",
+      "label": "Anthropic",
+      "label_en": "Anthropic",
+      "kind": "industry"
+    },
+    {
+      "id": "alibaba",
+      "label": "Alibaba",
+      "label_en": "Alibaba",
+      "kind": "industry"
+    },
+    {
+      "id": "baidu",
+      "label": "百度",
+      "label_en": "Baidu",
+      "kind": "industry"
+    },
+    {
+      "id": "nvidia",
+      "label": "NVIDIA",
+      "label_en": "NVIDIA",
+      "kind": "industry"
+    },
+    {
+      "id": "amd",
+      "label": "AMD",
+      "label_en": "AMD",
+      "kind": "industry"
+    },
+    {
+      "id": "aws",
+      "label": "AWS",
+      "label_en": "AWS",
+      "kind": "industry"
+    },
+    {
+      "id": "azure",
+      "label": "Azure",
+      "label_en": "Azure",
+      "kind": "industry"
+    },
+    {
+      "id": "google_cloud",
+      "label": "Google Cloud",
+      "label_en": "Google Cloud",
+      "kind": "industry"
+    },
+    {
+      "id": "coreweave",
+      "label": "CoreWeave",
+      "label_en": "CoreWeave",
+      "kind": "industry"
+    },
+    {
+      "id": "hugging_face",
+      "label": "Hugging Face",
+      "label_en": "Hugging Face",
+      "kind": "industry"
+    },
+    {
+      "id": "kaggle",
+      "label": "Kaggle",
+      "label_en": "Kaggle",
+      "kind": "industry"
+    },
+    {
+      "id": "pinecone",
+      "label": "Pinecone",
+      "label_en": "Pinecone",
+      "kind": "industry"
+    },
+    {
+      "id": "weaviate",
+      "label": "Weaviate",
+      "label_en": "Weaviate",
+      "kind": "industry"
+    },
+    {
+      "id": "wandb",
+      "label": "Weights & Biases",
+      "label_en": "Weights & Biases",
+      "kind": "industry"
+    },
+    {
+      "id": "langchain",
+      "label": "LangChain",
+      "label_en": "LangChain",
+      "kind": "industry"
+    },
+    {
+      "id": "pytorch",
+      "label": "PyTorch",
+      "label_en": "PyTorch",
+      "kind": "industry"
+    },
+    {
+      "id": "tensorflow",
+      "label": "TensorFlow",
+      "label_en": "TensorFlow",
+      "kind": "industry"
+    },
+    {
+      "id": "jax",
+      "label": "JAX",
+      "label_en": "JAX",
+      "kind": "industry"
+    },
+    {
+      "id": "megatron_lm",
+      "label": "Megatron-LM",
+      "label_en": "Megatron-LM",
+      "kind": "industry"
+    },
+    {
+      "id": "deepspeed",
+      "label": "DeepSpeed",
+      "label_en": "DeepSpeed",
+      "kind": "industry"
+    },
+    {
+      "id": "microsoft",
+      "label": "Microsoft",
+      "label_en": "Microsoft",
+      "kind": "industry"
+    },
+    {
+      "id": "vllm",
+      "label": "vLLM",
+      "label_en": "vLLM",
+      "kind": "industry"
+    },
+    {
+      "id": "sglang",
+      "label": "SGLang",
+      "label_en": "SGLang",
+      "kind": "industry"
+    },
+    {
+      "id": "triton_server",
+      "label": "Triton Inference Server",
+      "label_en": "Triton Inference Server",
+      "kind": "industry"
+    },
+    {
+      "id": "tensorrt",
+      "label": "NVIDIA TensorRT",
+      "label_en": "NVIDIA TensorRT",
+      "kind": "industry"
+    },
+    {
+      "id": "onnx_runtime",
+      "label": "ONNX Runtime",
+      "label_en": "ONNX Runtime",
+      "kind": "industry"
+    },
+    {
+      "id": "openvino",
+      "label": "OpenVINO",
+      "label_en": "OpenVINO",
+      "kind": "industry"
+    },
+    {
+      "id": "github",
+      "label": "GitHub",
+      "label_en": "GitHub",
+      "kind": "industry"
+    },
+    {
+      "id": "mcp",
+      "label": "Model Context Protocol",
+      "label_en": "Model Context Protocol",
+      "kind": "industry"
+    }
+  ],
+  "edges": [
+    {
+      "source": "dartmouth_conference",
+      "target": "perceptron",
+      "relation": "inherits"
+    },
+    {
+      "source": "perceptron",
+      "target": "backprop",
+      "relation": "inherits"
+    },
+    {
+      "source": "backprop",
+      "target": "dl_revival",
+      "relation": "inherits"
+    },
+    {
+      "source": "dl_revival",
+      "target": "alexnet",
+      "relation": "inherits"
+    },
+    {
+      "source": "alexnet",
+      "target": "transformer",
+      "relation": "converges"
+    },
+    {
+      "source": "transformer",
+      "target": "gpt3",
+      "relation": "inherits"
+    },
+    {
+      "source": "gpt3",
+      "target": "chatgpt",
+      "relation": "inherits"
+    },
+    {
+      "source": "chatgpt",
+      "target": "multimodal_agent_2024",
+      "relation": "inherits"
+    },
+    {
+      "source": "transformer",
+      "target": "llm_pillar",
+      "relation": "composes"
+    },
+    {
+      "source": "scaling_law",
+      "target": "llm_pillar",
+      "relation": "converges"
+    },
+    {
+      "source": "llm_pillar",
+      "target": "multimodal_pillar",
+      "relation": "inherits"
+    },
+    {
+      "source": "multimodal_pillar",
+      "target": "world_model_pillar",
+      "relation": "converges"
+    },
+    {
+      "source": "world_model_pillar",
+      "target": "embodied_ai_pillar",
+      "relation": "composes"
+    },
+    {
+      "source": "llm_pillar",
+      "target": "ai_agent_pillar",
+      "relation": "composes"
+    },
+    {
+      "source": "ai_systems_pillar",
+      "target": "llm_pillar",
+      "relation": "composes"
+    },
+    {
+      "source": "perception_ai_stage",
+      "target": "cognitive_ai_stage",
+      "relation": "inherits"
+    },
+    {
+      "source": "cognitive_ai_stage",
+      "target": "agentic_ai_stage",
+      "relation": "inherits"
+    },
+    {
+      "source": "agentic_ai_stage",
+      "target": "general_ai_stage",
+      "relation": "inherits"
+    },
+    {
+      "source": "general_ai_stage",
+      "target": "superintelligence_stage",
+      "relation": "inherits"
+    },
+    {
+      "source": "agentic_ai_stage",
+      "target": "ai_agent_pillar",
+      "relation": "composes"
+    },
+    {
+      "source": "general_ai_stage",
+      "target": "agi",
+      "relation": "converges"
+    },
+    {
+      "source": "superintelligence_stage",
+      "target": "agi",
+      "relation": "converges"
+    },
+    {
+      "source": "embodied_world_model_loop",
+      "target": "world_model_pillar",
+      "relation": "composes"
+    },
+    {
+      "source": "embodied_world_model_loop",
+      "target": "embodied_ai_pillar",
+      "relation": "composes"
+    },
+    {
+      "source": "data_flywheel",
+      "target": "agentic_ai_stage",
+      "relation": "composes"
+    },
+    {
+      "source": "openai",
+      "target": "chatgpt",
+      "relation": "composes"
+    },
+    {
+      "source": "pytorch",
+      "target": "ai_systems_pillar",
+      "relation": "composes"
+    },
+    {
+      "source": "deepspeed",
+      "target": "ai_systems_pillar",
+      "relation": "composes"
+    },
+    {
+      "source": "vllm",
+      "target": "ai_systems_pillar",
+      "relation": "composes"
+    }
+  ]
+}

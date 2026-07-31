@@ -1,0 +1,10 @@
+# Modern AI Atlas Generator dependencies
+# Install into the project virtual environment:
+#   python3.12 -m venv .venv && .venv/bin/pip install -r requirements.txt
+
+# SVG -> PDF/PNG conversion backend (requires the native cairo library:
+# brew install cairo)
+cairosvg>=2.7
+
+# Optional YAML support for knowledge files (JSON works without it)
+pyyaml>=6.0

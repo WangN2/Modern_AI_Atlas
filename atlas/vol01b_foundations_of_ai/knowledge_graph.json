@@ -1,0 +1,1085 @@
+{
+  "meta": {
+    "series": "Modern AI Atlas",
+    "volume": "Vol.01B",
+    "title_zh": "人工智能基础",
+    "title_en": "Foundations of AI",
+    "theme": "atlas_light",
+    "layout": "bands",
+    "title_style": "badge",
+    "badge": {
+      "name": "Modern AI Atlas",
+      "volume": "Vol.01"
+    },
+    "banner": "从思想萌芽到现代AI：理解、推理与智能的起源",
+    "callout": "AI 的发展是多学科思想的融合与演进，从理论到技术，再到广泛应用，推动人类智能边界不断拓展。"
+  },
+  "legend": [
+    {
+      "icon": "timeline",
+      "label": "时间线 Timeline",
+      "color": "#4f5dd5"
+    },
+    {
+      "icon": "person",
+      "label": "人物 Figure",
+      "color": "#f59e0b"
+    },
+    {
+      "icon": "chart",
+      "label": "概念 Concept",
+      "color": "#3b82f6"
+    },
+    {
+      "icon": "brain",
+      "label": "技术 Technology",
+      "color": "#a855f7"
+    },
+    {
+      "icon": "circles",
+      "label": "应用 Application",
+      "color": "#22c55e"
+    }
+  ],
+  "legend_position": "bottom",
+  "sections": [
+    {
+      "kind": "timeline",
+      "title": "AI 思想发展时间线",
+      "subtitle": "里程碑 Milestones",
+      "color": "#4f5dd5",
+      "rocket": true,
+      "milestones": [
+        {
+          "year": "1956",
+          "title": "达特茅斯会议",
+          "desc": "AI 诞生",
+          "node": "dartmouth_conference"
+        },
+        {
+          "year": "1960s",
+          "title": "早期探索",
+          "desc": "搜索与逻辑推理",
+          "node": "early_exploration"
+        },
+        {
+          "year": "1970s",
+          "title": "知识表示",
+          "desc": "专家系统兴起",
+          "node": "knowledge_representation"
+        },
+        {
+          "year": "1980s",
+          "title": "机器学习起步",
+          "desc": "统计方法引入",
+          "node": "ml_statistical"
+        },
+        {
+          "year": "1990s",
+          "title": "神经网络复兴",
+          "desc": "深度学习萌芽",
+          "node": "nn_revival"
+        },
+        {
+          "year": "2000s",
+          "title": "大数据与计算",
+          "desc": "能力提升",
+          "node": "big_data_compute"
+        },
+        {
+          "year": "2010s",
+          "title": "深度学习突破",
+          "desc": "大规模应用",
+          "node": "dl_breakthrough"
+        },
+        {
+          "year": "2020s",
+          "title": "大模型与通用智能",
+          "desc": "新时代开启",
+          "node": "llm_agi_era"
+        }
+      ]
+    },
+    {
+      "row": [
+        {
+          "kind": "wheel",
+          "title": "AI 核心概念",
+          "subtitle": "Core Concepts",
+          "weight": 1.0,
+          "center": {
+            "zh": "人工智能",
+            "en": "AI"
+          },
+          "segments": [
+            {
+              "label": "感知",
+              "label_en": "Perception",
+              "desc": "理解世界",
+              "color": "#3b82f6",
+              "node": "perception"
+            },
+            {
+              "label": "学习",
+              "label_en": "Learning",
+              "desc": "从数据中学习",
+              "color": "#22c55e",
+              "node": "learning"
+            },
+            {
+              "label": "推理",
+              "label_en": "Reasoning",
+              "desc": "逻辑思考与决策",
+              "color": "#f59e0b",
+              "node": "reasoning"
+            },
+            {
+              "label": "知识表示",
+              "label_en": "Knowledge",
+              "desc": "表示与组织知识",
+              "color": "#a855f7",
+              "node": "knowledge_representation"
+            },
+            {
+              "label": "行动",
+              "label_en": "Action",
+              "desc": "与环境交互",
+              "color": "#ef4444",
+              "node": "action_embodied"
+            }
+          ],
+          "strip": {
+            "title": "智能体 (Agent)",
+            "steps": [
+              "感知环境",
+              "理解",
+              "推理",
+              "行动",
+              "反馈"
+            ]
+          }
+        },
+        {
+          "kind": "radial",
+          "title": "AI 学科分支地图",
+          "subtitle": "Discipline Map",
+          "weight": 1.25,
+          "color": "#4f5dd5",
+          "center": {
+            "zh": "人工智能",
+            "en": "AI"
+          },
+          "branches": [
+            {
+              "label": "计算机科学",
+              "label_en": "Computer Science",
+              "color": "#3b82f6",
+              "items": [
+                "算法与数据结构",
+                "计算理论",
+                "编程语言"
+              ]
+            },
+            {
+              "label": "数学",
+              "label_en": "Mathematics",
+              "color": "#22c55e",
+              "items": [
+                "线性代数",
+                "概率与统计",
+                "优化理论"
+              ]
+            },
+            {
+              "label": "统计学",
+              "label_en": "Statistics",
+              "color": "#a855f7",
+              "items": [
+                "数据建模",
+                "假设检验",
+                "回归分析"
+              ]
+            },
+            {
+              "label": "机器学习",
+              "label_en": "Machine Learning",
+              "color": "#f59e0b",
+              "items": [
+                "监督学习",
+                "无监督学习",
+                "强化学习"
+              ]
+            },
+            {
+              "label": "语言学",
+              "label_en": "Linguistics",
+              "color": "#ef4444",
+              "items": [
+                "自然语言理解",
+                "语义与语法",
+                "语言生成"
+              ]
+            },
+            {
+              "label": "认知科学",
+              "label_en": "Cognitive Science",
+              "color": "#06b6d4",
+              "items": [
+                "人类认知建模",
+                "心理学",
+                "神经科学"
+              ]
+            },
+            {
+              "label": "控制科学",
+              "label_en": "Control Theory",
+              "color": "#84cc16",
+              "items": [
+                "系统建模",
+                "最优控制",
+                "反馈系统"
+              ]
+            },
+            {
+              "label": "哲学",
+              "label_en": "Philosophy",
+              "color": "#64748b",
+              "items": [
+                "逻辑学",
+                "知识论",
+                "心智哲学"
+              ]
+            }
+          ]
+        },
+        {
+          "kind": "figures",
+          "title": "关键人物",
+          "subtitle": "Key Figures",
+          "weight": 0.95,
+          "color": "#f59e0b",
+          "figures": [
+            {
+              "name": "Alan Turing",
+              "node": "turing",
+              "lines": [
+                "计算机科学之父",
+                "提出“图灵测试”",
+                "奠定了 AI 的理论基础"
+              ]
+            },
+            {
+              "name": "John McCarthy",
+              "node": "mccarthy",
+              "lines": [
+                "AI 之父",
+                "提出“人工智能”术语",
+                "LISP 语言发明者"
+              ]
+            },
+            {
+              "name": "Marvin Minsky",
+              "node": "minsky",
+              "lines": [
+                "认知科学家",
+                "共同创立了",
+                "MIT 人工智能实验室"
+              ]
+            },
+            {
+              "name": "Herbert Simon",
+              "node": "simon",
+              "lines": [
+                "诺贝尔奖得主",
+                "提出“有限理性”",
+                "与问题求解理论"
+              ]
+            },
+            {
+              "name": "Allen Newell",
+              "node": "newell",
+              "lines": [
+                "与 Simon 共同提出",
+                "逻辑理论机 (Logic Theorist)",
+                "开启 AI 程序时代"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "row": [
+        {
+          "kind": "cards",
+          "title": "AI 范式演进",
+          "subtitle": "Paradigm Evolution",
+          "weight": 1.5,
+          "color": "#4f5dd5",
+          "columns": 5,
+          "items": [
+            {
+              "title": "符号主义",
+              "title_en": "1950s-1980s",
+              "icon": "gear",
+              "color": "#64748b",
+              "node": "symbolicism",
+              "items": [
+                "基于规则与逻辑",
+                "专家系统",
+                "知识推理"
+              ]
+            },
+            {
+              "title": "连接主义",
+              "title_en": "1980s-2000s",
+              "icon": "network",
+              "color": "#3b82f6",
+              "node": "connectionism",
+              "items": [
+                "神经网络模型",
+                "模式识别",
+                "学习表示"
+              ]
+            },
+            {
+              "title": "统计学习",
+              "title_en": "2000s-2010s",
+              "icon": "chart",
+              "color": "#22c55e",
+              "node": "statistical_learning_paradigm",
+              "items": [
+                "概率建模",
+                "数据驱动",
+                "机器学习"
+              ]
+            },
+            {
+              "title": "深度学习",
+              "title_en": "2010s-至今",
+              "icon": "layers",
+              "color": "#f59e0b",
+              "node": "deep_learning_paradigm",
+              "items": [
+                "多层神经网络",
+                "端到端学习",
+                "大规模数据"
+              ]
+            },
+            {
+              "title": "大模型时代",
+              "title_en": "2020s-未来",
+              "icon": "star",
+              "color": "#a855f7",
+              "node": "foundation_model_paradigm",
+              "items": [
+                "预训练 + 微调",
+                "通用能力",
+                "多模态理解"
+              ]
+            }
+          ]
+        },
+        {
+          "kind": "pyramid",
+          "title": "AI 能力层次",
+          "subtitle": "Capability Hierarchy",
+          "weight": 1.0,
+          "colors": [
+            "#22c55e",
+            "#84cc16",
+            "#eab308",
+            "#f59e0b",
+            "#f97316"
+          ],
+          "axis": [
+            "基础能力",
+            "高阶能力"
+          ],
+          "levels": [
+            {
+              "label": "创造",
+              "label_en": "Create",
+              "desc": "生成新内容，提出新想法"
+            },
+            {
+              "label": "决策",
+              "label_en": "Decide",
+              "desc": "做出最优或合理的选择"
+            },
+            {
+              "label": "推理",
+              "label_en": "Reason",
+              "desc": "逻辑思考，因果推理",
+              "node": "reasoning"
+            },
+            {
+              "label": "理解",
+              "label_en": "Understand",
+              "desc": "语义理解，知识归纳"
+            },
+            {
+              "label": "感知",
+              "label_en": "Perceive",
+              "desc": "感知与识别现实世界",
+              "node": "perception"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "row": [
+        {
+          "kind": "cards",
+          "title": "知识表示方法",
+          "subtitle": "Knowledge Representation",
+          "color": "#a855f7",
+          "weight": 1.05,
+          "columns": 3,
+          "items": [
+            {
+              "title": "逻辑表示",
+              "title_en": "Logic",
+              "icon": "doc",
+              "color": "#3b82f6",
+              "node": "logic_representation",
+              "items": [
+                "命题逻辑",
+                "谓词逻辑",
+                "描述逻辑"
+              ]
+            },
+            {
+              "title": "规则表示",
+              "title_en": "Rule-Based",
+              "icon": "flow",
+              "color": "#22c55e",
+              "node": "rule_based",
+              "items": [
+                "产生式规则",
+                "IF-THEN 规则",
+                "专家系统"
+              ]
+            },
+            {
+              "title": "语义网络",
+              "title_en": "Semantic Net",
+              "icon": "network",
+              "color": "#f59e0b",
+              "node": "semantic_network",
+              "items": [
+                "节点与关系",
+                "概念与推理",
+                "知识图谱雏形"
+              ]
+            },
+            {
+              "title": "框架表示",
+              "title_en": "Frame",
+              "icon": "cube",
+              "color": "#a855f7",
+              "node": "frame",
+              "items": [
+                "槽位结构",
+                "默认值",
+                "继承机制"
+              ]
+            },
+            {
+              "title": "本体表示",
+              "title_en": "Ontology",
+              "icon": "layers",
+              "color": "#ef4444",
+              "node": "ontology",
+              "items": [
+                "概念层次",
+                "属性约束",
+                "语义一致性"
+              ]
+            },
+            {
+              "title": "向量表示",
+              "title_en": "Vector",
+              "icon": "target",
+              "color": "#06b6d4",
+              "node": "vector_representation",
+              "items": [
+                "分布式表示",
+                "嵌入空间",
+                "语义相似性"
+              ]
+            }
+          ]
+        },
+        {
+          "stack": [
+            {
+              "kind": "chevrons",
+              "title": "典型 AI 系统工作流程",
+              "subtitle": "AI System Workflow",
+              "color": "#4f5dd5",
+              "loop": true,
+              "steps": [
+                {
+                  "label": "数据获取",
+                  "label_en": "Data Collection"
+                },
+                {
+                  "label": "数据处理",
+                  "label_en": "Data Processing"
+                },
+                {
+                  "label": "模型训练",
+                  "label_en": "Model Training"
+                },
+                {
+                  "label": "模型评估",
+                  "label_en": "Evaluation"
+                },
+                {
+                  "label": "部署应用",
+                  "label_en": "Deployment"
+                },
+                {
+                  "label": "反馈迭代",
+                  "label_en": "Feedback Loop"
+                }
+              ]
+            },
+            {
+              "kind": "chevrons",
+              "title": "表示范式演进",
+              "color": "#a855f7",
+              "colors": [
+                "#64748b",
+                "#3b82f6",
+                "#a855f7"
+              ],
+              "steps": [
+                {
+                  "label": "从符号化表示"
+                },
+                {
+                  "label": "到分布式表示"
+                },
+                {
+                  "label": "再到神经表示"
+                }
+              ]
+            }
+          ],
+          "weight": 1.0
+        }
+      ]
+    },
+    {
+      "kind": "cards",
+      "title": "AI 主要应用领域",
+      "subtitle": "Application Domains",
+      "color": "#22c55e",
+      "columns": 4,
+      "items": [
+        {
+          "title": "自然语言处理",
+          "title_en": "NLP",
+          "icon": "doc",
+          "color": "#3b82f6",
+          "items": [
+            "机器翻译",
+            "文本生成",
+            "情感分析",
+            "问答系统",
+            "对话系统"
+          ]
+        },
+        {
+          "title": "计算机视觉",
+          "title_en": "CV",
+          "icon": "target",
+          "color": "#22c55e",
+          "items": [
+            "图像分类",
+            "目标检测",
+            "图像分割",
+            "人脸识别",
+            "视频理解"
+          ]
+        },
+        {
+          "title": "语音智能",
+          "title_en": "Speech",
+          "icon": "speech",
+          "color": "#f59e0b",
+          "items": [
+            "语音识别",
+            "语音合成",
+            "语音翻译",
+            "说话人识别",
+            "语音增强"
+          ]
+        },
+        {
+          "title": "机器学习",
+          "title_en": "ML",
+          "icon": "chart",
+          "color": "#a855f7",
+          "items": [
+            "分类",
+            "回归",
+            "聚类",
+            "降维",
+            "强化学习"
+          ]
+        },
+        {
+          "title": "知识图谱",
+          "title_en": "KG",
+          "icon": "network",
+          "color": "#ef4444",
+          "node": "knowledge_graph_concept",
+          "items": [
+            "实体抽取",
+            "关系抽取",
+            "知识融合",
+            "知识推理",
+            "问答系统"
+          ]
+        },
+        {
+          "title": "机器人与自动化",
+          "title_en": "Robotics",
+          "icon": "robot",
+          "color": "#06b6d4",
+          "items": [
+            "路径规划",
+            "SLAM",
+            "运动控制",
+            "智能导航",
+            "问答系统"
+          ]
+        },
+        {
+          "title": "推荐系统",
+          "title_en": "RecSys",
+          "icon": "star",
+          "color": "#84cc16",
+          "items": [
+            "协同过滤",
+            "内容推荐",
+            "排序模型",
+            "个性化推荐",
+            "广告推荐"
+          ]
+        },
+        {
+          "title": "AI for Science",
+          "title_en": "AI4S",
+          "icon": "atom",
+          "color": "#64748b",
+          "items": [
+            "药物发现",
+            "材料设计",
+            "气候预测",
+            "蛋白质结构预测",
+            "天文发现"
+          ]
+        }
+      ]
+    },
+    {
+      "row": [
+        {
+          "kind": "list",
+          "title": "AI 基础理论支撑",
+          "subtitle": "Theoretical Foundations",
+          "weight": 1.0,
+          "color": "#3b82f6",
+          "items": [
+            {
+              "icon": "chart",
+              "title": "概率论与统计",
+              "desc": "不确定性建模 / 贝叶斯推理"
+            },
+            {
+              "icon": "target",
+              "title": "最优化理论",
+              "desc": "目标函数优化 / 梯度下降等"
+            },
+            {
+              "icon": "atom",
+              "title": "信息论",
+              "desc": "信息熵 / 信道编码"
+            },
+            {
+              "icon": "gear",
+              "title": "计算理论",
+              "desc": "可计算性 / 复杂性理论"
+            },
+            {
+              "icon": "flow",
+              "title": "控制理论",
+              "desc": "状态空间 / 动态系统"
+            }
+          ]
+        },
+        {
+          "kind": "list",
+          "title": "推动 AI 发展的关键因素",
+          "subtitle": "Key Enablers",
+          "weight": 1.0,
+          "color": "#f59e0b",
+          "items": [
+            {
+              "icon": "bolt",
+              "title": "算法突破",
+              "desc": "深度学习等"
+            },
+            {
+              "icon": "db",
+              "title": "数据爆发",
+              "desc": "大规模数据集"
+            },
+            {
+              "icon": "cube",
+              "title": "算力提升",
+              "desc": "GPU/TPU"
+            },
+            {
+              "icon": "book",
+              "title": "开源生态",
+              "desc": "框架与工具"
+            },
+            {
+              "icon": "rocket",
+              "title": "产业应用",
+              "desc": "落地与需求"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "footer": {
+    "legend": true,
+    "globe": true,
+    "quote_zh": "AI 的未来，始于理解，成于创新，终于造福人类。",
+    "quote_en": "The future of AI begins with understanding, thrives on innovation, and ultimately benefits humanity."
+  },
+  "nodes": [
+    {
+      "id": "dartmouth_conference",
+      "label": "达特茅斯会议",
+      "label_en": "Dartmouth Conference",
+      "year": 1956,
+      "kind": "milestone"
+    },
+    {
+      "id": "early_exploration",
+      "label": "早期探索 (搜索与逻辑推理)",
+      "label_en": "Early Exploration",
+      "year": 1960,
+      "kind": "concept"
+    },
+    {
+      "id": "knowledge_representation",
+      "label": "知识表示",
+      "label_en": "Knowledge Representation",
+      "year": 1970,
+      "kind": "concept"
+    },
+    {
+      "id": "expert_systems",
+      "label": "专家系统",
+      "label_en": "Expert Systems",
+      "year": 1970,
+      "kind": "model"
+    },
+    {
+      "id": "ml_statistical",
+      "label": "统计学习方法",
+      "label_en": "Statistical Learning",
+      "year": 1980,
+      "kind": "concept"
+    },
+    {
+      "id": "nn_revival",
+      "label": "神经网络复兴",
+      "label_en": "Neural Network Revival",
+      "year": 1990,
+      "kind": "milestone"
+    },
+    {
+      "id": "big_data_compute",
+      "label": "大数据与计算",
+      "label_en": "Big Data & Compute",
+      "year": 2000,
+      "kind": "concept"
+    },
+    {
+      "id": "dl_breakthrough",
+      "label": "深度学习突破",
+      "label_en": "Deep Learning Breakthrough",
+      "year": 2010,
+      "kind": "milestone"
+    },
+    {
+      "id": "llm_agi_era",
+      "label": "大模型与通用智能",
+      "label_en": "LLM & General Intelligence",
+      "year": 2020,
+      "kind": "milestone"
+    },
+    {
+      "id": "perception",
+      "label": "感知",
+      "label_en": "Perception",
+      "kind": "concept"
+    },
+    {
+      "id": "learning",
+      "label": "学习",
+      "label_en": "Learning",
+      "kind": "concept"
+    },
+    {
+      "id": "reasoning",
+      "label": "推理",
+      "label_en": "Reasoning",
+      "kind": "concept"
+    },
+    {
+      "id": "action_embodied",
+      "label": "行动",
+      "label_en": "Action",
+      "kind": "concept"
+    },
+    {
+      "id": "agent",
+      "label": "智能体",
+      "label_en": "Agent",
+      "kind": "concept"
+    },
+    {
+      "id": "symbolicism",
+      "label": "符号主义",
+      "label_en": "Symbolicism",
+      "year": 1950,
+      "kind": "concept"
+    },
+    {
+      "id": "connectionism",
+      "label": "连接主义",
+      "label_en": "Connectionism",
+      "year": 1980,
+      "kind": "concept"
+    },
+    {
+      "id": "statistical_learning_paradigm",
+      "label": "统计学习 (范式)",
+      "label_en": "Statistical Learning (paradigm)",
+      "year": 2000,
+      "kind": "concept"
+    },
+    {
+      "id": "deep_learning_paradigm",
+      "label": "深度学习 (范式)",
+      "label_en": "Deep Learning (paradigm)",
+      "year": 2010,
+      "kind": "concept"
+    },
+    {
+      "id": "foundation_model_paradigm",
+      "label": "大模型时代 (范式)",
+      "label_en": "Foundation Model Era",
+      "year": 2020,
+      "kind": "concept"
+    },
+    {
+      "id": "logic_representation",
+      "label": "逻辑表示",
+      "label_en": "Logic Representation",
+      "kind": "concept"
+    },
+    {
+      "id": "rule_based",
+      "label": "规则表示",
+      "label_en": "Rule-Based",
+      "kind": "concept"
+    },
+    {
+      "id": "semantic_network",
+      "label": "语义网络",
+      "label_en": "Semantic Network",
+      "kind": "concept"
+    },
+    {
+      "id": "frame",
+      "label": "框架表示",
+      "label_en": "Frame",
+      "kind": "concept"
+    },
+    {
+      "id": "ontology",
+      "label": "本体表示",
+      "label_en": "Ontology",
+      "kind": "concept"
+    },
+    {
+      "id": "vector_representation",
+      "label": "向量表示",
+      "label_en": "Vector Representation",
+      "kind": "concept"
+    },
+    {
+      "id": "knowledge_graph_concept",
+      "label": "知识图谱",
+      "label_en": "Knowledge Graph",
+      "kind": "concept"
+    },
+    {
+      "id": "turing",
+      "label": "图灵",
+      "label_en": "Alan Turing",
+      "kind": "industry"
+    },
+    {
+      "id": "mccarthy",
+      "label": "麦卡锡",
+      "label_en": "John McCarthy",
+      "kind": "industry"
+    },
+    {
+      "id": "minsky",
+      "label": "明斯基",
+      "label_en": "Marvin Minsky",
+      "kind": "industry"
+    },
+    {
+      "id": "simon",
+      "label": "西蒙",
+      "label_en": "Herbert Simon",
+      "kind": "industry"
+    },
+    {
+      "id": "newell",
+      "label": "纽厄尔",
+      "label_en": "Allen Newell",
+      "kind": "industry"
+    },
+    {
+      "id": "logic_theorist",
+      "label": "逻辑理论机",
+      "label_en": "Logic Theorist",
+      "year": 1956,
+      "kind": "model"
+    }
+  ],
+  "edges": [
+    {
+      "source": "symbolicism",
+      "target": "knowledge_representation",
+      "relation": "inherits"
+    },
+    {
+      "source": "symbolicism",
+      "target": "expert_systems",
+      "relation": "inherits"
+    },
+    {
+      "source": "knowledge_representation",
+      "target": "logic_representation",
+      "relation": "composes"
+    },
+    {
+      "source": "knowledge_representation",
+      "target": "rule_based",
+      "relation": "composes"
+    },
+    {
+      "source": "knowledge_representation",
+      "target": "semantic_network",
+      "relation": "composes"
+    },
+    {
+      "source": "knowledge_representation",
+      "target": "frame",
+      "relation": "composes"
+    },
+    {
+      "source": "knowledge_representation",
+      "target": "ontology",
+      "relation": "composes"
+    },
+    {
+      "source": "semantic_network",
+      "target": "knowledge_graph_concept",
+      "relation": "inherits"
+    },
+    {
+      "source": "vector_representation",
+      "target": "deep_learning_paradigm",
+      "relation": "converges"
+    },
+    {
+      "source": "symbolicism",
+      "target": "connectionism",
+      "relation": "converges"
+    },
+    {
+      "source": "connectionism",
+      "target": "statistical_learning_paradigm",
+      "relation": "converges"
+    },
+    {
+      "source": "statistical_learning_paradigm",
+      "target": "deep_learning_paradigm",
+      "relation": "converges"
+    },
+    {
+      "source": "deep_learning_paradigm",
+      "target": "foundation_model_paradigm",
+      "relation": "converges"
+    },
+    {
+      "source": "connectionism",
+      "target": "nn_revival",
+      "relation": "inherits"
+    },
+    {
+      "source": "nn_revival",
+      "target": "deep_learning_paradigm",
+      "relation": "inherits"
+    },
+    {
+      "source": "simon",
+      "target": "logic_theorist",
+      "relation": "composes"
+    },
+    {
+      "source": "newell",
+      "target": "logic_theorist",
+      "relation": "composes"
+    },
+    {
+      "source": "perception",
+      "target": "reasoning",
+      "relation": "composes"
+    },
+    {
+      "source": "reasoning",
+      "target": "action_embodied",
+      "relation": "composes"
+    },
+    {
+      "source": "action_embodied",
+      "target": "agent",
+      "relation": "composes"
+    }
+  ],
+  "next": {
+    "label": "NEXT",
+    "title": "Vol.02 Transformer 帝国",
+    "desc": "统一架构，开启大模型时代（2017 → Now）"
+  }
+}

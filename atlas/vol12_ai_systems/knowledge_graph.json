@@ -1,0 +1,1179 @@
+{
+  "meta": {
+    "series": "Modern AI Atlas",
+    "volume": "Vol.12",
+    "title_zh": "AI 系统",
+    "title_en": "AI Systems",
+    "theme": "atlas_light",
+    "layout": "bands",
+    "title_style": "badge",
+    "badge": {
+      "name": "Modern AI Atlas",
+      "volume": "Vol.12"
+    },
+    "tagline": "从芯片到集群：构建高效、可扩展、可推理的大模型系统",
+    "tagline_en": "From Chips to Clusters: Building Efficient, Scalable and Intelligent AI Systems",
+    "callout": "卓越的模型需要卓越的系统来承载，AI 的进步不仅来自算法，更来自系统工程。 Great models need great systems.",
+    "canvas": {
+      "width": 2524,
+      "height": 1682
+    }
+  },
+  "editorial_notes": [
+    "Section 03: poster prints 'DeepSpeed 高练加速框架' [sic]; normalized to 'DeepSpeed 高效训练加速框架' per spec style notes.",
+    "Section 04 张量并行: bullet kept verbatim as '拆分矩阵相乘' [sic — likely intended 拆分矩阵维度].",
+    "Section 04: column header kept verbatim as 'Mixed Precision Overlap Compression' [sic — likely intended 通信重叠 Overlap Communication].",
+    "Section 04: '优化器状态分配' / '零冗余分片' / '压缩通信量' flagged [uncertain] in spec; transcribed as printed.",
+    "Header quote: zh full + en first sentence; en second sentence ('AI breakthroughs come from both algorithms and systems.') omitted — badge callout renders at most 3 wrapped lines.",
+    "Section 02 CUDA card title_en trimmed to 'Parallel Computing Platform' (title already carries 'CUDA'; 16-unit en cap).",
+    "FlashAttention 'Q K V → On-Chip SRAM' diagram rendered as bullet 'Q/K/V On-Chip SRAM' (arrow glyph is not font-safe in card bullets).",
+    "Layout: section 04 sits below 03/05 for height balance; numbered badges (01-10) preserve the reading order, as in the reference."
+  ],
+  "sections": [
+    {
+      "row": [
+        {
+          "kind": "cards",
+          "number": 1,
+          "title": "计算底座",
+          "subtitle": "Compute Foundation",
+          "weight": 1.0,
+          "color": "#3b82f6",
+          "columns": 3,
+          "items": [
+            {
+              "title": "GPU 架构演进",
+              "title_en": "GPU Architecture Evolution",
+              "icon": "chart",
+              "color": "#3b82f6",
+              "items": [
+                "Fermi 2010",
+                "Kepler 2012",
+                "Maxwell 2014",
+                "Pascal 2016",
+                "Volta 2017",
+                "Turing 2018",
+                "Ampere 2020",
+                "Hopper 2022",
+                "Blackwell 2024+"
+              ]
+            },
+            {
+              "title": "NVIDIA GPU 全栈",
+              "title_en": "NVIDIA GPU Stack",
+              "icon": "layers",
+              "color": "#4f5dd5",
+              "items": [
+                "Applications 应用层",
+                "Libraries 库 (CUDA / cuDNN 等)",
+                "Runtime 运行时 (CUDA Runtime)",
+                "Driver 驱动 (GPU Driver)",
+                "Hardware 硬件 (GPU)"
+              ]
+            },
+            {
+              "title": "关键硬件组件",
+              "title_en": "Key Hardware Components",
+              "icon": "gear",
+              "color": "#0ea5e9",
+              "items": [
+                "GPU 并行计算核心",
+                "HBM 高带宽显存",
+                "NVLink 高速互连",
+                "PCIe 高速总线",
+                "NVSwitch 交换芯片",
+                "CPU 主机处理器",
+                "System Memory 系统内存",
+                "Storage 存储设备"
+              ]
+            }
+          ]
+        },
+        {
+          "kind": "cards",
+          "number": 2,
+          "title": "并行计算与加速",
+          "subtitle": "Parallel Computing & Acceleration",
+          "weight": 1.0,
+          "color": "#22a06b",
+          "columns": 3,
+          "items": [
+            {
+              "title": "CUDA 并行计算平台",
+              "title_en": "Parallel Computing Platform",
+              "icon": "cube",
+              "color": "#22a06b",
+              "items": [
+                "CUDA Core 计算核心",
+                "Warp 线程束 (32线程)",
+                "Block 线程块",
+                "Grid 网格",
+                "Kernel 计算内核"
+              ]
+            },
+            {
+              "title": "线程层级模型",
+              "title_en": "Thread Hierarchy Model",
+              "icon": "network",
+              "color": "#22a06b",
+              "desc": "Grid → Block → Warp → Thread",
+              "items": [
+                "Grid 网格",
+                "Block 线程块 (2D/3D)",
+                "Warp 线程束 (32 threads)",
+                "Thread 线程"
+              ]
+            },
+            {
+              "title": "Tensor Core 张量核心",
+              "icon": "bolt",
+              "color": "#16a34a",
+              "desc": "Mixed Precision 支持 / 矩阵乘加加速",
+              "items": [
+                "FP64",
+                "FP32",
+                "TF32",
+                "FP16 / BF16",
+                "INT8 / INT4"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "row": [
+        {
+          "kind": "cards",
+          "number": 3,
+          "title": "关键系统组件",
+          "subtitle": "Key System Components",
+          "weight": 1.0,
+          "color": "#3b82f6",
+          "columns": 5,
+          "items": [
+            {
+              "title": "FlashAttention",
+              "title_en": "高效注意力计算",
+              "color": "#3b82f6",
+              "items": [
+                "Q/K/V On-Chip SRAM",
+                "IO-Aware",
+                "减少 HBM 访问",
+                "加速 Attention",
+                "节省显存"
+              ],
+              "node": "flashattention"
+            },
+            {
+              "title": "NCCL",
+              "title_en": "高性能通信库",
+              "color": "#4f5dd5",
+              "items": [
+                "多 GPU 通信",
+                "All-Reduce",
+                "All-Gather",
+                "Reduce-Scatter",
+                "Broadcast"
+              ],
+              "node": "nccl"
+            },
+            {
+              "title": "DeepSpeed",
+              "title_en": "高效训练加速框架",
+              "color": "#6366f1",
+              "items": [
+                "ZeRO-1",
+                "ZeRO-2",
+                "ZeRO-3",
+                "ZeRO-Infinity",
+                "Pipeline Parallel",
+                "Tensor Parallel",
+                "3D 并行",
+                "显存优化",
+                "大模型训练"
+              ],
+              "node": "deepspeed"
+            },
+            {
+              "title": "vLLM",
+              "title_en": "高效推理引擎",
+              "color": "#a855f7",
+              "items": [
+                "PagedAttention",
+                "Continuous Batching",
+                "KV Cache 管理",
+                "高吞吐低延迟",
+                "OpenAI 兼容 API"
+              ],
+              "node": "vllm"
+            },
+            {
+              "title": "Ray",
+              "title_en": "分布式计算框架",
+              "color": "#f59e0b",
+              "items": [
+                "分布式任务调度",
+                "Actor 模型",
+                "弹性扩展",
+                "多语言支持"
+              ],
+              "node": "ray"
+            }
+          ]
+        },
+        {
+          "stack": [
+            {
+              "kind": "cards",
+              "number": 5,
+              "title": "大模型推理优化",
+              "subtitle": "Inference Optimization Stack",
+              "color": "#a855f7",
+              "columns": 4,
+              "items": [
+                {
+                  "title": "Continuous Batching",
+                  "title_en": "连续批处理",
+                  "color": "#a855f7",
+                  "items": [
+                    "动态加入请求",
+                    "提高吞吐率"
+                  ]
+                },
+                {
+                  "title": "PagedAttention",
+                  "title_en": "分页注意力",
+                  "color": "#8b5cf6",
+                  "items": [
+                    "KV Cache 分页管理",
+                    "减少碎片"
+                  ]
+                },
+                {
+                  "title": "KV Cache 管理",
+                  "title_en": "缓存优化",
+                  "color": "#6366f1",
+                  "items": [
+                    "Cache 复用",
+                    "Cache 压缩",
+                    "Cache Offload"
+                  ]
+                },
+                {
+                  "title": "Speculative Decoding",
+                  "title_en": "推测解码",
+                  "color": "#4f5dd5",
+                  "items": [
+                    "Draft Model 生成",
+                    "验证后输出",
+                    "加速推理速度"
+                  ]
+                }
+              ]
+            },
+            {
+              "kind": "pills",
+              "title": "推理引擎",
+              "subtitle": "Inference Engines",
+              "color": "#a855f7",
+              "label_w": 24,
+              "rows": [
+                {
+                  "color": "#a855f7",
+                  "pills": [
+                    "vLLM",
+                    "SGLang",
+                    "TensorRT-LLM",
+                    "高吞吐",
+                    "低延迟",
+                    "高并发",
+                    "低显存"
+                  ]
+                }
+              ]
+            }
+          ],
+          "weight": 1.0
+        }
+      ]
+    },
+    {
+      "row": [
+        {
+          "kind": "cards",
+          "number": 4,
+          "title": "大模型训练优化",
+          "subtitle": "Training Optimization Stack",
+          "weight": 1.5,
+          "color": "#4f5dd5",
+          "columns": 4,
+          "items": [
+            {
+              "title": "并行策略",
+              "title_en": "Parallelism",
+              "color": "#4f5dd5",
+              "items": [
+                "Data Parallel",
+                "Tensor Parallel",
+                "Pipeline Parallel"
+              ]
+            },
+            {
+              "title": "数据并行",
+              "title_en": "Data Parallel",
+              "color": "#3b82f6",
+              "items": [
+                "多卡计算不同数据",
+                "线性加速"
+              ]
+            },
+            {
+              "title": "张量并行",
+              "title_en": "Tensor Parallel",
+              "color": "#3b82f6",
+              "items": [
+                "拆分矩阵相乘",
+                "加速大矩阵计算"
+              ]
+            },
+            {
+              "title": "流水线并行",
+              "title_en": "Pipeline Parallel",
+              "color": "#3b82f6",
+              "items": [
+                "分阶段计算流水线",
+                "提高硬件利用率"
+              ]
+            },
+            {
+              "title": "显存优化",
+              "title_en": "Memory Optimization",
+              "color": "#22c55e",
+              "items": [
+                "优化器状态分配",
+                "梯度分片",
+                "零冗余分片"
+              ]
+            },
+            {
+              "title": "ZeRO 显存优化",
+              "color": "#22c55e",
+              "items": [
+                "优化器状态分片",
+                "梯度分片",
+                "参数分片"
+              ],
+              "node": "zero"
+            },
+            {
+              "title": "Offload 卸载优化",
+              "color": "#16a34a",
+              "items": [
+                "CPU Offload",
+                "NVMe Offload"
+              ]
+            },
+            {
+              "title": "Activation Checkpoint 激活检查点",
+              "color": "#16a34a",
+              "items": [
+                "减少激活显存",
+                "计算换显存"
+              ],
+              "node": "activation_checkpoint"
+            },
+            {
+              "title": "计算优化",
+              "title_en": "Computation Optimization",
+              "color": "#f59e0b",
+              "items": [
+                "FP16 / BF16",
+                "提升吞吐"
+              ]
+            },
+            {
+              "title": "Mixed Precision Overlap Compression",
+              "color": "#f59e0b",
+              "items": [
+                "Overlap 计算与通信",
+                "压缩通信量",
+                "降低通信延迟"
+              ]
+            },
+            {
+              "title": "通信压缩",
+              "title_en": "Gradient Compression",
+              "color": "#f97316",
+              "items": [
+                "减少通信数据量",
+                "降低带宽压力"
+              ],
+              "node": "gradient_compression"
+            },
+            {
+              "title": "拓扑感知通信",
+              "title_en": "Topology-Aware",
+              "color": "#f97316",
+              "items": [
+                "感知网络拓扑",
+                "优化通信路径"
+              ],
+              "node": "topology_aware_comm"
+            }
+          ]
+        },
+        {
+          "kind": "cards",
+          "number": 6,
+          "title": "分布式系统与调度",
+          "subtitle": "Distributed Systems & Orchestration",
+          "weight": 1.0,
+          "color": "#0ea5e9",
+          "columns": 2,
+          "items": [
+            {
+              "title": "Kubernetes",
+              "title_en": "容器编排",
+              "icon": "gear",
+              "color": "#0ea5e9",
+              "items": [
+                "自动化部署",
+                "弹性伸缩",
+                "资源管理"
+              ],
+              "node": "kubernetes"
+            },
+            {
+              "title": "Ray",
+              "title_en": "分布式计算",
+              "icon": "network",
+              "color": "#3b82f6",
+              "items": [
+                "任务调度",
+                "Actor 模型",
+                "大规模并行"
+              ],
+              "node": "ray"
+            },
+            {
+              "title": "Slurm",
+              "title_en": "集群调度",
+              "icon": "layers",
+              "color": "#4f5dd5",
+              "items": [
+                "作业调度",
+                "资源分配",
+                "队列管理"
+              ],
+              "node": "slurm"
+            },
+            {
+              "title": "etcd",
+              "title_en": "分布式存储",
+              "icon": "db",
+              "color": "#6366f1",
+              "items": [
+                "配置管理",
+                "服务发现",
+                "一致性存储"
+              ],
+              "node": "etcd"
+            },
+            {
+              "title": "Prometheus",
+              "title_en": "监控告警",
+              "icon": "chart",
+              "color": "#f59e0b",
+              "items": [
+                "指标监控",
+                "告警通知",
+                "可视化"
+              ],
+              "node": "prometheus"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "row": [
+        {
+          "kind": "pills",
+          "number": 7,
+          "title": "AI 系统技术栈全景图",
+          "subtitle": "AI Systems Technology Stack Panorama",
+          "weight": 1.6,
+          "color": "#4f5dd5",
+          "label_w": 150,
+          "rows": [
+            {
+              "label": "应用层",
+              "sublabel": "Applications",
+              "color": "#3b82f6",
+              "pills": [
+                "Chatbot",
+                "Copilot",
+                "推荐系统",
+                "多模态应用",
+                "智能体 Agent"
+              ]
+            },
+            {
+              "label": "模型层",
+              "sublabel": "Models",
+              "color": "#4f5dd5",
+              "pills": [
+                "LLM",
+                "多模态模型",
+                "扩散模型",
+                "语音模型",
+                "视觉模型"
+              ]
+            },
+            {
+              "label": "训练框架",
+              "sublabel": "Training Frameworks",
+              "color": "#6366f1",
+              "pills": [
+                "PyTorch",
+                "TensorFlow",
+                "JAX",
+                "Megatron-LM",
+                "DeepSpeed"
+              ]
+            },
+            {
+              "label": "系统软件",
+              "sublabel": "System Software",
+              "color": "#8b5cf6",
+              "pills": [
+                "CUDA",
+                "cuDNN",
+                "NCCL",
+                "FlashAttention",
+                "vLLM / SGLang"
+              ]
+            },
+            {
+              "label": "资源管理",
+              "sublabel": "Resource Management",
+              "color": "#a855f7",
+              "pills": [
+                "Kubernetes",
+                "Ray",
+                "Slurm",
+                "Docker",
+                "Prometheus"
+              ]
+            },
+            {
+              "label": "硬件层",
+              "sublabel": "Hardware",
+              "color": "#0ea5e9",
+              "pills": [
+                "NVIDIA GPU",
+                "CPU",
+                "HBM Memory",
+                "NVLink / NVSwitch",
+                "Storage / SSD"
+              ]
+            },
+            {
+              "label": "基础设施",
+              "sublabel": "Infrastructure",
+              "color": "#22c55e",
+              "pills": [
+                "数据中心 Data Center",
+                "网络 Network",
+                "电力 Power",
+                "Cooling"
+              ]
+            }
+          ]
+        },
+        {
+          "stack": [
+            {
+              "kind": "cards",
+              "number": 8,
+              "title": "AI 系统性能指标",
+              "subtitle": "Key Performance Metrics",
+              "color": "#f97316",
+              "columns": 4,
+              "items": [
+                {
+                  "title": "TFLOPS / PFLOPS",
+                  "title_en": "计算性能",
+                  "icon": "bolt",
+                  "color": "#ef4444"
+                },
+                {
+                  "title": "GPU 利用率",
+                  "title_en": "GPU Utilization",
+                  "icon": "chart",
+                  "color": "#f97316"
+                },
+                {
+                  "title": "显存带宽",
+                  "title_en": "Memory Bandwidth",
+                  "icon": "db",
+                  "color": "#f59e0b"
+                },
+                {
+                  "title": "网络带宽",
+                  "title_en": "Network Bandwidth",
+                  "icon": "network",
+                  "color": "#f59e0b"
+                },
+                {
+                  "title": "吞吐量 (Tokens/s)",
+                  "title_en": "Throughput",
+                  "icon": "rocket",
+                  "color": "#0ea5e9"
+                },
+                {
+                  "title": "延迟 (ms/Token)",
+                  "title_en": "Latency",
+                  "icon": "target",
+                  "color": "#3b82f6"
+                },
+                {
+                  "title": "并发请求数",
+                  "title_en": "Concurrency",
+                  "icon": "person",
+                  "color": "#4f5dd5"
+                },
+                {
+                  "title": "成本 ($/1M Tokens)",
+                  "title_en": "Cost Efficiency",
+                  "icon": "star",
+                  "color": "#22c55e"
+                }
+              ]
+            },
+            {
+              "kind": "list",
+              "number": 9,
+              "title": "发展趋势",
+              "subtitle": "Trends & Future",
+              "color": "#22c55e",
+              "columns": 3,
+              "items": [
+                {
+                  "icon": "chart",
+                  "title": "更大规模",
+                  "desc": "Scaling Up"
+                },
+                {
+                  "icon": "bolt",
+                  "title": "更高效率",
+                  "desc": "Efficiency First"
+                },
+                {
+                  "icon": "rocket",
+                  "title": "推理优先",
+                  "desc": "Inference First"
+                },
+                {
+                  "icon": "gear",
+                  "title": "软硬协同",
+                  "desc": "HW-SW Co-design"
+                },
+                {
+                  "icon": "globe",
+                  "title": "开放生态",
+                  "desc": "Open Ecosystem"
+                },
+                {
+                  "icon": "star",
+                  "title": "可持续性",
+                  "desc": "Sustainability"
+                }
+              ]
+            }
+          ],
+          "weight": 1.0
+        }
+      ]
+    }
+  ],
+  "mainline": {
+    "title": "总结 Summary",
+    "stages": [
+      {
+        "label": "Applications",
+        "sub": "应用层",
+        "color": "#3b82f6"
+      },
+      {
+        "label": "Models",
+        "sub": "模型层",
+        "color": "#4f5dd5"
+      },
+      {
+        "label": "System Software",
+        "sub": "系统软件",
+        "color": "#8b5cf6"
+      },
+      {
+        "label": "Resource Management",
+        "sub": "资源管理",
+        "color": "#a855f7"
+      },
+      {
+        "label": "Hardware",
+        "sub": "硬件层",
+        "color": "#0ea5e9"
+      },
+      {
+        "label": "Infrastructure",
+        "sub": "基础设施",
+        "color": "#22c55e"
+      }
+    ],
+    "number": 10
+  },
+  "footer": {
+    "quote_zh": "AI 系统是大模型能力的放大器，优秀的系统让先进的模型真正落地。",
+    "quote_en": "AI systems are the force multiplier of model capability. Great systems turn advanced models into real-world impact.",
+    "globe": true
+  },
+  "nodes": [
+    {
+      "id": "gpu_fermi",
+      "label": "Fermi",
+      "label_en": "Fermi",
+      "year": 2010,
+      "kind": "industry"
+    },
+    {
+      "id": "gpu_kepler",
+      "label": "Kepler",
+      "label_en": "Kepler",
+      "year": 2012,
+      "kind": "industry"
+    },
+    {
+      "id": "gpu_maxwell",
+      "label": "Maxwell",
+      "label_en": "Maxwell",
+      "year": 2014,
+      "kind": "industry"
+    },
+    {
+      "id": "gpu_pascal",
+      "label": "Pascal",
+      "label_en": "Pascal",
+      "year": 2016,
+      "kind": "industry"
+    },
+    {
+      "id": "gpu_volta",
+      "label": "Volta",
+      "label_en": "Volta",
+      "year": 2017,
+      "kind": "industry"
+    },
+    {
+      "id": "gpu_turing",
+      "label": "Turing",
+      "label_en": "Turing",
+      "year": 2018,
+      "kind": "industry"
+    },
+    {
+      "id": "gpu_ampere",
+      "label": "Ampere",
+      "label_en": "Ampere",
+      "year": 2020,
+      "kind": "industry"
+    },
+    {
+      "id": "gpu_hopper",
+      "label": "Hopper",
+      "label_en": "Hopper",
+      "year": 2022,
+      "kind": "industry"
+    },
+    {
+      "id": "gpu_blackwell",
+      "label": "Blackwell",
+      "label_en": "Blackwell",
+      "year": 2024,
+      "kind": "industry"
+    },
+    {
+      "id": "cuda",
+      "label": "CUDA 平台",
+      "label_en": "CUDA",
+      "year": 2007,
+      "kind": "industry"
+    },
+    {
+      "id": "cudnn",
+      "label": "cuDNN",
+      "label_en": "cuDNN",
+      "year": 2014,
+      "kind": "industry"
+    },
+    {
+      "id": "tensor_core",
+      "label": "Tensor Core",
+      "label_en": "Tensor Core",
+      "year": 2017,
+      "kind": "industry"
+    },
+    {
+      "id": "hbm",
+      "label": "HBM 高带宽显存",
+      "label_en": "HBM",
+      "year": 2015,
+      "kind": "industry"
+    },
+    {
+      "id": "nvlink",
+      "label": "NVLink",
+      "label_en": "NVLink",
+      "year": 2016,
+      "kind": "industry"
+    },
+    {
+      "id": "nvswitch",
+      "label": "NVSwitch",
+      "label_en": "NVSwitch",
+      "year": 2018,
+      "kind": "industry"
+    },
+    {
+      "id": "nccl",
+      "label": "NCCL",
+      "label_en": "NCCL",
+      "year": 2015,
+      "kind": "industry"
+    },
+    {
+      "id": "flashattention",
+      "label": "FlashAttention",
+      "label_en": "FlashAttention",
+      "year": 2022,
+      "kind": "paper"
+    },
+    {
+      "id": "deepspeed",
+      "label": "DeepSpeed",
+      "label_en": "DeepSpeed",
+      "year": 2020,
+      "kind": "industry"
+    },
+    {
+      "id": "zero",
+      "label": "ZeRO 优化",
+      "label_en": "ZeRO (1/2/3/Infinity)",
+      "year": 2020,
+      "kind": "paper"
+    },
+    {
+      "id": "megatron_lm",
+      "label": "Megatron-LM",
+      "label_en": "Megatron-LM",
+      "year": 2019,
+      "kind": "model"
+    },
+    {
+      "id": "vllm",
+      "label": "vLLM",
+      "label_en": "vLLM",
+      "year": 2023,
+      "kind": "industry"
+    },
+    {
+      "id": "pagedattention",
+      "label": "PagedAttention",
+      "label_en": "PagedAttention",
+      "year": 2023,
+      "kind": "paper"
+    },
+    {
+      "id": "continuous_batching",
+      "label": "连续批处理",
+      "label_en": "Continuous Batching",
+      "year": 2022,
+      "kind": "concept"
+    },
+    {
+      "id": "speculative_decoding",
+      "label": "推测解码",
+      "label_en": "Speculative Decoding",
+      "year": 2023,
+      "kind": "concept"
+    },
+    {
+      "id": "kv_cache",
+      "label": "KV Cache 管理",
+      "label_en": "KV Cache Management",
+      "kind": "concept"
+    },
+    {
+      "id": "sglang",
+      "label": "SGLang",
+      "label_en": "SGLang",
+      "year": 2024,
+      "kind": "industry"
+    },
+    {
+      "id": "tensorrt_llm",
+      "label": "TensorRT-LLM",
+      "label_en": "TensorRT-LLM",
+      "year": 2023,
+      "kind": "industry"
+    },
+    {
+      "id": "ray",
+      "label": "Ray",
+      "label_en": "Ray",
+      "year": 2018,
+      "kind": "industry"
+    },
+    {
+      "id": "kubernetes",
+      "label": "Kubernetes",
+      "label_en": "Kubernetes",
+      "year": 2014,
+      "kind": "industry"
+    },
+    {
+      "id": "slurm",
+      "label": "Slurm",
+      "label_en": "Slurm",
+      "year": 2002,
+      "kind": "industry"
+    },
+    {
+      "id": "etcd",
+      "label": "etcd",
+      "label_en": "etcd",
+      "year": 2013,
+      "kind": "industry"
+    },
+    {
+      "id": "prometheus",
+      "label": "Prometheus",
+      "label_en": "Prometheus",
+      "year": 2012,
+      "kind": "industry"
+    },
+    {
+      "id": "pytorch",
+      "label": "PyTorch",
+      "label_en": "PyTorch",
+      "year": 2016,
+      "kind": "industry"
+    },
+    {
+      "id": "tensorflow",
+      "label": "TensorFlow",
+      "label_en": "TensorFlow",
+      "year": 2015,
+      "kind": "industry"
+    },
+    {
+      "id": "jax",
+      "label": "JAX",
+      "label_en": "JAX",
+      "year": 2018,
+      "kind": "industry"
+    },
+    {
+      "id": "mixed_precision",
+      "label": "混合精度训练",
+      "label_en": "Mixed Precision (FP16/BF16/TF32)",
+      "year": 2017,
+      "kind": "concept"
+    },
+    {
+      "id": "activation_checkpoint",
+      "label": "激活检查点",
+      "label_en": "Activation Checkpointing",
+      "year": 2016,
+      "kind": "concept"
+    },
+    {
+      "id": "cpu_nvme_offload",
+      "label": "卸载优化",
+      "label_en": "CPU/NVMe Offload",
+      "year": 2021,
+      "kind": "concept"
+    },
+    {
+      "id": "gradient_compression",
+      "label": "通信压缩",
+      "label_en": "Gradient Compression",
+      "year": 2018,
+      "kind": "concept"
+    },
+    {
+      "id": "topology_aware_comm",
+      "label": "拓扑感知通信",
+      "label_en": "Topology-Aware Communication",
+      "kind": "concept"
+    }
+  ],
+  "edges": [
+    {
+      "source": "gpu_fermi",
+      "target": "gpu_kepler",
+      "relation": "inherits"
+    },
+    {
+      "source": "gpu_kepler",
+      "target": "gpu_maxwell",
+      "relation": "inherits"
+    },
+    {
+      "source": "gpu_maxwell",
+      "target": "gpu_pascal",
+      "relation": "inherits"
+    },
+    {
+      "source": "gpu_pascal",
+      "target": "gpu_volta",
+      "relation": "inherits"
+    },
+    {
+      "source": "gpu_volta",
+      "target": "gpu_turing",
+      "relation": "inherits"
+    },
+    {
+      "source": "gpu_turing",
+      "target": "gpu_ampere",
+      "relation": "inherits"
+    },
+    {
+      "source": "gpu_ampere",
+      "target": "gpu_hopper",
+      "relation": "inherits"
+    },
+    {
+      "source": "gpu_hopper",
+      "target": "gpu_blackwell",
+      "relation": "inherits"
+    },
+    {
+      "source": "gpu_volta",
+      "target": "tensor_core",
+      "relation": "composes"
+    },
+    {
+      "source": "tensor_core",
+      "target": "mixed_precision",
+      "relation": "composes"
+    },
+    {
+      "source": "cuda",
+      "target": "cudnn",
+      "relation": "inherits"
+    },
+    {
+      "source": "cuda",
+      "target": "nccl",
+      "relation": "composes"
+    },
+    {
+      "source": "flashattention",
+      "target": "vllm",
+      "relation": "composes"
+    },
+    {
+      "source": "flashattention",
+      "target": "sglang",
+      "relation": "composes"
+    },
+    {
+      "source": "flashattention",
+      "target": "tensorrt_llm",
+      "relation": "composes"
+    },
+    {
+      "source": "pagedattention",
+      "target": "vllm",
+      "relation": "composes"
+    },
+    {
+      "source": "continuous_batching",
+      "target": "vllm",
+      "relation": "composes"
+    },
+    {
+      "source": "kv_cache",
+      "target": "pagedattention",
+      "relation": "inherits"
+    },
+    {
+      "source": "zero",
+      "target": "deepspeed",
+      "relation": "composes"
+    },
+    {
+      "source": "megatron_lm",
+      "target": "deepspeed",
+      "relation": "converges"
+    },
+    {
+      "source": "speculative_decoding",
+      "target": "vllm",
+      "relation": "converges"
+    },
+    {
+      "source": "speculative_decoding",
+      "target": "tensorrt_llm",
+      "relation": "converges"
+    },
+    {
+      "source": "ray",
+      "target": "kubernetes",
+      "relation": "converges"
+    },
+    {
+      "source": "slurm",
+      "target": "kubernetes",
+      "relation": "converges"
+    },
+    {
+      "source": "vllm",
+      "target": "sglang",
+      "relation": "converges"
+    },
+    {
+      "source": "vllm",
+      "target": "tensorrt_llm",
+      "relation": "converges"
+    },
+    {
+      "source": "nvlink",
+      "target": "nvswitch",
+      "relation": "inherits"
+    },
+    {
+      "source": "hbm",
+      "target": "gpu_hopper",
+      "relation": "composes"
+    },
+    {
+      "source": "activation_checkpoint",
+      "target": "zero",
+      "relation": "converges"
+    },
+    {
+      "source": "gradient_compression",
+      "target": "topology_aware_comm",
+      "relation": "converges"
+    }
+  ],
+  "next": {
+    "label": "NEXT",
+    "title": "Vol.13 迈向 AGI",
+    "desc": "技术演进 · 路线图 · 未来十年展望"
+  }
+}

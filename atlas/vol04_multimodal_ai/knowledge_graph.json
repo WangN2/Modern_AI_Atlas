@@ -1,0 +1,1025 @@
+{
+  "meta": {
+    "series": "Modern AI Atlas",
+    "volume": "Vol.04",
+    "title_zh": "多模态 AI",
+    "title_en": "Multimodal AI",
+    "theme": "atlas_light",
+    "layout": "bands",
+    "title_style": "badge",
+    "badge": {
+      "name": "Modern AI Atlas",
+      "volume": "Vol.04"
+    },
+    "tagline": "打通多种模态，连接物理世界与智能世界",
+    "callout": "多模态 AI 让机器看见、听见、理解和创造，融合多种信息模态，迈向更通用的智能。 —— Fei-Fei Li",
+    "canvas": {
+      "gap": 12,
+      "margin": 32
+    }
+  },
+  "legend": [
+    {
+      "icon": "image",
+      "label": "图像 Image",
+      "color": "#4f46e5"
+    },
+    {
+      "icon": "video",
+      "label": "视频 Video",
+      "color": "#3b82f6"
+    },
+    {
+      "icon": "text",
+      "label": "文本 Text",
+      "color": "#1a2b5c"
+    },
+    {
+      "icon": "cube",
+      "label": "3D / 点云 3D",
+      "color": "#0ea5e9"
+    },
+    {
+      "icon": "audio",
+      "label": "音频 Audio",
+      "color": "#a855f7"
+    },
+    {
+      "icon": "sensor",
+      "label": "传感器 Sensor",
+      "color": "#64748b"
+    }
+  ],
+  "legend_position": "bottom",
+  "sections": [
+    {
+      "kind": "cards",
+      "title": "多模态 AI 发展时代",
+      "subtitle": "Eras of Multimodal AI",
+      "color": "#4f46e5",
+      "columns": 6,
+      "items": [
+        {
+          "title": "萌芽探索期",
+          "title_en": "1950s–1990s",
+          "color": "#64748b",
+          "desc": "多模态感知与交互的早期探索",
+          "items": [
+            "语音识别",
+            "视觉感知",
+            "多媒体检索"
+          ]
+        },
+        {
+          "title": "传统方法期",
+          "title_en": "1990s–2010s",
+          "color": "#0ea5e9",
+          "desc": "手工特征与浅层模型时代",
+          "items": [
+            "特征工程",
+            "SVM / HMM",
+            "早期融合方法"
+          ]
+        },
+        {
+          "title": "深度学习起步期",
+          "title_en": "2010s–2015",
+          "color": "#3b82f6",
+          "desc": "单模态深度模型快速发展",
+          "items": [
+            "CNN / RNN / LSTM",
+            "预训练 (embedding)"
+          ]
+        },
+        {
+          "title": "多模态深度学习期",
+          "title_en": "2015–2018",
+          "color": "#6366f1",
+          "desc": "多模态深度模型涌现",
+          "items": [
+            "多模态对齐",
+            "深度融合",
+            "注意力机制"
+          ]
+        },
+        {
+          "title": "预训练多模态模型期",
+          "title_en": "2019–2021",
+          "color": "#a855f7",
+          "desc": "大规模预训练模型出现",
+          "items": [
+            "Transformer",
+            "自监督学习",
+            "跨模态对齐预训练"
+          ]
+        },
+        {
+          "title": "大模型多模态时代",
+          "title_en": "2022–至今",
+          "color": "#c026d3",
+          "desc": "多模态大模型快速发展与应用",
+          "items": [
+            "多模态大模型",
+            "指令微调",
+            "通用多模态能力"
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "timeline",
+      "title": "多模态 AI 发展时间线",
+      "subtitle": "Timeline",
+      "color": "#4f46e5",
+      "milestones": [
+        {
+          "year": "1960s",
+          "title": "早期语音合成与识别系统"
+        },
+        {
+          "year": "1997",
+          "title": "IBM Multimedia Search",
+          "node": "ibm_multimedia_search"
+        },
+        {
+          "year": "2012",
+          "title": "AlexNet",
+          "desc": "ImageNet 突破",
+          "node": "alexnet"
+        },
+        {
+          "year": "2016",
+          "title": "Google Audio-Visual Speech",
+          "node": "google_av_speech"
+        },
+        {
+          "year": "2020",
+          "title": "CLIP (OpenAI)",
+          "node": "clip"
+        },
+        {
+          "year": "2023+",
+          "title": "GPT-4V, Gemini, Claude 3",
+          "desc": "Qwen-VL, LLaVA, InternVL",
+          "node": "gpt_4v"
+        }
+      ]
+    },
+    {
+      "row": [
+        {
+          "kind": "list",
+          "title": "多模态核心概念：模态",
+          "subtitle": "Modalities",
+          "weight": 1.05,
+          "color": "#4f46e5",
+          "columns": 2,
+          "items": [
+            {
+              "icon": "text",
+              "title": "文本 (Text)",
+              "desc": "自然语言、文档、符号"
+            },
+            {
+              "icon": "image",
+              "title": "图像 (Image)",
+              "desc": "照片、图表、视觉信息"
+            },
+            {
+              "icon": "audio",
+              "title": "音频 (Audio)",
+              "desc": "语音、音乐、环境声"
+            },
+            {
+              "icon": "video",
+              "title": "视频 (Video)",
+              "desc": "动态画面、动作、场景"
+            },
+            {
+              "icon": "cube",
+              "title": "3D / 点云 (3D)",
+              "desc": "三维形状、点云数据"
+            },
+            {
+              "icon": "sensor",
+              "title": "传感器 (Sensor)",
+              "desc": "温度、湿度、IMU等"
+            }
+          ]
+        },
+        {
+          "kind": "cards",
+          "title": "多模态处理范式",
+          "subtitle": "Processing Paradigms",
+          "weight": 1.0,
+          "color": "#3b82f6",
+          "columns": 2,
+          "items": [
+            {
+              "title": "早期融合",
+              "title_en": "Early Fusion",
+              "icon": "flow",
+              "color": "#64748b",
+              "desc": "特征 / 原始数据级"
+            },
+            {
+              "title": "晚期融合",
+              "title_en": "Late Fusion",
+              "icon": "flow",
+              "color": "#3b82f6",
+              "desc": "决策 / 结果级融合"
+            },
+            {
+              "title": "联合嵌入",
+              "title_en": "Joint Embedding",
+              "icon": "network",
+              "color": "#a855f7",
+              "desc": "对齐到同一表示空间"
+            },
+            {
+              "title": "端到端联合建模",
+              "title_en": "End-to-End Joint Modeling",
+              "icon": "layers",
+              "color": "#f59e0b",
+              "desc": "统一模型同时处理多模态"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "row": [
+        {
+          "kind": "cards",
+          "title": "多模态模型演进路径",
+          "subtitle": "Evolution of Multimodal Models",
+          "color": "#4f46e5",
+          "columns": 5,
+          "items": [
+            {
+              "title": "特征拼接",
+              "title_en": "Feature Concatenation",
+              "color": "#64748b",
+              "desc": "简单拼接各模态特征后输入模型"
+            },
+            {
+              "title": "双流架构",
+              "title_en": "Two-Stream",
+              "color": "#0ea5e9",
+              "desc": "各模态独立编码后进行融合"
+            },
+            {
+              "title": "注意力融合",
+              "title_en": "Attention Fusion",
+              "color": "#3b82f6",
+              "desc": "通过注意力机制实现跨模态交互"
+            },
+            {
+              "title": "预训练对齐",
+              "title_en": "Pretrain & Align",
+              "color": "#a855f7",
+              "desc": "大规模预训练后对齐多模态表示"
+            },
+            {
+              "title": "指令微调",
+              "title_en": "Instruction Tuning",
+              "color": "#f59e0b",
+              "desc": "通过指令学习增强多模态理解与生成"
+            }
+          ]
+        },
+        {
+          "kind": "list",
+          "title": "理解与生成",
+          "subtitle": "Understanding & Generation",
+          "color": "#4f46e5",
+          "columns": 2,
+          "items": [
+            {
+              "icon": "book",
+              "title": "理解 (Understanding)",
+              "desc": "分类、检索、问答、描述等"
+            },
+            {
+              "icon": "star",
+              "title": "生成 (Generation)",
+              "desc": "图文生成、视频生成、语音生成等"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "row": [
+        {
+          "kind": "list",
+          "title": "技术基础",
+          "subtitle": "Technical Foundations",
+          "weight": 1.05,
+          "color": "#3b82f6",
+          "items": [
+            {
+              "icon": "layers",
+              "title": "深度学习",
+              "desc": "CNN, RNN, Transformer 等，为多模态建模提供强大能力"
+            },
+            {
+              "icon": "brain",
+              "title": "注意力机制",
+              "desc": "捕捉跨模态长程依赖关系，实现模态间有效交互"
+            },
+            {
+              "icon": "network",
+              "title": "对比学习 (Contrastive Learning)",
+              "desc": "跨模态统一表示"
+            },
+            {
+              "icon": "star",
+              "title": "自监督学习 (Self-Supervised Learning)",
+              "desc": "利用大规模无标注数据，学习通用多模态表征"
+            },
+            {
+              "icon": "db",
+              "title": "大规模预训练 (Large-scale Pretraining)",
+              "desc": "获得通用能力"
+            }
+          ]
+        },
+        {
+          "kind": "radial",
+          "title": "多模态 AI 能力",
+          "subtitle": "Capabilities",
+          "weight": 1.0,
+          "color": "#4f46e5",
+          "center": {
+            "zh": "多模态 AI",
+            "en": "Brain"
+          },
+          "branches": [
+            {
+              "label": "感知",
+              "label_en": "Perception",
+              "color": "#22c55e",
+              "items": [
+                "多模态信息感知与识别"
+              ]
+            },
+            {
+              "label": "理解",
+              "label_en": "Understanding",
+              "color": "#3b82f6",
+              "items": [
+                "跨模态理解与推理"
+              ]
+            },
+            {
+              "label": "对话",
+              "label_en": "Dialogue",
+              "color": "#f59e0b",
+              "items": [
+                "多模态对话与交互"
+              ]
+            },
+            {
+              "label": "生成",
+              "label_en": "Generation",
+              "color": "#a855f7",
+              "items": [
+                "多模态内容生成与创作"
+              ]
+            },
+            {
+              "label": "推理",
+              "label_en": "Reasoning",
+              "color": "#ef4444",
+              "items": [
+                "逻辑推理与知识推理"
+              ]
+            },
+            {
+              "label": "检索",
+              "label_en": "Retrieval",
+              "color": "#06b6d4",
+              "items": [
+                "跨模态检索与匹配"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "row": [
+        {
+          "kind": "family",
+          "title": "里程碑模型",
+          "subtitle": "Milestone Models",
+          "weight": 1.05,
+          "color": "#4f46e5",
+          "models": [
+            {
+              "year": "2014",
+              "name": "VQA",
+              "org": "Visual Question Answering",
+              "node": "vqa",
+              "desc": "早期视觉问答数据集，推动多模态理解研究"
+            },
+            {
+              "year": "2016",
+              "name": "Show and Tell",
+              "node": "show_and_tell",
+              "desc": "基于深度学习的图像描述生成模型"
+            },
+            {
+              "year": "2018",
+              "name": "ViLBERT / UNITER",
+              "node": "vilbert",
+              "desc": "基于 Transformer 的多模态理解模型"
+            },
+            {
+              "year": "2021",
+              "name": "CLIP",
+              "org": "Contrastive Language-Image Pre-training",
+              "node": "clip",
+              "desc": "大规模图文对比预训练模型，连接图像与语言"
+            },
+            {
+              "year": "2022",
+              "name": "DALL-E 2 / Flamingo",
+              "node": "dall_e_2",
+              "desc": "多模态生成与少样本学习的突破"
+            },
+            {
+              "year": "2023",
+              "name": "GPT-4V / Gemini / Claude 3",
+              "node": "gpt_4v",
+              "desc": "多模态大模型具备强大理解与生成能力"
+            },
+            {
+              "year": "2024+",
+              "name": "LLaVA / InternVL / Qwen-VL / Gemini 1.5",
+              "node": "llava",
+              "desc": "开源与闭源模型百花齐放，多模态能力持续提升"
+            }
+          ],
+          "compact": true
+        },
+        {
+          "kind": "cards",
+          "title": "主要应用领域",
+          "subtitle": "Applications",
+          "weight": 1.0,
+          "color": "#3b82f6",
+          "columns": 3,
+          "items": [
+            {
+              "title": "智能助手",
+              "title_en": "Voice / Vision Assistant",
+              "icon": "person",
+              "color": "#3b82f6"
+            },
+            {
+              "title": "内容创作",
+              "title_en": "Content Creation",
+              "icon": "doc",
+              "color": "#22c55e"
+            },
+            {
+              "title": "医疗影像分析",
+              "title_en": "Medical Imaging",
+              "icon": "image",
+              "color": "#ef4444"
+            },
+            {
+              "title": "自动驾驶",
+              "title_en": "Autonomous Driving",
+              "icon": "target",
+              "color": "#64748b"
+            },
+            {
+              "title": "教育科技",
+              "title_en": "Education",
+              "icon": "book",
+              "color": "#f59e0b"
+            },
+            {
+              "title": "工业检测",
+              "title_en": "Industrial Inspection",
+              "icon": "gear",
+              "color": "#06b6d4"
+            },
+            {
+              "title": "视频理解",
+              "title_en": "Video Understanding",
+              "icon": "video",
+              "color": "#3b82f6"
+            },
+            {
+              "title": "虚拟现实",
+              "title_en": "Virtual Reality",
+              "icon": "cube",
+              "color": "#a855f7"
+            },
+            {
+              "title": "多模态检索",
+              "title_en": "Multimodal Search",
+              "icon": "target",
+              "color": "#0ea5e9"
+            },
+            {
+              "title": "机器人交互",
+              "title_en": "Robot Interaction",
+              "icon": "robot",
+              "color": "#84cc16"
+            },
+            {
+              "title": "金融分析",
+              "title_en": "Financial Analysis",
+              "icon": "chart",
+              "color": "#eab308"
+            },
+            {
+              "title": "智慧零售",
+              "title_en": "Smart Retail",
+              "icon": "star",
+              "color": "#ec4899"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "row": [
+        {
+          "kind": "table",
+          "title": "重要数据集",
+          "subtitle": "Key Datasets",
+          "weight": 1.15,
+          "color": "#4f46e5",
+          "columns": [
+            "数据集",
+            "模态",
+            "规模",
+            "简介"
+          ],
+          "col_widths": [
+            1.2,
+            1.1,
+            1.0,
+            1.6
+          ],
+          "rows": [
+            [
+              "ImageNet",
+              "图像",
+              "~1400万图像",
+              "图像分类与识别基准"
+            ],
+            [
+              "COCO",
+              "图像+文本",
+              "33万图像",
+              "图像描述与定位"
+            ],
+            [
+              "VQA v2",
+              "图像+文本",
+              "21万问答",
+              "视觉问答数据集"
+            ],
+            [
+              "WebVid",
+              "图像+文本",
+              "100万视频",
+              "视频文本对照数据集"
+            ],
+            [
+              "AudioSet",
+              "音频",
+              "200万片段",
+              "音频事件检测"
+            ],
+            [
+              "LAION-5B",
+              "图像+文本",
+              "50亿对",
+              "大规模图文对照数据集"
+            ],
+            [
+              "Multimodal CoT",
+              "多模态",
+              "~100万样本",
+              "多模态推理链数据集"
+            ]
+          ]
+        },
+        {
+          "kind": "list",
+          "title": "主要挑战",
+          "subtitle": "Challenges",
+          "weight": 0.75,
+          "color": "#dc2626",
+          "items": [
+            {
+              "icon": "network",
+              "title": "数据对齐 (Data Alignment)"
+            },
+            {
+              "icon": "db",
+              "title": "数据稀缺 (Data Scarcity)"
+            },
+            {
+              "icon": "bolt",
+              "title": "计算资源需求大 (High Compute)"
+            },
+            {
+              "icon": "target",
+              "title": "模型泛化能力 (Generalization)"
+            },
+            {
+              "icon": "gear",
+              "title": "安全与伦理 (Safety & Ethics)"
+            }
+          ]
+        },
+        {
+          "kind": "list",
+          "title": "发展机遇",
+          "subtitle": "Opportunities",
+          "weight": 0.75,
+          "color": "#16a34a",
+          "marker": "check",
+          "items": [
+            {
+              "title": "通用人工智能 (AGI)"
+            },
+            {
+              "title": "跨模态理解更深入"
+            },
+            {
+              "title": "多模态生成更高质量"
+            },
+            {
+              "title": "多模态交互更自然"
+            },
+            {
+              "title": "产业应用更广泛"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "row": [
+        {
+          "kind": "list",
+          "title": "未来趋势",
+          "subtitle": "Future Trends",
+          "weight": 1.05,
+          "color": "#a855f7",
+          "illustration": "brain",
+          "items": [
+            {
+              "title": "1. 更大规模预训练",
+              "desc": "更大规模、更强泛化能力"
+            },
+            {
+              "title": "2. 多模态统一模型",
+              "desc": "统一架构处理任意模态"
+            },
+            {
+              "title": "3. 多模态推理与规划",
+              "desc": "更强的逻辑推理与决策能力"
+            },
+            {
+              "title": "4. 实时多模态交互",
+              "desc": "低延迟、更自然的人机交互"
+            },
+            {
+              "title": "5. 多模态生成与创作",
+              "desc": "更高效、更逼真的内容生成"
+            },
+            {
+              "title": "6. 端侧多模态智能",
+              "desc": "更高效、更安全的端侧智能"
+            }
+          ],
+          "columns": 2
+        },
+        {
+          "kind": "industry",
+          "title": "多模态 AI 生态图谱",
+          "subtitle": "Ecosystem",
+          "weight": 1.0,
+          "color": "#4f46e5",
+          "groups": [
+            {
+              "title": "模型层 (Models)",
+              "items": [
+                "OpenAI",
+                "Google",
+                "Meta",
+                "Microsoft",
+                "Alibaba",
+                "Baidu",
+                "ByteDance",
+                "MiniMax",
+                "Stability AI"
+              ]
+            },
+            {
+              "title": "工具层 (Tools)",
+              "items": [
+                "Hugging Face",
+                "LangChain",
+                "LlamaIndex",
+                "DeepSpeed",
+                "PyTorch",
+                "TensorFlow"
+              ]
+            },
+            {
+              "title": "数据层 (Data)",
+              "items": [
+                "LAION",
+                "Common Crawl",
+                "COCO",
+                "VawCaps",
+                "AudioSet"
+              ]
+            },
+            {
+              "title": "应用层 (Applications)",
+              "items": [
+                "医疗",
+                "教育",
+                "金融",
+                "娱乐",
+                "零售",
+                "交通"
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "footer": {
+    "quote_zh": "多模态 AI 正在打破信息孤岛，连接真实世界的多维度信息。未来，它将成为通向通用人工智能的重要路径。"
+  },
+  "nodes": [
+    {
+      "id": "vqa",
+      "label": "视觉问答数据集",
+      "label_en": "VQA (Visual Question Answering)",
+      "year": 2014,
+      "kind": "paper"
+    },
+    {
+      "id": "show_and_tell",
+      "label": "图像描述生成",
+      "label_en": "Show and Tell",
+      "year": 2016,
+      "kind": "paper"
+    },
+    {
+      "id": "vilbert",
+      "label": "双流多模态预训练",
+      "label_en": "ViLBERT",
+      "year": 2018,
+      "kind": "paper"
+    },
+    {
+      "id": "uniter",
+      "label": "统一多模态预训练",
+      "label_en": "UNITER",
+      "year": 2018,
+      "kind": "paper"
+    },
+    {
+      "id": "clip",
+      "label": "图文对比预训练",
+      "label_en": "CLIP",
+      "year": 2021,
+      "kind": "milestone"
+    },
+    {
+      "id": "dall_e_2",
+      "label": "文本到图像生成",
+      "label_en": "DALL-E 2",
+      "year": 2022,
+      "kind": "model"
+    },
+    {
+      "id": "flamingo",
+      "label": "少样本多模态模型",
+      "label_en": "Flamingo",
+      "year": 2022,
+      "kind": "model"
+    },
+    {
+      "id": "gpt_4v",
+      "label": "多模态大模型",
+      "label_en": "GPT-4V",
+      "year": 2023,
+      "kind": "milestone"
+    },
+    {
+      "id": "gemini",
+      "label": "多模态大模型",
+      "label_en": "Gemini",
+      "year": 2023,
+      "kind": "model"
+    },
+    {
+      "id": "claude_3",
+      "label": "多模态大模型",
+      "label_en": "Claude 3",
+      "year": 2023,
+      "kind": "model"
+    },
+    {
+      "id": "llava",
+      "label": "开源视觉指令模型",
+      "label_en": "LLaVA",
+      "year": 2024,
+      "kind": "model"
+    },
+    {
+      "id": "internvl",
+      "label": "开源多模态模型",
+      "label_en": "InternVL",
+      "year": 2024,
+      "kind": "model"
+    },
+    {
+      "id": "qwen_vl",
+      "label": "通义千问视觉模型",
+      "label_en": "Qwen-VL",
+      "year": 2023,
+      "kind": "model"
+    },
+    {
+      "id": "gemini_1_5",
+      "label": "长上下文多模态",
+      "label_en": "Gemini 1.5",
+      "year": 2024,
+      "kind": "model"
+    },
+    {
+      "id": "alexnet",
+      "label": "深度学习突破",
+      "label_en": "AlexNet",
+      "year": 2012,
+      "kind": "milestone"
+    },
+    {
+      "id": "ibm_multimedia_search",
+      "label": "早期多媒体检索",
+      "label_en": "IBM Multimedia Search",
+      "year": 1997,
+      "kind": "industry"
+    },
+    {
+      "id": "google_av_speech",
+      "label": "音视频语音",
+      "label_en": "Google Audio-Visual Speech",
+      "year": 2016,
+      "kind": "model"
+    },
+    {
+      "id": "multimodal_cot",
+      "label": "多模态思维链",
+      "label_en": "Multimodal CoT",
+      "year": 2023,
+      "kind": "concept"
+    }
+  ],
+  "edges": [
+    {
+      "source": "alexnet",
+      "target": "show_and_tell",
+      "relation": "converges"
+    },
+    {
+      "source": "vilbert",
+      "target": "uniter",
+      "relation": "converges"
+    },
+    {
+      "source": "uniter",
+      "target": "vilbert",
+      "relation": "converges"
+    },
+    {
+      "source": "show_and_tell",
+      "target": "clip",
+      "relation": "converges"
+    },
+    {
+      "source": "clip",
+      "target": "dall_e_2",
+      "relation": "composes"
+    },
+    {
+      "source": "clip",
+      "target": "flamingo",
+      "relation": "converges"
+    },
+    {
+      "source": "clip",
+      "target": "gpt_4v",
+      "relation": "converges"
+    },
+    {
+      "source": "clip",
+      "target": "llava",
+      "relation": "composes"
+    },
+    {
+      "source": "clip",
+      "target": "internvl",
+      "relation": "converges"
+    },
+    {
+      "source": "clip",
+      "target": "qwen_vl",
+      "relation": "composes"
+    },
+    {
+      "source": "gpt_4v",
+      "target": "gemini",
+      "relation": "converges"
+    },
+    {
+      "source": "gemini",
+      "target": "gpt_4v",
+      "relation": "converges"
+    },
+    {
+      "source": "gemini",
+      "target": "claude_3",
+      "relation": "converges"
+    },
+    {
+      "source": "claude_3",
+      "target": "gemini",
+      "relation": "converges"
+    },
+    {
+      "source": "gpt_4v",
+      "target": "claude_3",
+      "relation": "converges"
+    },
+    {
+      "source": "claude_3",
+      "target": "gpt_4v",
+      "relation": "converges"
+    },
+    {
+      "source": "llava",
+      "target": "internvl",
+      "relation": "converges"
+    },
+    {
+      "source": "internvl",
+      "target": "llava",
+      "relation": "converges"
+    },
+    {
+      "source": "internvl",
+      "target": "qwen_vl",
+      "relation": "converges"
+    },
+    {
+      "source": "qwen_vl",
+      "target": "internvl",
+      "relation": "converges"
+    },
+    {
+      "source": "llava",
+      "target": "qwen_vl",
+      "relation": "converges"
+    },
+    {
+      "source": "qwen_vl",
+      "target": "llava",
+      "relation": "converges"
+    },
+    {
+      "source": "gemini",
+      "target": "gemini_1_5",
+      "relation": "inherits"
+    },
+    {
+      "source": "clip",
+      "target": "multimodal_cot",
+      "relation": "converges"
+    }
+  ],
+  "next": {
+    "label": "NEXT",
+    "title": "Vol.05 生成式 AI",
+    "desc": "让机器创造内容，开启人机共创新时代"
+  }
+}

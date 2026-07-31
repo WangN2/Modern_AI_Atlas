@@ -1,0 +1,65 @@
+{
+  "name": "atlas_light",
+  "description": "Light 'Modern AI Atlas' series theme (off-white/lavender background, navy accents) used by Vol.01b and Vol.03-13. Mirrors the empire_dark key structure so both layout templates render with either theme.",
+  "canvas": {
+    "background": "#f4f6fd",
+    "width": 1682,
+    "height": 2200,
+    "margin": 40,
+    "gap": 20,
+    "panel_radius": 16,
+    "panel_fill": "#ffffff",
+    "panel_stroke": "#d8e0f2",
+    "panel_header_h": 86,
+    "diagram_h": 100,
+    "family_row_h": 100,
+    "family_footer_h": 96,
+    "paper_row_h": 52,
+    "rail_col_w": 320,
+    "rail_header_h": 56,
+    "rail_row_h": 30,
+    "compact_header_h": 56,
+    "card_fill": "#ffffff",
+    "card_stroke": "#ccd6ee",
+    "side_fill": "#eef2fc",
+    "photo_fill": "#f0f4fd",
+    "photo_ink": "#44548a",
+    "band_dark_fill": "#0a1a3f"
+  },
+  "colors": {
+    "title": "#1a2b5c",
+    "text": "#2c3a63",
+    "muted": "#6b7590",
+    "accent": "#4f5dd5",
+    "chip_text": "#ffffff",
+    "line": "#c3cde8"
+  },
+  "categories": {
+    "nlp":        { "color": "#3b82f6", "label": "NLP · 语言" },
+    "cv":         { "color": "#22c55e", "label": "CV · 视觉" },
+    "multimodal": { "color": "#f59e0b", "label": "多模态" },
+    "generative": { "color": "#a855f7", "label": "生成模型" },
+    "world":      { "color": "#06b6d4", "label": "世界模型" },
+    "other":      { "color": "#64748b", "label": "其他领域" }
+  },
+  "edge_styles": {
+    "solid":  { "label": "直接继承", "dash": "" },
+    "dashed": { "label": "趋同 · 受启发", "dash": "8 6" },
+    "dotted": { "label": "组合 · 拼接", "dash": "2 6" }
+  },
+  "typography": {
+    "font_family": "'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', Helvetica, Arial, sans-serif",
+    "series_size": 26,
+    "title_size": 88,
+    "title_zh_size": 42,
+    "tagline_size": 28,
+    "panel_title_size": 32,
+    "panel_sub_size": 22,
+    "model_name_size": 26,
+    "model_desc_size": 21,
+    "year_size": 22,
+    "small_size": 20,
+    "legend_size": 22,
+    "footer_size": 24
+  }
+}

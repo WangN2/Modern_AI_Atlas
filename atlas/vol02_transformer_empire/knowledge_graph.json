@@ -1,0 +1,351 @@
+{
+  "meta": {
+    "layout": "bands",
+    "theme": "empire_dark",
+    "title_style": "en_main",
+    "legend_box": true,
+    "canvas": { "width": 1682, "height": 2524 },
+    "series": "AI Technology Bible",
+    "volume": "Vol.02",
+    "title_en": "Transformer Empire",
+    "title_zh": "Transformer 帝国",
+    "tagline": "统一架构，开启大模型时代（2017 → Now）",
+    "quote": "“一切模型，皆可 Transformer；一切智能，皆由 Attention 驱动。”",
+    "quote_by": "The AI Architect"
+  },
+  "legend": {
+    "categories": [
+      { "color": "#3b82f6", "label": "NLP (语言)" },
+      { "color": "#22c55e", "label": "CV (视觉)" },
+      { "color": "#a855f7", "label": "多模态" },
+      { "color": "#f59e0b", "label": "生成模型" },
+      { "color": "#14b8a6", "label": "世界模型/具身" },
+      { "color": "#64748b", "label": "其他领域" }
+    ],
+    "edges": [
+      { "label": "直接继承", "dash": "" },
+      { "label": "改进/优化", "dash": "8 6" },
+      { "label": "并行/独立发展", "dash": "2 6" },
+      { "label": "组合/融合", "dash": "", "double": true },
+      { "label": "影响/启发", "dash": "10 4 2 4" }
+    ]
+  },
+  "sections": [
+    {
+      "row": [
+        {
+          "kind": "list", "weight": 1.0, "color": "#4f7cff",
+          "title": "为什么是 Transformer?", "subtitle": "Why Transformer",
+          "items": [
+            { "icon": "chart", "title": "并行计算", "desc": "全局注意力，打破 RNN 的顺序依赖，极大提升训练效率" },
+            { "icon": "atom", "title": "长距离依赖", "desc": "任何位置之间可直接建模，捕捉长距离信息" },
+            { "icon": "cube", "title": "可扩展性", "desc": "参数规模、数据规模、计算规模三维度 Scaling" },
+            { "icon": "globe", "title": "通用性", "desc": "文本、图像、语音、视频、多模态、甚至策略学习" },
+            { "icon": "star", "title": "涌现能力", "desc": "Scale 带来 In-context Learning、Emergent Abilities 等能力涌现" }
+          ]
+        },
+        {
+          "kind": "hero", "weight": 1.15, "color": "#4f7cff",
+          "title": "Transformer (2017)", "subtitle": "Attention Is All You Need",
+          "org": "Google",
+          "caption": "提出 Multi-Head Attention 机制，完全基于注意力的序列建模架构，奠定现代 AI 基础"
+        },
+        {
+          "kind": "papers", "weight": 1.05, "color": "#4f7cff",
+          "title": "关键奠基论文", "subtitle": "Key Papers",
+          "papers": [
+            { "year": "2017", "authors": "Vaswani et al.", "title": "Attention Is All You Need", "venue": "NeurIPS 2017" },
+            { "year": "2018", "authors": "Devlin et al.", "title": "BERT: Pre-training of Deep Bidirectional Transformers", "venue": "NAACL 2019" },
+            { "year": "2018", "authors": "Radford et al.", "title": "Improving Language Understanding by Generative Pre-Training", "venue": "2018" },
+            { "year": "2020", "authors": "Dosovitskiy et al.", "title": "An Image is Worth 16x16 Words: Transformers for Image Recognition", "venue": "ICLR 2021" },
+            { "year": "2022", "authors": "Ramesh et al.", "title": "Hierarchical Text-Conditional Image Generation with CLIP Latents", "venue": "2022" }
+          ]
+        }
+      ]
+    },
+    {
+      "row": [
+        {
+          "kind": "family", "weight": 1.0, "color": "#3b82f6",
+          "title": "Encoder 架构", "subtitle": "双向理解",
+          "diagram": true, "diagram_kind": "encoder",
+          "models": [
+            { "year": "2018", "name": "BERT", "org": "Google", "desc": "Bidirectional Encoder Representations from Transformers" },
+            { "year": "2019", "name": "RoBERTa", "org": "Meta", "desc": "A Robustly Optimized BERT Pretraining Approach" },
+            { "year": "2020", "name": "DeBERTa", "org": "Microsoft", "desc": "Decoding-enhanced BERT with Disentangled Attention" },
+            { "year": "2022", "name": "MPNet", "org": "Microsoft", "desc": "Masked and Permuted Pre-training" },
+            { "year": "2023", "name": "E5 / GTE / BGE", "desc": "Embedding Models (BAAI, Microsoft, etc.)" }
+          ],
+          "footer": ["应用: 搜索、推荐、问答、理解", "代表产品: Google Search, Bing, 等"]
+        },
+        {
+          "kind": "family", "weight": 1.0, "color": "#3b82f6",
+          "title": "Decoder 架构", "subtitle": "自回归生成",
+          "diagram": true, "diagram_kind": "stack",
+          "models": [
+            { "year": "2018", "name": "GPT-1", "org": "OpenAI", "desc": "Generative Pre-trained Transformer" },
+            { "year": "2019", "name": "GPT-2", "org": "OpenAI", "desc": "Scaling Laws Start Emerging" },
+            { "year": "2020", "name": "GPT-3", "org": "OpenAI", "desc": "175B Parameters Few-shot Learning" },
+            { "year": "2022", "name": "GPT-4", "org": "OpenAI", "desc": "Stronger Reasoning, Multimodal" },
+            { "year": "2023+", "name": "LLaMA / Qwen / DeepSeek / Mistral", "desc": "Open-source LLMs (Meta / 阿里 / 深度求索)" }
+          ],
+          "footer": ["应用: 对话、写作、编程、通用智能", "代表产品: ChatGPT, Copilot, Claude, 通义千问, 等"]
+        },
+        {
+          "kind": "family", "weight": 1.0, "color": "#a855f7",
+          "title": "Encoder-Decoder 架构", "subtitle": "序列到序列",
+          "diagram": true, "diagram_kind": "encoder",
+          "models": [
+            { "year": "2019", "name": "T5", "org": "Google", "desc": "Text-to-Text Transfer Transformer" },
+            { "year": "2019", "name": "BART", "org": "Meta", "desc": "Denoising Sequence-to-Sequence Pre-training" },
+            { "year": "2022", "name": "UL2", "org": "Google", "desc": "Unified Language Learner" },
+            { "year": "2022", "name": "FLAN-T5", "org": "Google", "desc": "Instruction Tuning" },
+            { "year": "2023+", "name": "GLM / Baichuan / Yi / 通义千问系列 / 文心一言", "desc": "开源 & 中文优化模型" }
+          ],
+          "footer": ["应用: 翻译、摘要、重写、生成", "代表产品: Google Translate, 文心一言等"]
+        },
+        {
+          "kind": "family", "weight": 1.0, "color": "#334155",
+          "title": "Attention 通用模块", "subtitle": "核心机制",
+          "diagram": true, "diagram_kind": "attention",
+          "models": [
+            { "name": "Multi-Head Attention", "desc": "并行关注不同子空间" },
+            { "name": "Scaled Dot-Product Attention", "desc": "稳定梯度，提升训练效果" },
+            { "name": "Positional Encoding", "desc": "注入序列位置信息" },
+            { "name": "Feed Forward Network", "desc": "非线性变换能力" },
+            { "name": "Layer Normalization", "desc": "稳定深层训练" },
+            { "name": "Residual Connection", "desc": "缓解梯度消失" }
+          ],
+          "footer": ["被所有分支继承和使用", "Transformer 的 DNA"]
+        },
+        {
+          "weight": 0.92,
+          "stack": [
+            {
+              "kind": "family", "color": "#64748b", "compact": true,
+              "title": "其他变体架构", "subtitle": "稀疏设计",
+              "models": [
+                { "name": "Reformer (2020)" }, { "name": "Performer (2020)" },
+                { "name": "Linformer (2020)" }, { "name": "Longformer (2020)" },
+                { "name": "BigBird (2020)" }, { "name": "RWKV (2021)" },
+                { "name": "Mamba (2023)" }
+              ]
+            },
+            {
+              "kind": "family", "color": "#22c55e", "compact": true,
+              "title": "Vision Transformer 家族", "subtitle": "CV",
+              "models": [
+                { "year": "2020", "name": "ViT", "org": "Google", "desc": "Vision Transformer" },
+                { "year": "2021", "name": "Swin Transformer", "org": "Microsoft", "desc": "Hierarchical Vision Transformer" },
+                { "year": "2021", "name": "MAE", "org": "Meta", "desc": "Masked Autoencoders" },
+                { "year": "2021", "name": "DeiT", "org": "Facebook", "desc": "Data-efficient ViT" },
+                { "year": "2022", "name": "DINO", "org": "Meta", "desc": "Self-Distillation" },
+                { "year": "2023", "name": "DINOv2", "org": "Meta", "desc": "Stronger Visual Features" }
+              ],
+              "footer": ["应用: 图像分类、检测、分割、3D 等", "代表产品: SAM, Florence-2, 等"]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "row": [
+        {
+          "kind": "fusion", "weight": 4.0, "color": "#4f7cff",
+          "title": "跨领域融合: Transformer 的无限可能",
+          "modalities": [
+            { "label": "文本 Text" }, { "label": "图像 Image" },
+            { "label": "视频 Video" }, { "label": "语音 Audio" },
+            { "label": "3D / 点云" }, { "label": "时间序列" }
+          ],
+          "core": "统一的 Transformer 表示空间",
+          "capabilities": ["理解", "生成", "预测", "规划", "决策"]
+        },
+        {
+          "weight": 1.0,
+          "stack": [
+            {
+              "kind": "family", "color": "#f59e0b", "compact": true,
+              "title": "生成模型家族", "subtitle": "Diffusion / DiT",
+              "models": [
+                { "year": "2022", "name": "Stable Diffusion", "org": "Stability AI", "desc": "Latent Diffusion (U-Net)" },
+                { "year": "2023", "name": "DiT", "org": "Peebles & Xie", "desc": "Diffusion Transformer" },
+                { "year": "2023", "name": "PixArt / SD3 / MMDiT", "desc": "华为 / Stability AI等" },
+                { "year": "2024", "name": "Flux", "org": "Black Forest Labs" }
+              ],
+              "footer": ["应用: 文生图、视频生成、3D生成等"]
+            },
+            {
+              "kind": "family", "color": "#a855f7", "compact": true,
+              "title": "多模态融合家族", "subtitle": "Multimodal",
+              "models": [
+                { "year": "2021", "name": "CLIP", "org": "OpenAI", "desc": "Contrastive Language-Image Pre-training" },
+                { "year": "2022", "name": "Flamingo", "org": "DeepMind", "desc": "Few-shot Multimodal" },
+                { "year": "2023", "name": "LLaVA", "org": "UC Berkeley", "desc": "Visual Instruction Tuning" },
+                { "year": "2024", "name": "Qwen-VL", "org": "阿里", "desc": "全模态理解" }
+              ],
+              "footer": ["应用: 多模态理解、视觉对话、VLM等"]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "timeline", "color": "#4f7cff",
+      "title": "关键技术创新时间线",
+      "milestones": [
+        { "year": "2017", "title": "Transformer", "desc": "提出统一架构" },
+        { "year": "2018", "title": "预训练范式", "desc": "(BERT, GPT)", "desc2": "引爆预训练浪潮" },
+        { "year": "2019", "title": "大规模预训练", "desc": "参数规模突破", "desc2": "10亿级" },
+        { "year": "2020", "title": "Scaling Law", "desc": "模型能力随规模", "desc2": "指数级提升" },
+        { "year": "2021", "title": "多模态预训练", "desc": "(CLIP, ALIGN)", "desc2": "打通视觉-语言" },
+        { "year": "2022", "title": "指令微调 + RLHF", "desc": "对齐人类价值", "desc2": "能力跃升" },
+        { "year": "2023", "title": "开源大模型爆发", "desc": "LLaMA, Qwen等", "desc2": "生态繁荣" },
+        { "year": "2024+", "title": "进入 AGI 前夜", "desc": "多模态、具身、", "desc2": "推理能力增强" }
+      ]
+    },
+    {
+      "row": [
+        {
+          "kind": "industry", "weight": 1.1, "color": "#4f7cff",
+          "title": "产业影响", "subtitle": "Industry Impact",
+          "groups": [
+            { "title": "科技巨头", "items": ["Google", "OpenAI", "Meta", "Microsoft", "Baidu 百度", "阿里巴巴 Alibaba"] },
+            { "title": "开源生态", "items": ["Hugging Face", "PyTorch", "TensorFlow", "VLLM", "Transformers"] },
+            { "title": "应用落地", "items": ["搜索推荐", "智能客服", "内容生成", "编程助手", "自动驾驶", "机器人"] }
+          ]
+        },
+        {
+          "kind": "list", "weight": 1.0, "color": "#22c55e", "marker": "check",
+          "title": "Transformer 如何改变 AI 世界?",
+          "items": [
+            { "title": "从任务特定 → 通用基础模型" },
+            { "title": "从手工特征 → 自学习表示" },
+            { "title": "从小数据 → 大数据驱动" },
+            { "title": "从单模态 → 多模态融合" },
+            { "title": "从理解 → 生成 + 推理 + 决策" }
+          ],
+          "summary": "Transformer = 新的计算范式 (Paradigm Shift)"
+        },
+        {
+          "kind": "list", "weight": 1.0, "color": "#06b6d4", "illustration": "cube",
+          "title": "未来演进方向", "subtitle": "Future Directions",
+          "items": [
+            { "icon": "doc", "title": "更长上下文 (百万级 Token)" },
+            { "icon": "bolt", "title": "更高效率 (稀疏注意力/线性复杂度)" },
+            { "icon": "brain", "title": "更强推理 (思维链/自我反思)" },
+            { "icon": "robot", "title": "更强具身能力 (与物理世界交互)" },
+            { "icon": "globe", "title": "更强多模态 (全模态融合)" },
+            { "icon": "star", "title": "走向 AGI (通用智能)" }
+          ]
+        }
+      ]
+    }
+  ],
+  "quote": "“Transformer 不是终点，而是起点。未来的所有智能，都将建立在它的肩膀上。”",
+  "next": {
+    "label": "NEXT",
+    "title": "Vol.03 / LLM Empire",
+    "desc": "语言大模型帝国"
+  },
+  "nodes": [
+    { "id": "transformer", "label": "Transformer", "kind": "paper", "year": 2017, "metadata": { "label_en": "Transformer (Attention Is All You Need)" } },
+    { "id": "bert", "label": "BERT", "kind": "model", "year": 2018 },
+    { "id": "roberta", "label": "RoBERTa", "kind": "model", "year": 2019 },
+    { "id": "deberta", "label": "DeBERTa", "kind": "model", "year": 2020 },
+    { "id": "mpnet", "label": "MPNet", "kind": "model", "year": 2022 },
+    { "id": "e5_gte_bge", "label": "E5 / GTE / BGE 嵌入模型", "kind": "model", "year": 2023, "metadata": { "label_en": "E5 / GTE / BGE Embedding Models" } },
+    { "id": "gpt1", "label": "GPT-1", "kind": "model", "year": 2018 },
+    { "id": "gpt2", "label": "GPT-2", "kind": "model", "year": 2019 },
+    { "id": "gpt3", "label": "GPT-3", "kind": "model", "year": 2020 },
+    { "id": "gpt4", "label": "GPT-4", "kind": "model", "year": 2022 },
+    { "id": "llama", "label": "LLaMA", "kind": "model", "year": 2023 },
+    { "id": "qwen", "label": "通义千问", "kind": "model", "year": 2023, "metadata": { "label_en": "Qwen" } },
+    { "id": "deepseek", "label": "DeepSeek", "kind": "model", "year": 2023 },
+    { "id": "mistral", "label": "Mistral", "kind": "model", "year": 2023 },
+    { "id": "t5", "label": "T5", "kind": "model", "year": 2019 },
+    { "id": "bart", "label": "BART", "kind": "model", "year": 2019 },
+    { "id": "ul2", "label": "UL2", "kind": "model", "year": 2022 },
+    { "id": "flan_t5", "label": "FLAN-T5", "kind": "model", "year": 2022 },
+    { "id": "glm", "label": "GLM", "kind": "model", "year": 2023 },
+    { "id": "baichuan", "label": "Baichuan", "kind": "model", "year": 2023 },
+    { "id": "yi", "label": "Yi (零一万物)", "kind": "model", "year": 2023, "metadata": { "label_en": "Yi" } },
+    { "id": "multi_head_attention", "label": "多头注意力", "kind": "concept", "year": 2017, "metadata": { "label_en": "Multi-Head Attention" } },
+    { "id": "scaled_dot_product", "label": "缩放点积注意力", "kind": "concept", "year": 2017, "metadata": { "label_en": "Scaled Dot-Product Attention" } },
+    { "id": "positional_encoding", "label": "位置编码", "kind": "concept", "year": 2017, "metadata": { "label_en": "Positional Encoding" } },
+    { "id": "ffn", "label": "前馈网络", "kind": "concept", "year": 2017, "metadata": { "label_en": "Feed Forward Network" } },
+    { "id": "layernorm", "label": "层归一化", "kind": "concept", "year": 2017, "metadata": { "label_en": "Layer Normalization" } },
+    { "id": "residual", "label": "残差连接", "kind": "concept", "year": 2017, "metadata": { "label_en": "Residual Connection" } },
+    { "id": "reformer", "label": "Reformer", "kind": "model", "year": 2020 },
+    { "id": "performer", "label": "Performer", "kind": "model", "year": 2020 },
+    { "id": "linformer", "label": "Linformer", "kind": "model", "year": 2020 },
+    { "id": "longformer", "label": "Longformer", "kind": "model", "year": 2020 },
+    { "id": "bigbird", "label": "BigBird", "kind": "model", "year": 2020 },
+    { "id": "rwkv", "label": "RWKV", "kind": "model", "year": 2021 },
+    { "id": "mamba", "label": "Mamba", "kind": "model", "year": 2023 },
+    { "id": "vit", "label": "Vision Transformer", "kind": "model", "year": 2020, "metadata": { "label_en": "ViT" } },
+    { "id": "swin", "label": "Swin Transformer", "kind": "model", "year": 2021 },
+    { "id": "mae", "label": "MAE", "kind": "model", "year": 2021, "metadata": { "label_en": "Masked Autoencoders" } },
+    { "id": "deit", "label": "DeiT", "kind": "model", "year": 2021, "metadata": { "label_en": "Data-efficient ViT" } },
+    { "id": "dino", "label": "DINO", "kind": "model", "year": 2022 },
+    { "id": "dinov2", "label": "DINOv2", "kind": "model", "year": 2023 },
+    { "id": "stable_diffusion", "label": "Stable Diffusion", "kind": "model", "year": 2022, "metadata": { "label_en": "Stable Diffusion (Latent Diffusion U-Net)" } },
+    { "id": "dit", "label": "DiT", "kind": "model", "year": 2023, "metadata": { "label_en": "Diffusion Transformer" } },
+    { "id": "pixart_sd3_mmdit", "label": "PixArt / SD3 / MMDiT", "kind": "model", "year": 2023 },
+    { "id": "flux", "label": "Flux", "kind": "model", "year": 2024, "metadata": { "label_en": "Flux (Black Forest Labs)" } },
+    { "id": "clip", "label": "CLIP", "kind": "model", "year": 2021 },
+    { "id": "flamingo", "label": "Flamingo", "kind": "model", "year": 2022 },
+    { "id": "llava", "label": "LLaVA", "kind": "model", "year": 2023 },
+    { "id": "qwen_vl", "label": "Qwen-VL", "kind": "model", "year": 2024 }
+  ],
+  "edges": [
+    { "source": "transformer", "target": "bert", "relation": "inherits" },
+    { "source": "transformer", "target": "gpt1", "relation": "inherits" },
+    { "source": "transformer", "target": "t5", "relation": "inherits" },
+    { "source": "bert", "target": "roberta", "relation": "converges" },
+    { "source": "bert", "target": "deberta", "relation": "converges" },
+    { "source": "bert", "target": "mpnet", "relation": "converges" },
+    { "source": "bert", "target": "e5_gte_bge", "relation": "inherits" },
+    { "source": "gpt1", "target": "gpt2", "relation": "inherits" },
+    { "source": "gpt2", "target": "gpt3", "relation": "inherits" },
+    { "source": "gpt3", "target": "gpt4", "relation": "inherits" },
+    { "source": "gpt3", "target": "llama", "relation": "converges" },
+    { "source": "llama", "target": "qwen", "relation": "converges" },
+    { "source": "llama", "target": "deepseek", "relation": "converges" },
+    { "source": "llama", "target": "mistral", "relation": "converges" },
+    { "source": "t5", "target": "ul2", "relation": "inherits" },
+    { "source": "t5", "target": "flan_t5", "relation": "inherits" },
+    { "source": "bart", "target": "t5", "relation": "converges" },
+    { "source": "t5", "target": "glm", "relation": "converges" },
+    { "source": "gpt3", "target": "baichuan", "relation": "converges" },
+    { "source": "gpt3", "target": "yi", "relation": "converges" },
+    { "source": "transformer", "target": "multi_head_attention", "relation": "composes" },
+    { "source": "transformer", "target": "scaled_dot_product", "relation": "composes" },
+    { "source": "transformer", "target": "positional_encoding", "relation": "composes" },
+    { "source": "transformer", "target": "ffn", "relation": "composes" },
+    { "source": "transformer", "target": "layernorm", "relation": "composes" },
+    { "source": "transformer", "target": "residual", "relation": "composes" },
+    { "source": "transformer", "target": "reformer", "relation": "converges" },
+    { "source": "transformer", "target": "performer", "relation": "converges" },
+    { "source": "transformer", "target": "linformer", "relation": "converges" },
+    { "source": "transformer", "target": "longformer", "relation": "converges" },
+    { "source": "transformer", "target": "bigbird", "relation": "converges" },
+    { "source": "transformer", "target": "rwkv", "relation": "converges" },
+    { "source": "transformer", "target": "mamba", "relation": "converges" },
+    { "source": "transformer", "target": "vit", "relation": "inherits" },
+    { "source": "vit", "target": "swin", "relation": "converges" },
+    { "source": "vit", "target": "mae", "relation": "inherits" },
+    { "source": "vit", "target": "deit", "relation": "converges" },
+    { "source": "deit", "target": "dino", "relation": "converges" },
+    { "source": "dino", "target": "dinov2", "relation": "inherits" },
+    { "source": "stable_diffusion", "target": "dit", "relation": "converges" },
+    { "source": "transformer", "target": "dit", "relation": "composes" },
+    { "source": "dit", "target": "pixart_sd3_mmdit", "relation": "inherits" },
+    { "source": "dit", "target": "flux", "relation": "converges" },
+    { "source": "clip", "target": "flamingo", "relation": "converges" },
+    { "source": "clip", "target": "llava", "relation": "composes" },
+    { "source": "llava", "target": "qwen_vl", "relation": "converges" },
+    { "source": "vit", "target": "clip", "relation": "composes" },
+    { "source": "transformer", "target": "clip", "relation": "composes" }
+  ]
+}
