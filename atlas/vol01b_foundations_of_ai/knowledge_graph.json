@@ -9,7 +9,7 @@
     "title_style": "badge",
     "badge": {
       "name": "Modern AI Atlas",
-      "volume": "Vol.01"
+      "volume": "Vol.01B"
     },
     "banner": "从思想萌芽到现代AI：理解、推理与智能的起源",
     "callout": "AI 的发展是多学科思想的融合与演进，从理论到技术，再到广泛应用，推动人类智能边界不断拓展。"
@@ -1085,11 +1085,22 @@
       "source": "action_embodied",
       "target": "agent",
       "relation": "composes"
+    },
+    {
+      "source": "perception",
+      "target": "learning",
+      "relation": "composes"
+    },
+    {
+      "source": "learning",
+      "target": "reasoning",
+      "relation": "composes"
     }
   ],
-  "next": {
-    "label": "NEXT",
-    "title": "Vol.02 Transformer 帝国",
-    "desc": "统一架构，开启大模型时代（2017 → Now）"
+  "footer": {
+    "legend": true,
+    "globe": true,
+    "quote_zh": "AI 的未来，始于理解，成于创新，终于造福人类。",
+    "quote_en": "The future of AI begins with understanding, thrives on innovation, and aims to benefit humanity."
   }
 }

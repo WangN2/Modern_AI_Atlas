@@ -243,9 +243,10 @@ def compute_bands(
                                  "legend": extras.get("legend")}))
     y += HEADER_H + gap
 
-    # -- legend row (always directly under the header when a legend exists) --
+    # -- legend row (by default under the header; "bottom" moves it after sections) --
     legend = extras.get("legend", [])
-    if legend:
+    legend_pos = extras.get("legend_position", "top")
+    if legend and legend_pos != "bottom":
         panels.append(Panel("legend", margin, y, usable, LEGEND_H,
                             payload={"items": legend}))
         y += LEGEND_H + gap
@@ -329,13 +330,13 @@ def compute_bands(
                                 payload={"items": insights}))
         y += stack_h + gap
 
-    # -- footer row (S2): dark quote band + NEXT teaser on every volume -------
-    # Every volume gets the dark navy footer band; the NEXT teaser sits at
-    # its right on all volumes except the final one (Vol.13 keeps its Grand
-    # Summary mainline and a full-width footer instead).
+    # -- footer row (S2): dark quote band on every volume ----------------------
+    # Every volume gets the dark navy footer band.
     footer = extras.get("footer") or {}
     quote_text = footer.get("quote_zh") or extras.get("quote", "")
     footer_payload = {**footer, "meta": meta, "quote_zh": quote_text}
+    if legend and legend_pos == "bottom":
+        footer_payload["legend_items"] = legend
     if next_teaser:
         panels.append(Panel("footer_band", margin, y,
                             usable - NEXT_W - gap, FOOTER_BAND_H,

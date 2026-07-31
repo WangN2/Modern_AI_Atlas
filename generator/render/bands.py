@@ -123,12 +123,13 @@ def _bright(theme: dict[str, Any]) -> str:
 
 
 def _frame(panel: Panel, theme: dict[str, Any], *, fill: str | None = None,
-           stroke: str | None = None) -> str:
-    """Rounded panel frame rectangle."""
+           stroke: str | None = None, shadow: bool = True) -> str:
+    """Rounded panel frame rectangle with optional soft drop-shadow."""
     canvas = theme["canvas"]
+    flt = ' filter="url(#panel-shadow)"' if shadow else ""
     return (f'<rect x="{fmt(panel.x)}" y="{fmt(panel.y)}" '
             f'width="{fmt(panel.width)}" height="{fmt(panel.height)}" '
-            f'rx="{canvas["panel_radius"]}" '
+            f'rx="{canvas["panel_radius"]}"{flt} '
             f'fill="{fill or canvas["panel_fill"]}" '
             f'stroke="{stroke or canvas["panel_stroke"]}" stroke-width="1.5"/>')
 
@@ -604,10 +605,22 @@ def _draw_header(panel: Panel, theme: dict[str, Any]) -> list[str]:
     if title_en:
         parts.append(text(x, y + 116, title_en, 19, colors["muted"]))
 
-    # 3. tagline (meta.banner folds in here as well) ---------------------------
+    # 3. tagline / banner ribbon ------------------------------------------------
     tagline = meta.get("tagline", "") or meta.get("banner", "")
     if tagline:
-        parts.append(text(x, y + 142, tagline, 14, colors["muted"]))
+        ribbon_h = 32.0
+        ribbon_y = y + 150
+        # Colored ribbon band extending across most of the panel width
+        ribbon_color = panel.color or colors["accent"]
+        parts.append(
+            f'<rect x="{fmt(x)}" y="{fmt(ribbon_y)}" width="{fmt(w)}" '
+            f'height="{fmt(ribbon_h)}" rx="6" '
+            f'fill="{ribbon_color}" fill-opacity="0.12"/>')
+        parts.append(
+            f'<rect x="{fmt(x)}" y="{fmt(ribbon_y)}" width="6" '
+            f'height="{fmt(ribbon_h)}" rx="3" fill="{ribbon_color}"/>')
+        parts.append(text(x + 18, ribbon_y + ribbon_h / 2 + 5, tagline, 15,
+                          ribbon_color, bold=True))
 
     # 4. right quote block (meta.callout folds in as the quote text) -----------
     quote = meta.get("quote", "") or meta.get("callout", "")
@@ -2013,18 +2026,24 @@ def _draw_pyramid(panel: Panel, theme: dict[str, Any]) -> list[str]:
 
 
 def _draw_wheel(panel: Panel, theme: dict[str, Any]) -> list[str]:
-    """Donut wheel of concept segments around a center label + agent strip."""
+    """Donut wheel of concept segments around a center label + agent strip.
+
+    S4: the wheel now scales to fill the available panel height so it
+    looks intentional instead of floating in a void.
+    """
     colors = theme["colors"]
     payload = panel.payload
     parts, content_y = _panel_chrome(panel, theme, payload.get("title", ""),
                                      payload.get("subtitle", ""))
     segments = payload.get("segments", [])
     strip = payload.get("strip")
-    wheel_h = 260.0
+    strip_h = 46.0 if strip else 0.0
+    # Scale to available space; leave room for the agent strip at the bottom
+    av_h = panel.y + panel.height - 24 - content_y - strip_h
     cx = panel.x + panel.width / 2
-    cy = content_y + 8 + wheel_h / 2
-    radius = 112.0
-    inner = 56.0
+    cy = content_y + 8 + av_h / 2
+    radius = min(av_h / 2 - 10, panel.width * 0.21)
+    inner = radius * 0.50
     n = len(segments)
     for i, segment in enumerate(segments):
         a0 = -math.pi / 2 + i * 2 * math.pi / n
@@ -2059,7 +2078,7 @@ def _draw_wheel(panel: Panel, theme: dict[str, Any]) -> list[str]:
     parts.append(text(cx, cy + 20, center.get("en", ""), 11, colors["muted"],
                       anchor="middle"))
     if strip:
-        sy = content_y + 8 + wheel_h + 12
+        sy = content_y + 8 + av_h + 8
         steps = strip.get("steps", [])
         parts.append(text(panel.x + 20, sy + 16, strip.get("title", ""), 13,
                           colors["title"], bold=True))
@@ -2631,9 +2650,8 @@ def _draw_next(panel: Panel, theme: dict[str, Any]) -> list[str]:
 def _draw_footer_band(panel: Panel, theme: dict[str, Any]) -> list[str]:
     """Unified dark navy footer band (S2): series line left, quote center.
 
-    The series line identifies the atlas on every volume; the closing
-    quote (zh bold + en italic) sits center-right. Legends no longer live
-    here — they render as a row directly under the header.
+    When ``legend_items`` is present in the payload (bottom-legend volumes),
+    legend icon chips are drawn right-aligned in the band.
     """
     payload = panel.payload
     x, y, w, h = panel.x, panel.y, panel.width, panel.height
@@ -2644,14 +2662,28 @@ def _draw_footer_band(panel: Panel, theme: dict[str, Any]) -> list[str]:
     meta = payload.get("meta", {})
     parts.append(text(x + 22, y + 38, "Modern AI Atlas", 16, _DARK_TEXT,
                       bold=True))
-    # Unified series line (S2 residual): identical grammar on every
-    # volume — "Modern AI Atlas · <volume> | <title EN>".
     volume = meta.get("volume", "")
     title_en = meta.get("title_en", "")
     series_line = f"Modern AI Atlas · {volume}" if volume else "Modern AI Atlas"
     if title_en:
         series_line += f" | {title_en}"
     parts.append(text(x + 22, y + 62, series_line, 11, _DARK_MUTED))
+
+    # bottom-legend: render icon chips right-aligned
+    legend_items = payload.get("legend_items", [])
+    if legend_items:
+        lx = x + w - 22
+        for item in reversed(legend_items):
+            color = item.get("color", _DARK_MUTED)
+            label = item.get("label", "")
+            lw = text_width(label, 12) + 28
+            lx -= lw
+            parts.append(f'<rect x="{fmt(lx)}" y="{fmt(y + 22)}" width="{fmt(lw)}" '
+                         f'height="24" rx="12" fill="{color}" fill-opacity="0.25"/>')
+            parts.append(f'<circle cx="{fmt(lx + 14)}" cy="{fmt(y + 34)}" r="5" '
+                         f'fill="{color}"/>')
+            parts.append(text(lx + 26, y + 36, label, 12, _DARK_TEXT))
+        lx -= 12
 
     quote_zh = payload.get("quote_zh", "")
     quote_en = payload.get("quote_en", "")
@@ -2660,19 +2692,14 @@ def _draw_footer_band(panel: Panel, theme: dict[str, Any]) -> list[str]:
         parts.append(text(qcx, y + h / 2 + (2 if quote_en else 6), quote_zh,
                           18, _DARK_TEXT, bold=True, anchor="middle"))
     if quote_en:
-        # The EN line gets a real width budget (the quote zone is w-260
-        # wide); quotes that fit render byte-identically to before,
-        # longer ones wrap to two lines instead of clipping mid-word.
         en_units = (w - 300) / 10.5
-        if text_width(quote_en, 1) <= en_units:
+        if text_width(quote_en, 10.5) <= en_units:
             parts.append(text(qcx, y + h / 2 + 26, quote_en, 10.5,
                               _DARK_MUTED, anchor="middle", italic=True))
         else:
             for j, line in enumerate(wrap_fit(quote_en, en_units, 2)):
                 parts.append(text(qcx, y + h / 2 + 18 + j * 14, line, 10.5,
                                   _DARK_MUTED, anchor="middle", italic=True))
-    # S8 declutter: the floating footer globe was removed engine-wide; the
-    # "globe" JSON key is ignored.
     return parts
 
 

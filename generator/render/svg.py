@@ -509,6 +509,9 @@ def draw(
      viewBox="0 0 {layout.width} {layout.height}"
      font-family="{escape(typo["font_family"])}">
   <defs>
+    <filter id="panel-shadow" x="-2%" y="-2%" width="104%" height="108%">
+      <feDropShadow dx="0" dy="3" stdDeviation="6" flood-color="#0a1a30" flood-opacity="0.08"/>
+    </filter>
     <marker id="arrowhead" markerWidth="10" markerHeight="8"
             refX="9" refY="4" orient="auto">
       <polygon points="0 0, 10 4, 0 8" fill="{colors["muted"]}"/>

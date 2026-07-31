@@ -18,7 +18,23 @@
       "Bash(git -C /Users/che.lin/Downloads/code/Modern_AI_Atlas add .gitignore)",
       "Bash(git -C /Users/che.lin/Downloads/code/Modern_AI_Atlas commit --amend -m ' *)",
       "Bash(git -C /Users/che.lin/Downloads/code/Modern_AI_Atlas push -u origin main)",
-      "Bash(python3.12 -c ' *)"
+      "Bash(python3.12 -c ' *)",
+      "Bash(git add *)",
+      "Bash(git commit -m ' *)",
+      "Bash(git push *)",
+      "Bash(sips -g pixelWidth -g pixelHeight /Users/che.lin/Downloads/code/Modern_AI_Atlas/assets/reference/volumes/1.人工智能基础脉络.png)",
+      "Bash(python3 -c ' *)",
+      "Bash(awk '{ if \\(length\\($0\\) > max\\) max = length\\($0\\); lines++ } END { print \"lines:\", lines, \"max_line_len:\", max }' /Users/che.lin/Downloads/code/Modern_AI_Atlas/export/vol01b_foundations_of_ai.svg)",
+      "Bash(awk 'length\\($0\\) < 2500' /Users/che.lin/Downloads/code/Modern_AI_Atlas/export/vol01b_foundations_of_ai.svg)",
+      "Bash(xxd /Users/che.lin/Downloads/code/Modern_AI_Atlas/assets/reference/volumes/1.人工智能基础脉络.png)",
+      "Bash(git -C /Users/che.lin/Downloads/code/Modern_AI_Atlas log --oneline -5 -- atlas/vol01b_foundations_of_ai/ export/vol01b_foundations_of_ai.svg)",
+      "Bash(PYTHONPATH=/Users/che.lin/Downloads/code/Modern_AI_Atlas python3.12 -m py_compile generator/build.py generator/layout/bands.py generator/render/bands.py generator/render/svg.py generator/render/helpers.py)",
+      "Bash(PYTHONPATH=/Users/che.lin/Downloads/code/Modern_AI_Atlas .venv/bin/python -m generator.build /Users/che.lin/Downloads/code/Modern_AI_Atlas/atlas/vol01b_foundations_of_ai --format svg)",
+      "Bash(python3.12 tests/test_bands_layout.py)",
+      "Bash(PYTHONPATH=/Users/che.lin/Downloads/code/Modern_AI_Atlas .venv/bin/python -m generator.build /Users/che.lin/Downloads/code/Modern_AI_Atlas/atlas/vol02_transformer_empire --format svg)",
+      "Bash(PYTHONPATH=/Users/che.lin/Downloads/code/Modern_AI_Atlas .venv/bin/python -m generator.build /Users/che.lin/Downloads/code/Modern_AI_Atlas/atlas/vol03_llm_era --format svg)",
+      "Bash(PYTHONPATH=/Users/che.lin/Downloads/code/Modern_AI_Atlas .venv/bin/python -m generator.build /Users/che.lin/Downloads/code/Modern_AI_Atlas/atlas/vol07_computer_vision --format svg)",
+      "Bash(PYTHONPATH=/Users/che.lin/Downloads/code/Modern_AI_Atlas .venv/bin/python -m generator.build /Users/che.lin/Downloads/code/Modern_AI_Atlas/atlas/vol13_towards_agi --format svg)"
     ]
   }
 }

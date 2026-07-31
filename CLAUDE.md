@@ -4,7 +4,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project Overview
 
-Modern AI Atlas organizes the evolution of AI into publication-quality A0 posters generated from structured data. 13 volumes span from AI Evolution to Embodied AI & Agents. The pipeline is: `Knowledge → Graph → Layout → Render → Export`.
+Modern AI Atlas organizes the evolution of AI into publication-quality A0 posters generated from structured data. 14 volumes (01–13 + 01b) span from AI Evolution to Towards AGI. The pipeline is: `Knowledge → Graph → Layout → Render → Export`.
 
 ## Tech Stack & Setup
 
@@ -32,6 +32,22 @@ PYTHONPATH=$(pwd) .venv/bin/python -m generator.build --help
 ```
 
 Running without `PYTHONPATH` fails with `ModuleNotFoundError: No module named 'generator'`.
+
+### Build all volumes
+
+```bash
+PYTHONPATH=$(pwd) .venv/bin/python -m generator.build atlas/vol01_ai_evolution --format svg
+PYTHONPATH=$(pwd) .venv/bin/python -m generator.build atlas/vol01b_foundations_of_ai --format svg
+PYTHONPATH=$(pwd) .venv/bin/python -m generator.build atlas/vol02_transformer_empire --format svg
+# ... repeat for vol03–vol13
+```
+
+Or use a shell loop:
+```bash
+for vol in atlas/vol*/; do
+  PYTHONPATH=$(pwd) .venv/bin/python -m generator.build "$vol" --format svg
+done
+```
 
 ### Run tests
 
@@ -72,7 +88,18 @@ Each atlas volume directory (e.g., `atlas/vol02_transformer_empire/`) contains a
 
 - `generator/config.py` — all paths derived from `ROOT_DIR` (repo root)
 - `generator/constants.py` — `PROJECT_NAME`, `VERSION` ("0.1.0"), `TARGET_DPI` (300), `DEFAULT_THEME` ("empire_dark"), canvas dimensions, layout template names
-- Themes in `assets/themes/` — `empire_dark.json` (active dark theme), `atlas_light.json` (light series theme for Vol.01b/03-13)
+- Themes in `assets/themes/` — `empire_dark.json` (dark theme for Vol.01–02), `atlas_light.json` (light series theme for Vol.01b, 03–13)
+- Volume images in `atlas/*/images/` — embedded image assets (author photos, architecture diagrams, etc.) referenced by knowledge graph nodes
+
+## Key Reference Docs
+
+- `docs/AI圣经_修订版.md` — content plan: 4-layer pyramid, 14-volume structure, relation semantics
+- `docs/ACCEPTANCE_REPORT.md` / `ACCEPTANCE_REPORT.zh-CN.md` — final verification report for all 14 volumes
+- `docs/CONTENT_ACCURACY_REVIEW.md` — content accuracy audit per volume
+- `docs/PROPORTION_REDESIGN.md` — layout proportion redesign notes
+- `rfcs/RFC-0001-generator.md` — pipeline architecture spec
+- `rfcs/RFC-0002-knowledge-schema.md` — knowledge schema (next up)
+- `rfcs/RFC-0003-layout-engine.md` — layout engine spec (planned)
 
 ## Code Conventions
 
@@ -92,31 +119,41 @@ Each atlas volume directory (e.g., `atlas/vol02_transformer_empire/`) contains a
 
 Never draw an inheritance edge the content plan marks as convergent.
 
-## 13-Volume Structure
+## 14-Volume Structure
 
-| Vol | Topic | Vol | Topic |
-|-----|-------|-----|-------|
-| 01 | AI Evolution | 08 | Multimodal & VLA |
-| 02 | Transformer Empire | 09 | Autonomous Driving |
-| 03 | Large Language Models | 10 | SLAM & Spatial AI |
-| 04 | Vision Foundation Models | 11 | Embodied AI |
-| 05 | Generative AI | 12 | AI Agents |
-| 06 | Reinforcement Learning | 13 | Modern AI Atlas (synthesis) |
-| 07 | World Models | | |
+| Vol | Name (zh) | Name (en) | Theme |
+|-----|-----------|-----------|-------|
+| 01 | AI 编年史 | AI Evolution Timeline | empire_dark |
+| 01b | 人工智能基础 | Foundations of AI | atlas_light |
+| 02 | Transformer 帝国 | Transformer Empire | empire_dark |
+| 03 | 大语言模型时代 | The LLM Era | atlas_light |
+| 04 | 多模态 AI | Multimodal AI | atlas_light |
+| 05 | 生成式 AI | Generative AI | atlas_light |
+| 06 | 强化学习 | Reinforcement Learning | atlas_light |
+| 07 | 计算机视觉 | Computer Vision | atlas_light |
+| 08 | 具身智能 | Embodied AI | atlas_light |
+| 09 | 自动驾驶 | Autonomous Driving | atlas_light |
+| 10 | 世界模型 | World Models | atlas_light |
+| 11 | 智能体 | AI Agents | atlas_light |
+| 12 | AI 系统 | AI Systems | atlas_light |
+| 13 | 迈向 AGI | Towards AGI | atlas_light |
+
+Vol.01 (dark, historical overview) and Vol.02 (dark, flagship) use `empire_dark`; all others use `atlas_light` (light "Modern AI Atlas" series). Vol.03, 10–13 are landscape (2524×1682); the rest are portrait (1682×2524).
 
 ## Design System
 
 - A0 poster layout, SVG vector graphics at 300 DPI
 - Unified color system and typography across all volumes
-- Two poster templates: panel grid (Vol.02) and stacked bands (generic, all other volumes)
-- Portrait 2:3 (1682×2524) for most volumes; landscape 3:2 (2524×1682) for Vol.03, 10-13
+- All volumes now use the `bands` template (stacked sections with era bands, cards, mainline, insights, NEXT teaser)
+- Portrait 2:3 (1682×2524) for Vol.01–02, 04–09; landscape 3:2 (2524×1682) for Vol.03, 10–13
+- Dark theme (empire_dark) for Vol.01–02; light theme (atlas_light) for Vol.01b, 03–13
 
 ## Roadmap
 
-- **v0.1** — Design system, AI Evolution, Transformer Empire, SVG generator (current)
-- **v0.2** — Vision Foundation, Diffusion, Reinforcement Learning
-- **v0.3** — World Models, Embodied AI, Autonomous Driving
-- **v1.0** — Complete atlas, interactive website, PDF book, SVG collection
+- **v0.1** — Design system, 14-volume atlas, SVG/PDF/PNG generator (complete)
+- **v0.2** — Knowledge schema formalization (RFC-0002), author/logo asset pipeline, layout engine docs (RFC-0003)
+- **v0.3** — Interactive website, PDF book, SVG collection
+- **v1.0** — Complete atlas with community contributions
 
 ## Error Handling
 
