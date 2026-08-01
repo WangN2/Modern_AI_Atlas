@@ -590,6 +590,60 @@ def _quote_block(qx: float, y: float, quote: str, by: str,
     return parts
 
 
+def _draw_header_map(x: float, y: float, w: float, h: float,
+                     payload: dict[str, Any],
+                     theme: dict[str, Any]) -> list[str]:
+    """Compact right-header concept chain for prologue/foundations volumes."""
+    colors = theme["colors"]
+    canvas = theme["canvas"]
+    title = payload.get("title", "")
+    subtitle = payload.get("subtitle", "")
+    steps = payload.get("steps", [])
+    accent = payload.get("color", colors.get("accent", "#2563eb"))
+    parts: list[str] = []
+
+    parts.append(f'<rect x="{fmt(x)}" y="{fmt(y)}" width="{fmt(w)}" '
+                 f'height="{fmt(h)}" rx="14" fill="#ffffff" fill-opacity="0.76" '
+                 f'stroke="{canvas.get("card_stroke", colors["line"])}" '
+                 f'stroke-width="1.1"/>')
+    parts.append(f'<rect x="{fmt(x)}" y="{fmt(y)}" width="5" '
+                 f'height="{fmt(h)}" rx="2.5" fill="{accent}"/>')
+    if title:
+        parts.append(text(x + 20, y + 26, title, 15, colors["title"], bold=True))
+    if subtitle:
+        parts.append(text(x + 20, y + 46, fit(subtitle, (w - 44) / 8.8),
+                          10.5, colors["muted"]))
+
+    if not steps:
+        return parts
+
+    step_count = min(len(steps), 5)
+    gap = 8.0
+    sx = x + 18
+    sy = y + h - 42
+    node_w = (w - 36 - gap * (step_count - 1)) / step_count
+    for i, step in enumerate(steps[:step_count]):
+        nx = sx + i * (node_w + gap)
+        color = step.get("color", accent)
+        parts.append(f'<rect x="{fmt(nx)}" y="{fmt(sy)}" width="{fmt(node_w)}" '
+                     f'height="28" rx="14" fill="{color}" fill-opacity="0.10" '
+                     f'stroke="{color}" stroke-opacity="0.45"/>')
+        parts += _icon(step.get("icon", "circles"), nx + 16, sy + 14, 12, color)
+        parts.append(text(nx + 30, sy + 18,
+                          fit(step.get("label", ""), (node_w - 36) / 10.0),
+                          10.5, colors["title"], bold=True))
+        if i < step_count - 1:
+            ax = nx + node_w + 1
+            ay = sy + 14
+            parts.append(f'<path d="M {fmt(ax)} {fmt(ay)} L {fmt(ax + gap - 2)} {fmt(ay)}" '
+                         f'stroke="{accent}" stroke-width="1.4" stroke-opacity="0.55"/>')
+            parts.append(f'<path d="M {fmt(ax + gap - 2)} {fmt(ay)} '
+                         f'L {fmt(ax + gap - 6)} {fmt(ay - 3)} '
+                         f'L {fmt(ax + gap - 6)} {fmt(ay + 3)} Z" '
+                         f'fill="{accent}" fill-opacity="0.55"/>')
+    return parts
+
+
 def _draw_header(panel: Panel, theme: dict[str, Any]) -> list[str]:
     """Unified header skeleton (S2) — identical zone layout on every volume.
 
@@ -597,7 +651,7 @@ def _draw_header(panel: Panel, theme: dict[str, Any]) -> list[str]:
       1. series line + volume chip (top-left)
       2. zh title + en subtitle (center-left)
       3. tagline (under the subtitle)
-      4. right quote block (italic, right-aligned, with attribution)
+      4. right quote block or compact concept map
     """
     colors = theme["colors"]
     meta = panel.payload.get("meta", panel.payload)
@@ -660,9 +714,14 @@ def _draw_header(panel: Panel, theme: dict[str, Any]) -> list[str]:
         parts.append(text(title_x + 18, ribbon_y + ribbon_h / 2 + 5, tagline, 13,
                           ribbon_color, bold=True))
 
-    # 4. right quote block (meta.callout folds in as the quote text) -----------
+    # 4. right quote block / compact concept map ------------------------------
     quote = meta.get("quote", "") or meta.get("callout", "")
-    if quote:
+    header_map = meta.get("header_map")
+    if isinstance(header_map, dict):
+        map_w = min(560.0, w * 0.42)
+        parts += _draw_header_map(x + w - map_w, y + 18, map_w, 112,
+                                  header_map, theme)
+    elif quote:
         parts += _quote_block(x + w - (12 if header_fill else 0), y + 26, quote,
                               meta.get("quote_by", ""), theme,
                               width_units=22)
@@ -2830,22 +2889,23 @@ def _draw_footer_band(panel: Panel, theme: dict[str, Any]) -> list[str]:
             color = item.get("color", _DARK_MUTED)
             label = item.get("label", "")
             label_en = item.get("label_en", "")
-            lw = max(58.0, text_width(label, 11) + 28)
+            lw = max(72.0, text_width(label, 11.5) + 38)
             lx -= lw
-            parts.append(f'<rect x="{fmt(lx)}" y="{fmt(y + 22)}" width="{fmt(lw)}" '
-                         f'height="30" rx="15" fill="#ffffff" fill-opacity="0.08" '
+            parts.append(f'<rect x="{fmt(lx)}" y="{fmt(y + 18)}" width="{fmt(lw)}" '
+                         f'height="38" rx="19" fill="#ffffff" fill-opacity="0.09" '
                          f'stroke="#ffffff" stroke-opacity="0.14"/>')
-            parts.append(f'<circle cx="{fmt(lx + 14)}" cy="{fmt(y + 37)}" r="5" '
-                         f'fill="{color}"/>')
-            parts.append(text(lx + 25, y + 34, label, 10.5, _DARK_TEXT,
+            parts.append(f'<circle cx="{fmt(lx + 18)}" cy="{fmt(y + 37)}" r="9" '
+                         f'fill="{color}" fill-opacity="0.18"/>')
+            parts += _legend_icon(item.get("icon", ""), lx + 18, y + 37, color)
+            parts.append(text(lx + 33, y + 33, label, 11.5, _DARK_TEXT,
                               bold=True))
             if label_en:
-                parts.append(text(lx + 25, y + 47, label_en, 7.5,
+                parts.append(text(lx + 33, y + 48, label_en, 8,
                                   _DARK_MUTED))
             else:
-                parts.append(text(lx + 25, y + 47, "Legend", 7.5,
+                parts.append(text(lx + 33, y + 48, "Legend", 8,
                                   _DARK_MUTED))
-        lx -= 12
+            lx -= 8
 
     quote_zh = payload.get("quote_zh", "")
     quote_en = payload.get("quote_en", "")

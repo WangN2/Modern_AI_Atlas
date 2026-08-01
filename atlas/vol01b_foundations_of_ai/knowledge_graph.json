@@ -4,6 +4,7 @@
     "volume": "Vol.01B",
     "title_zh": "人工智能基础",
     "title_en": "Foundations of AI",
+    "title_sub": "表示、学习、推理、行动",
     "theme": "foundations_reference",
     "layout": "bands",
     "canvas": {
@@ -16,7 +17,34 @@
       "volume": "Vol.01B"
     },
     "banner": "从思想萌芽到现代AI：表示、学习、推理与行动的统一脉络",
-    "callout": "人工智能不是单一算法，而是把计算理论、统计学习、知识表示、优化控制与工程系统连接起来，让机器在数据、知识和反馈中形成可评估的智能行为。"
+    "callout": "人工智能不是单一算法，而是把计算理论、统计学习、知识表示、优化控制与工程系统连接起来，让机器在数据、知识和反馈中形成可评估的智能行为。",
+    "header_map": {
+      "title": "AI Foundation Pipeline",
+      "subtitle": "把对象表示出来，在数据中学习，用知识推理，并通过行动获得反馈。",
+      "color": "#1264f6",
+      "steps": [
+        {
+          "label": "表示",
+          "icon": "book",
+          "color": "#7c3aed"
+        },
+        {
+          "label": "学习",
+          "icon": "chart",
+          "color": "#22c55e"
+        },
+        {
+          "label": "推理",
+          "icon": "brain",
+          "color": "#f59e0b"
+        },
+        {
+          "label": "行动",
+          "icon": "rocket",
+          "color": "#0ea5e9"
+        }
+      ]
+    }
   },
   "legend": [
     {
