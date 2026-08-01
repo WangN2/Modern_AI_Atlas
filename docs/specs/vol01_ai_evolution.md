@@ -1,19 +1,42 @@
-# Vol.01 AI 编年史 / AI Evolution Timeline
+# Vol.01 The Story of AI / 人工智能简史与全景
 
 - Source image: `0.AI编年史.png` (1024×1536)
-- Declared volume number in header: **Volume 01** ("AI Technology Bible · Volume 01")
+- Delivered series label in header: **Modern AI Atlas · Volume 01**
 - Filename number: 0 — filename uses a 0-based index while the header declares Volume 01. Header-declared number wins. **Note: `1.人工智能基础脉络.png` also declares "Vol.01" — see vol01b spec; k2 must reconcile this series-numbering collision.**
-- Aspect: portrait 2:3 (1024×1536 reference)
+- Aspect: image-rich portrait narrative poster (`1682×2524` minimum canvas; content may extend slightly to fit all era bands).
+- Positioning: this volume is the **story / why** prologue of the whole atlas. It should preserve the strong chronicle feel of the original `0.AI编年史.png`: dense era bands, historical images, milestone cards, and a clear visual arc from symbolic AI to foundation/agentic AI. Vol.01B carries the detailed foundations; Vol.02-13 carry the technical **how**.
 
 ## 1. Header
 
-- Title (zh): **AI 编年史 (1950-2026)** — white bold, with yellow subtitle **人工智能发展全景图** to the right of the title
-- Series line (below title, yellow/white): `AI Technology Bible · Volume 01  |  AI Evolution Timeline`
-- Top-right quote (white, beside a portrait photo of Alan Turing):
-  > "人工智能是人类有史以来最伟大的创造，也是我们面临的最深刻的变革。" —— 图灵
+- Title (en): **The Story of AI**
+- Title (zh): **人工智能简史与全景**
+- Subtitle: **From Rules to Intelligence / 从规则时代，到智能时代。**
+- Top-right quote:
+  > 第 1 卷讲述 AI 为什么会发展成今天这样；第 2-13 卷展开它如何成为现代技术体系。
 - Dark navy/black header band.
 
-## 2. Legend row
+## 2. Active Narrative Layout
+
+The active poster uses the original portrait chronicle structure, upgraded with the new story positioning:
+
+1. **AI 萌芽时代 1950-1989**: from Turing and Dartmouth to symbolic AI, expert systems, AI winter, and backpropagation.
+2. **机器学习时代 1990-2011**: statistical learning, SVM, CNN/LSTM foundations, deep learning revival, and Google Brain.
+3. **深度学习革命 2012-2016**: AlexNet, Word2Vec, Seq2Seq, ResNet, Attention, and AlphaGo.
+4. **Transformer 时代 2017-2020**: Attention Is All You Need, BERT/GPT, T5, and GPT-3.
+5. **Foundation Model 时代 2021-2023**: CLIP, AlphaFold2, DALL-E, ChatGPT, Stable Diffusion, and GPT-4.
+6. **Foundation AI 时代 2024-Now**: multimodal assistants, world models, agents, embodied AI, and the road toward AGI.
+
+The bottom mainline summarizes the full arc:
+
+`Symbolic AI → Statistical ML → Deep Learning → Transformer → Foundation Model → Agentic / Embodied AI`
+
+The footer should bridge directly to **Vol.02 Transformer Empire** with the message: `一个架构，改变了整个 AI 世界`.
+
+## 3. Era Band Details
+
+The remaining details below define the active card-level content and visual structure.
+
+## 3.1 Legend row
 
 Located directly under the header, label `图例:` on the left. Five chips (icon + zh label), dark background:
 
@@ -118,8 +141,8 @@ The poster is a stack of **6 numbered era bands**; each band = left column `时�
   - 多模态模型涌现
   - 应用生态爆发
 - Cards:
-  1. **2021 InstructGPT / OpenAI** — 指令微调 / 模型更可用. 论文: Training language models to follow instructions with human feedback (2022).
-  2. **2022 RLHF / OpenAI** — 人类反馈强化学习 / 对齐人类价值. 论文: Deep Reinforcement Learning from Human Preferences (NeurIPS 2017) (应用于大模型对齐). [poster verbatim; note the poster itself cross-cites the 2017 paper]
+  1. **2021 InstructGPT / OpenAI** — 指令微调 / 模型更可用. 论文: Training language models to follow instructions with human feedback (2022). RLHF remains represented in the graph as the alignment component, not as a direct successor to RL.
+  2. **2022 CLIP / LLaMA — OpenAI / Meta** — 图文对齐 + 开放权重 / 多模态与开源生态加速扩散. 论文/模型: CLIP (2021), LLaMA (2023).
   3. **2022 ChatGPT / OpenAI** — 对话式AI爆发 / 全球用户破亿. 产品: ChatGPT (2022.11发布).
   4. **2023 GPT-4 / OpenAI** — 多模态能力增强 / 更强推理能力. 论文/产品: GPT-4 (2023.3发布).
   5. **2023 Stable Diffusion / Stability AI** — 开源文生图模型 / AIGC 爆发. 产品: Stable Diffusion (2022.8发布).
@@ -137,11 +160,11 @@ The poster is a stack of **6 numbered era bands**; each band = left column `时�
   - 具身智能发展
   - 走向物理世界与AGI
 - Cards:
-  1. **2024 Qwen / DeepSeek — 通义千问 / 深度求索** — 开源大模型崛起 / 国产模型群崭露头角 [last line partially unclear, "崭露头角" best reading].
-  2. **2024 Multimodal Models / 多模态大模型** — 图文音视频融合 / 统一多模态理解.
+  1. **2024 DeepSeek-R1 / Qwen3 — Reasoning & Open Models** — 开源推理模型崛起 / 推理能力与开放生态并进.
+  2. **2024 Sora / Gemini 2.5 — Video & Native Multimodal** — 视频生成与原生多模态 / 从感知理解走向时空建模.
   3. **2024 World Model / V-JEPA2 / Cosmos** — 预测物理世界 / 从表示到生成.
-  4. **2024 VLA / OpenVLA — Qwen-VLA / π0** — 视觉-语言-动作模型 / 连接感知与行动.
-  5. **2024 Embodied AI / GROOT / Isaac** — 具身智能突破 / 机器人走向通用. [poster spells "GROOT"; NVIDIA's product is GR00T — keep poster spelling, note for k2]
+  4. **2024 VLA / OpenVLA — OpenVLA / π0** — 视觉-语言-动作模型 / 连接感知与行动.
+  5. **2024 Embodied AI / GR00T / Isaac** — 具身智能突破 / 机器人走向通用.
   6. **2024+ AutoDriving / UniAD / End-to-End** — 端到端自动驾驶 / 迈向完全自动化.
 - Right panel **未来趋势**:
   - 通用人工智能 (AGI)
@@ -214,15 +237,23 @@ Closing quote (large white text): **未来已来，唯变不变。**
 | rlhf | 人类反馈强化学习 | RLHF | 2022 | concept |
 | chatgpt | ChatGPT | ChatGPT | 2022 | industry |
 | gpt4 | GPT-4 | GPT-4 | 2023 | model |
-| stable_diffusion | Stable Diffusion | Stable Diffusion | 2023 | model |
+| clip | CLIP 图文对齐模型 | CLIP | 2021 | model |
+| llama | LLaMA 开放权重模型 | LLaMA | 2023 | model |
+| stable_diffusion | Stable Diffusion | Stable Diffusion | 2022 | model |
 | sam | 分割一切模型 | SAM | 2023 | model |
 | dinov2 | DINOv2 | DINOv2 | 2023 | model |
 | qwen | 通义千问 | Qwen | 2024 | model |
 | deepseek | 深度求索 DeepSeek | DeepSeek | 2024 | model |
 | multimodal_models | 多模态大模型 | Multimodal Models | 2024 | concept |
-| world_model | 世界模型 (V-JEPA2 / Cosmos) | World Model | 2024 | concept |
+| world_model | 世界模型 (V-JEPA2 / Cosmos) | World Model | 2025 | concept |
+| sora | Sora 视频生成模型 | Sora | 2024 | model |
+| reasoning_models | 推理增强模型 (o1 / o3) | Reasoning Models | 2024 | concept |
+| deepseek_r1 | DeepSeek-R1 开源推理模型 | DeepSeek-R1 | 2025 | model |
+| gemini25 | Gemini 2.5 原生多模态模型 | Gemini 2.5 | 2025 | model |
+| qwen3 | Qwen3 开放模型 | Qwen3 | 2025 | model |
 | vla_openvla | 视觉-语言-动作模型 | VLA / OpenVLA | 2024 | model |
-| embodied_ai | 具身智能 (GROOT / Isaac) | Embodied AI | 2024 | concept |
+| pi0 | π0 具身 VLA | pi0 | 2024 | model |
+| embodied_ai | 具身智能 (GR00T / Isaac) | Embodied AI | 2024 | concept |
 | autodriving_uniad | 端到端自动驾驶 | UniAD / End-to-End | 2024 | industry |
 
 ### Edges (relation semantics per docs/AI圣经_修订版.md)
@@ -237,12 +268,19 @@ Closing quote (large white text): **未来已来，唯变不变。**
 - gpt2 → gpt3 (inherits) ; gpt3 → instructgpt (inherits) ; instructgpt → chatgpt (inherits) ; chatgpt → gpt4 (inherits) [poster implies the GPT lineage]
 - gpt3 → rlhf (composes) [RLHF applied on top of LLM for alignment]
 - rlhf → instructgpt (composes)
+- ViT + Transformer → CLIP (composes) [CLIP combines visual/text encoders and contrastive learning]
+- Transformer → LLaMA (inherits) [decoder-only Transformer family]
+- CLIP → multimodal_models (converges) [contrastive multimodal alignment becomes one route into broader multimodal systems]
 - bert ↔ roberta-style 趋同 not present on this poster (no RoBERTa card); skip
 - resnet + transformer → stable_diffusion (composes) [latent diffusion uses U-Net conv + attention; poster places SD in the same era band]
 - vit → sam (inherits) ; vit → dinov2 (converges) [DINO line is self-supervised ViT, parallel development]
 - transformer → qwen (inherits) ; transformer → deepseek (inherits) [decoder-only LLM line]
-- gpt4 → multimodal_models (inherits)
+- gpt4 → multimodal_models (converges) [GPT-4 is a representative multimodal milestone, not the parent of all multimodal models]
+- gpt4 → reasoning_models (inherits) [OpenAI reasoning line continues from the GPT family]
+- reasoning_models → deepseek_r1 (converges) ; deepseek → deepseek_r1 (inherits) ; qwen → qwen3 (inherits)
+- multimodal_models → gemini25 (converges) ; sora → world_model (converges) [video/world-model routes are parallel, not direct descendants]
 - transformer → vla_openvla (composes) [VLA = vision encoder + LLM + action head]
+- vla_openvla → pi0 (converges) [π0 is a related embodied VLA route with distinct action modeling]
 - multimodal_models → world_model (converges) ; world_model → embodied_ai (converges) ; vla_openvla → embodied_ai (composes)
 - transformer → autodriving_uniad (composes) [end-to-end driving stacks use transformer backbones]
 - Era main-line chain (bottom band, "inherits"-like solid arrows): Rule Based AI → Machine Learning → Deep Learning → Transformer → Foundation Model → Foundation AI
@@ -254,4 +292,4 @@ Closing quote (large white text): **未来已来，唯变不变。**
 - Left column 时代特征 and right column panels (为什么失败? / 关键推动力 / 革命意义 / 核心突破 / 时代意义 / 未来趋势) are bullet lists with small colored dot markers.
 - Typography: heavy bold zh sans for titles; era titles colored per band; year chips colored; description text small (~10-12 px at 1024 width) in light gray/white.
 - Bottom band: neon-glow nodes (blue/green/purple gradients) connected by arrows on a dark band; 时间轴 / 核心驱动力 rows as small pill chips; final quote 未来已来，唯变不变。 in large white text; NEXT teaser box with yellow "NEXT" label, yellow Vol.02 title, and a glowing cube illustration.
-- Overall look: "AI Technology Bible" series chrome — same dark theme as vol02/vol03 posters, but each era band has its own accent color.
+- Overall look: "Modern AI Atlas" series chrome — same dark theme as vol02/vol03 posters, but each era band has its own accent color.

@@ -126,7 +126,8 @@ def _frame(panel: Panel, theme: dict[str, Any], *, fill: str | None = None,
            stroke: str | None = None, shadow: bool = True) -> str:
     """Rounded panel frame rectangle with optional soft drop-shadow."""
     canvas = theme["canvas"]
-    flt = ' filter="url(#panel-shadow)"' if shadow else ""
+    use_shadow = shadow and bool(canvas.get("panel_shadow", True))
+    flt = ' filter="url(#panel-shadow)"' if use_shadow else ""
     return (f'<rect x="{fmt(panel.x)}" y="{fmt(panel.y)}" '
             f'width="{fmt(panel.width)}" height="{fmt(panel.height)}" '
             f'rx="{canvas["panel_radius"]}"{flt} '
@@ -514,10 +515,20 @@ def _draw_legend(panel: Panel, theme: dict[str, Any]) -> list[str]:
     (category chips + edge-style line samples). Both render as one row.
     """
     colors = theme["colors"]
+    canvas = theme["canvas"]
     x, y = panel.x, panel.y
     cy = y + panel.height / 2 + 5
-    parts = [text(x, cy, "图例:", 18, colors["title"], bold=True)]
-    cx = x + 70
+    legend_fill = canvas.get("legend_fill")
+    text_fill = colors.get("legend_text", colors["text"]) if legend_fill else colors["text"]
+    title_fill = colors.get("legend_text", colors["title"]) if legend_fill else colors["title"]
+    muted_fill = colors.get("legend_text", colors["muted"]) if legend_fill else colors["muted"]
+    parts = []
+    if legend_fill:
+        parts.append(_frame(panel, theme, fill=legend_fill,
+                            stroke=canvas.get("legend_stroke"), shadow=False))
+    label_x = x + (12 if legend_fill else 0)
+    parts.append(text(label_x, cy, "图例:", 18, title_fill, bold=True))
+    cx = x + (82 if legend_fill else 70)
     items = panel.payload.get("items", [])
     if isinstance(items, dict):
         for cat in items.get("categories", []):
@@ -525,7 +536,7 @@ def _draw_legend(panel: Panel, theme: dict[str, Any]) -> list[str]:
             parts.append(f'<rect x="{fmt(cx)}" y="{fmt(cy - 17)}" width="14" '
                          f'height="14" rx="3" fill="{color}"/>')
             label = cat.get("label", "")
-            parts.append(text(cx + 20, cy, label, 15, colors["text"]))
+            parts.append(text(cx + 20, cy, label, 15, text_fill))
             cx += 20 + text_width(label, 15) + 26
         cx += 12
         for style in items.get("edges", []):
@@ -534,18 +545,30 @@ def _draw_legend(panel: Panel, theme: dict[str, Any]) -> list[str]:
             width = 4 if style.get("double") else 2
             parts.append(f'<line x1="{fmt(cx)}" y1="{fmt(cy - 10)}" '
                          f'x2="{fmt(cx + 44)}" y2="{fmt(cy - 10)}" '
-                         f'stroke="{colors["muted"]}" stroke-width="{width}"'
+                         f'stroke="{muted_fill}" stroke-width="{width}"'
                          f'{dash}/>')
             label = style.get("label", "")
-            parts.append(text(cx + 52, cy, label, 13, colors["muted"]))
+            parts.append(text(cx + 52, cy, label, 13, muted_fill))
             cx += 52 + text_width(label, 13) + 22
         return parts
     for item in items:
         color = item.get("color", colors["accent"])
-        parts += _legend_icon(item.get("icon", ""), cx + 9, cy - 6, color)
         label = item.get("label", "")
-        parts.append(text(cx + 26, cy, label, 16, colors["text"]))
-        cx += 26 + text_width(label, 16) + 34
+        label_en = item.get("label_en", "")
+        chip_w = max(88.0, text_width(label, 13) + text_width(label_en, 9) + 40)
+        parts.append(f'<rect x="{fmt(cx)}" y="{fmt(cy - 22)}" '
+                     f'width="{fmt(chip_w)}" height="38" rx="19" '
+                     f'fill="{canvas.get("card_fill", "#ffffff")}" '
+                     f'stroke="{canvas.get("card_stroke", colors["line"])}" '
+                     f'stroke-width="1"/>')
+        parts.append(f'<circle cx="{fmt(cx + 18)}" cy="{fmt(cy - 3)}" '
+                     f'r="8" fill="{color}" fill-opacity="0.14"/>')
+        parts += _legend_icon(item.get("icon", ""), cx + 18, cy - 3, color)
+        parts.append(text(cx + 34, cy - 5, label, 12.5, text_fill,
+                          bold=True))
+        if label_en:
+            parts.append(text(cx + 34, cy + 9, label_en, 8.5, muted_fill))
+        cx += chip_w + 10
     return parts
 
 
@@ -553,14 +576,17 @@ def _quote_block(qx: float, y: float, quote: str, by: str,
                  theme: dict[str, Any], *, width_units: float = 21) -> list[str]:
     """Right-aligned italic quote lines + attribution."""
     colors = theme["colors"]
+    header_fill = theme["canvas"].get("header_fill")
+    quote_fill = colors.get("header_text", colors["title"]) if header_fill else colors["title"]
+    muted_fill = colors.get("header_muted", colors["muted"]) if header_fill else colors["muted"]
     parts: list[str] = []
     lines = wrap(quote, width_units)[:3]
     for i, line in enumerate(lines):
-        parts.append(text(qx, y + 24 + i * 20, line, 14, colors["title"],
+        parts.append(text(qx, y + 24 + i * 20, line, 14, quote_fill,
                           anchor="end", italic=True))
     if by:
         parts.append(text(qx, y + 24 + len(lines) * 20 + 4, f"—— {by}", 12,
-                          colors["muted"], anchor="end"))
+                          muted_fill, anchor="end"))
     return parts
 
 
@@ -576,56 +602,68 @@ def _draw_header(panel: Panel, theme: dict[str, Any]) -> list[str]:
     colors = theme["colors"]
     meta = panel.payload.get("meta", panel.payload)
     x, y, w = panel.x, panel.y, panel.width
-    bright = _bright(theme)
+    bright = colors.get("header_accent", _bright(theme))
     dark = _is_dark(theme)
 
+    header_fill = theme["canvas"].get("header_fill")
+    title_fill = colors.get("header_title", colors["title"]) if header_fill else colors["title"]
+    muted_fill = colors.get("header_muted", colors["muted"]) if header_fill else colors["muted"]
+
     parts: list[str] = []
+    if header_fill:
+        parts.append(_frame(
+            panel, theme, fill=header_fill,
+            stroke=theme["canvas"].get("header_stroke"), shadow=False))
 
     # 1. series line + volume chip -------------------------------------------
     series = meta.get("series", "AI Technology Bible")
-    parts.append(text(x, y + 26, series, 17, bright, bold=True, spacing=2))
+    parts.append(text(x + (12 if header_fill else 0), y + 26, series, 17,
+                      bright, bold=True, spacing=2))
     volume = meta.get("volume", "")
     if volume:
-        vx = x + text_width(series, 17) + 2 * 2 + 14
-        chip_fill = _YELLOW if dark else colors["accent"]
-        chip_text = "#1a2332" if dark else "#ffffff"
+        vx = x + (12 if header_fill else 0) + text_width(series, 17) + 2 * 2 + 14
+        chip_fill = colors.get("header_chip_fill", _YELLOW if dark else colors["accent"])
+        chip_text = colors.get("header_chip_text", "#1a2332" if dark else "#ffffff")
         parts += _chip(vx, y + 6, text_width(volume, 13) + 24, 26, volume,
                        fill=chip_fill, text_fill=chip_text, size=13)
 
     # 2. zh title + en subtitle -----------------------------------------------
     title_zh = meta.get("title_zh", "")
-    title_size = 46.0
-    parts.append(text(x, y + 82, title_zh, title_size, colors["title"],
+    title_size = float(theme.get("typography", {}).get("header_title_size", 46.0))
+    title_x = x + (12 if header_fill else 0)
+    parts.append(text(title_x, y + 82, title_zh, title_size, title_fill,
                       bold=True))
     sub = meta.get("title_sub", "")
     if sub:
-        parts.append(text(x + text_width(title_zh, title_size) + 24, y + 78,
+        parts.append(text(title_x + text_width(title_zh, title_size) + 24, y + 78,
                           sub, 24, bright, bold=True))
     title_en = meta.get("title_en", "")
     if title_en:
-        parts.append(text(x, y + 116, title_en, 19, colors["muted"]))
+        subtitle_size = float(theme.get("typography", {}).get("header_subtitle_size", 19.0))
+        parts.append(text(title_x, y + 116, title_en, subtitle_size, muted_fill))
 
     # 3. tagline / banner ribbon ------------------------------------------------
     tagline = meta.get("tagline", "") or meta.get("banner", "")
     if tagline:
-        ribbon_h = 32.0
-        ribbon_y = y + 150
+        ribbon_h = 24.0
+        ribbon_y = y + (118 if header_fill else 124)
         # Colored ribbon band extending across most of the panel width
         ribbon_color = panel.color or colors["accent"]
         parts.append(
-            f'<rect x="{fmt(x)}" y="{fmt(ribbon_y)}" width="{fmt(w)}" '
+            f'<rect x="{fmt(title_x)}" y="{fmt(ribbon_y)}" '
+            f'width="{fmt(w - (24 if header_fill else 0))}" '
             f'height="{fmt(ribbon_h)}" rx="6" '
             f'fill="{ribbon_color}" fill-opacity="0.12"/>')
         parts.append(
-            f'<rect x="{fmt(x)}" y="{fmt(ribbon_y)}" width="6" '
+            f'<rect x="{fmt(title_x)}" y="{fmt(ribbon_y)}" width="6" '
             f'height="{fmt(ribbon_h)}" rx="3" fill="{ribbon_color}"/>')
-        parts.append(text(x + 18, ribbon_y + ribbon_h / 2 + 5, tagline, 15,
+        parts.append(text(title_x + 18, ribbon_y + ribbon_h / 2 + 5, tagline, 13,
                           ribbon_color, bold=True))
 
     # 4. right quote block (meta.callout folds in as the quote text) -----------
     quote = meta.get("quote", "") or meta.get("callout", "")
     if quote:
-        parts += _quote_block(x + w, y + 26, quote,
+        parts += _quote_block(x + w - (12 if header_fill else 0), y + 26, quote,
                               meta.get("quote_by", ""), theme,
                               width_units=22)
     return parts
@@ -1048,10 +1086,13 @@ def _draw_side_panel(x: float, y: float, w: float, h: float,
     """
     canvas = theme["canvas"]
     colors = theme["colors"]
+    fill = canvas.get("band_side_fill", canvas["side_fill"])
+    stroke = canvas.get("band_side_stroke", canvas["panel_stroke"])
+    radius = float(canvas.get("side_radius", 12))
     parts = [
         f'<rect x="{fmt(x)}" y="{fmt(y)}" width="{fmt(w)}" height="{fmt(h)}" '
-        f'rx="12" fill="{canvas["side_fill"]}" '
-        f'stroke="{canvas["panel_stroke"]}" stroke-width="1"/>',
+        f'rx="{fmt(radius)}" fill="{fill}" '
+        f'stroke="{stroke}" stroke-width="1"/>',
         text(x + 14, y + 28, side.get("title", ""), 17, color, bold=True),
     ]
     items = side.get("items", [])
@@ -1091,10 +1132,14 @@ def _draw_card(x: float, y: float, w: float, h: float,
     colors = theme["colors"]
     pad = 8.0
     inner_w = w - 2 * pad
+    fill = canvas.get("band_card_fill", canvas["card_fill"])
+    stroke = canvas.get("band_card_stroke", canvas["card_stroke"])
+    radius = float(canvas.get("card_radius", 10))
+    photo_fill = canvas.get("band_photo_fill", canvas["photo_fill"])
     parts = [
         f'<rect x="{fmt(x)}" y="{fmt(y)}" width="{fmt(w)}" height="{fmt(h)}" '
-        f'rx="10" fill="{canvas["card_fill"]}" '
-        f'stroke="{canvas["card_stroke"]}" stroke-width="1.2"/>',
+        f'rx="{fmt(radius)}" fill="{fill}" '
+        f'stroke="{stroke}" stroke-width="1.2"/>',
     ]
     # year chip
     year = str(card.get("year", ""))
@@ -1133,7 +1178,7 @@ def _draw_card(x: float, y: float, w: float, h: float,
         photo_h = max_photo_h
     parts.append(f'<rect x="{fmt(x + pad)}" y="{fmt(photo_y)}" '
                  f'width="{fmt(inner_w)}" height="{fmt(photo_h)}" rx="6" '
-                 f'fill="{canvas["photo_fill"]}"/>')
+                 f'fill="{photo_fill}"/>')
     # A real raster image (card["image"]) sits inset on the matte so a thin
     # uniform border of photo_fill shows around it (polaroid look); the line
     # schematic stays as fallback when no image is set or it fails to load.
@@ -1174,7 +1219,9 @@ def _draw_band(panel: Panel, theme: dict[str, Any],
     header_h = float(canvas.get("band_header_h", 64))
     side_w = float(payload.get("side_w", 190))
 
-    parts = [_frame(panel, theme)]
+    band_fill = canvas.get("band_panel_fill", canvas["panel_fill"])
+    band_stroke = canvas.get("band_panel_stroke", canvas["panel_stroke"])
+    parts = [_frame(panel, theme, fill=band_fill, stroke=band_stroke)]
 
     # -- band header: number chip + title + years + subtitle ----------------
     hx = x + 16
@@ -1533,6 +1580,32 @@ def _draw_pills(panel: Panel, theme: dict[str, Any]) -> list[str]:
         max_px = panel.x + panel.width - 16
         pill_h = 26.0
         line_dy = 0.0
+        if payload.get("spread") and pills:
+            slot_w = (max_px - px0) / len(pills)
+            prev_right = None
+            for pill in pills:
+                if isinstance(pill, str):
+                    pill = {"text": pill}
+                label_text = pill.get("text", "")
+                pw = min(max(text_width(label_text, 11) + 20, 72), slot_w - 10)
+                cx = px + slot_w / 2
+                chip_x = cx - pw / 2
+                highlight = pill.get("highlight", False)
+                fill = row_color if highlight else canvas["card_fill"]
+                tfill = "#ffffff" if highlight else colors["text"]
+                stroke = "" if highlight else canvas["card_stroke"]
+                if prev_right is not None and prev_right + 10 < chip_x:
+                    parts.append(f'<line x1="{fmt(prev_right + 3)}" y1="{fmt(ry + 19)}" '
+                                 f'x2="{fmt(chip_x - 8)}" y2="{fmt(ry + 19)}" '
+                                 f'stroke="{colors["muted"]}" stroke-width="1.2" '
+                                 f'marker-end="url(#arrowhead)"/>')
+                parts += _chip(chip_x, ry + 6, pw, pill_h, label_text,
+                               fill=fill, stroke=stroke, text_fill=tfill,
+                               size=11, bold=highlight)
+                prev_right = chip_x + pw
+                px += slot_w
+            y += 42
+            continue
         for j, pill in enumerate(pills):
             if isinstance(pill, str):
                 pill = {"text": pill}
@@ -1704,29 +1777,45 @@ def _draw_fusion(panel: Panel, theme: dict[str, Any]) -> list[str]:
     parts = [_frame(panel, theme, fill=dark_fill)]
     parts.append(text(panel.x + 18, panel.y + 32, payload.get("title", ""),
                       19, _DARK_TEXT, bold=True))
-    cy = panel.y + panel.height / 2 + 14
+    cy = panel.y + panel.height / 2 + 2
 
     modalities = payload.get("modalities", [])
     core_cx = panel.x + panel.width * 0.46
     chip_w = 116.0
+    left_zone = (panel.x + 24, panel.y + 58, core_cx - panel.x - 154,
+                 panel.height - 128)
+    right_zone = (core_cx + 92, panel.y + 58,
+                  panel.x + panel.width - core_cx - 122, panel.height - 128)
+    for zx, zy, zw, zh, label in (
+        (*left_zone, "Input modalities"),
+        (core_cx - 86, panel.y + 58, 172, panel.height - 128, "Shared space"),
+        (*right_zone, "Capabilities"),
+    ):
+        parts.append(f'<rect x="{fmt(zx)}" y="{fmt(zy)}" width="{fmt(zw)}" '
+                     f'height="{fmt(max(zh, 90))}" rx="16" fill="#ffffff" '
+                     f'fill-opacity="0.035" stroke="#6d86ff" '
+                     f'stroke-opacity="0.22" stroke-width="1"/>')
+        parts.append(text(zx + 14, zy + 24, label, 11, _DARK_MUTED,
+                          bold=True))
     # 3a: distribute the modality grid across the whole left zone instead of
     # hugging the panel edge, so the band has no dead void on the left.
     rows = math.ceil(len(modalities) / 2) or 1
     grid_w = 2 * chip_w + 14
-    zone_l, zone_r = panel.x + 24, core_cx - 130
+    zone_l, zone_r = left_zone[0] + 16, left_zone[0] + left_zone[2] - 16
     mx = zone_l + max((zone_r - zone_l - grid_w) / 2, 0)
-    grid_h = rows * 40 + (rows - 1) * 12
+    row_gap = min(64.0, max(52.0, (left_zone[3] - 44) / max(rows, 1)))
+    grid_h = rows * 40 + (rows - 1) * (row_gap - 40)
     for i, modality in enumerate(modalities):
         if isinstance(modality, str):
             modality = {"label": modality}
         col = i % 2
         row = i // 2
         cx = mx + col * (chip_w + 14)
-        chy = cy - grid_h / 2 + row * 52
+        chy = cy - grid_h / 2 + row * row_gap
         parts += _chip(cx, chy, chip_w, 40, modality.get("label", ""),
                        fill=canvas["card_fill"],
                        stroke=canvas["card_stroke"],
-                       text_fill=_DARK_TEXT, size=12)
+                       text_fill=colors["text"], size=12)
         parts.append(f'<line x1="{fmt(cx + chip_w)}" y1="{fmt(chy + 20)}" '
                      f'x2="{fmt(core_cx - 72)}" y2="{fmt(cy)}" '
                      f'stroke="{color}" stroke-width="1.2" '
@@ -1734,6 +1823,9 @@ def _draw_fusion(panel: Panel, theme: dict[str, Any]) -> list[str]:
     core = payload.get("core", "")
     parts.append(f'<circle cx="{fmt(core_cx)}" cy="{fmt(cy)}" r="72" '
                  f'fill="{color}" fill-opacity="0.22"/>')
+    parts.append(f'<circle cx="{fmt(core_cx)}" cy="{fmt(cy)}" r="96" '
+                 f'fill="none" stroke="{color}" stroke-opacity="0.18" '
+                 f'stroke-width="10"/>')
     parts.append(f'<circle cx="{fmt(core_cx)}" cy="{fmt(cy)}" r="52" '
                  f'fill="{color}" fill-opacity="0.35" '
                  f'stroke="{color}" stroke-width="2"/>')
@@ -1743,8 +1835,8 @@ def _draw_fusion(panel: Panel, theme: dict[str, Any]) -> list[str]:
         parts.append(text(core_cx, ly, line, 13, "#ffffff",
                           bold=True, anchor="middle"))
     capabilities = payload.get("capabilities", [])
-    cap_x = core_cx + 100
-    cap_end = panel.x + panel.width - 30
+    cap_x = right_zone[0] + 20
+    cap_end = right_zone[0] + right_zone[2] - 20
     cap_w = (cap_end - cap_x - 10 * len(capabilities)) / max(len(capabilities), 1)
     # Draw all connectors first: the chip fills then cover the line segments
     # passing underneath, so no stripe crosses a preceding chip's label.
@@ -1758,6 +1850,21 @@ def _draw_fusion(panel: Panel, theme: dict[str, Any]) -> list[str]:
         cx = cap_x + 10 + i * (cap_w + 10)
         parts += _chip(cx, cy - 22, cap_w, 44, capability, fill=color,
                        size=14)
+    mechanisms = payload.get("mechanisms", [
+        "Tokenization", "Attention Routing", "Shared Embedding",
+        "Transfer Learning", "Scaling"
+    ])
+    mech_y = panel.y + panel.height - 54
+    mech_w = (panel.width - 68 - 12 * (len(mechanisms) - 1)) / len(mechanisms)
+    for i, mechanism in enumerate(mechanisms):
+        mx2 = panel.x + 34 + i * (mech_w + 12)
+        parts.append(f'<rect x="{fmt(mx2)}" y="{fmt(mech_y)}" '
+                     f'width="{fmt(mech_w)}" height="30" rx="15" '
+                     f'fill="{color}" fill-opacity="0.12" stroke="{color}" '
+                     f'stroke-opacity="0.55" stroke-width="1"/>')
+        parts.append(text(mx2 + mech_w / 2, mech_y + 20,
+                          fit(mechanism, (mech_w - 20) / 10.5), 10.5,
+                          _DARK_TEXT, anchor="middle"))
     return parts
 
 
@@ -1806,6 +1913,10 @@ def _draw_family(panel: Panel, theme: dict[str, Any]) -> list[str]:
     for model in payload.get("models", []):
         year = str(model.get("year", ""))
         my = content_y + 8
+        year_chip_w = max(42.0, min(text_width(year, 10) + 14, 58.0)) if year else 0.0
+        year_label = fit(year, (year_chip_w - 10) / 5.6) if year else ""
+        label_x = x + 14 + year_chip_w + 10 if year else x + 38
+        text_reserve = label_x - x + 30
         name = model.get("name", "")
         org = model.get("org", "")
         label = f"{name} ({org})" if org else name
@@ -1814,14 +1925,15 @@ def _draw_family(panel: Panel, theme: dict[str, Any]) -> list[str]:
         # before; only labels that would have ellipsized wrap to two
         # lines (row height grows by 16 per extra line, kept in sync
         # with layout.bands._kind_height via family_label_lines).
-        label_lines = family_label_lines(label, w, with_year=bool(year))
+        label_lines = family_label_lines(
+            label, w, with_year=bool(year), year_slot=text_reserve)
         extra_h = 16 * (len(label_lines) - 1)
         if not desc:
             if year:
-                parts += _chip(x + 14, my + 2, text_width(year, 10) + 14,
-                               20, year, fill=color, size=10)
+                parts += _chip(x + 14, my + 2, year_chip_w, 20, year_label,
+                               fill=color, size=10)
                 for j, line in enumerate(label_lines):
-                    parts.append(text(x + 66, my + 12 + j * 16, line, 12.5,
+                    parts.append(text(label_x, my + 12 + j * 16, line, 12.5,
                                       colors["title"], bold=True))
             else:
                 parts.append(f'<circle cx="{fmt(x + 24)}" cy="{fmt(my + 4)}" '
@@ -1832,17 +1944,17 @@ def _draw_family(panel: Panel, theme: dict[str, Any]) -> list[str]:
             content_y += (26 if compact else 30) + extra_h
             continue
         if year:
-            parts += _chip(x + 14, my + 2, text_width(year, 10) + 14, 20,
-                           year, fill=color, size=10)
+            parts += _chip(x + 14, my + 2, year_chip_w, 20, year_label,
+                           fill=color, size=10)
         for j, line in enumerate(label_lines):
-            parts.append(text(x + 66, my + 12 + j * 16, line, 12.5,
+            parts.append(text(label_x, my + 12 + j * 16, line, 12.5,
                               colors["title"], bold=True))
         # Descriptions wrap to two lines in every row style (compact rows
         # used to cap at one, silently dropping the second line).
         lines = family_desc_lines(desc, w)
         desc_h = 14 * (len(lines) - 1)
         for j, line in enumerate(lines):
-            parts.append(text(x + 66, my + 29 + extra_h + j * 14, line, 10.5,
+            parts.append(text(label_x, my + 29 + extra_h + j * 14, line, 10.5,
                               colors["muted"]))
         content_y += (36 if compact else 52) + extra_h + desc_h
     footer = payload.get("footer", [])
@@ -2182,13 +2294,7 @@ def _draw_radial(panel: Panel, theme: dict[str, Any]) -> list[str]:
 
 def _draw_figures(panel: Panel, theme: dict[str, Any],
                   images: ImageEmbedder | None = None) -> list[str]:
-    """Key-figures rows: portrait avatar + name + description lines.
-
-    D4: the avatar glyph is a 44-unit circle (a supplied portrait
-    ``image`` fills that circle) and the N rows distribute evenly across
-    the panel body (pitch = body_h / n, clamped to [68, 96], remainder
-    centered) instead of top-packing at 68.
-    """
+    """Key-figures profile cards with dates and contribution bullets."""
     colors = theme["colors"]
     canvas = theme["canvas"]
     payload = panel.payload
@@ -2196,34 +2302,70 @@ def _draw_figures(panel: Panel, theme: dict[str, Any],
     parts, content_y = _panel_chrome(panel, theme, payload.get("title", ""),
                                      payload.get("subtitle", ""))
     figures = payload.get("figures", [])
-    body_top = content_y + 6
-    body_h = panel.y + panel.height - 10 - body_top
-    pitch = 68.0
-    y = body_top
-    if figures:
-        pitch = min(96.0, max(68.0, body_h / len(figures)))
-        y = body_top + max(0.0, (body_h - pitch * len(figures)) / 2)
-    for figure in figures:
-        fx = panel.x + 20
-        acx, acy = fx + 26, y + 28
-        drawn = (images.svg_image(figure["image"], acx - 22, acy - 22, 44, 44,
+    if not figures:
+        return parts
+    cols = max(int(payload.get("columns", 2 if panel.width > 300 else 1)), 1)
+    gap = 10.0
+    body_top = content_y + 8
+    body_bottom = panel.y + panel.height - 12
+    rows = math.ceil(len(figures) / cols)
+    card_w = (panel.width - 32 - gap * (cols - 1)) / cols
+    card_h = (body_bottom - body_top - gap * max(rows - 1, 0)) / rows
+    card_h = max(104.0, card_h)
+    for i, figure in enumerate(figures):
+        col = i % cols
+        row = i // cols
+        fx = panel.x + 16 + col * (card_w + gap)
+        fy = body_top + row * (card_h + gap)
+        parts.append(f'<rect x="{fmt(fx)}" y="{fmt(fy)}" '
+                     f'width="{fmt(card_w)}" height="{fmt(card_h)}" rx="10" '
+                     f'fill="{canvas["card_fill"]}" '
+                     f'stroke="{canvas["card_stroke"]}" stroke-width="1.1"/>')
+        parts.append(f'<rect x="{fmt(fx)}" y="{fmt(fy)}" width="4" '
+                     f'height="{fmt(card_h)}" rx="2" fill="{color}" '
+                     f'fill-opacity="0.85"/>')
+        acx, acy = fx + 34, fy + 34
+        avatar = min(48.0, max(38.0, card_h * 0.34))
+        drawn = (images.svg_image(figure["image"], acx - avatar / 2,
+                                  acy - avatar / 2, avatar, avatar,
                                   focus=figure.get("image_focus", "center"),
-                                  radius=22)
+                                  radius=avatar / 2)
                  if images is not None and figure.get("image") else None)
         if drawn is not None:
             parts += drawn
         else:
-            parts.append(f'<circle cx="{fmt(acx)}" cy="{fmt(acy)}" r="22" '
+            parts.append(f'<circle cx="{fmt(acx)}" cy="{fmt(acy)}" '
+                         f'r="{fmt(avatar / 2)}" '
                          f'fill="{canvas["photo_fill"]}"/>')
-            parts += _icon("person", acx, acy + 2, 13, canvas["photo_ink"])
+            parts += _icon("person", acx, acy + 2, avatar * 0.28,
+                           canvas["photo_ink"])
         tx = fx + 66
-        parts.append(text(tx, y + 18, figure.get("name", ""), 13.5,
+        name = fit(figure.get("name", ""), (card_w - 78) / 9.2)
+        parts.append(text(tx, fy + 24, name, 13.2,
                           colors["title"], bold=True))
-        for j, line in enumerate(figure.get("lines", [])[:3]):
-            parts.append(text(tx, y + 36 + j * 14,
-                              fit(line, (panel.width - 110) / 10.5), 10.5,
+        years = figure.get("years", "") or figure.get("life", "")
+        if years:
+            chip_w = min(card_w - 78, max(66.0, text_width(years, 9.5) + 18))
+            parts += _chip(tx, fy + 32, chip_w, 19, years,
+                           fill=canvas["side_fill"], stroke=color,
+                           text_fill=color, size=9.5, bold=True)
+        role_y = fy + (64 if years else 42)
+        role = figure.get("role", "")
+        if role:
+            parts.append(text(tx, role_y, fit(role, (card_w - 78) / 9.8),
+                              10.2, colors["text"], bold=True))
+            role_y += 15
+        available_lines = max(2, min(3, int((fy + card_h - 10 - role_y) / 13)))
+        lines: list[str] = []
+        for line in figure.get("lines", []):
+            lines.extend(wrap(line, (card_w - 82) / 8.8))
+        for j, line in enumerate(lines[:available_lines]):
+            parts.append(f'<circle cx="{fmt(tx + 2)}" '
+                         f'cy="{fmt(role_y + 4 + j * 13)}" r="2" '
+                         f'fill="{color}" fill-opacity="0.8"/>')
+            parts.append(text(tx + 8, role_y + 8 + j * 13,
+                              fit(line, (card_w - 94) / 8.8), 8.8,
                               colors["muted"]))
-        y += pitch
     return parts
 
 
@@ -2568,21 +2710,32 @@ def _draw_insights(panel: Panel, theme: dict[str, Any]) -> list[str]:
     payload = panel.payload
     x, y, w = panel.x, panel.y, panel.width
 
-    parts = [_frame(panel, theme)]
+    dark_insights = bool(canvas.get("insights_dark", False))
+    if dark_insights:
+        parts = [_frame(panel, theme, fill=canvas.get("band_dark_fill", "#0a1330"))]
+        title_fill = _DARK_TEXT
+        chip_text = _DARK_TEXT
+        chip_fill = "#17213b"
+        chip_stroke = "#33446d"
+    else:
+        parts = [_frame(panel, theme)]
+        title_fill = colors["title"]
+        chip_text = colors["text"]
+        chip_fill = canvas["card_fill"]
+        chip_stroke = colors["line"]
     items = payload.get("items", [])
     if items:
-        parts.append(text(x + 18, y + 34, "历史启示", 17, colors["title"],
-                          bold=True))
+        parts.append(text(x + 18, y + 34, "历史启示", 17, title_fill, bold=True))
         chip_x = x + 110
         chip_h = 30.0
         for item in items:
             chip_w = text_width(item, 13) + 26
             parts.append(f'<rect x="{fmt(chip_x)}" y="{fmt(y + 14)}" '
                          f'width="{fmt(chip_w)}" height="{fmt(chip_h)}" '
-                         f'rx="15" fill="{canvas["card_fill"]}" '
-                         f'stroke="{colors["line"]}" stroke-width="1"/>')
+                         f'rx="15" fill="{chip_fill}" '
+                         f'stroke="{chip_stroke}" stroke-width="1"/>')
             parts.append(text(chip_x + chip_w / 2, y + 34, item, 13,
-                              colors["text"], anchor="middle"))
+                              chip_text, anchor="middle"))
             chip_x += chip_w + 14
     quote = payload.get("quote", "")
     if quote:
@@ -2676,13 +2829,22 @@ def _draw_footer_band(panel: Panel, theme: dict[str, Any]) -> list[str]:
         for item in reversed(legend_items):
             color = item.get("color", _DARK_MUTED)
             label = item.get("label", "")
-            lw = text_width(label, 12) + 28
+            label_en = item.get("label_en", "")
+            lw = max(58.0, text_width(label, 11) + 28)
             lx -= lw
             parts.append(f'<rect x="{fmt(lx)}" y="{fmt(y + 22)}" width="{fmt(lw)}" '
-                         f'height="24" rx="12" fill="{color}" fill-opacity="0.25"/>')
-            parts.append(f'<circle cx="{fmt(lx + 14)}" cy="{fmt(y + 34)}" r="5" '
+                         f'height="30" rx="15" fill="#ffffff" fill-opacity="0.08" '
+                         f'stroke="#ffffff" stroke-opacity="0.14"/>')
+            parts.append(f'<circle cx="{fmt(lx + 14)}" cy="{fmt(y + 37)}" r="5" '
                          f'fill="{color}"/>')
-            parts.append(text(lx + 26, y + 36, label, 12, _DARK_TEXT))
+            parts.append(text(lx + 25, y + 34, label, 10.5, _DARK_TEXT,
+                              bold=True))
+            if label_en:
+                parts.append(text(lx + 25, y + 47, label_en, 7.5,
+                                  _DARK_MUTED))
+            else:
+                parts.append(text(lx + 25, y + 47, "Legend", 7.5,
+                                  _DARK_MUTED))
         lx -= 12
 
     quote_zh = payload.get("quote_zh", "")

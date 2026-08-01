@@ -1,21 +1,24 @@
 {
   "meta": {
     "layout": "bands",
-    "theme": "empire_dark",
+    "theme": "chronicle_reference",
     "canvas": {
       "width": 1682,
       "height": 2524,
-      "band_card_h": 238,
-      "gap": 14,
-      "margin": 34
+      "band_card_h": 184,
+      "gap": 9,
+      "margin": 12,
+      "band_header_h": 54,
+      "band_side_w": 160
     },
-    "series": "AI Technology Bible",
-    "volume": "Volume 01",
-    "title_zh": "AI 编年史 (1950-2026)",
-    "title_sub": "人工智能发展全景图",
-    "title_en": "AI Evolution Timeline",
-    "quote": "“人工智能是人类有史以来最伟大的创造，也是我们面临的最深刻的变革。”",
-    "quote_by": ""
+    "series": "Modern AI Atlas",
+    "volume": "Vol.01",
+    "title_zh": "人工智能简史与全景",
+    "title_sub": "从规则时代，到智能时代。",
+    "title_en": "The Story of AI",
+    "quote": "“第 1 卷讲述 AI 为什么会发展成今天这样；第 2-13 卷展开它如何成为现代技术体系。”",
+    "quote_by": "Modern AI Atlas",
+    "tagline": "From Rules to Intelligence · Modern AI Atlas 序章"
   },
   "legend": [
     {
@@ -674,11 +677,11 @@
     "规模是突破智能的关键",
     "跨领域融合产生新物种"
   ],
-  "quote": "未来已来，唯变不变。",
+  "quote": "从规则时代，到智能时代。",
   "next": {
     "label": "NEXT",
-    "title": "Vol.02 Transformer 帝国",
-    "desc": "技术架构、架构演化与模型家族全图谱"
+    "title": "Vol.02 Transformer Empire",
+    "desc": "一个架构，改变了整个 AI 世界"
   },
   "nodes": [
     {
@@ -1183,6 +1186,46 @@
     {
       "source": "transformer",
       "target": "autodriving_uniad",
+      "relation": "composes"
+    },
+    {
+      "source": "turing_test",
+      "target": "dartmouth_conference",
+      "relation": "converges"
+    },
+    {
+      "source": "dartmouth_conference",
+      "target": "eliza",
+      "relation": "inherits"
+    },
+    {
+      "source": "eliza",
+      "target": "expert_systems",
+      "relation": "converges"
+    },
+    {
+      "source": "expert_systems",
+      "target": "ai_winter",
+      "relation": "converges"
+    },
+    {
+      "source": "ai_winter",
+      "target": "backprop",
+      "relation": "converges"
+    },
+    {
+      "source": "backprop",
+      "target": "dl_revival",
+      "relation": "inherits"
+    },
+    {
+      "source": "dl_revival",
+      "target": "google_brain",
+      "relation": "inherits"
+    },
+    {
+      "source": "attention_bahdanau",
+      "target": "alphago",
       "relation": "composes"
     }
   ]

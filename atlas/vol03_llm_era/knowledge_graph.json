@@ -50,16 +50,16 @@
         {
           "year": "2020",
           "title": "GPT-3",
-          "desc": "涌现能力初现",
-          "desc2": "1750亿参数",
+          "desc": "Scaling Law 成为主线",
+          "desc2": "1750亿参数与少样本学习",
           "node": "gpt3"
         },
         {
           "year": "2021",
-          "title": "Codex",
-          "desc": "代码生成",
-          "desc2": "12B参数",
-          "node": "codex"
+          "title": "Codex / Chinchilla",
+          "desc": "代码生成与计算最优训练",
+          "desc2": "数据-参数配比被重新校准",
+          "node": "chinchilla"
         },
         {
           "year": "2021",
@@ -91,15 +91,22 @@
         },
         {
           "year": "2024",
-          "title": "GPT-4o / Claude 3 / Gemini 1.5",
-          "desc": "多模态原生",
-          "desc2": "长上下文突破",
+          "title": "GPT-4o / Claude 3.5 / Gemini 1.5",
+          "desc": "多模态原生与长上下文",
+          "desc2": "Llama 3 / Qwen2.5 / DeepSeek-V3",
           "node": "gpt4o"
         },
         {
-          "year": "2024+",
-          "title": "迈向AGI",
-          "desc": "更强推理、记忆与行动",
+          "year": "2025",
+          "title": "DeepSeek-R1 / Qwen3 / Llama 4",
+          "desc": "开源推理与长上下文继续逼近",
+          "desc2": "成本、效率、能力三线竞争",
+          "node": "deepseek_r1"
+        },
+        {
+          "year": "2026",
+          "title": "开源逼近闭源",
+          "desc": "推理、记忆、工具与行动整合",
           "desc2": "系统级能力涌现",
           "node": "agi"
         }
@@ -111,7 +118,7 @@
           "kind": "pills",
           "title": "大语言模型生态图谱",
           "subtitle": "Model Family Tree",
-          "weight": 1.45,
+          "weight": 1.6,
           "color": "#3b82f6",
           "label_w": 132,
           "col_header": [
@@ -137,7 +144,7 @@
                 "ChatGPT / GPT-3.5",
                 "GPT-4",
                 {
-                  "text": "GPT-4o / GPT-5",
+                  "text": "GPT-4o / Reasoning",
                   "highlight": true
                 }
               ]
@@ -180,7 +187,7 @@
                 "Llama 3 (8B/70B)",
                 "Llama 3.1 (8B/70B/405B)",
                 {
-                  "text": "Llama 3.2 (多模态)",
+                  "text": "Llama 3.2 / Llama 4",
                   "highlight": true
                 }
               ]
@@ -205,9 +212,10 @@
                 "Bloom",
                 "GPT-NeoX",
                 "Falcon",
-                "Yi / Qwen / Baichuan / InternLM / DeepSeek",
+                "Yi / Baichuan / InternLM",
+                "Qwen2.5 / DeepSeek-V3",
                 {
-                  "text": "持续演进",
+                  "text": "DeepSeek-R1 / Qwen3",
                   "highlight": true
                 }
               ]
@@ -287,7 +295,7 @@
           "align_flow": [
             "SFT 监督微调",
             "Reward Model 奖励模型",
-            "RLHF / DPO / PPO 强化学习优化"
+            "RLHF / DPO / PPO / GRPO 强化学习优化"
           ],
           "abilities_title": "能力涌现 (Emergent Abilities)",
           "abilities": [
@@ -310,21 +318,21 @@
                 {
                   "icon": "cube",
                   "title": "模型规模 (Model Size)",
-                  "desc": "参数量 ↑",
+                  "desc": "Kaplan: 参数量 ↑",
                   "node": "scaling_law"
                 },
                 {
                   "icon": "db",
                   "title": "数据规模 (Data Scale)",
-                  "desc": "数据量 ↑"
+                  "desc": "Chinchilla: 数据-参数配比"
                 },
                 {
                   "icon": "bolt",
                   "title": "计算规模 (Compute Scale)",
-                  "desc": "算力 ↑"
+                  "desc": "DeepSeek: 成本效率优化"
                 }
               ],
-              "summary": "三者协同推动性能持续提升"
+              "summary": "Kaplan Law → Chinchilla Law → 高效率开源训练路线"
             },
             {
               "kind": "curve",
@@ -468,7 +476,8 @@
                 "LoRA",
                 "QLoRA",
                 "Adapter",
-                "Prompt Tuning"
+                "Prompt Tuning",
+                "Full-parameter FT"
               ]
             },
             {
@@ -479,6 +488,7 @@
                 "RLHF",
                 "DPO",
                 "PPO",
+                "GRPO",
                 "Reward Model",
                 "Constitutional AI"
               ]
@@ -492,7 +502,8 @@
                 "KV Cache",
                 "TensorRT",
                 "vLLM",
-                "FlashAttention"
+                "FlashAttention",
+                "Speculative Decoding"
               ]
             },
             {
@@ -685,6 +696,13 @@
       "kind": "model"
     },
     {
+      "id": "chinchilla",
+      "label": "Chinchilla",
+      "label_en": "Chinchilla",
+      "year": 2022,
+      "kind": "model"
+    },
+    {
       "id": "instructgpt",
       "label": "InstructGPT",
       "label_en": "InstructGPT",
@@ -709,6 +727,13 @@
       "id": "gpt4o",
       "label": "GPT-4o",
       "label_en": "GPT-4o",
+      "year": 2024,
+      "kind": "model"
+    },
+    {
+      "id": "reasoning_models",
+      "label": "推理增强模型",
+      "label_en": "Reasoning Models",
       "year": 2024,
       "kind": "model"
     },
@@ -755,6 +780,13 @@
       "kind": "model"
     },
     {
+      "id": "gemini2",
+      "label": "Gemini 2.0",
+      "label_en": "Gemini 2.0",
+      "year": 2024,
+      "kind": "model"
+    },
+    {
       "id": "claude1",
       "label": "Claude 1",
       "label_en": "Claude 1",
@@ -794,6 +826,13 @@
       "label": "Llama 3 / 3.1 / 3.2",
       "label_en": "Llama 3",
       "year": 2024,
+      "kind": "model"
+    },
+    {
+      "id": "llama4",
+      "label": "Llama 4",
+      "label_en": "Llama 4",
+      "year": 2025,
       "kind": "model"
     },
     {
@@ -853,6 +892,20 @@
       "kind": "model"
     },
     {
+      "id": "qwen25",
+      "label": "Qwen2.5",
+      "label_en": "Qwen2.5",
+      "year": 2024,
+      "kind": "model"
+    },
+    {
+      "id": "qwen3",
+      "label": "Qwen3",
+      "label_en": "Qwen3",
+      "year": 2025,
+      "kind": "model"
+    },
+    {
       "id": "baichuan",
       "label": "Baichuan",
       "label_en": "Baichuan",
@@ -871,6 +924,20 @@
       "label": "DeepSeek",
       "label_en": "DeepSeek",
       "year": 2023,
+      "kind": "model"
+    },
+    {
+      "id": "deepseek_v3",
+      "label": "DeepSeek-V3",
+      "label_en": "DeepSeek-V3",
+      "year": 2024,
+      "kind": "model"
+    },
+    {
+      "id": "deepseek_r1",
+      "label": "DeepSeek-R1",
+      "label_en": "DeepSeek-R1",
+      "year": 2025,
       "kind": "model"
     },
     {
@@ -928,6 +995,12 @@
       "kind": "concept"
     },
     {
+      "id": "chinchilla_law",
+      "label": "Chinchilla 计算最优定律",
+      "label_en": "Chinchilla Law",
+      "kind": "concept"
+    },
+    {
       "id": "emergent_abilities",
       "label": "能力涌现",
       "label_en": "Emergent Abilities",
@@ -937,6 +1010,12 @@
       "id": "constitutional_ai",
       "label": "Constitutional AI",
       "label_en": "Constitutional AI",
+      "kind": "concept"
+    },
+    {
+      "id": "grpo",
+      "label": "GRPO",
+      "label_en": "GRPO",
       "kind": "concept"
     },
     {
@@ -975,6 +1054,16 @@
       "relation": "inherits"
     },
     {
+      "source": "scaling_law",
+      "target": "chinchilla_law",
+      "relation": "converges"
+    },
+    {
+      "source": "chinchilla_law",
+      "target": "chinchilla",
+      "relation": "composes"
+    },
+    {
       "source": "gpt3",
       "target": "instructgpt",
       "relation": "inherits"
@@ -993,6 +1082,11 @@
       "source": "gpt4",
       "target": "gpt4o",
       "relation": "inherits"
+    },
+    {
+      "source": "gpt4",
+      "target": "reasoning_models",
+      "relation": "converges"
     },
     {
       "source": "transformer",
@@ -1025,6 +1119,11 @@
       "relation": "inherits"
     },
     {
+      "source": "gemini15",
+      "target": "gemini2",
+      "relation": "inherits"
+    },
+    {
       "source": "gpt3",
       "target": "claude1",
       "relation": "converges"
@@ -1052,6 +1151,11 @@
     {
       "source": "llama2",
       "target": "llama3",
+      "relation": "inherits"
+    },
+    {
+      "source": "llama3",
+      "target": "llama4",
       "relation": "inherits"
     },
     {
@@ -1095,6 +1199,16 @@
       "relation": "converges"
     },
     {
+      "source": "qwen",
+      "target": "qwen25",
+      "relation": "inherits"
+    },
+    {
+      "source": "qwen25",
+      "target": "qwen3",
+      "relation": "inherits"
+    },
+    {
       "source": "llama2",
       "target": "baichuan",
       "relation": "converges"
@@ -1108,6 +1222,16 @@
       "source": "llama2",
       "target": "deepseek",
       "relation": "converges"
+    },
+    {
+      "source": "deepseek",
+      "target": "deepseek_v3",
+      "relation": "inherits"
+    },
+    {
+      "source": "deepseek_v3",
+      "target": "deepseek_r1",
+      "relation": "inherits"
     },
     {
       "source": "gpt3",
@@ -1130,6 +1254,11 @@
       "relation": "converges"
     },
     {
+      "source": "rlhf",
+      "target": "grpo",
+      "relation": "converges"
+    },
+    {
       "source": "ppo",
       "target": "rlhf",
       "relation": "composes"
@@ -1145,6 +1274,16 @@
       "relation": "converges"
     },
     {
+      "source": "chinchilla_law",
+      "target": "emergent_abilities",
+      "relation": "converges"
+    },
+    {
+      "source": "emergent_abilities",
+      "target": "in_context_learning",
+      "relation": "composes"
+    },
+    {
       "source": "transformer",
       "target": "next_token_prediction",
       "relation": "composes"
@@ -1155,7 +1294,17 @@
       "relation": "composes"
     },
     {
-      "source": "gpt4o",
+      "source": "reasoning_models",
+      "target": "agentic_ai",
+      "relation": "converges"
+    },
+    {
+      "source": "deepseek_r1",
+      "target": "agentic_ai",
+      "relation": "converges"
+    },
+    {
+      "source": "qwen3",
       "target": "agentic_ai",
       "relation": "converges"
     },
@@ -1165,11 +1314,6 @@
       "relation": "converges"
     }
   ],
-  "next": {
-    "label": "NEXT",
-    "title": "Vol.04 多模态 AI",
-    "desc": "打通多种模态，连接物理世界与智能世界"
-  },
   "footer": {
     "quote_zh": "从规模扩展到智能涌现，从理解语言到对齐价值。",
     "quote_en": "From scaling to emergence, from understanding language to aligning values."

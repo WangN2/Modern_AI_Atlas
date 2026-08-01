@@ -27,33 +27,34 @@ No dedicated legend row on this poster. The Model Family Tree panel uses **row c
 
 ### 3.1 大语言模型发展时间线 (里程碑)
 
-Horizontal timeline with 11 milestone cards (year chip + title + 2-line zh description), rocket at the right end:
+Horizontal timeline with 12 milestone cards (year chip + title + 2-line zh description), rocket at the right end:
 
 1. **2017 Transformer** — Attention Is All You Need
 2. **2018 GPT-1** — 预训练+微调范式 / 117M参数
 3. **2019 GPT-2** — 无监督预训练 / 15亿参数
 4. **2020 GPT-3** — 涌现能力初现 / 1750亿参数
-5. **2021 Codex** — 代码生成 / 12B参数
+5. **2021 Codex / Chinchilla** — 代码生成与计算最优训练 / 数据-参数配比被重新校准
 6. **2021 InstructGPT** — RLHF对齐 / 人类反馈强化学习
 7. **2022 ChatGPT** — 对话交互 / 现象级应用
 8. **2023 GPT-4 / PaLM 2 / Claude 2** — 更强理解与推理 / 多模态初步融合
 9. **2023 Llama 2** — 开源浪潮 / 70B参数
-10. **2024 GPT-4o / Claude 3 / Gemini 1.5** — 多模态原生 / 长上下文突破
-11. **2024+ 迈向AGI** — 更强推理、记忆与行动 / 系统级能力涌现
+10. **2024 GPT-4o / Claude 3.5 / Gemini 1.5** — 多模态原生与长上下文 / Llama 3、Qwen2.5、DeepSeek-V3
+11. **2025 DeepSeek-R1 / Qwen3 / Llama 4** — 开源推理与长上下文继续逼近 / 成本、效率、能力三线竞争
+12. **2026 开源逼近闭源** — 推理、记忆、工具与行动整合 / 系统级能力涌现
 
 ### 3.2 大语言模型生态图谱 (Model Family Tree)
 
 Grid: org logo rows × year columns (2018 | 2019 | 2020 | 2021 | 2022 | 2023 | 2024+), model chips connected by arrows.
 
 **闭源模型 (Proprietary)** — blue rail:
-- **OpenAI**: GPT-1 → GPT-2 → GPT-3 → Codex → InstructGPT → ChatGPT / GPT-3.5 → GPT-4 → GPT-4o / GPT-5?
+- **OpenAI**: GPT-1 → GPT-2 → GPT-3 → Codex → InstructGPT → ChatGPT / GPT-3.5 → GPT-4 → GPT-4o / Reasoning
 - **Google**: BERT → T5 → PaLM → PaLM 2 → PaLM 2-Codey → Gemini 1.0 → Gemini 1.5 / Gemini 2.0
 - **Anthropic**: Claude 1 → Claude 2 → Claude 3 / Claude 3.5
 
 **开源模型 (Open Source)** — green rail:
-- **Meta (Llama)**: Llama 1 (7B/13B/33B/65B) → Llama 2 (7B/13B/70B) → Llama 3 (8B/70B) → Llama 3.1 (8B/70B/405B) → Llama 3.2 (多模态)
-- **Mistral AI**: Mistral 7B → Mistral 8x7B → Mistral 8x22B → Mistral Large
-- **其他开源**: Bloom → GPT-NeoX → Falcon → Yi / Qwen / Baichuan / InternLM / DeepSeek → 持续演进
+- **Meta (Llama)**: Llama 1 (7B/13B/33B/65B) → Llama 2 (7B/13B/70B) → Llama 3 (8B/70B) → Llama 3.1 (8B/70B/405B) → Llama 3.2 (多模态) → Llama 4
+- **Mistral AI**: Mistral 7B → Mixtral 8x7B → Mixtral 8x22B → Mistral Large
+- **其他开源**: Bloom → GPT-NeoX → Falcon → Yi / Baichuan / InternLM → Qwen2.5 / DeepSeek-V3 → DeepSeek-R1 / Qwen3
 
 **API / 云服务 (Platforms)** — purple rail:
 - OpenAI API / Azure OpenAI / Google Vertex AI / AWS Bedrock / Anthropic API / 其他平台
@@ -68,7 +69,7 @@ Grid: org logo rows × year columns (2018 | 2019 | 2020 | 2021 | 2022 | 2023 | 2
 - Row `预测`: (shifted) The | cat | sat | on | the | mat | `<eos>`
 
 **对齐技术演进** — 3-step flow:
-SFT 监督微调 → Reward Model 奖励模型 → RLHF / DPO / PPO 强化学习优化
+SFT 监督微调 → Reward Model 奖励模型 → RLHF / DPO / PPO / GRPO 强化学习优化
 
 **能力涌现 (Emergent Abilities)** — 6 icon chips:
 上下文学习 (In-context Learning) / 推理能力 (Reasoning) / 指令遵循 (Instruction Following) / 工具使用 (Tool Use) / 多轮对话 (Multi-turn Dialogue) / 代码生成 (Code Gen)
@@ -76,9 +77,9 @@ SFT 监督微调 → Reward Model 奖励模型 → RLHF / DPO / PPO 强化学习
 ### 3.4 Scaling 三大维度 + 涌现能力阶梯
 
 **Scaling 三大维度** — 3 cards + caption 三者协同推动性能持续提升:
-- 模型规模 (Model Size) — 参数量 ↑
-- 数据规模 (Data Scale) — 数据量 ↑
-- 计算规模 (Compute Scale) — 算力 ↑
+- 模型规模 (Model Size) — Kaplan: 参数量 ↑
+- 数据规模 (Data Scale) — Chinchilla: 数据-参数配比
+- 计算规模 (Compute Scale) — DeepSeek: 成本效率优化
 
 **涌现能力阶梯 (能力随规模呈现非线性增长)** — S-curve chart:
 - Axes: x = 模型规模 (参数量) (Model Scale), log ticks 10⁸ → 10⁹ → 10¹⁰ → 10¹¹ → 10¹² → 10¹³⁺; y = 能力 (Ability)
@@ -137,33 +138,41 @@ No NEXT-volume teaser on this poster.
 | gpt2 | GPT-2 | GPT-2 | 2019 | model |
 | gpt3 | GPT-3 | GPT-3 | 2020 | model |
 | codex | Codex | Codex | 2021 | model |
+| chinchilla | Chinchilla | Chinchilla | 2022 | model |
 | instructgpt | InstructGPT | InstructGPT | 2021 | model |
 | chatgpt | ChatGPT (GPT-3.5) | ChatGPT | 2022 | industry |
 | gpt4 | GPT-4 | GPT-4 | 2023 | model |
 | gpt4o | GPT-4o | GPT-4o | 2024 | model |
+| reasoning_models | 推理增强模型 | Reasoning Models | 2024 | model |
 | bert | BERT | BERT | 2018 | model |
 | t5 | T5 | T5 | 2019 | model |
 | palm | PaLM | PaLM | 2022 | model |
 | palm2 | PaLM 2 (含 Codey) | PaLM 2 | 2023 | model |
 | gemini1 | Gemini 1.0 | Gemini 1.0 | 2023 | model |
 | gemini15 | Gemini 1.5 | Gemini 1.5 | 2024 | model |
+| gemini2 | Gemini 2.0 | Gemini 2.0 | 2024 | model |
 | claude1 | Claude 1 | Claude 1 | 2023 | model |
 | claude2 | Claude 2 | Claude 2 | 2023 | model |
 | claude3 | Claude 3 / 3.5 | Claude 3 | 2024 | model |
 | llama1 | Llama 1 | Llama 1 | 2023 | model |
 | llama2 | Llama 2 | Llama 2 | 2023 | model |
 | llama3 | Llama 3 / 3.1 / 3.2 | Llama 3 | 2024 | model |
+| llama4 | Llama 4 | Llama 4 | 2025 | model |
 | mistral7b | Mistral 7B | Mistral 7B | 2023 | model |
-| mixtral | Mistral 8x7B / 8x22B | Mixtral | 2023 | model |
+| mixtral | Mixtral 8x7B / 8x22B | Mixtral | 2023 | model |
 | mistral_large | Mistral Large | Mistral Large | 2024 | model |
 | bloom | BLOOM | BLOOM | 2022 | model |
 | gpt_neox | GPT-NeoX | GPT-NeoX | 2022 | model |
 | falcon | Falcon | Falcon | 2023 | model |
 | yi | Yi | Yi | 2023 | model |
 | qwen | Qwen | Qwen | 2023 | model |
+| qwen25 | Qwen2.5 | Qwen2.5 | 2024 | model |
+| qwen3 | Qwen3 | Qwen3 | 2025 | model |
 | baichuan | Baichuan | Baichuan | 2023 | model |
 | internlm | InternLM | InternLM | 2023 | model |
 | deepseek | DeepSeek | DeepSeek | 2023 | model |
+| deepseek_v3 | DeepSeek-V3 | DeepSeek-V3 | 2024 | model |
+| deepseek_r1 | DeepSeek-R1 | DeepSeek-R1 | 2025 | model |
 | next_token_prediction | 下一词预测 | Next Token Prediction | — | concept |
 | sft | 监督微调 | SFT | — | concept |
 | reward_model | 奖励模型 | Reward Model | — | concept |
@@ -173,8 +182,10 @@ No NEXT-volume teaser on this poster.
 | lora | LoRA / QLoRA | LoRA | — | concept |
 | in_context_learning | 上下文学习 | In-context Learning | — | concept |
 | scaling_law | 规模化定律 | Scaling Law | — | concept |
+| chinchilla_law | Chinchilla 计算最优定律 | Chinchilla Law | — | concept |
 | emergent_abilities | 能力涌现 | Emergent Abilities | — | concept |
 | constitutional_ai | Constitutional AI | Constitutional AI | — | concept |
+| grpo | GRPO | GRPO | — | concept |
 | agentic_ai | 智能体系统 | Agentic AI | 2024 | concept |
 | agi | 通用人工智能 | AGI | — | milestone |
 
@@ -182,19 +193,23 @@ No NEXT-volume teaser on this poster.
 
 - transformer → gpt1 (inherits) ; gpt1 → gpt2 → gpt3 (inherits)
 - gpt3 → codex (inherits) ; gpt3 → instructgpt (inherits) ; instructgpt → chatgpt (inherits) ; chatgpt → gpt4 (inherits) ; gpt4 → gpt4o (inherits)
+- scaling_law → chinchilla_law (converges); chinchilla_law → chinchilla (composes)
 - transformer → bert (inherits) ; bert → t5 (converges) ; t5 → palm (converges) ; palm → palm2 (inherits) ; palm2 → gemini1 (inherits) ; gemini1 → gemini15 (inherits)
+- gemini15 → gemini2 (inherits); gpt4 → reasoning_models (converges)
 - gpt3 → claude1 (converges) ; claude1 → claude2 → claude3 (inherits)
-- gpt3 → llama1 (converges) ; llama1 → llama2 → llama3 (inherits)
+- gpt3 → llama1 (converges) ; llama1 → llama2 → llama3 → llama4 (inherits)
 - llama1 → mistral7b (converges) ; mistral7b → mixtral → mistral_large (inherits)
 - gpt3 → bloom / gpt_neox (converges) ; bloom → falcon (converges)
 - llama2 → yi / qwen / baichuan / internlm / deepseek (converges) [open-source ecosystem, parallel development]
+- qwen → qwen25 → qwen3 (inherits); deepseek → deepseek_v3 → deepseek_r1 (inherits)
 - gpt3 → sft (composes) ; sft → reward_model (composes) ; reward_model → rlhf (composes) [对齐技术演进 chain]
-- rlhf ↔ dpo (converges) [alternative alignment methods]; ppo → rlhf (composes) [RLHF uses PPO]
+- rlhf ↔ dpo / grpo (converges) [alternative alignment methods]; ppo → rlhf (composes) [RLHF uses PPO]
 - gpt3 → lora (composes) [parameter-efficient fine-tuning applied to LLMs]
-- scaling_law → emergent_abilities (converges) [poster: 能力随规模非线性增长]
+- scaling_law / chinchilla_law → emergent_abilities (converges) [poster: 能力随规模与数据-计算配比非线性增长]
+- emergent_abilities → in_context_learning (composes) [ICL is one named emergent capability shown in the architecture panel]
 - transformer → next_token_prediction (composes)
 - claude3 → constitutional_ai (composes) [Anthropic alignment technique]
-- gpt4o → agentic_ai (converges) ; agentic_ai → agi (converges) [Road to AGI chain: 更长上下文 → 多模态统一 → 记忆增强 → 推理增强 → 智能体系统 → AGI]
+- reasoning_models / deepseek_r1 / qwen3 → agentic_ai (converges) ; agentic_ai → agi (converges) [Road to AGI chain: 更长上下文 → 多模态统一 → 记忆增强 → 推理增强 → 智能体系统 → AGI]
 
 ## 6. Style notes
 

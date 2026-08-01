@@ -406,15 +406,17 @@ def band_card_height(cards: list, card_w: float, floor: float = 200.0) -> float:
     return max(200.0, floor, need)
 
 
-def family_label_lines(label: str, w: float, *, with_year: bool) -> list[str]:
+def family_label_lines(label: str, w: float, *, with_year: bool,
+                       year_slot: float | None = None) -> list[str]:
     """Family model-row label: legacy single line, else wrap to two lines.
 
     Labels that fit the legacy one-line budget keep rendering exactly as
     before; only labels that would have been ellipsized wrap (at 12.5 pt).
     """
     if with_year:
-        budget = (w - 96) / 11.5 + 3
-        wrap_units = (w - 96) / 12.5
+        reserve = year_slot if year_slot is not None else 96
+        budget = (w - reserve) / 11.5 + 3
+        wrap_units = (w - reserve) / 12.5
     else:
         budget = (w - 54) / 11.5
         wrap_units = budget

@@ -187,7 +187,10 @@ def _kind_height(section: dict[str, Any], canvas: dict[str, Any],
     if kind == "radial":
         return header + 320
     if kind == "figures":
-        return header + len(section.get("figures", [])) * 68 + 10
+        figures = section.get("figures", [])
+        cols = max(int(section.get("columns", 2 if width > 300 else 1)), 1)
+        rows = math.ceil(len(figures) / cols)
+        return header + rows * 122 + max(rows - 1, 0) * 10 + 18
     if kind == "curve":
         return header + 258
     if kind == "arch":
