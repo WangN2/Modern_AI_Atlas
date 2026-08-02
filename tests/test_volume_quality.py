@@ -54,6 +54,14 @@ FORBIDDEN_TERMS = (
     "undefined",
 )
 
+VOL01B_BEGINNER_MARKERS = (
+    "先用 30 秒认识人工智能",
+    "这个领域有什么：AI 基础知识全景",
+    "发生了什么：AI 如何一步步走到今天",
+    "AI 将走向哪里：未来五条主线",
+    "Trends, Not a Timetable",
+)
+
 EXPORT_FORMATS = ("svg", "pdf", "png")
 
 
@@ -168,6 +176,10 @@ def _check_volume(volume: str, expected: dict[str, Any]) -> None:
 
     for term in FORBIDDEN_TERMS:
         assert term not in visible_svg, (volume, term)
+
+    if volume == "vol01b_foundations_of_ai":
+        for marker in VOL01B_BEGINNER_MARKERS:
+            assert marker in visible_svg, (volume, marker)
 
     pdf_head = pdf_path.read_bytes()[:5]
     assert pdf_head == b"%PDF-", f"{pdf_path} is not a PDF"

@@ -120,7 +120,8 @@ def _kind_height(section: dict[str, Any], canvas: dict[str, Any],
     formulas are shared with the renderer via generator.render.helpers.
     """
     kind = section.get("kind", "band")
-    header = float(canvas.get("panel_header_h2", PANEL_HEADER_H))
+    header = (46.0 if section.get("compact_header")
+              else float(canvas.get("panel_header_h2", PANEL_HEADER_H)))
     if kind == "band":
         return _band_height(section, canvas, width)
     if kind == "list":
@@ -150,7 +151,7 @@ def _kind_height(section: dict[str, Any], canvas: dict[str, Any],
         # a single chevron row tall.
         return header + 76.0
     if kind == "timeline":
-        return header + 132
+        return header + 164 if section.get("phases") else header + 132
     if kind == "fusion":
         return header + 150
     if kind == "family":

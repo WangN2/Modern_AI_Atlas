@@ -181,7 +181,10 @@ def _panel_chrome(panel: Panel, theme: dict[str, Any],
     if subtitle:
         parts.append(text(tx + text_width(title, 20) + 12, y + 33,
                           subtitle, 13, colors["muted"]))
-    return parts, y + 54
+    # Dense card grids can opt into a shorter title-to-content rhythm. The
+    # layout pass uses the same 46-unit header, so the panel loses the empty
+    # strip instead of merely shifting its cards upward inside a tall frame.
+    return parts, y + (44 if panel.payload.get("compact_header") else 54)
 
 
 def _arrow(x: float, y: float, size: float, color: str) -> list[str]:
@@ -1781,6 +1784,7 @@ def _draw_timeline(panel: Panel, theme: dict[str, Any]) -> list[str]:
         return parts
     rocket_w = 90.0 if payload.get("rocket") else 0.0
     x0, x1 = panel.x + 24, panel.x + panel.width - 24 - rocket_w
+    phases = payload.get("phases", [])
     y_line = content_y + 90
     parts.append(f'<line x1="{fmt(x0)}" y1="{fmt(y_line)}" x2="{fmt(x1)}" '
                  f'y2="{fmt(y_line)}" stroke="{color}" stroke-width="2.5"/>')
@@ -1830,6 +1834,24 @@ def _draw_timeline(panel: Panel, theme: dict[str, Any]) -> list[str]:
     if payload.get("rocket"):
         rx = x1 + rocket_w / 2 + 6
         parts += _icon("rocket", rx, y_line - 20, 26, color)
+    if phases:
+        phase_y = y_line + 22
+        for phase in phases:
+            start = max(0, int(phase.get("start", 0)))
+            end = min(len(milestones) - 1, int(phase.get("end", start)))
+            if end < start:
+                continue
+            px0 = x0 + start * step + 8
+            px1 = x0 + (end + 1) * step - 8
+            phase_color = phase.get("color", color)
+            parts.append(f'<rect x="{fmt(px0)}" y="{fmt(phase_y)}" '
+                         f'width="{fmt(px1 - px0)}" height="26" rx="13" '
+                         f'fill="{phase_color}" fill-opacity="0.10" '
+                         f'stroke="{phase_color}" stroke-opacity="0.35"/>')
+            parts.append(text((px0 + px1) / 2, phase_y + 17,
+                              fit(phase.get("label", ""), (px1 - px0) / 10.5),
+                              10.5, phase_color, bold=True,
+                              anchor="middle"))
     return parts
 
 
@@ -2218,12 +2240,14 @@ def _draw_wheel(panel: Panel, theme: dict[str, Any]) -> list[str]:
                                      payload.get("subtitle", ""))
     segments = payload.get("segments", [])
     strip = payload.get("strip")
+    notes = payload.get("notes", [])
     strip_h = 46.0 if strip else 0.0
     # Scale to available space; leave room for the agent strip at the bottom
     av_h = panel.y + panel.height - 24 - content_y - strip_h
-    cx = panel.x + panel.width / 2
+    note_w = panel.width * 0.34 if notes else 0.0
+    cx = panel.x + (panel.width - note_w) / 2
     cy = content_y + 8 + av_h / 2
-    radius = min(av_h / 2 - 10, panel.width * 0.21)
+    radius = min(av_h / 2 - 10, (panel.width - note_w) * 0.24)
     inner = radius * 0.50
     n = len(segments)
     for i, segment in enumerate(segments):
@@ -2273,6 +2297,26 @@ def _draw_wheel(panel: Panel, theme: dict[str, Any]) -> list[str]:
             if i < len(steps) - 1:
                 parts += _arrow(sx + (i + 1) * step_w - 10, sy + 13, 11,
                                 colors["muted"])
+    if notes:
+        nx = panel.x + panel.width - note_w + 4
+        note_gap = 8.0
+        note_h = (av_h - note_gap * (len(notes) - 1)) / max(len(notes), 1)
+        note_h = min(72.0, max(48.0, note_h))
+        ny = content_y + 12 + max(0.0, (av_h - (note_h + note_gap) * len(notes) + note_gap) / 2)
+        for note in notes:
+            note_color = note.get("color", colors["accent"])
+            parts.append(f'<rect x="{fmt(nx)}" y="{fmt(ny)}" '
+                         f'width="{fmt(note_w - 14)}" height="{fmt(note_h)}" '
+                         f'rx="10" fill="{note_color}" fill-opacity="0.08" '
+                         f'stroke="{note_color}" stroke-opacity="0.25"/>')
+            parts.append(text(nx + 12, ny + 19,
+                              fit(note.get("title", ""), (note_w - 36) / 10.5),
+                              10.5, note_color, bold=True))
+            for j, line in enumerate(wrap_fit(note.get("desc", ""),
+                                              (note_w - 30) / 9.2, 2)):
+                parts.append(text(nx + 12, ny + 36 + j * 13, line, 9.2,
+                                  colors["text"]))
+            ny += note_h + note_gap
     return parts
 
 
@@ -2330,6 +2374,14 @@ def _draw_radial(panel: Panel, theme: dict[str, Any]) -> list[str]:
                          f'fill="{b_color}"/>')
             parts.append(text(bx0 + 20, by0 + 38 + j * 17,
                               fit(item, (bw - 30) / 9.5), 9.5, colors["text"]))
+        support = branch.get("support")
+        if support:
+            parts.append(f'<rect x="{fmt(bx0 + 10)}" y="{fmt(by0 + bh - 24)}" '
+                         f'width="{fmt(bw - 20)}" height="16" rx="8" '
+                         f'fill="{b_color}" fill-opacity="0.08"/>')
+            parts.append(text(bx0 + 18, by0 + bh - 12,
+                              fit(support, (bw - 36) / 8.5), 8.5,
+                              b_color, bold=True))
 
     if n >= 7:
         # Too many cards for the ellipse: left/right columns + top/bottom

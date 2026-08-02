@@ -13,6 +13,10 @@
 - Top-right callout box (with line-art human head / circuit-brain illustration):
   > AI 的发展是多学科思想的融合与演进，从理论到技术，再到广泛应用，推动人类智能边界不断拓展。
 
+The compact header map acts as the beginner reading route:
+
+`AI 是什么 → 领域有什么 → 发生了什么 → 将走向哪里`
+
 ## 2. Legend row
 
 The legend (`图例 (Legend)`) is at the **bottom-left** of this poster, not the top. Five chips (icon + zh + en):
@@ -29,6 +33,17 @@ The legend (`图例 (Legend)`) is at the **bottom-left** of this poster, not the
 
 This poster is a **multi-panel infographic**, not era bands. Panel titles are dark-navy with an English parenthetical.
 
+### 3.0 零基础 30 秒入口
+
+Four cards establish the reading contract before specialist terms appear:
+
+1. AI 是什么 — 目标、能力与评估
+2. 这个领域有什么 — 基础、方法、系统与应用
+3. 发生了什么 — 规则到数据，再到通用模型
+4. 将来是什么 — 更可信、更自主、更具身
+
+A reader who stops after this panel should still leave with a correct first mental model.
+
 ### 3.1 AI 思想发展时间线 (里程碑)
 
 Horizontal timeline with 8 milestone cards (year chip + 2-line zh label + line icon), ending in a rocket illustration:
@@ -42,18 +57,26 @@ Horizontal timeline with 8 milestone cards (year chip + 2-line zh label + line i
 7. **2010s** 深度学习突破 / 端到端表征学习规模化
 8. **2020s** 大模型与通用智能 / 预训练、对齐、多模态与工具
 
+Below the milestone line, three paradigm phase rails summarize the reading direction:
+
+- 符号与知识：让机器会推理
+- 统计与数据：让机器会学习
+- 深度与大模型：让能力可迁移
+
 ### 3.2 一图读懂 AI 基础脉络
 
 This high-density reading map answers the reader's first question: **what must be understood before the rest of the poster makes sense?**
 
-- 基本问题: 机器能否思考 / 用任务表现定义能力 / 从图灵测试到现代评测
-- 智能体闭环: 感知环境形成状态 / 学习模型并推理决策 / 行动后接收反馈
-- 表示层: 符号、规则与本体 / 图谱组织关系 / 向量嵌入连续语义
-- 学习层: 从数据估计模式 / 用损失函数优化 / 在新样本上泛化
-- 推理层: 搜索、规划与约束 / 概率推断与因果 / 组合知识完成任务
-- 训练与评估: 数据清洗与特征/嵌入 / 训练、验证、测试分离 / 能力评测与安全边界
-- 范式演进: 规则系统到统计学习 / 深度网络学习表示 / 基础模型迁移通用能力
-- 系统落地: 部署监控与成本约束 / 用户反馈驱动迭代 / 价值对齐与治理
+- 基本问题: 机器能否思考 / 用任务表现定义能力 / 从图灵测试到现代评测 / 能力、泛化与鲁棒性
+- 智能体闭环: 感知环境形成状态 / 学习模型并推理决策 / 行动后接收反馈 / 根据目标持续修正
+- 表示层: 符号、规则与本体 / 图谱组织关系 / 向量嵌入连续语义 / Token 化连接大模型
+- 学习层: 从数据估计模式 / 用损失函数优化 / 在新样本上泛化 / 用正则化控制过拟合
+- 推理层: 搜索、规划与约束 / 概率推断与因果 / 组合知识完成任务 / 从证据形成结论
+- 训练与评估: 数据清洗与特征/嵌入 / 训练、验证、测试分离 / 能力评测与安全边界 / 监控偏差、漂移与成本
+- 范式演进: 规则系统到统计学习 / 深度网络学习表示 / 基础模型迁移通用能力 / Agent 连接工具与环境
+- 系统落地: 部署监控与成本约束 / 用户反馈驱动迭代 / 价值对齐与治理 / 从模型能力到业务价值
+
+Each card also carries one short explanatory sentence and a colored takeaway capsule.
 
 ### 3.3 Two-column row: 核心概念 / 学科分支
 
@@ -66,6 +89,13 @@ This high-density reading map answers the reader's first question: **what must b
 
 Below the wheel: **智能体 (Agent)** strip: 感知环境 → 形成表示 → 学习模型 → 推理决策 → 行动反馈
 
+Right-side concept notes explain the operative meaning of the wheel:
+
+- 表示是入口 — 世界必须先变成可计算对象
+- 学习是压缩 — 数据规律被压进参数、规则或记忆
+- 推理是使用 — 表示与知识被组合成问题求解
+- 行动形成闭环 — 反馈修正目标和策略
+
 **AI 学科分支地图 (Discipline Map)** — radial map around center 人工智能 AI; 8 branches with bullet items:
 - 计算机科学 Computer Science: 算法与复杂性 / 系统与编程语言 / 数据库与分布式工程
 - 数学 Mathematics: 线性代数 / 概率过程 / 优化与矩阵分解
@@ -75,6 +105,8 @@ Below the wheel: **智能体 (Agent)** strip: 感知环境 → 形成表示 → 
 - 认知科学 Cognitive Science: 人类认知建模 / 记忆与注意 / 学习与决策机制
 - 控制科学 Control Theory: 系统建模 / 最优控制 / 反馈与稳定性
 - 哲学 Philosophy: 逻辑学 / 知识论与本体论 / 心智哲学
+
+Each discipline card includes a support-layer label such as `支撑：计算、系统、规模化工程` or `支撑：目标、反馈与闭环控制`, making the branch map explanatory rather than only taxonomic.
 
 ### 3.4 AI 基础问题
 
@@ -149,7 +181,7 @@ Below: arrow strip **从符号化表示 → 到分布式表示 → 再到神经�
 
 ### 3.10 AI 主要应用领域 (Application Domains)
 
-8 domain cards (colored header + 5 bullets + icon):
+8 domain cards (colored header + explanatory sentence + 5 bullets + takeaway capsule + icon). This dense two-row grid uses the compact panel-header rhythm so the cards sit closer to the heading without changing their internal typography:
 1. 自然语言处理 (NLP): 机器翻译/摘要 / 信息抽取/检索 / 问答与对话 / 代码与工具调用 / 长文本理解
 2. 计算机视觉 (CV): 图像分类 / 目标检测 / 图像分割 / OCR/文档理解 / 视频时空理解
 3. 语音智能 (Speech): 语音识别 / 语音合成 / 语音翻译 / 说话人识别 / 实时多轮语音交互
@@ -159,7 +191,23 @@ Below: arrow strip **从符号化表示 → 到分布式表示 → 再到神经�
 7. 推荐系统 (RecSys): 协同过滤 / 内容推荐 / 排序模型 / 召回-粗排-精排 / 反馈与探索
 8. AI for Science: 药物发现 / 材料设计 / 气候预测 / 蛋白质结构预测 / 自动化实验
 
-### 3.11 Two-column row: 基础理论支撑 / 关键推动因素
+### 3.11 AI 将走向哪里
+
+Five directions complete the beginner narrative:
+
+1. 能力更统一 — 多模态共同表示与实时交互
+2. 计算更高效 — 稀疏计算、压缩、量化与边缘部署
+3. 系统更可信 — 可靠、安全、透明、隐私、公平与持续治理
+4. 任务更自主 — 记忆、规划、工具调用、反馈与权限边界
+5. 智能更具身 — 世界模型、机器人控制与仿真到现实迁移
+
+### 3.12 一条可能的能力融合路线
+
+The closing chevron is explicitly presented as a possible convergence route, not a guaranteed AGI timetable:
+
+`基础模型 → 多模态 → 智能体 → 世界模型 → 具身智能`
+
+### 3.13 Continue deeper: 基础理论支撑 / 关键推动因素
 
 **AI 基础理论支撑 (Theoretical Foundations)** — 6 icon items:
 1. 线性代数 — 向量空间 / 矩阵分解 / 张量计算 / Embedding
@@ -178,11 +226,11 @@ Below: arrow strip **从符号化表示 → 到分布式表示 → 再到神经�
 
 ## 4. Bottom band(s)
 
-- Footer quote panel (dark navy gradient, earth/globe illustration right):
+- Footer quote panel (dark navy gradient, legend chips, and NEXT teaser):
   > **AI 的未来，始于理解，成于创新，终于造福人类。**
   > The future of AI begins with understanding, thrives on innovation, and ultimately benefits humanity.
-- 图例 (Legend) row sits bottom-left (see §2).
-- No NEXT-volume teaser on this poster.
+- 图例 (Legend) sits in the footer band (see §2).
+- NEXT-volume teaser points to **Vol.02 Transformer 帝国**.
 
 ## 5. Graph content (nodes & edges for knowledge graph)
 

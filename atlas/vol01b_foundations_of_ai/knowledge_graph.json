@@ -19,29 +19,29 @@
     "banner": "从思想萌芽到现代AI：表示、学习、推理与行动的统一脉络",
     "callout": "人工智能不是单一算法，而是把计算理论、统计学习、知识表示、优化控制与工程系统连接起来，让机器在数据、知识和反馈中形成可评估的智能行为。",
     "header_map": {
-      "title": "AI Foundation Pipeline",
-      "subtitle": "把对象表示出来，在数据中学习，用知识推理，并通过行动获得反馈。",
+      "title": "零基础阅读路线",
+      "subtitle": "先建立直觉，再认识领域、回看历史，最后理解未来。",
       "color": "#1264f6",
       "steps": [
         {
-          "label": "表示",
-          "icon": "book",
+          "label": "AI 是什么",
+          "icon": "target",
+          "color": "#2563eb"
+        },
+        {
+          "label": "领域有什么",
+          "icon": "circles",
           "color": "#7c3aed"
         },
         {
-          "label": "学习",
-          "icon": "chart",
-          "color": "#22c55e"
-        },
-        {
-          "label": "推理",
-          "icon": "brain",
+          "label": "发生了什么",
+          "icon": "timeline",
           "color": "#f59e0b"
         },
         {
-          "label": "行动",
+          "label": "将走向哪里",
           "icon": "rocket",
-          "color": "#0ea5e9"
+          "color": "#22c55e"
         }
       ]
     }
@@ -81,11 +81,77 @@
   "legend_position": "bottom",
   "sections": [
     {
+      "kind": "cards",
+      "title": "先用 30 秒认识人工智能",
+      "subtitle": "A Beginner's Four Questions",
+      "color": "#1264f6",
+      "columns": 4,
+      "max_card_stretch": 1.08,
+      "items": [
+        {
+          "title": "AI 是什么？",
+          "title_en": "Definition",
+          "icon": "target",
+          "color": "#2563eb",
+          "desc": "让机器感知、学习、推理并行动，以完成可评估的目标。",
+          "summary": "先抓住：目标 + 能力 + 评估",
+          "items": ["不是某一个算法", "是方法、数据与系统的集合", "价值来自解决真实问题"]
+        },
+        {
+          "title": "这个领域有什么？",
+          "title_en": "Landscape",
+          "icon": "circles",
+          "color": "#7c3aed",
+          "desc": "从数学和计算基础，延伸到模型、系统与行业应用。",
+          "summary": "再看懂：基础 → 方法 → 应用",
+          "items": ["感知、表示、学习与推理", "语言、视觉、语音与机器人", "训练、评估、部署与治理"]
+        },
+        {
+          "title": "发生了什么？",
+          "title_en": "History",
+          "icon": "timeline",
+          "color": "#f59e0b",
+          "desc": "核心变化是知识来源：人写规则，变成机器从数据中学习。",
+          "summary": "主线：规则 → 数据 → 通用模型",
+          "items": ["符号主义让机器按规则推理", "统计与深度学习从样本归纳", "基础模型把能力迁移到多任务"]
+        },
+        {
+          "title": "将来是什么？",
+          "title_en": "Future",
+          "icon": "rocket",
+          "color": "#22c55e",
+          "desc": "AI 正从会生成内容的模型，走向能理解环境并持续完成任务的系统。",
+          "summary": "趋势：可信 + 自主 + 具身",
+          "items": ["更高效、更可靠、更易验证", "多模态、记忆、工具与 Agent", "世界模型连接机器人和现实"]
+        }
+      ]
+    },
+    {
       "kind": "timeline",
-      "title": "AI 思想发展时间线",
-      "subtitle": "里程碑 Milestones",
+      "title": "发生了什么：AI 如何一步步走到今天",
+      "subtitle": "History & Milestones",
       "color": "#4f5dd5",
       "rocket": true,
+      "phases": [
+        {
+          "start": 0,
+          "end": 2,
+          "label": "符号与知识：让机器会推理",
+          "color": "#64748b"
+        },
+        {
+          "start": 3,
+          "end": 5,
+          "label": "统计与数据：让机器会学习",
+          "color": "#22c55e"
+        },
+        {
+          "start": 6,
+          "end": 7,
+          "label": "深度与大模型：让能力可迁移",
+          "color": "#4f5dd5"
+        }
+      ],
       "milestones": [
         {
           "year": "1956",
@@ -139,8 +205,8 @@
     },
     {
       "kind": "cards",
-      "title": "一图读懂 AI 基础脉络",
-      "subtitle": "Foundation Reading Map",
+      "title": "这个领域有什么：AI 基础知识全景",
+      "subtitle": "Foundation Landscape",
       "color": "#0f6ad8",
       "columns": 4,
       "items": [
@@ -323,7 +389,29 @@
               "推理决策",
               "行动反馈"
             ]
-          }
+          },
+          "notes": [
+            {
+              "title": "表示是入口",
+              "desc": "把世界转成符号、图、向量和 Token，机器才有可计算对象。",
+              "color": "#a855f7"
+            },
+            {
+              "title": "学习是压缩",
+              "desc": "从数据中压缩规律，用参数、规则或记忆保存可泛化经验。",
+              "color": "#22c55e"
+            },
+            {
+              "title": "推理是使用",
+              "desc": "把表示和知识组合起来，完成搜索、规划、证明与决策。",
+              "color": "#f59e0b"
+            },
+            {
+              "title": "行动形成闭环",
+              "desc": "智能不止回答问题，还要在环境反馈中修正目标和策略。",
+              "color": "#ef4444"
+            }
+          ]
         },
         {
           "kind": "radial",
@@ -344,7 +432,8 @@
                 "算法与复杂性",
                 "系统/编程语言",
                 "数据库/分布式工程"
-              ]
+              ],
+              "support": "支撑：计算、系统、规模化工程"
             },
             {
               "label": "数学",
@@ -354,7 +443,8 @@
                 "线性代数",
                 "概率过程",
                 "优化/矩阵分解"
-              ]
+              ],
+              "support": "支撑：向量空间与优化目标"
             },
             {
               "label": "统计学",
@@ -364,7 +454,8 @@
                 "贝叶斯推断",
                 "泛化误差",
                 "因果推断/实验"
-              ]
+              ],
+              "support": "支撑：不确定性与泛化评估"
             },
             {
               "label": "机器学习",
@@ -374,7 +465,8 @@
                 "监督学习",
                 "无监督/表示学习",
                 "强化/自监督学习"
-              ]
+              ],
+              "support": "支撑：数据驱动能力获得"
             },
             {
               "label": "语言学",
@@ -384,7 +476,8 @@
                 "句法与语义",
                 "语用与对话",
                 "语言生成"
-              ]
+              ],
+              "support": "支撑：语言接口与语义结构"
             },
             {
               "label": "认知科学",
@@ -394,7 +487,8 @@
                 "人类认知建模",
                 "记忆与注意",
                 "学习与决策机制"
-              ]
+              ],
+              "support": "支撑：智能行为与心智机制"
             },
             {
               "label": "控制科学",
@@ -404,7 +498,8 @@
                 "系统建模",
                 "最优控制",
                 "反馈与稳定性"
-              ]
+              ],
+              "support": "支撑：目标、反馈与闭环控制"
             },
             {
               "label": "哲学",
@@ -414,7 +509,8 @@
                 "逻辑学",
                 "知识论/本体论",
                 "心智哲学"
-              ]
+              ],
+              "support": "支撑：智能定义与价值边界"
             }
           ]
         }
@@ -422,8 +518,8 @@
     },
     {
       "kind": "cards",
-      "title": "一图读懂 AI 的基础问题",
-      "subtitle": "What AI Tries to Solve",
+      "title": "AI 如何工作：判断智能系统的四个问题",
+      "subtitle": "How an AI System Works",
       "color": "#2563eb",
       "columns": 4,
       "items": [
@@ -961,10 +1057,11 @@
     },
     {
       "kind": "cards",
-      "title": "AI 主要应用领域",
-      "subtitle": "Application Domains",
+      "title": "AI 今天能做什么：主要应用领域",
+      "subtitle": "What AI Does Today",
       "color": "#22c55e",
       "columns": 4,
+      "compact_header": true,
       "items": [
         {
           "title": "自然语言处理",
@@ -1097,10 +1194,80 @@
       ]
     },
     {
+      "kind": "cards",
+      "title": "AI 将走向哪里：未来五条主线",
+      "subtitle": "Future Directions — Trends, Not a Timetable",
+      "color": "#0f766e",
+      "columns": 5,
+      "max_card_stretch": 1.08,
+      "items": [
+        {
+          "title": "能力更统一",
+          "title_en": "Multimodal",
+          "icon": "multimodal",
+          "color": "#7c3aed",
+          "desc": "同一系统联合处理文字、图像、声音、视频与动作。",
+          "summary": "从单一模态到共同表示",
+          "items": ["跨模态理解与生成", "实时交互与长上下文", "统一感知和表达接口"]
+        },
+        {
+          "title": "计算更高效",
+          "title_en": "Efficiency",
+          "icon": "bolt",
+          "color": "#0891b2",
+          "desc": "用更少算力、能耗和延迟获得可用能力。",
+          "summary": "让能力更便宜、更普及",
+          "items": ["稀疏计算与专家混合", "压缩、量化与边缘部署", "训练和推理协同优化"]
+        },
+        {
+          "title": "系统更可信",
+          "title_en": "Trustworthy",
+          "icon": "target",
+          "color": "#2563eb",
+          "desc": "能力之外，还要可评估、可监控、可解释并可追责。",
+          "summary": "可信是系统属性，不是单项分数",
+          "items": ["可靠、安全与韧性", "透明、隐私与公平", "全生命周期风险治理"]
+        },
+        {
+          "title": "任务更自主",
+          "title_en": "Agents",
+          "icon": "flow",
+          "color": "#8b5cf6",
+          "desc": "模型开始围绕目标规划步骤、调用工具并根据结果修正。",
+          "summary": "从回答问题到完成任务",
+          "items": ["长期记忆与任务规划", "工具、软件与多智能体协作", "执行反馈与权限边界"]
+        },
+        {
+          "title": "智能更具身",
+          "title_en": "Embodied",
+          "icon": "robot",
+          "color": "#9333ea",
+          "desc": "世界模型、感知和控制结合，让 AI 进入物理环境。",
+          "summary": "从数字世界走向真实世界",
+          "items": ["预测环境状态与后果", "机器人感知、规划与控制", "仿真学习向现实迁移"]
+        }
+      ]
+    },
+    {
+      "kind": "chevrons",
+      "title": "一条可能的能力融合路线",
+      "subtitle": "Possible Convergence — Not a Guaranteed AGI Timeline",
+      "color": "#4f5dd5",
+      "label_color": "#ffffff",
+      "colors": ["#2563eb", "#7c3aed", "#8b5cf6", "#0891b2", "#9333ea"],
+      "steps": [
+        {"label": "基础模型", "label_en": "Foundation Model"},
+        {"label": "多模态", "label_en": "Multimodal"},
+        {"label": "智能体", "label_en": "Agent"},
+        {"label": "世界模型", "label_en": "World Model"},
+        {"label": "具身智能", "label_en": "Embodied AI"}
+      ]
+    },
+    {
       "row": [
         {
           "kind": "list",
-          "title": "AI 基础理论支撑",
+          "title": "继续深入：AI 基础理论支撑",
           "subtitle": "Theoretical Foundations",
           "weight": 1.0,
           "color": "#3b82f6",
@@ -1146,7 +1313,7 @@
         },
         {
           "kind": "list",
-          "title": "推动 AI 发展的关键因素",
+          "title": "继续深入：推动 AI 的关键因素",
           "subtitle": "Key Enablers",
           "weight": 1.0,
           "color": "#f59e0b",
