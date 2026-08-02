@@ -150,10 +150,13 @@
           "icon": "target",
           "color": "#3b82f6",
           "node": "turing",
+          "desc": "用可测任务回答“智能是什么”。",
+          "summary": "问题：定义智能边界",
           "items": [
             "机器能否思考",
             "用任务表现定义能力",
-            "从图灵测试到现代评测"
+            "从图灵测试到现代评测",
+            "能力、泛化与鲁棒性"
           ]
         },
         {
@@ -162,10 +165,13 @@
           "icon": "flow",
           "color": "#06b6d4",
           "node": "agent",
+          "desc": "智能体把感知、记忆、推理和行动连成闭环。",
+          "summary": "闭环：感知-决策-反馈",
           "items": [
             "感知环境形成状态",
             "学习模型并推理决策",
-            "行动后接收反馈"
+            "行动后接收反馈",
+            "根据目标持续修正"
           ]
         },
         {
@@ -174,10 +180,13 @@
           "icon": "book",
           "color": "#a855f7",
           "node": "knowledge_representation",
+          "desc": "表示决定世界如何进入计算系统。",
+          "summary": "对象：符号、图、向量",
           "items": [
             "符号、规则与本体",
             "图谱组织关系",
-            "向量嵌入连续语义"
+            "向量嵌入连续语义",
+            "Token 化连接大模型"
           ]
         },
         {
@@ -186,10 +195,13 @@
           "icon": "chart",
           "color": "#22c55e",
           "node": "learning",
+          "desc": "学习是在数据中估计可迁移的模式。",
+          "summary": "目标：泛化到新样本",
           "items": [
             "从数据估计模式",
             "用损失函数优化",
-            "在新样本上泛化"
+            "在新样本上泛化",
+            "用正则化控制过拟合"
           ]
         },
         {
@@ -198,10 +210,13 @@
           "icon": "brain",
           "color": "#f59e0b",
           "node": "reasoning",
+          "desc": "推理把表示和知识转化为可解释的问题求解。",
+          "summary": "方法：搜索、概率、因果",
           "items": [
             "搜索、规划与约束",
             "概率推断与因果",
-            "组合知识完成任务"
+            "组合知识完成任务",
+            "从证据形成结论"
           ]
         },
         {
@@ -210,10 +225,13 @@
           "icon": "gear",
           "color": "#4f5dd5",
           "node": "model_training",
+          "desc": "训练流程把数据、目标、评测和安全边界连起来。",
+          "summary": "流程：数据-训练-评测",
           "items": [
             "数据清洗与特征/嵌入",
             "训练、验证、测试分离",
-            "能力评测与安全边界"
+            "能力评测与安全边界",
+            "监控偏差、漂移与成本"
           ]
         },
         {
@@ -222,10 +240,13 @@
           "icon": "layers",
           "color": "#ef4444",
           "node": "foundation_model_paradigm",
+          "desc": "AI 范式从人工规则走向可迁移的通用模型。",
+          "summary": "演进：规则到基础模型",
           "items": [
             "规则系统到统计学习",
             "深度网络学习表示",
-            "基础模型迁移通用能力"
+            "基础模型迁移通用能力",
+            "Agent 连接工具与环境"
           ]
         },
         {
@@ -234,10 +255,13 @@
           "icon": "rocket",
           "color": "#64748b",
           "node": "industrial_adoption",
+          "desc": "系统落地要求可靠、可控、可监控、可治理。",
+          "summary": "落地：可靠性与治理",
           "items": [
             "部署监控与成本约束",
             "用户反馈驱动迭代",
-            "价值对齐与治理"
+            "价值对齐与治理",
+            "从模型能力到业务价值"
           ]
         }
       ]
@@ -534,6 +558,9 @@
               "color": "#64748b",
               "node": "symbolicism",
               "image": "images/symbolics_lisp_machine.jpg",
+              "image_focus": "center",
+              "desc": "知识由专家编码，系统按规则搜索和推理。",
+              "summary": "显式知识 + 逻辑搜索",
               "items": [
                 "形式逻辑与搜索",
                 "产生式/专家系统",
@@ -548,6 +575,9 @@
               "color": "#3b82f6",
               "node": "connectionism",
               "image": "images/backprop_neural_network.png",
+              "image_focus": "center",
+              "desc": "用网络权重学习分布式表示。",
+              "summary": "样本学习 + 权重表示",
               "items": [
                 "感知机/反向传播",
                 "分布式表示",
@@ -562,6 +592,9 @@
               "color": "#22c55e",
               "node": "statistical_learning_paradigm",
               "image": "images/svm_margin.png",
+              "image_focus": "center",
+              "desc": "以泛化误差、核方法和特征工程为核心。",
+              "summary": "统计泛化 + 特征工程",
               "items": [
                 "核方法与贝叶斯",
                 "泛化/正则化",
@@ -576,6 +609,9 @@
               "color": "#f59e0b",
               "node": "deep_learning_paradigm",
               "image": "images/alexnet_block.png",
+              "image_focus": "center",
+              "desc": "多层神经网络端到端学习表征。",
+              "summary": "端到端 + 表征学习",
               "items": [
                 "CNN/RNN/Transformer",
                 "端到端表示学习",
@@ -590,6 +626,9 @@
               "color": "#a855f7",
               "node": "foundation_model_paradigm",
               "image": "images/gpt3_fewshot_scaling.png",
+              "image_focus": "center",
+              "desc": "大规模预训练模型迁移到多任务。",
+              "summary": "预训练 + 对齐 + 工具",
               "items": [
                 "自监督预训练",
                 "提示/微调/对齐",
@@ -933,112 +972,128 @@
           "icon": "doc",
           "color": "#3b82f6",
           "node": "nlp",
-              "items": [
-                "机器翻译/摘要",
-                "信息抽取/检索",
-                "问答与对话",
-                "代码与工具调用",
-                "长文本理解"
-              ]
-            },
+          "desc": "把语言变成可检索、可生成、可执行的接口。",
+          "summary": "文本理解与生成",
+          "items": [
+            "机器翻译/摘要",
+            "信息抽取/检索",
+            "问答与对话",
+            "代码与工具调用",
+            "长文本理解"
+          ]
+        },
         {
           "title": "计算机视觉",
           "title_en": "CV",
           "icon": "target",
           "color": "#22c55e",
           "node": "computer_vision",
-              "items": [
-                "图像分类",
-                "目标检测",
-                "图像分割",
-                "OCR/文档理解",
-                "视频时空理解"
-              ]
-            },
+          "desc": "从像素中识别对象、场景、动作与空间结构。",
+          "summary": "像素到语义",
+          "items": [
+            "图像分类",
+            "目标检测",
+            "图像分割",
+            "OCR/文档理解",
+            "视频时空理解"
+          ]
+        },
         {
           "title": "语音智能",
           "title_en": "Speech",
           "icon": "speech",
           "color": "#f59e0b",
           "node": "speech_ai",
-              "items": [
-                "语音识别",
-                "语音合成",
-                "语音翻译",
-                "说话人识别",
-                "实时多轮语音交互"
-              ]
-            },
+          "desc": "让机器听懂、说出并实时处理自然语音。",
+          "summary": "声学信号到对话",
+          "items": [
+            "语音识别",
+            "语音合成",
+            "语音翻译",
+            "说话人识别",
+            "实时多轮语音交互"
+          ]
+        },
         {
           "title": "机器学习",
           "title_en": "ML",
           "icon": "chart",
           "color": "#a855f7",
           "node": "machine_learning_domain",
-              "items": [
-                "分类",
-                "回归",
-                "聚类",
-                "排序",
-                "强化学习/因果学习"
-              ]
-            },
+          "desc": "从数据中归纳模式，是现代 AI 的方法底座。",
+          "summary": "预测、排序与决策",
+          "items": [
+            "分类",
+            "回归",
+            "聚类",
+            "排序",
+            "强化学习/因果学习"
+          ]
+        },
         {
           "title": "知识图谱",
           "title_en": "KG",
           "icon": "network",
           "color": "#ef4444",
           "node": "knowledge_graph_concept",
-              "items": [
-                "实体抽取",
-                "关系抽取",
-                "知识融合",
-                "图谱推理",
-                "RAG 与问答增强"
-              ]
-            },
+          "desc": "用实体和关系组织可推理的结构化知识。",
+          "summary": "实体、关系、推理",
+          "items": [
+            "实体抽取",
+            "关系抽取",
+            "知识融合",
+            "图谱推理",
+            "RAG 与问答增强"
+          ]
+        },
         {
           "title": "机器人与自动化",
           "title_en": "Robotics",
           "icon": "robot",
           "color": "#06b6d4",
           "node": "robotics",
-              "items": [
-                "路径规划",
-                "SLAM",
-                "运动控制",
-                "智能导航",
-                "具身智能体"
-              ]
-            },
+          "desc": "把感知、规划和控制接入真实物理世界。",
+          "summary": "感知-规划-控制",
+          "items": [
+            "路径规划",
+            "SLAM",
+            "运动控制",
+            "智能导航",
+            "具身智能体"
+          ]
+        },
         {
           "title": "推荐系统",
           "title_en": "RecSys",
           "icon": "star",
           "color": "#84cc16",
           "node": "recommender_systems",
-              "items": [
-                "协同过滤",
-                "内容推荐",
-                "排序模型",
-                "召回-粗排-精排",
-                "反馈与探索"
-              ]
-            },
+          "desc": "在海量内容中预测偏好并优化匹配。",
+          "summary": "用户反馈闭环",
+          "items": [
+            "协同过滤",
+            "内容推荐",
+            "排序模型",
+            "召回-粗排-精排",
+            "反馈与探索"
+          ]
+        },
         {
           "title": "AI for Science",
           "title_en": "AI4S",
           "icon": "atom",
           "color": "#64748b",
           "node": "ai_for_science",
-              "items": [
-                "药物发现",
-                "材料设计",
-                "气候预测",
-                "蛋白质结构预测",
-                "自动化实验"
-              ]
-            }
+          "desc": "用模型加速科学发现、仿真和实验设计。",
+          "summary": "AI 加速科学发现",
+          "items": [
+            "药物发现",
+            "材料设计",
+            "气候预测",
+            "蛋白质结构预测",
+            "自动化实验"
+          ]
+        }
       ]
     },
     {

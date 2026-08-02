@@ -1443,18 +1443,21 @@ def _draw_cards_panel(panel: Panel, theme: dict[str, Any],
     card_w = (panel.width - 32 - (cols - 1) * gap) / cols
     card_h = cards_panel_card_height(items, card_w)
     rows = math.ceil(len(items) / cols) or 1
-    # D5.3 row equalization: when a row sibling stretches this panel,
-    # the card boxes grow to fill the cell and each card distributes
-    # its share of the leftover into its internal bullet pitch (or
-    # centers bullet-less content) instead of hugging the top.
+    # Keep cards visually dense. When a row sibling stretches this panel,
+    # cap card growth and center the grid instead of diluting content with
+    # huge internal line gaps.
     avail = panel.y + panel.height - 10 - (content_y + 6)
     grid_nat = rows * (card_h + gap) - gap
+    y_offset = 0.0
     if avail > grid_nat:
-        card_h = (avail - (rows - 1) * gap) / rows
+        grown_h = (avail - (rows - 1) * gap) / rows
+        card_h = min(grown_h, card_h * float(payload.get("max_card_stretch", 1.16)))
+        grid_actual = rows * (card_h + gap) - gap
+        y_offset = max(0.0, (avail - grid_actual) / 2)
     for i, card in enumerate(items):
         row, col = divmod(i, cols)
         cx = panel.x + 16 + col * (card_w + gap)
-        cy = content_y + 6 + row * (card_h + gap)
+        cy = content_y + 6 + y_offset + row * (card_h + gap)
         card_color = card.get("color", color)
         step_up = card_step_up(card, card_w)
         geo = cards_geometry(step_up)
@@ -1467,17 +1470,15 @@ def _draw_cards_panel(panel: Panel, theme: dict[str, Any],
         title_en = card.get("title_en", "")
         icon = card.get("icon", "")
         bullets = card.get("items", [])
-        # D5.3: the box may be taller than the text zone (row-sibling
-        # stretch). Cards with an image let the strip absorb it (elastic);
-        # cards with bullets spread it across the bullet pitch; bullet-
-        # less cards center their text zone vertically.
+        # The box may be taller than the text zone. Avoid spreading bullets
+        # apart dramatically; readable density beats decorative emptiness.
         bonus = 0.0
         center_off = 0.0
         if not card.get("image"):
             slack_in = max(0.0, card_h - card_text_height(card, card_w,
                                                           step_up))
             if bullets:
-                bonus = slack_in / len(bullets)
+                bonus = min(4.0, slack_in / max(len(bullets), 1))
             else:
                 center_off = slack_in / 2
         # Optional top image strip (D3): rendered only when the card has
@@ -1542,6 +1543,15 @@ def _draw_cards_panel(panel: Panel, theme: dict[str, Any],
             for j, line in enumerate(wrap_fit(desc, (card_w - 24) / 11, 3)):
                 parts.append(text(cx + 12, by + j * 15, line, 11,
                                   colors["muted"]))
+        summary = card.get("summary", "")
+        if summary:
+            sy = cy + card_h - 14
+            parts.append(f'<rect x="{fmt(cx + 10)}" y="{fmt(sy - 15)}" '
+                         f'width="{fmt(card_w - 20)}" height="20" rx="10" '
+                         f'fill="{card_color}" fill-opacity="0.08"/>')
+            parts.append(text(cx + 20, sy,
+                              fit(summary, (card_w - 40) / 9.5), 9.5,
+                              card_color, bold=True))
     return parts
 
 
@@ -2883,6 +2893,7 @@ def _draw_footer_band(panel: Panel, theme: dict[str, Any]) -> list[str]:
 
     # bottom-legend: render icon chips right-aligned
     legend_items = payload.get("legend_items", [])
+    legend_left = x + w - 22
     if legend_items:
         lx = x + w - 22
         for item in reversed(legend_items):
@@ -2906,15 +2917,22 @@ def _draw_footer_band(panel: Panel, theme: dict[str, Any]) -> list[str]:
                 parts.append(text(lx + 33, y + 48, "Legend", 8,
                                   _DARK_MUTED))
             lx -= 8
+        legend_left = lx + 8
 
     quote_zh = payload.get("quote_zh", "")
     quote_en = payload.get("quote_en", "")
-    qcx = x + 260 + (w - 260) / 2
+    quote_left = x + 260
+    quote_right = legend_left - 28 if legend_items else x + w - 260
+    if quote_right - quote_left < 480:
+        quote_left = x + 230
+        quote_right = x + w - 230
+    qcx = quote_left + (quote_right - quote_left) / 2
     if quote_zh:
         parts.append(text(qcx, y + h / 2 + (2 if quote_en else 6), quote_zh,
-                          18, _DARK_TEXT, bold=True, anchor="middle"))
+                          16 if legend_items else 18, _DARK_TEXT, bold=True,
+                          anchor="middle"))
     if quote_en:
-        en_units = (w - 300) / 10.5
+        en_units = max(20.0, (quote_right - quote_left) / 10.5)
         if text_width(quote_en, 10.5) <= en_units:
             parts.append(text(qcx, y + h / 2 + 26, quote_en, 10.5,
                               _DARK_MUTED, anchor="middle", italic=True))

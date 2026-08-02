@@ -320,7 +320,7 @@ def card_image_height(card: dict, card_w: float, card_h: float) -> float:
     strip_w = card_w - 20.0
     text_h = card_text_height(card, card_w)
     image_h = card_h - 18.0 - text_h
-    return min(max(image_h, strip_w / 2.2), strip_w / 1.6)
+    return min(max(image_h, strip_w / 1.95), strip_w / 1.28)
 
 
 def cards_panel_card_height(items: list, card_w: float) -> float:
@@ -335,8 +335,8 @@ def cards_panel_card_height(items: list, card_w: float) -> float:
         if card.get("image"):
             strip_w = card_w - 20.0
             # image_h = 0.42 * card_h and card_h = 18 + image_h + text_h.
-            image_h = 0.42 / 0.58 * (18.0 + text_h)
-            image_h = min(max(image_h, strip_w / 2.2), strip_w / 1.6)
+            image_h = 0.48 / 0.52 * (18.0 + text_h)
+            image_h = min(max(image_h, strip_w / 1.95), strip_w / 1.28)
             height = max(height, 18.0 + image_h + text_h)
         else:
             height = max(height, text_h)
