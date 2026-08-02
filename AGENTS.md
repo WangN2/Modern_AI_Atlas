@@ -34,6 +34,238 @@ Current status: **v0.1 delivered** — design system + full generator pipeline +
 
 ---
 
+## Operating Roles
+
+### Product Owner / Maintainer
+
+The repository owner is responsible for:
+
+- Final decisions
+- Visual acceptance
+- Priority management
+- Explicit approval for pushes, merges, broad rewrites, or major project-direction changes
+
+### ChatGPT Architect
+
+ChatGPT is responsible for:
+
+- Knowledge architecture
+- Technical route design
+- Poster information hierarchy
+- RFC design
+- Content review
+- Architecture review
+- Visual review
+
+### Codex Engineer
+
+Codex is responsible for:
+
+- Reading repository context before editing
+- Implementing approved RFCs and user-requested changes
+- Editing files directly
+- Running relevant commands and tests
+- Refactoring code where needed for the current task
+- Reporting completed work, changed files, generated outputs, and remaining issues
+
+Codex should implement approved designs and current user direction rather than silently redefining the project.
+
+## Source of Truth
+
+Use the following precedence order:
+
+1. The current user request
+2. Current task notes in `.ai/CURRENT_TASK.md`, if present
+3. Accepted RFCs in `rfcs/`
+4. `PROJECT_STATUS.md`
+5. Existing repository code and atlas data
+6. This `AGENTS.md`
+7. Chat history or assumptions
+
+If two documents conflict in a way that affects implementation, stop and report the conflict instead of silently choosing one.
+
+## Engineering Principles
+
+### SVG First
+
+All formal posters must use real SVG elements such as `<text>`, `<rect>`, `<path>`, `<line>`, `<circle>`, `<g>`, `<defs>`, and `<symbol>`.
+
+- Do not convert poster text into raster images.
+- Do not embed full poster screenshots inside SVG.
+- For the current iterative review workflow, prefer generating SVG first; generate PNG/PDF only when explicitly requested or needed for local visual QA.
+
+### Text Must Remain Editable
+
+Poster text must remain selectable and editable.
+
+Prefer system font stacks rather than bundling font files. Recommended stack:
+
+```css
+font-family:
+  "Inter",
+  "Noto Sans SC",
+  "Source Han Sans SC",
+  "Microsoft YaHei",
+  sans-serif;
+```
+
+Do not commit font binaries unless explicitly approved.
+
+### Data and Rendering Should Be Separated
+
+Knowledge content should not be permanently hard-coded into rendering logic.
+
+Preferred long-term flow:
+
+```text
+Markdown / YAML / JSON
+        ↓
+Structured knowledge
+        ↓
+Layout
+        ↓
+SVG rendering
+        ↓
+PNG / PDF export
+```
+
+Limited template-specific rendering is acceptable, but keep content in atlas/spec data whenever practical.
+
+### Accuracy Before Decoration
+
+Technical correctness is more important than visual complexity.
+
+- Do not invent technical facts, dates, or unsupported model relationships.
+- Do not create unsupported inheritance relationships.
+- When current information is needed, verify against primary sources.
+
+Relation semantics in this repository use:
+
+- `inherits`: direct technical lineage / 直接继承
+- `converges`: influence, convergence, or strongly inspired route / 趋同或受启发
+- `composes`: combination or application of multiple architectures or paradigms / 组合或应用
+
+ChatGPT design drafts may use the terms `inheritance`, `influence`, `combination`, `parallel`, or `application`; map them carefully onto the implemented relation vocabulary instead of adding incompatible relation names casually.
+
+### Avoid False Lineage
+
+Examples:
+
+- V-JEPA and Cosmos are parallel world-model routes, not a direct lineage.
+- ViT and Swin are related but should not automatically be represented as a simple parent-child chain.
+- CLIP combines visual and textual encoders with contrastive learning; it is not merely a direct child of ViT.
+- RLHF is an application of reinforcement learning in alignment, not the universal successor of reinforcement learning.
+
+### Reproducibility
+
+Generated files must be reproducible from committed source code.
+
+Never manually edit generated output without also updating its source.
+
+### Small, Reviewable Changes
+
+Do not rewrite unrelated files. Keep each task scoped to the current request or RFC.
+
+Before finishing substantial work:
+
+- Run available tests or a focused smoke check.
+- Run formatters or linters if configured.
+- Generate a preview artifact when applicable.
+- Report exact files changed and known limitations.
+
+## Design System Guardrails
+
+### Domain Colors
+
+| Domain | Color |
+|---|---|
+| AI Foundations | `#64748B` |
+| Transformer / LLM | `#2563EB` |
+| Computer Vision | `#16A34A` |
+| Generative AI | `#EA580C` |
+| Reinforcement Learning | `#DC2626` |
+| Multimodal AI | `#7C3AED` |
+| World Models | `#0891B2` |
+| Embodied AI | `#9333EA` |
+| Autonomous Driving | `#D97706` |
+| AI Agents | `#8B5CF6` |
+| AI Systems | `#0F766E` |
+| Towards AGI | `#1D4ED8` |
+
+### Visual Style
+
+- Clean technical infographic
+- High contrast
+- Rounded rectangular cards
+- Clear hierarchy
+- Consistent spacing
+- Minimal decorative noise
+- No fake UI elements
+- No unreadably small text
+- No excessive shadows
+- No random gradients
+
+### Line Semantics
+
+- Solid line: direct evolution or primary flow
+- Dashed line: influence or convergence
+- Dotted line: combination or optional connection
+- Bidirectional line: feedback loop
+
+### Poster Formats
+
+Do not assume that every volume must use the same orientation.
+
+- Portrait reference: 9:16 / 2:3 narrative posters depending on source art and content density.
+- Landscape reference: 16:9 / 3:2 knowledge maps for volumes that need broad technical maps.
+- Current generated canvases use the repository constants and each volume's `meta.canvas`; do not hard-code ChatGPT draft dimensions unless the active spec requires them.
+
+## Required Codex Workflow
+
+Before making substantial changes:
+
+1. Read this `AGENTS.md`.
+2. Read `PROJECT_STATUS.md` if the task affects milestones.
+3. Read `.ai/CURRENT_TASK.md` if it exists.
+4. Read the RFC or `docs/specs/` file referenced by the current task.
+5. Inspect the existing repository.
+6. Summarize the intended implementation briefly.
+7. Implement only after the relevant context is understood.
+
+After making changes:
+
+1. Run relevant tests and build commands.
+2. Generate a preview artifact when applicable.
+3. Update `PROJECT_STATUS.md` only if the task requests it.
+4. Report files changed, commands run, test results, output paths, known limitations, and a recommended next step when useful.
+
+## Prohibited Actions
+
+Codex must not:
+
+- Delete existing poster content without explicit instruction.
+- Redesign all 13/14 volumes in one task.
+- Commit font binaries.
+- Invent technical facts or dates.
+- Silently replace Chinese content with English.
+- Create unsupported model lineage.
+- Embed low-resolution generated posters as final deliverables.
+- Change accepted RFCs while implementing them unless explicitly requested.
+- Push or merge unless explicitly requested.
+
+## Completion Standard
+
+A task is complete only when:
+
+- The requested files exist.
+- The project still runs.
+- The result follows the accepted RFC/spec or the current user instruction.
+- Output can be reproduced.
+- The implementation has been tested or the unrun tests are clearly documented.
+- Limitations are clearly documented.
+
+---
+
 ## Technology Stack
 
 - **Language**: Python 3.12+
@@ -68,12 +300,15 @@ Modern_AI_Atlas/
 │   │   └── volumes/           # 14 GPT-generated reference posters + series overview (read-only)
 │   └── themes/
 │       ├── default.json       # Original light theme (superseded)
-│       ├── empire_dark.json   # Dark theme (NVIDIA GTC style; Vol.01, 02)
-│       └── atlas_light.json   # Light "Modern AI Atlas" series theme (Vol.01b, 03-13)
+│       ├── empire_dark.json   # Legacy dark theme (NVIDIA GTC style)
+│       ├── atlas_light.json   # Light "Modern AI Atlas" series theme (Vol.01b, 03-13)
+│       ├── chronicle_reference.json   # Vol.01 image-rich chronicle theme
+│       ├── foundations_reference.json # Vol.01B light foundations theme
+│       └── transformer_reference.json # Vol.02 landscape Transformer theme
 ├── atlas/                     # Atlas volume definitions (14 volumes; each has knowledge_graph.json)
 │   ├── vol01_ai_evolution/    # Vol.01 AI 编年史: bands, dark, portrait; images/ with 36 card photos
 │   ├── vol01b_foundations_of_ai/  # Vol.01b 基础脉络: bands, light, portrait
-│   ├── vol02_transformer_empire/  # Vol.02: panels template, dark, portrait
+│   ├── vol02_transformer_empire/  # Vol.02: bands template, dark, landscape Transformer map
 │   ├── vol03_llm_era/         # Vol.03 LLM 时代: bands, light, LANDSCAPE
 │   ├── vol04_multimodal_ai/   # Vol.04 多模态 AI: bands, light, portrait
 │   ├── vol05_generative_ai/
@@ -211,7 +446,10 @@ The knowledge file's `meta` section selects the poster template and theme:
 - `meta.layout`: `"panels"` (default; Vol.02 panel-template grid) or
   `"bands"` (generic stacked band sections — see `generator/layout/bands.py`)
 - `meta.theme`: theme name under `assets/themes/` (default `empire_dark`;
-  `atlas_light` is the light series theme for Vol.01b/03-13)
+  `atlas_light` is the light series theme for Vol.03-13, while
+  `chronicle_reference`, `foundations_reference`, and
+  `transformer_reference` are the current Vol.01/Vol.01B/Vol.02 specialty
+  themes)
 - `meta.canvas`: `{width, height, margin, gap}` — portrait 2:3 volumes use
   1682×2524; landscape 3:2 volumes (Vol.03, 10-13) use 2524×1682
   (`constants.CANVAS_WIDTH_LANDSCAPE` / `CANVAS_HEIGHT_LANDSCAPE`). The
@@ -229,11 +467,10 @@ The knowledge file's `meta` section selects the poster template and theme:
   confined to the atlas directory (absolute paths and `..` are rejected).
 
 Running the CLI against `atlas/vol02_transformer_empire` produces
-`export/vol02_transformer_empire.{svg,pdf,png}` — a portrait poster
-(1682×2650 viewBox, 841×1325 mm) in the dark "empire_dark" theme, matching
-the design mockup at `assets/reference/vol02_mockup.png`. Running it against
+`export/vol02_transformer_empire.{svg,pdf,png}` — currently a landscape
+Transformer knowledge map in the dark `transformer_reference` theme. Running it against
 `atlas/vol01_ai_evolution` produces the Vol.01 AI 编年史 poster (bands
-template, dark theme, 6 numbered era bands + mainline timeline + NEXT
+template, `chronicle_reference` theme, 6 numbered era bands + mainline timeline + NEXT
 teaser), matching `assets/reference/volumes/0.AI编年史.png`.
 
 ### Design References
