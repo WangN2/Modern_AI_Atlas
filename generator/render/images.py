@@ -12,8 +12,8 @@ Card schema (both keys optional):
     image        relative path to a jpg/png/webp file inside the atlas dir;
                  when present it replaces the line schematic in the card's
                  mini-diagram area (the schematic stays as fallback)
-    image_focus  "top" | "center" | "bottom" — vertical anchor of the
-                 slice-crop (preserveAspectRatio xMidYMin/Mid/Max slice)
+    image_focus  "top" | "center" | "bottom" — vertical alignment anchor
+    image_fit    "cover" (crop) or "contain" (show the complete figure)
 
 Paths are confined to the atlas volume directory: absolute paths and
 ``..`` segments are rejected, and resolved paths must stay inside it.
@@ -43,6 +43,15 @@ _FOCUS_PAR = {
     "top": "xMidYMin slice",
     "center": "xMidYMid slice",
     "bottom": "xMidYMax slice",
+}
+
+_FIT_PAR = {
+    "cover": _FOCUS_PAR,
+    "contain": {
+        "top": "xMidYMin meet",
+        "center": "xMidYMid meet",
+        "bottom": "xMidYMax meet",
+    },
 }
 
 
@@ -163,22 +172,25 @@ class ImageEmbedder:
         return embedded
 
     def svg_image(self, rel_path: str, x: float, y: float, w: float, h: float,
-                  *, focus: str = "center", radius: float = 6.0) -> list[str] | None:
-        """Render one image letterbox-cropped to the box, corners rounded.
+                  *, focus: str = "center", fit: str = "cover",
+                  radius: float = 6.0) -> list[str] | None:
+        """Render one image in the requested fit mode with rounded corners.
 
-        The image fills the ``w x h`` box while preserving aspect ratio
-        (``preserveAspectRatio ... slice``); ``focus`` picks the vertical
-        anchor of the crop. Returns ``None`` when the image cannot be
-        embedded, so the caller can fall back to the line schematic.
+        ``cover`` fills and crops the box; ``contain`` preserves the complete
+        figure. ``focus`` picks the vertical anchor. Returns ``None`` when the
+        image cannot be embedded, so the caller can use a schematic fallback.
         """
         image = self.embed(rel_path)
         if image is None:
             return None
-        if image.width and image.width < w:
+        # A small browser-scale interpolation is harmless; warn only when the
+        # source is materially smaller than its rendered box.
+        if image.width and image.width < w * 0.8:
             logger.warning("Card image %s is %dpx wide but renders at %.0fpx; "
                            "it will look soft", rel_path, image.width, w)
         clip_id = f"card-img-clip-{next(self._clip_ids)}"
-        par = _FOCUS_PAR.get(focus, _FOCUS_PAR["center"])
+        fit_options = _FIT_PAR.get(fit, _FIT_PAR["cover"])
+        par = fit_options.get(focus, fit_options["center"])
         return [
             f'<clipPath id="{clip_id}">'
             f'<rect x="{fmt(x)}" y="{fmt(y)}" width="{fmt(w)}" '

@@ -62,6 +62,37 @@ VOL01B_BEGINNER_MARKERS = (
     "Trends, Not a Timetable",
 )
 
+VOL02_FLAGSHIP_MARKERS = (
+    "十年四幕",
+    "旧世界的瓶颈，如何被击穿",
+    "一条信息如何穿过 Transformer",
+    "三类核心架构",
+    "理解边界：Transformer 不是什么",
+    "Attention(Q,K,V)",
+    "三个具体例子：它到底怎样工作",
+    "Long Context 与外部记忆",
+    "关键奠基论文",
+    "Encoder 王国",
+    "Decoder 王国",
+    "Encoder-Decoder 王国",
+    "Vision 视觉疆域",
+    "Diffusion 生成疆域",
+    "Multimodal 多模态疆域",
+    "World / Agent 物理疆域",
+    "MQA / GQA",
+    "RoPE",
+    "FlashAttention",
+    "KV Cache",
+    "MoE",
+    "SFT",
+    "RLHF",
+    "DeepSeek-R1",
+    "Qwen3",
+    "GPT-4.1",
+    "Gemini 2.5",
+    "Cosmos 3",
+)
+
 EXPORT_FORMATS = ("svg", "pdf", "png")
 
 
@@ -180,6 +211,18 @@ def _check_volume(volume: str, expected: dict[str, Any]) -> None:
     if volume == "vol01b_foundations_of_ai":
         for marker in VOL01B_BEGINNER_MARKERS:
             assert marker in visible_svg, (volume, marker)
+    if volume == "vol02_transformer_empire":
+        for marker in VOL02_FLAGSHIP_MARKERS:
+            assert marker in visible_svg, (volume, marker)
+        edge_keys = {
+            (edge.source, edge.target, edge.relation)
+            for edge in knowledge_graph.edges
+        }
+        assert ("vla", "openvla", "composes") in edge_keys
+        assert ("qwen_vl", "openvla", "composes") not in edge_keys
+        assert ("llava", "gpt4o", "converges") not in edge_keys
+        assert ("llava", "gemini", "converges") not in edge_keys
+        assert svg.count("<image ") >= 4, "Vol.02 must embed four source figures"
 
     pdf_head = pdf_path.read_bytes()[:5]
     assert pdf_head == b"%PDF-", f"{pdf_path} is not a PDF"

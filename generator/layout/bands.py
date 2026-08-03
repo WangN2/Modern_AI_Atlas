@@ -133,6 +133,10 @@ def _kind_height(section: dict[str, Any], canvas: dict[str, Any],
         return header + rows * row_h + (36 if section.get("summary") else 0) + 14
     if kind == "cards":
         items = section.get("items", [])
+        if section.get("large_text"):
+            items = [({**item, "large_text": True}
+                      if isinstance(item, dict) else item)
+                     for item in items]
         cols = max(int(section.get("columns", 3)), 1)
         card_w = (width - 32 - (cols - 1) * 10) / cols
         card_h = cards_panel_card_height(items, card_w)
@@ -151,8 +155,18 @@ def _kind_height(section: dict[str, Any], canvas: dict[str, Any],
         # a single chevron row tall.
         return header + 76.0
     if kind == "timeline":
+        if section.get("narrative"):
+            return header + (196 if section.get("phases") else 164)
         return header + 164 if section.get("phases") else header + 132
+    if kind == "transformer_nexus":
+        return 520.0
+    if kind == "transformer_expansion":
+        return 560.0
+    if kind == "transformer_empire_map":
+        return 1612.0
     if kind == "fusion":
+        return header + 150
+    if kind == "examples":
         return header + 150
     if kind == "family":
         compact = bool(section.get("compact"))
@@ -173,7 +187,7 @@ def _kind_height(section: dict[str, Any], canvas: dict[str, Any],
         footer_h = 26 * len(footer) + 14 if footer else 10
         return header + diagram + rows + footer_h
     if kind == "hero":
-        return 64 + 196 + 76
+        return 326.0 if section.get("compact") else 64 + 196 + 76
     if kind == "papers":
         return header + len(section.get("papers", [])) * 68 + 10
     if kind == "industry":
@@ -274,7 +288,26 @@ def compute_bands(
                     + gap * max(len(members) - 1, 0))
         return _kind_height(cell, canvas, cw)
 
-    for item in extras.get("sections", []):
+    section_items = extras.get("sections", [])
+    if meta.get("composition") == "transformer_empire_map":
+        section_items = [{
+            "kind": "transformer_empire_map",
+            "color": "#3157c8",
+            "map": extras.get("empire_map", {}),
+            "source_sections": section_items,
+            "graph_nodes": [
+                {"id": node.id, "label": node.label, "year": node.year,
+                 "kind": node.kind, "summary": node.summary}
+                for node in graph.nodes
+            ],
+            "graph_edges": [
+                {"source": edge.source, "target": edge.target,
+                 "relation": edge.relation}
+                for edge in graph.edges
+            ],
+        }]
+
+    for item in section_items:
         if "row" in item or "stack" in item:
             cells = item.get("row", [item])
             if not cells:

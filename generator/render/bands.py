@@ -46,6 +46,7 @@ from generator.render.helpers import (
     card_bullet_layout,
     card_bullet_pitch,
     card_image_height,
+    card_side_image_width,
     card_step_up,
     card_text_height,
     card_title_layout,
@@ -519,7 +520,7 @@ def _draw_legend(panel: Panel, theme: dict[str, Any]) -> list[str]:
     """
     colors = theme["colors"]
     canvas = theme["canvas"]
-    x, y = panel.x, panel.y
+    x, y, w = panel.x, panel.y, panel.width
     cy = y + panel.height / 2 + 5
     legend_fill = canvas.get("legend_fill")
     text_fill = colors.get("legend_text", colors["text"]) if legend_fill else colors["text"]
@@ -529,30 +530,41 @@ def _draw_legend(panel: Panel, theme: dict[str, Any]) -> list[str]:
     if legend_fill:
         parts.append(_frame(panel, theme, fill=legend_fill,
                             stroke=canvas.get("legend_stroke"), shadow=False))
-    label_x = x + (12 if legend_fill else 0)
-    parts.append(text(label_x, cy, "图例:", 18, title_fill, bold=True))
-    cx = x + (82 if legend_fill else 70)
+    label_x = x + (16 if legend_fill else 0)
+    parts.append(text(label_x, cy, "阅读图例", 17, title_fill, bold=True))
     items = panel.payload.get("items", [])
     if isinstance(items, dict):
-        for cat in items.get("categories", []):
+        categories = items.get("categories", [])
+        edges = items.get("edges", [])
+        category_x = x + 126
+        category_end = x + w * 0.49
+        category_slot = ((category_end - category_x) / len(categories)
+                         if categories else 0)
+        for i, cat in enumerate(categories):
+            cx = category_x + i * category_slot
             color = cat.get("color", colors["accent"])
             parts.append(f'<rect x="{fmt(cx)}" y="{fmt(cy - 17)}" width="14" '
                          f'height="14" rx="3" fill="{color}"/>')
             label = cat.get("label", "")
-            parts.append(text(cx + 20, cy, label, 15, text_fill))
-            cx += 20 + text_width(label, 15) + 26
-        cx += 12
-        for style in items.get("edges", []):
+            parts.append(text(cx + 20, cy, fit(label, category_slot / 13),
+                              13, text_fill, bold=True))
+        relation_x = x + w * 0.51
+        relation_end = x + w - 18
+        relation_slot = ((relation_end - relation_x) / len(edges)
+                         if edges else 0)
+        for i, style in enumerate(edges):
+            cx = relation_x + i * relation_slot
             dash = (f' stroke-dasharray="{style["dash"]}"'
                     if style.get("dash") else "")
             width = 4 if style.get("double") else 2
             parts.append(f'<line x1="{fmt(cx)}" y1="{fmt(cy - 10)}" '
-                         f'x2="{fmt(cx + 44)}" y2="{fmt(cy - 10)}" '
+                         f'x2="{fmt(cx + 34)}" y2="{fmt(cy - 10)}" '
                          f'stroke="{muted_fill}" stroke-width="{width}"'
                          f'{dash}/>')
             label = style.get("label", "")
-            parts.append(text(cx + 52, cy, label, 13, muted_fill))
-            cx += 52 + text_width(label, 13) + 22
+            parts.append(text(cx + 42, cy,
+                              fit(label, (relation_slot - 46) / 12),
+                              12, muted_fill, bold=True))
         return parts
     for item in items:
         color = item.get("color", colors["accent"])
@@ -684,38 +696,92 @@ def _draw_header(panel: Panel, theme: dict[str, Any]) -> list[str]:
         parts += _chip(vx, y + 6, text_width(volume, 13) + 24, 26, volume,
                        fill=chip_fill, text_fill=chip_text, size=13)
 
-    # 2. zh title + en subtitle -----------------------------------------------
+    # 2. title hierarchy -------------------------------------------------------
     title_zh = meta.get("title_zh", "")
     title_size = float(theme.get("typography", {}).get("header_title_size", 46.0))
     title_x = x + (12 if header_fill else 0)
-    parts.append(text(title_x, y + 82, title_zh, title_size, title_fill,
-                      bold=True))
-    sub = meta.get("title_sub", "")
-    if sub:
-        parts.append(text(title_x + text_width(title_zh, title_size) + 24, y + 78,
-                          sub, 24, bright, bold=True))
     title_en = meta.get("title_en", "")
-    if title_en:
-        subtitle_size = float(theme.get("typography", {}).get("header_subtitle_size", 19.0))
-        parts.append(text(title_x, y + 116, title_en, subtitle_size, muted_fill))
+    en_main = meta.get("title_style") == "en_main"
+    if en_main:
+        main_title = title_en or title_zh
+        # The series line owns the first 30 units. Keep the display title in
+        # a separate baseline zone so tall Latin capitals never collide with
+        # the series label above it.
+        title_size = min(title_size, 60.0)
+        parts.append(text(title_x, y + 91, main_title, title_size, title_fill,
+                          bold=True))
+        if title_zh:
+            parts.append(text(title_x, y + 121, title_zh, 25, bright,
+                              bold=True))
+        era = meta.get("era", "")
+        if era:
+            era_x = title_x + text_width(series, 17) + 108
+            parts += _chip(era_x, y + 6, text_width(era, 13) + 26, 26, era,
+                           fill=bright,
+                           text_fill=colors.get("header_chip_text", "#071226"),
+                           size=13, bold=True)
+        route = meta.get("header_route", [])
+        if route:
+            route_x = x + w * 0.43
+            route_w = w * 0.34
+            route_gap = 10.0
+            route_items = route[:4]
+            route_chip_w = (
+                route_w - route_gap * (len(route_items) - 1)
+            ) / max(len(route_items), 1)
+            parts.append(text(route_x, y + 43,
+                              "ONE ARCHITECTURE · MANY DOMAINS",
+                              11, muted_fill, bold=True, spacing=1.4))
+            for i, item in enumerate(route_items):
+                if isinstance(item, str):
+                    item = {"label": item}
+                chip_x = route_x + i * (route_chip_w + route_gap)
+                route_color = item.get("color", bright)
+                parts += _chip(chip_x, y + 56, route_chip_w, 30,
+                               item.get("label", ""), fill=route_color,
+                               text_fill="#ffffff", size=11.5, bold=True)
+                if i < len(route_items) - 1:
+                    parts.append(
+                        f'<line x1="{fmt(chip_x + route_chip_w + 2)}" '
+                        f'y1="{fmt(y + 71)}" '
+                        f'x2="{fmt(chip_x + route_chip_w + route_gap - 2)}" '
+                        f'y2="{fmt(y + 71)}" stroke="{muted_fill}" '
+                        f'stroke-width="1.2" marker-end="url(#arrowhead)"/>'
+                    )
+    else:
+        parts.append(text(title_x, y + 82, title_zh, title_size, title_fill,
+                          bold=True))
+        sub = meta.get("title_sub", "")
+        if sub:
+            parts.append(text(title_x + text_width(title_zh, title_size) + 24,
+                              y + 78, sub, 24, bright, bold=True))
+        if title_en:
+            subtitle_size = float(theme.get("typography", {}).get(
+                "header_subtitle_size", 19.0))
+            parts.append(text(title_x, y + 116, title_en, subtitle_size,
+                              muted_fill))
 
     # 3. tagline / banner ribbon ------------------------------------------------
     tagline = meta.get("tagline", "") or meta.get("banner", "")
     if tagline:
-        ribbon_h = 24.0
-        ribbon_y = y + (118 if header_fill else 124)
-        # Colored ribbon band extending across most of the panel width
-        ribbon_color = panel.color or colors["accent"]
-        parts.append(
-            f'<rect x="{fmt(title_x)}" y="{fmt(ribbon_y)}" '
-            f'width="{fmt(w - (24 if header_fill else 0))}" '
-            f'height="{fmt(ribbon_h)}" rx="6" '
-            f'fill="{ribbon_color}" fill-opacity="0.12"/>')
-        parts.append(
-            f'<rect x="{fmt(title_x)}" y="{fmt(ribbon_y)}" width="6" '
-            f'height="{fmt(ribbon_h)}" rx="3" fill="{ribbon_color}"/>')
-        parts.append(text(title_x + 18, ribbon_y + ribbon_h / 2 + 5, tagline, 13,
-                          ribbon_color, bold=True))
+        if en_main:
+            parts.append(text(title_x, y + 143, tagline, 12.5, muted_fill,
+                              bold=True))
+        else:
+            ribbon_h = 24.0
+            ribbon_y = y + (118 if header_fill else 124)
+            # Colored ribbon band extending across most of the panel width
+            ribbon_color = panel.color or colors["accent"]
+            parts.append(
+                f'<rect x="{fmt(title_x)}" y="{fmt(ribbon_y)}" '
+                f'width="{fmt(w - (24 if header_fill else 0))}" '
+                f'height="{fmt(ribbon_h)}" rx="6" '
+                f'fill="{ribbon_color}" fill-opacity="0.12"/>')
+            parts.append(
+                f'<rect x="{fmt(title_x)}" y="{fmt(ribbon_y)}" width="6" '
+                f'height="{fmt(ribbon_h)}" rx="3" fill="{ribbon_color}"/>')
+            parts.append(text(title_x + 18, ribbon_y + ribbon_h / 2 + 5,
+                              tagline, 13, ribbon_color, bold=True))
 
     # 4. right quote block / compact concept map ------------------------------
     quote = meta.get("quote", "") or meta.get("callout", "")
@@ -727,7 +793,7 @@ def _draw_header(panel: Panel, theme: dict[str, Any]) -> list[str]:
     elif quote:
         parts += _quote_block(x + w - (12 if header_fill else 0), y + 26, quote,
                               meta.get("quote_by", ""), theme,
-                              width_units=22)
+                              width_units=30 if en_main else 22)
     return parts
 
 
@@ -1373,6 +1439,7 @@ def _draw_list(panel: Panel, theme: dict[str, Any]) -> list[str]:
     # center the items vertically above any remainder (the summary line
     # stays bottom-anchored).
     summary = payload.get("summary", "")
+    large_text = bool(payload.get("large_text"))
     reserve = 36 if summary else 14
     panel_bottom = panel.y + panel.height - reserve
     slack = panel_bottom - (content_y + 10 + per_col * row_h)
@@ -1396,12 +1463,15 @@ def _draw_list(panel: Panel, theme: dict[str, Any]) -> list[str]:
             parts.append(f'<circle cx="{fmt(ix + 8)}" cy="{fmt(iy + 2)}" '
                          f'r="5" fill="{color}"/>')
         title_lines, title_size, desc_lines = list_item_layout(item, col_w)
+        if large_text:
+            title_size = max(title_size, 16.5)
         for j, line in enumerate(title_lines):
             parts += _text_rich(ix + 28, iy + 8 + j * 17, line, title_size,
                                 colors["title"], bold=True)
         desc_y = iy + 8 + 17 * (len(title_lines) - 1) + 20
         for j, line in enumerate(desc_lines):
-            parts += _text_rich(ix + 28, desc_y + j * 15, line, 11.5,
+            parts += _text_rich(ix + 28, desc_y + j * 15, line,
+                                12.5 if large_text else 11.5,
                                 colors["muted"])
     if summary:
         sy = panel.y + panel.height - 18
@@ -1462,6 +1532,8 @@ def _draw_cards_panel(panel: Panel, theme: dict[str, Any],
         cx = panel.x + 16 + col * (card_w + gap)
         cy = content_y + 6 + y_offset + row * (card_h + gap)
         card_color = card.get("color", color)
+        if payload.get("large_text") and isinstance(card, dict):
+            card = {**card, "large_text": True}
         step_up = card_step_up(card, card_w)
         geo = cards_geometry(step_up)
         # Neutral border (S5): accent lives in the icon/bullets only, so a
@@ -1484,29 +1556,51 @@ def _draw_cards_panel(panel: Panel, theme: dict[str, Any],
                 bonus = min(4.0, slack_in / max(len(bullets), 1))
             else:
                 center_off = slack_in / 2
-        # Optional top image strip (D3): rendered only when the card has
-        # an "image" key — no placeholder hole otherwise.
+        # Optional figure: either a top strip or a compact right-hand column.
         text_top = cy + center_off
+        text_card_w = card_w
         if card.get("image"):
-            strip_w = card_w - 20
-            image_h = card_image_height(card, card_w, card_h)
-            drawn = (images.svg_image(card["image"], cx + 10, cy + 10,
+            side_image = card.get("image_layout") == "side"
+            if side_image:
+                strip_w = card_side_image_width(card_w)
+                image_x = cx + card_w - strip_w - 10
+                image_y = cy + 10
+                image_h = max(80.0, card_h - 48.0)
+                text_card_w = card_w - strip_w - 22.0
+            else:
+                strip_w = card_w - 20
+                image_x = cx + 10
+                image_y = cy + 10
+                image_h = card_image_height(card, card_w, card_h)
+            drawn = (images.svg_image(card["image"], image_x, image_y,
                                       strip_w, image_h,
                                       focus=card.get("image_focus", "center"),
+                                      fit=card.get("image_fit", "cover"),
                                       radius=6)
                      if images is not None else None)
             if drawn is not None:
                 parts += drawn
                 if icon:
-                    # 20-unit badge overlapping the strip's bottom-left.
-                    bcx, bcy = cx + 24, cy + 10 + image_h
+                    # A compact badge ties the source figure to its domain.
+                    bcx = image_x + 14
+                    bcy = image_y + image_h if not side_image else image_y + 14
                     parts.append(f'<circle cx="{fmt(bcx)}" cy="{fmt(bcy)}" '
                                  f'r="10" fill="{card_color}" '
                                  f'stroke="{canvas["card_fill"]}" '
                                  f'stroke-width="2"/>')
                     parts += _icon(icon, bcx, bcy, 6,
                                    colors.get("chip_text", "#ffffff"))
-                text_top = cy + 18 + image_h
+                if not side_image:
+                    text_top = cy + 18 + image_h
+                source = card.get("image_source", "")
+                if source:
+                    source_y = image_y + image_h - 18
+                    parts.append(f'<rect x="{fmt(image_x)}" y="{fmt(source_y)}" '
+                                 f'width="{fmt(strip_w)}" height="18" '
+                                 f'fill="#ffffff" fill-opacity="0.88"/>')
+                    parts.append(text(image_x + 6, source_y + 13,
+                                      fit(source, (strip_w - 12) / 9),
+                                      9, colors["muted"], bold=True))
                 icon = ""  # icon already drawn as the strip badge
         tx = cx + 12
         if icon:
@@ -1514,7 +1608,7 @@ def _draw_cards_panel(panel: Panel, theme: dict[str, Any],
             icon_s = 14.0 if len(bullets) <= 2 else 10.0
             parts += _icon(icon, cx + 18, text_top + 20, icon_s, card_color)
             tx = cx + 36
-        title_lines, title_size = card_title_layout(card, card_w, tx - cx,
+        title_lines, title_size = card_title_layout(card, text_card_w, tx - cx,
                                                     step_up)
         title_fill = card_color if _is_dark(theme) else colors["title"]
         for j, line in enumerate(title_lines):
@@ -1530,20 +1624,35 @@ def _draw_cards_panel(panel: Panel, theme: dict[str, Any],
               + geo["title_pitch"] * (len(title_lines) - 1))
         desc = card.get("desc", "")
         if desc and bullets:
-            parts.append(text(cx + 12, by, fit(desc, (card_w - 24) / 10.5),
-                              10.5, colors["muted"]))
+            desc_size = 12.0 if payload.get("large_text") else 10.5
+            parts.append(text(cx + 12, by,
+                              fit(desc, (text_card_w - 24) / desc_size),
+                              desc_size, colors["muted"]))
             by += geo["desc_row"]
-        for bullet in bullets:
-            lines, size = card_bullet_layout(str(bullet), card_w, step_up)
-            pitch = card_bullet_pitch(size)
-            parts.append(f'<circle cx="{fmt(cx + 16)}" cy="{fmt(by - 4)}" '
-                         f'r="3" fill="{card_color}"/>')
-            for j, line in enumerate(lines):
-                parts.append(text(cx + 26, by + j * pitch, line, size,
-                                  colors["text"]))
-            by += pitch * (len(lines) - 1) + geo["bullet_row"] + bonus
+        bullet_cols = max(int(card.get("bullet_columns", 1)), 1)
+        bullet_gap = 14.0
+        bullet_w = ((text_card_w - 24.0 - bullet_gap * (bullet_cols - 1)) /
+                    bullet_cols)
+        for row_start in range(0, len(bullets), bullet_cols):
+            row_h = 0.0
+            for bullet_col, bullet in enumerate(
+                    bullets[row_start:row_start + bullet_cols]):
+                bx = cx + bullet_col * (bullet_w + bullet_gap)
+                lines, size = card_bullet_layout(str(bullet), bullet_w,
+                                                 step_up)
+                pitch = card_bullet_pitch(size)
+                parts.append(f'<circle cx="{fmt(bx + 16)}" '
+                             f'cy="{fmt(by - 4)}" r="3" '
+                             f'fill="{card_color}"/>')
+                for j, line in enumerate(lines):
+                    parts.append(text(bx + 26, by + j * pitch, line, size,
+                                      colors["text"]))
+                row_h = max(row_h, pitch * (len(lines) - 1)
+                            + geo["bullet_row"] + bonus)
+            by += row_h
         if desc and not bullets:
-            for j, line in enumerate(wrap_fit(desc, (card_w - 24) / 11, 3)):
+            for j, line in enumerate(wrap_fit(
+                    desc, (text_card_w - 24) / 11, 3)):
                 parts.append(text(cx + 12, by + j * 15, line, 11,
                                   colors["muted"]))
         summary = card.get("summary", "")
@@ -1785,7 +1894,9 @@ def _draw_timeline(panel: Panel, theme: dict[str, Any]) -> list[str]:
     rocket_w = 90.0 if payload.get("rocket") else 0.0
     x0, x1 = panel.x + 24, panel.x + panel.width - 24 - rocket_w
     phases = payload.get("phases", [])
-    y_line = content_y + 90
+    narrative = bool(payload.get("narrative"))
+    card_h = 106.0 if narrative else 78.0
+    y_line = content_y + (120 if narrative else 90)
     parts.append(f'<line x1="{fmt(x0)}" y1="{fmt(y_line)}" x2="{fmt(x1)}" '
                  f'y2="{fmt(y_line)}" stroke="{color}" stroke-width="2.5"/>')
     step = (x1 - x0) / len(milestones)
@@ -1799,7 +1910,7 @@ def _draw_timeline(panel: Panel, theme: dict[str, Any]) -> list[str]:
         card_x = mx - card_w / 2
         card_top = content_y + 2
         parts.append(f'<rect x="{fmt(card_x)}" y="{fmt(card_top)}" '
-                     f'width="{fmt(card_w)}" height="78" rx="8" '
+                     f'width="{fmt(card_w)}" height="{fmt(card_h)}" rx="8" '
                      f'fill="{canvas["card_fill"]}" '
                      f'stroke="{canvas["card_stroke"]}" stroke-width="1"/>')
         year = str(milestone.get("year", ""))
@@ -1808,11 +1919,27 @@ def _draw_timeline(panel: Panel, theme: dict[str, Any]) -> list[str]:
                        fill=m_color, size=10.5)
         # Long titles wrap to a second line (tighter pitch, desc drops to
         # one line) instead of being silently cut at the first line.
-        title_lines = wrap(milestone.get("title", ""), (card_w - 14) / 12)
+        title_size = 14.0 if narrative else 12.0
+        desc_size = 12.0 if narrative else 10.5
+        title_lines = wrap(milestone.get("title", ""),
+                           (card_w - 14) / title_size)
         desc_lines: list[str] = []
         for field in ("desc", "desc2"):
             if milestone.get(field):
-                desc_lines += wrap(milestone[field], (card_w - 14) / 10.5)
+                desc_lines += wrap(milestone[field],
+                                   (card_w - 14) / desc_size)
+        if narrative:
+            title_lines = wrap_fit(milestone.get("title", ""),
+                                   (card_w - 14) / title_size, 2)
+            title_y = card_top + 39
+            for j, line in enumerate(title_lines):
+                parts.append(text(card_x + 7, title_y + j * 17, line,
+                                  title_size, colors["title"], bold=True))
+            desc_y = title_y + len(title_lines) * 17 + 5
+            for j, line in enumerate(desc_lines[:2]):
+                parts.append(text(card_x + 7, desc_y + j * 15, line,
+                                  desc_size, colors["muted"]))
+            continue
         if len(title_lines) <= 1:
             parts.append(text(card_x + 7, card_top + 40, title_lines[0], 12,
                               colors["title"], bold=True))
@@ -1959,6 +2086,119 @@ def _draw_fusion(panel: Panel, theme: dict[str, Any]) -> list[str]:
     return parts
 
 
+def _draw_examples(panel: Panel, theme: dict[str, Any]) -> list[str]:
+    """Three worked SVG examples that turn abstract claims into mechanisms."""
+    colors = theme["colors"]
+    canvas = theme["canvas"]
+    payload = panel.payload
+    color = panel.color or colors["accent"]
+    parts, content_y = _panel_chrome(panel, theme, payload.get("title", ""),
+                                     payload.get("subtitle", ""))
+    examples = payload.get("items", [])[:3]
+    if not examples:
+        return parts
+
+    gap = 10.0
+    card_w = (panel.width - 32 - gap * (len(examples) - 1)) / len(examples)
+    card_h = panel.y + panel.height - content_y - 10
+    for i, example in enumerate(examples):
+        x = panel.x + 16 + i * (card_w + gap)
+        y = content_y
+        ex_color = example.get("color", color)
+        parts.append(f'<rect x="{fmt(x)}" y="{fmt(y)}" width="{fmt(card_w)}" '
+                     f'height="{fmt(card_h)}" rx="10" fill="{canvas["card_fill"]}" '
+                     f'stroke="{canvas["card_stroke"]}" stroke-width="1.2"/>')
+        parts.append(text(x + 12, y + 22, example.get("title", ""), 14,
+                          colors["title"], bold=True))
+        visual = example.get("visual", "attention")
+        vx, vy, vw, vh = x + 12, y + 30, card_w - 24, 58.0
+        parts.append(f'<rect x="{fmt(vx)}" y="{fmt(vy)}" width="{fmt(vw)}" '
+                     f'height="{fmt(vh)}" rx="8" fill="{ex_color}" '
+                     f'fill-opacity="0.06"/>')
+
+        if visual == "attention":
+            tokens = example.get("tokens", ["小红", "把", "书", "收好", "因为", "她", "喜欢"])
+            token_gap = 5.0
+            token_w = (vw - 20 - token_gap * (len(tokens) - 1)) / len(tokens)
+            ty = vy + 30
+            centers = []
+            for j, token_label in enumerate(tokens):
+                tx = vx + 10 + j * (token_w + token_gap)
+                focus = j in example.get("focus", [0, 5])
+                parts.append(f'<rect x="{fmt(tx)}" y="{fmt(ty)}" '
+                             f'width="{fmt(token_w)}" height="20" rx="5" '
+                             f'fill="{ex_color}" fill-opacity="{0.9 if focus else 0.13}" '
+                             f'stroke="{ex_color}" stroke-opacity="0.45"/>')
+                parts.append(text(tx + token_w / 2, ty + 14, token_label, 9.5,
+                                  "#ffffff" if focus else colors["text"],
+                                  bold=focus, anchor="middle"))
+                centers.append(tx + token_w / 2)
+            if len(centers) > 5:
+                parts.append(f'<path d="M {fmt(centers[5])} {fmt(ty - 2)} '
+                             f'Q {fmt((centers[0] + centers[5]) / 2)} {fmt(vy - 2)} '
+                             f'{fmt(centers[0])} {fmt(ty - 2)}" fill="none" '
+                             f'stroke="{ex_color}" stroke-width="2" '
+                             f'marker-end="url(#arrowhead)"/>')
+                parts.append(text((centers[0] + centers[5]) / 2, vy + 11,
+                                  "指代关系", 9.5, ex_color, bold=True,
+                                  anchor="middle"))
+        elif visual == "patches":
+            grid_x, grid_y, cell = vx + 12, vy + 9, 11.0
+            for row in range(4):
+                for col in range(5):
+                    active = (row, col) in {(0, 3), (1, 2), (1, 3), (2, 2)}
+                    parts.append(f'<rect x="{fmt(grid_x + col * cell)}" '
+                                 f'y="{fmt(grid_y + row * cell)}" width="9" height="9" '
+                                 f'rx="1.5" fill="{ex_color}" '
+                                 f'fill-opacity="{0.85 if active else 0.12}"/>')
+            seq_x = vx + vw * 0.42
+            parts.append(f'<line x1="{fmt(grid_x + 5 * cell + 6)}" y1="{fmt(vy + 30)}" '
+                         f'x2="{fmt(seq_x - 6)}" y2="{fmt(vy + 30)}" '
+                         f'stroke="{ex_color}" stroke-width="1.6" '
+                         f'marker-end="url(#arrowhead)"/>')
+            for j in range(4):
+                parts.append(f'<rect x="{fmt(seq_x + j * 18)}" y="{fmt(vy + 20)}" '
+                             f'width="14" height="20" rx="4" fill="{ex_color}" '
+                             f'fill-opacity="{0.25 + j * 0.15}"/>')
+            out_x = vx + vw - 70
+            parts.append(f'<line x1="{fmt(seq_x + 75)}" y1="{fmt(vy + 30)}" '
+                         f'x2="{fmt(out_x - 8)}" y2="{fmt(vy + 30)}" '
+                         f'stroke="{ex_color}" stroke-width="1.6" '
+                         f'marker-end="url(#arrowhead)"/>')
+            parts += _chip(out_x, vy + 18, 58, 24, "猫 92%", fill=ex_color,
+                           text_fill="#ffffff", size=10, bold=True)
+        else:
+            nodes = [
+                (vx + 42, "感知", "image"),
+                (vx + vw / 2, "预测/规划", "brain"),
+                (vx + vw - 42, "行动", "robot"),
+            ]
+            ny = vy + 28
+            for j, (nx, label, icon) in enumerate(nodes):
+                parts.append(f'<circle cx="{fmt(nx)}" cy="{fmt(ny)}" r="18" '
+                             f'fill="{ex_color}" fill-opacity="0.13" '
+                             f'stroke="{ex_color}"/>')
+                parts += _icon(icon, nx, ny - 2, 9, ex_color)
+                parts.append(text(nx, ny + 31, label, 9.5, colors["text"],
+                                  bold=True, anchor="middle"))
+                if j < len(nodes) - 1:
+                    nx2 = nodes[j + 1][0]
+                    parts.append(f'<line x1="{fmt(nx + 22)}" y1="{fmt(ny)}" '
+                                 f'x2="{fmt(nx2 - 24)}" y2="{fmt(ny)}" '
+                                 f'stroke="{ex_color}" stroke-width="1.6" '
+                                 f'marker-end="url(#arrowhead)"/>')
+            parts.append(f'<path d="M {fmt(nodes[-1][0])} {fmt(ny - 21)} '
+                         f'Q {fmt(vx + vw / 2)} {fmt(vy - 5)} '
+                         f'{fmt(nodes[0][0])} {fmt(ny - 21)}" fill="none" '
+                         f'stroke="{ex_color}" stroke-width="1.2" '
+                         f'stroke-dasharray="5 4" marker-end="url(#arrowhead)"/>')
+
+        parts.append(text(x + 12, y + card_h - 13,
+                          fit(example.get("caption", ""), (card_w - 24) / 10.5),
+                          10.5, colors["muted"]))
+    return parts
+
+
 def _draw_family(panel: Panel, theme: dict[str, Any]) -> list[str]:
     """Architecture family panel: colored header + model rows + footer."""
     colors = theme["colors"]
@@ -2079,29 +2319,518 @@ def _draw_hero(panel: Panel, theme: dict[str, Any]) -> list[str]:
     org = payload.get("org", "")
     if org:
         parts.append(text(x + 24, y + 88, org, 13, colors["text"], bold=True))
-    dx, dy = x + 20, y + 96
-    dw, dh = w - 40, 150.0
+    dx, dy = x + 20, y + 92
+    dw, dh = w - 40, 166.0
     parts.append(f'<rect x="{fmt(dx)}" y="{fmt(dy)}" width="{fmt(dw)}" '
                  f'height="{fmt(dh)}" rx="10" fill="{canvas["photo_fill"]}"/>')
-    # encoder-decoder schematic with block stacks
-    bw = dw * 0.3
-    for k, bx in enumerate((dx + dw * 0.12, dx + dw * 0.58)):
-        for i in range(4):
-            parts.append(f'<rect x="{fmt(bx)}" y="{fmt(dy + 14 + i * 30)}" '
-                         f'width="{fmt(bw)}" height="22" rx="5" '
-                         f'fill="none" stroke="{canvas["photo_ink"]}" '
-                         f'stroke-width="1.5"/>')
-        label = "Encoder" if k == 0 else "Decoder"
-        parts.append(text(bx + bw / 2, dy + dh - 6, label, 10,
-                          canvas["photo_ink"], anchor="middle"))
-    parts.append(f'<line x1="{fmt(dx + dw * 0.12 + bw)}" y1="{fmt(dy + dh / 2)}" '
-                 f'x2="{fmt(dx + dw * 0.58)}" y2="{fmt(dy + dh / 2)}" '
-                 f'stroke="{canvas["photo_ink"]}" stroke-width="1.5" '
+    encoder = payload.get("encoder_blocks", [
+        "Self-Attention", "Add & Norm", "Feed Forward", "Add & Norm",
+    ])
+    decoder = payload.get("decoder_blocks", [
+        "Masked Self-Attn", "Cross-Attention", "Feed Forward", "Add & Norm",
+    ])
+    formula = payload.get("formula", "Attention(Q,K,V) = softmax(QKᵀ / √dₖ)V")
+    col_gap = 54.0
+    col_w = (dw - col_gap - 44) / 2
+    col_xs = (dx + 22, dx + 22 + col_w + col_gap)
+    palettes = (color, payload.get("decoder_color", "#9333ea"))
+    for label, blocks, bx, block_color in zip(
+            ("ENCODER · 双向理解", "DECODER · 自回归生成"),
+            (encoder, decoder), col_xs, palettes):
+        parts.append(text(bx, dy + 20, label, 11.5, block_color, bold=True))
+        block_gap = 5.0
+        block_h = min(22.0, (dh - 58 - block_gap * (len(blocks) - 1))
+                      / max(len(blocks), 1))
+        by = dy + 30
+        for block in blocks:
+            parts.append(f'<rect x="{fmt(bx)}" y="{fmt(by)}" '
+                         f'width="{fmt(col_w)}" height="{fmt(block_h)}" rx="5" '
+                         f'fill="{block_color}" fill-opacity="0.09" '
+                         f'stroke="{block_color}" stroke-opacity="0.7"/>')
+            parts.append(text(bx + col_w / 2, by + block_h / 2 + 4,
+                              fit(block, col_w / 11), 10.5,
+                              colors["text"], bold=True, anchor="middle"))
+            by += block_h + block_gap
+        parts += _chip(bx, dy + dh - 25, col_w, 20,
+                       "Embedding + Position",
+                       fill=block_color, text_fill="#ffffff", size=9.5)
+    bridge_y = dy + dh / 2 + 8
+    parts.append(f'<line x1="{fmt(col_xs[0] + col_w)}" y1="{fmt(bridge_y)}" '
+                 f'x2="{fmt(col_xs[1] - 8)}" y2="{fmt(bridge_y)}" '
+                 f'stroke="{color}" stroke-width="1.8" '
                  f'marker-end="url(#arrowhead)"/>')
+    formula_w = min(300.0, dw * 0.28)
+    parts += _chip(dx + dw / 2 - formula_w / 2, dy + 4, formula_w, 22,
+                   formula, fill="#ffffff", stroke=color,
+                   text_fill=color, size=9.5, bold=True)
     caption = payload.get("caption", "")
     cap_y = dy + dh + 24
     for i, line in enumerate(wrap(caption, (w - 48) / 12)[:3]):
         parts.append(text(x + 24, cap_y + i * 17, line, 12, colors["text"]))
+    return parts
+
+
+def _draw_transformer_nexus(panel: Panel, theme: dict[str, Any],
+                            images: ImageEmbedder | None = None) -> list[str]:
+    """Composite Vol.02 centerpiece joining cause, core, flow, and modes."""
+    colors = theme["colors"]
+    payload = panel.payload
+    color = panel.color or colors["accent"]
+    parts, content_y = _panel_chrome(panel, theme, payload.get("title", ""),
+                                     payload.get("subtitle", ""))
+    top = payload.get("top", [])
+    if len(top) != 3:
+        return parts
+
+    inset = 12.0
+    gap = 8.0
+    inner_x = panel.x + inset
+    inner_w = panel.width - 2 * inset
+    top_h = 286.0
+    weights = [max(float(item.get("weight", 1.0)), 0.1) for item in top]
+    total = sum(weights)
+    avail = inner_w - 2 * gap
+    widths = [avail * weight / total for weight in weights]
+    xs = [inner_x,
+          inner_x + widths[0] + gap,
+          inner_x + widths[0] + widths[1] + 2 * gap]
+
+    modes_y = content_y + top_h + 20
+    modes_h = panel.y + panel.height - modes_y - 10
+    center_x = xs[1] + widths[1] / 2
+    branch_y = modes_y + 42
+    parts.append(f'<line x1="{fmt(center_x)}" y1="{fmt(content_y + top_h)}" '
+                 f'x2="{fmt(center_x)}" y2="{fmt(branch_y - 12)}" '
+                 f'stroke="{color}" stroke-width="2.2"/>')
+    mode_w = (inner_w - 2 * 10) / 3
+    left_center = inner_x + mode_w / 2
+    right_center = inner_x + 2 * (mode_w + 10) + mode_w / 2
+    parts.append(f'<line x1="{fmt(left_center)}" y1="{fmt(branch_y - 12)}" '
+                 f'x2="{fmt(right_center)}" y2="{fmt(branch_y - 12)}" '
+                 f'stroke="{color}" stroke-width="1.8"/>')
+    for i in range(3):
+        bx = inner_x + i * (mode_w + 10) + mode_w / 2
+        parts.append(f'<line x1="{fmt(bx)}" y1="{fmt(branch_y - 12)}" '
+                     f'x2="{fmt(bx)}" y2="{fmt(branch_y + 2)}" '
+                     f'stroke="{color}" stroke-width="1.8" '
+                     f'marker-end="url(#arrowhead)"/>')
+
+    for i, section in enumerate(top):
+        subpanel = Panel(
+            f"{panel.key}:top:{i}", xs[i], content_y + 4, widths[i], top_h,
+            color=section.get("color", color), payload=section,
+        )
+        if section.get("kind") == "hero":
+            parts += _draw_hero(subpanel, theme)
+        else:
+            parts += _draw_list(subpanel, theme)
+
+    modes = payload.get("modes", {})
+    mode_panel = Panel(
+        f"{panel.key}:modes", inner_x, modes_y, inner_w, modes_h,
+        color=modes.get("color", color), payload=modes,
+    )
+    parts += _draw_cards_panel(mode_panel, theme, images)
+    return parts
+
+
+def _draw_transformer_expansion(panel: Panel, theme: dict[str, Any],
+                                images: ImageEmbedder | None = None) -> list[str]:
+    """Composite expansion map joining domain branches and worked examples."""
+    colors = theme["colors"]
+    payload = panel.payload
+    color = panel.color or colors["accent"]
+    parts, content_y = _panel_chrome(panel, theme, payload.get("title", ""),
+                                     payload.get("subtitle", ""))
+    inset = 12.0
+    gap = 8.0
+    inner_x = panel.x + inset
+    inner_w = panel.width - 2 * inset
+    branches_h = 248.0
+    branches = payload.get("branches", {})
+    branch_panel = Panel(
+        f"{panel.key}:branches", inner_x, content_y + 4, inner_w, branches_h,
+        color=branches.get("color", color), payload=branches,
+    )
+    parts += _draw_cards_panel(branch_panel, theme, images)
+
+    lower = payload.get("lower", [])
+    if len(lower) != 2:
+        return parts
+    lower_y = content_y + branches_h + 16
+    lower_h = panel.y + panel.height - lower_y - 10
+    weights = [max(float(item.get("weight", 1.0)), 0.1) for item in lower]
+    avail = inner_w - gap
+    total = sum(weights)
+    widths = [avail * weight / total for weight in weights]
+    center_x = panel.x + panel.width / 2
+    parts.append(f'<line x1="{fmt(center_x)}" '
+                 f'y1="{fmt(content_y + branches_h + 2)}" '
+                 f'x2="{fmt(center_x)}" y2="{fmt(lower_y - 3)}" '
+                 f'stroke="{color}" stroke-width="2" '
+                 f'marker-end="url(#arrowhead)"/>')
+    for i, section in enumerate(lower):
+        sx = inner_x if i == 0 else inner_x + widths[0] + gap
+        subpanel = Panel(
+            f"{panel.key}:lower:{i}", sx, lower_y, widths[i], lower_h,
+            color=section.get("color", color), payload=section,
+        )
+        if section.get("kind") == "fusion":
+            parts += _draw_fusion(subpanel, theme)
+        else:
+            parts += _draw_examples(subpanel, theme)
+    return parts
+
+
+def _draw_transformer_empire_map(panel: Panel, theme: dict[str, Any],
+                                 images: ImageEmbedder | None = None) -> list[str]:
+    """Render Vol.02 as one asymmetric technical empire map."""
+    colors = theme["colors"]
+    canvas = theme["canvas"]
+    payload = panel.payload
+    accent = panel.color or colors["accent"]
+    x, y, w, h = panel.x, panel.y, panel.width, panel.height
+    parts = [_frame(panel, theme)]
+    nodes = {node["id"]: node for node in payload.get("graph_nodes", [])}
+    map_data = payload.get("map", {})
+    node_notes = map_data.get("node_notes", {})
+    sections = payload.get("source_sections", [])
+
+    def zone(bx: float, by: float, bw: float, bh: float, title_: str,
+             subtitle_: str, color_: str, dark: bool = False) -> None:
+        fill = "#07142f" if dark else canvas["card_fill"]
+        stroke = color_ if dark else canvas["card_stroke"]
+        parts.append(f'<rect x="{fmt(bx)}" y="{fmt(by)}" width="{fmt(bw)}" '
+                     f'height="{fmt(bh)}" rx="10" fill="{fill}" '
+                     f'stroke="{stroke}" stroke-width="1.2"/>')
+        parts.append(f'<rect x="{fmt(bx)}" y="{fmt(by)}" width="8" '
+                     f'height="42" rx="4" fill="{color_}"/>')
+        title_fill = _DARK_TEXT if dark else colors["title"]
+        muted = _DARK_MUTED if dark else colors["muted"]
+        parts.append(text(bx + 20, by + 28, title_, 17, title_fill, bold=True))
+        if subtitle_:
+            parts.append(text(bx + 20 + text_width(title_, 17) + 12,
+                              by + 28, subtitle_, 10.5, muted))
+
+    # Map title establishes one reading route rather than another section row.
+    parts.append(f'<rect x="{fmt(x + 1)}" y="{fmt(y + 1)}" '
+                 f'width="{fmt(w - 2)}" height="54" rx="10" '
+                 f'fill="#0a1735"/>')
+    parts.append(text(x + 22, y + 35,
+                      "TRANSFORMER EMPIRE · 十年四幕 · 技术帝国全景",
+                      22, "#ffffff", bold=True))
+    parts.append(text(x + w - 22, y + 34,
+                      "瓶颈 → 架构革命 → 三类核心架构 → 跨域扩张 → 现实世界",
+                      13, "#b8c5e3", anchor="end"))
+
+    pad, gap = 14.0, 12.0
+    top_y = y + 66
+    left_w, center_w = 610.0, 1870.0
+    right_w = w - 2 * pad - left_w - center_w - 2 * gap
+    left_x = x + pad
+    center_x = left_x + left_w + gap
+    right_x = center_x + center_w + gap
+    top_h = 300.0
+
+    # Left: the causal problem. Center: original architecture. Right: papers.
+    nexus = sections[1] if len(sections) > 1 else {}
+    top_sections = nexus.get("top", [])
+    why = top_sections[0] if top_sections else {}
+    hero = top_sections[1] if len(top_sections) > 1 else {}
+    why_panel = Panel(f"{panel.key}:why", left_x, top_y, left_w, top_h,
+                      color=why.get("color", accent), payload=why)
+    parts += _draw_list(why_panel, theme)
+    hero_vector_w = center_w - 350
+    hero_panel = Panel(f"{panel.key}:hero", center_x, top_y, hero_vector_w, top_h,
+                       color=hero.get("color", accent), payload=hero)
+    parts += _draw_hero(hero_panel, theme)
+    figure_x = center_x + hero_vector_w + 10
+    zone(figure_x, top_y, 340, top_h, "原始架构图", "Vaswani et al. 2017",
+         accent)
+    if images is not None:
+        embedded = images.svg_image(
+            "images/figures/transformer_architecture.png",
+            figure_x + 14, top_y + 48, 312, top_h - 78,
+            fit="contain", radius=7,
+        )
+        if embedded:
+            parts += embedded
+    parts.append(text(figure_x + 170, top_y + top_h - 12,
+                      "Figure 1 · Encoder–Decoder", 8.5,
+                      colors["muted"], anchor="middle"))
+
+    zone(right_x, top_y, right_w, top_h, "关键奠基论文", "Key Papers",
+         "#667085")
+    papers = map_data.get("key_papers", [])
+    paper_gap = 10.0
+    paper_w = (right_w - 46) / 2
+    for i, paper in enumerate(papers[:10]):
+        col, row = i % 2, i // 2
+        px = right_x + 18 + col * (paper_w + paper_gap)
+        py = top_y + 52 + row * 48
+        parts += _chip(px, py, 48, 20, paper.get("year", ""),
+                       fill=accent, size=10.5)
+        paper_meta = " · ".join(filter(None, (
+            paper.get("authors", ""), paper.get("impact", ""))))
+        parts.append(text(px + 56, py + 11,
+                          fit(paper_meta, (paper_w - 62) / 7.4),
+                          7.4, colors["muted"]))
+        parts.append(text(px, py + 31,
+                          fit(paper.get("title", ""), paper_w / 10),
+                          10, colors["title"], bold=True))
+
+    mid_y = top_y + top_h + gap
+    mid_h = 718.0
+    # Left middle: reusable mechanisms and the information journey.
+    zone(left_x, mid_y, left_w, mid_h, "通用模块与计算旅程",
+         "Reusable Core", "#3157c8", dark=True)
+    mechanisms = map_data.get("mechanisms", [])
+    my = mid_y + 60
+    mechanism_gap = 8.0
+    mechanism_w = (left_w - 52 - mechanism_gap) / 2
+    for i, mechanism in enumerate(mechanisms[:8]):
+        col, row = i % 2, i // 2
+        mx = left_x + 22 + col * (mechanism_w + mechanism_gap)
+        my = mid_y + 60 + row * 66
+        parts.append(f'<rect x="{fmt(mx)}" y="{fmt(my)}" '
+                     f'width="{fmt(mechanism_w)}" height="58" rx="8" '
+                     f'fill="#102754" stroke="#3157c8"/>')
+        parts.append(text(mx + 14, my + 21, f"0{i + 1}", 9.5,
+                          "#79a2ff", bold=True))
+        parts.append(text(mx + 42, my + 21,
+                          fit(mechanism.get("title", ""),
+                              (mechanism_w - 54) / 10.5), 10.5,
+                          _DARK_TEXT, bold=True))
+        parts.append(text(mx + 14, my + 43,
+                          fit(mechanism.get("desc", ""),
+                              (mechanism_w - 28) / 8.2), 8.2,
+                          _DARK_MUTED))
+    journey = top_sections[2].get("items", []) if len(top_sections) > 2 else []
+    my = mid_y + 348
+    parts.append(text(left_x + 24, my,
+                      "一条信息如何穿过 Transformer", 15,
+                      "#ffffff", bold=True))
+    my += 28
+    for i, item in enumerate(journey[:5]):
+        parts.append(f'<circle cx="{fmt(left_x + 35)}" cy="{fmt(my - 4)}" '
+                     f'r="11" fill="#228c9b"/>')
+        parts.append(text(left_x + 35, my, str(i + 1), 9, "#ffffff",
+                          bold=True, anchor="middle"))
+        parts.append(text(left_x + 58, my,
+                          fit(item.get("title", ""), (left_w - 88) / 11),
+                          11, _DARK_TEXT, bold=True))
+        parts.append(text(left_x + 58, my + 16,
+                          fit(item.get("desc", ""), (left_w - 88) / 9),
+                          9, _DARK_MUTED))
+        my += 49
+
+    # Center middle: three chronological model rivers under one architecture.
+    lineages = map_data.get("lineages", [])
+    lineage_gap = 10.0
+    lineage_w = (center_w - lineage_gap * 2) / 3
+    for col, lineage in enumerate(lineages[:3]):
+        lx = center_x + col * (lineage_w + lineage_gap)
+        lc = lineage.get("color", accent)
+        zone(lx, mid_y, lineage_w, mid_h, lineage.get("title", ""),
+             lineage.get("subtitle", ""), lc)
+        parts.append(text(lx + lineage_w - 16, mid_y + 48,
+                          "代表节点 · 按首次发布时间排列", 8.5,
+                          colors["muted"], anchor="end"))
+        ids = lineage.get("nodes", [])
+        node_y = mid_y + 62
+        node_h = min(82.0, (mid_h - 82) / max(len(ids), 1))
+        spine_x = lx + 42
+        parts.append(f'<line x1="{fmt(spine_x)}" y1="{fmt(node_y + 12)}" '
+                     f'x2="{fmt(spine_x)}" '
+                     f'y2="{fmt(node_y + node_h * len(ids) - 20)}" '
+                     f'stroke="#98a2b3" stroke-width="2"/>')
+        for node_id in ids:
+            node = nodes.get(node_id, {"label": node_id, "year": ""})
+            parts.append(f'<circle cx="{fmt(spine_x)}" '
+                         f'cy="{fmt(node_y + 29)}" r="7" fill="{lc}"/>')
+            year = str(node.get("year") or "")
+            parts += _chip(lx + 60, node_y + 17, 58, 22, year,
+                           fill=lc, size=9.5)
+            parts.append(f'<rect x="{fmt(lx + 126)}" y="{fmt(node_y)}" '
+                         f'width="{fmt(lineage_w - 142)}" height="58" rx="7" '
+                         f'fill="{lc}" fill-opacity="0.08" stroke="{lc}" '
+                         f'stroke-opacity="0.45"/>')
+            parts.append(text(lx + 140, node_y + 21,
+                              fit(node.get("label", ""),
+                                  (lineage_w - 168) / 12),
+                              12, colors["title"], bold=True))
+            parts.append(text(lx + 140, node_y + 42,
+                              fit(node_notes.get(node_id, ""),
+                                  (lineage_w - 168) / 9),
+                              9, colors["muted"]))
+            node_y += node_h
+
+    # Right middle: four frontier provinces, chronological but not false lineage.
+    frontiers = map_data.get("frontiers", [])
+    frontier_h = (mid_h - 3 * 8) / 4
+    for i, frontier in enumerate(frontiers[:4]):
+        fy = mid_y + i * (frontier_h + 8)
+        fc = frontier.get("color", accent)
+        zone(right_x, fy, right_w, frontier_h, frontier.get("title", ""),
+             "Expansion Frontier", fc)
+        figure_w = 178.0 if frontier.get("image") else 0.0
+        parts.append(text(right_x + 18, fy + 48,
+                          fit(frontier.get("route", ""),
+                              (right_w - 36 - figure_w) / 9),
+                          9, colors["muted"]))
+        if figure_w and images is not None:
+            image_x = right_x + right_w - figure_w - 12
+            embedded = images.svg_image(
+                frontier.get("image", ""), image_x, fy + 50,
+                figure_w, frontier_h - 70, fit="contain", radius=6,
+            )
+            if embedded:
+                parts += embedded
+                parts.append(text(image_x + figure_w / 2,
+                                  fy + frontier_h - 8,
+                                  fit(frontier.get("image_source", ""),
+                                      figure_w / 7), 7,
+                                  colors["muted"], anchor="middle"))
+        groups = frontier.get("groups", [])
+        ids = frontier.get("nodes", [])
+        if groups:
+            ids = [node_id for group in groups for node_id in group.get("nodes", [])]
+        chip_y = fy + 62
+        chip_area_w = right_w - 44 - figure_w
+        chip_w = (chip_area_w - 8) / 2
+        chip_h = 22 if groups else 30
+        row_step = 25 if groups else 34
+        for j, node_id in enumerate(ids[:8]):
+            node = nodes.get(node_id, {"label": node_id, "year": ""})
+            cx = right_x + 16 + (j % 2) * (chip_w + 8)
+            cy = chip_y + (j // 2) * row_step
+            parts.append(f'<rect x="{fmt(cx)}" y="{fmt(cy)}" '
+                         f'width="{fmt(chip_w)}" height="{fmt(chip_h)}" rx="7" '
+                         f'fill="{fc}" fill-opacity="0.09" stroke="{fc}" '
+                         f'stroke-opacity="0.6"/>')
+            label = f'{node.get("year") or ""}  {node.get("label", "")}'
+            parts.append(text(cx + 8, cy + (15 if groups else 12),
+                              fit(label, (chip_w - 16) / 9),
+                              9, fc, bold=True))
+            if not groups:
+                parts.append(text(cx + 8, cy + 25,
+                                  fit(node_notes.get(node_id, ""),
+                                      (chip_w - 16) / 7.2),
+                                  7.2, colors["muted"]))
+
+    bottom_y = mid_y + mid_h + gap
+    fusion_w = left_w + gap + center_w
+    expansion = sections[2] if len(sections) > 2 else {}
+    lower = expansion.get("lower", [])
+    fusion = lower[0] if lower else {}
+    fusion_left_w = fusion_w * 0.57
+    fusion_panel = Panel(f"{panel.key}:fusion", left_x, bottom_y,
+                         fusion_left_w, 245, color=fusion.get("color", accent),
+                         payload=fusion)
+    parts += _draw_fusion(fusion_panel, theme)
+    examples = lower[1] if len(lower) > 1 else {}
+    examples_panel = Panel(
+        f"{panel.key}:examples", left_x + fusion_left_w + gap, bottom_y,
+        fusion_w - fusion_left_w - gap, 245,
+        color=examples.get("color", "#228c9b"), payload=examples,
+    )
+    parts += _draw_examples(examples_panel, theme)
+
+    frontier_sections = sections[3].get("row", []) if len(sections) > 3 else []
+    future = frontier_sections[1] if len(frontier_sections) > 1 else {}
+    boundary = frontier_sections[2] if len(frontier_sections) > 2 else {}
+    future_color = future.get("color", "#22c55e")
+    zone(right_x, bottom_y, right_w, 245, "未来方向", "Future & Boundaries",
+         future_color)
+    for i, item in enumerate(future.get("items", [])[:5]):
+        col, row = i % 2, i // 2
+        ix = right_x + 18 + col * (right_w - 46) / 2
+        iy = bottom_y + 58 + row * 31
+        parts.append(f'<circle cx="{fmt(ix + 4)}" cy="{fmt(iy - 4)}" '
+                     f'r="4" fill="{future_color}"/>')
+        parts.append(text(ix + 16, iy,
+                          fit(item.get("title", ""), (right_w - 78) / 22),
+                          10.5, colors["title"], bold=True))
+    divider_y = bottom_y + 156
+    parts.append(f'<line x1="{fmt(right_x + 18)}" y1="{fmt(divider_y)}" '
+                 f'x2="{fmt(right_x + right_w - 18)}" y2="{fmt(divider_y)}" '
+                 f'stroke="{canvas["card_stroke"]}"/>')
+    parts.append(text(right_x + 18, divider_y + 24,
+                      "理解边界：Transformer 不是什么", 12,
+                      "#d9822b", bold=True))
+    for i, item in enumerate(boundary.get("items", [])[:4]):
+        col, row = i % 2, i // 2
+        ix = right_x + 18 + col * (right_w - 46) / 2
+        iy = divider_y + 50 + row * 27
+        parts.append(text(ix, iy,
+                          fit("· " + item.get("title", ""),
+                              (right_w - 68) / 21),
+                          9.5, colors["text"], bold=True))
+
+    # The training-to-deployment lifecycle makes the operating system concrete.
+    impact_y = bottom_y + 258
+    lifecycle = map_data.get("training_lifecycle", [])
+    parts.append(text(left_x, impact_y + 16, "模型生命周期",
+                      15, colors["title"], bold=True))
+    parts.append(text(left_x + 128, impact_y + 16,
+                      "从数据到可执行 Agent", 10, colors["muted"]))
+    impact_x = left_x + 300
+    impact_w = (w - 2 * pad - 300 - (len(lifecycle) - 1) * 10) / max(len(lifecycle), 1)
+    for i, stage in enumerate(lifecycle):
+        ix = impact_x + i * (impact_w + 10)
+        parts.append(f'<rect x="{fmt(ix)}" y="{fmt(impact_y - 8)}" '
+                     f'width="{fmt(impact_w)}" height="48" rx="9" '
+                     f'fill="{accent}" fill-opacity="0.09" '
+                     f'stroke="{accent}" stroke-opacity="0.45"/>')
+        parts.append(text(ix + impact_w / 2, impact_y + 10,
+                          fit(stage.get("title", ""), impact_w / 11),
+                          11, accent,
+                          bold=True, anchor="middle"))
+        parts.append(text(ix + impact_w / 2, impact_y + 28,
+                          fit(stage.get("desc", ""), impact_w / 8),
+                          8, colors["muted"], anchor="middle"))
+        if i < len(lifecycle) - 1:
+            parts.append(f'<line x1="{fmt(ix + impact_w + 1)}" '
+                         f'y1="{fmt(impact_y + 16)}" '
+                         f'x2="{fmt(ix + impact_w + 8)}" '
+                         f'y2="{fmt(impact_y + 16)}" stroke="{accent}" '
+                         f'marker-end="url(#arrowhead)"/>')
+
+    # The final embedded chronology closes the story and points to Vol.03.
+    timeline = sections[0] if sections else {}
+    milestones = timeline.get("milestones", [])
+    time_y = y + h - 126
+    x0, x1 = left_x + 24, x + w - pad - 24
+    parts.append(text(left_x, time_y + 18, "2017 → 2026 技术扩张主线",
+                      15, colors["title"], bold=True))
+    line_y = time_y + 62
+    parts.append(f'<line x1="{fmt(x0)}" y1="{fmt(line_y)}" '
+                 f'x2="{fmt(x1)}" y2="{fmt(line_y)}" '
+                 f'stroke="{accent}" stroke-width="2.5"/>')
+    step = (x1 - x0) / max(len(milestones), 1)
+    phase_y = time_y - 42
+    for phase in timeline.get("phases", []):
+        start = max(0, int(phase.get("start", 0)))
+        end = min(len(milestones) - 1, int(phase.get("end", start)))
+        px = x0 + start * step + 4
+        pw = (end - start + 1) * step - 8
+        pc = phase.get("color", accent)
+        parts.append(f'<rect x="{fmt(px)}" y="{fmt(phase_y)}" '
+                     f'width="{fmt(pw)}" height="26" rx="13" '
+                     f'fill="{pc}" fill-opacity="0.10" stroke="{pc}" '
+                     f'stroke-opacity="0.4"/>')
+        parts.append(text(px + pw / 2, phase_y + 17,
+                          fit(phase.get("label", ""), pw / 10),
+                          10, pc, bold=True, anchor="middle"))
+    for i, milestone in enumerate(milestones):
+        mx = x0 + (i + 0.5) * step
+        parts.append(f'<circle cx="{fmt(mx)}" cy="{fmt(line_y)}" r="7" '
+                     f'fill="{accent}"/>')
+        parts.append(text(mx, line_y - 18, str(milestone.get("year", "")),
+                          10.5, accent, bold=True, anchor="middle"))
+        parts.append(text(mx, line_y + 28,
+                          fit(milestone.get("title", ""), step / 10),
+                          10, colors["text"], bold=True, anchor="middle"))
     return parts
 
 
@@ -2718,6 +3447,7 @@ def _draw_section(panel: Panel, theme: dict[str, Any],
         "chevrons": _draw_chevrons,
         "timeline": _draw_timeline,
         "fusion": _draw_fusion,
+        "examples": _draw_examples,
         "family": _draw_family,
         "hero": _draw_hero,
         "papers": _draw_papers,
@@ -2728,6 +3458,9 @@ def _draw_section(panel: Panel, theme: dict[str, Any],
         "figures": _draw_figures,
         "curve": _draw_curve,
         "arch": _draw_arch,
+        "transformer_nexus": _draw_transformer_nexus,
+        "transformer_expansion": _draw_transformer_expansion,
+        "transformer_empire_map": _draw_transformer_empire_map,
     }
     renderer = renderers.get(kind)
     if renderer is None:
@@ -2739,6 +3472,12 @@ def _draw_section(panel: Panel, theme: dict[str, Any],
         return _draw_cards_panel(panel, theme, images)
     if kind == "figures":
         return _draw_figures(panel, theme, images)
+    if kind == "transformer_nexus":
+        return _draw_transformer_nexus(panel, theme, images)
+    if kind == "transformer_expansion":
+        return _draw_transformer_expansion(panel, theme, images)
+    if kind == "transformer_empire_map":
+        return _draw_transformer_empire_map(panel, theme, images)
     return renderer(panel, theme)
 
 

@@ -125,7 +125,8 @@ def _font_safe(content: str) -> str:
     it tofu. Runs of superscript digits collapse into caret notation
     (``10¹³⁺`` -> ``10^13+``).
     """
-    content = content.replace("π", "pi").replace("⊕", "＋").replace("×", "x")
+    content = (content.replace("π", "pi").replace("⊕", "＋")
+               .replace("×", "x").replace("→", "->"))
     content = content.replace("↑", "＾").replace("↓", "v")
     sup = {"⁰": "0", "¹": "1", "²": "2", "³": "3", "⁴": "4", "⁵": "5",
            "⁶": "6", "⁷": "7", "⁸": "8", "⁹": "9", "⁺": "+"}
@@ -266,6 +267,8 @@ def card_step_up(card: dict, card_w: float) -> bool:
     so the text fills the card instead of leaving a bottom void. Cards
     with an image strip never step up (the image is the elastic filler).
     """
+    if card.get("large_text"):
+        return True
     bullets = [str(b) for b in card.get("items", [])]
     if not bullets or card.get("image"):
         return False
@@ -301,9 +304,17 @@ def card_text_height(card: dict, card_w: float,
     desc = card.get("desc", "")
     if desc and bullets:
         by += geo["desc_row"]
-    for bullet in bullets:
-        lines, size = card_bullet_layout(bullet, card_w, step_up)
-        by += card_bullet_pitch(size) * (len(lines) - 1) + geo["bullet_row"]
+    bullet_cols = max(int(card.get("bullet_columns", 1)), 1)
+    bullet_gap = 14.0
+    bullet_w = ((card_w - 24.0 - bullet_gap * (bullet_cols - 1)) /
+                bullet_cols)
+    for row_start in range(0, len(bullets), bullet_cols):
+        row_h = 0.0
+        for bullet in bullets[row_start:row_start + bullet_cols]:
+            lines, size = card_bullet_layout(bullet, bullet_w, step_up)
+            row_h = max(row_h, card_bullet_pitch(size) * (len(lines) - 1)
+                        + geo["bullet_row"])
+        by += row_h
     if desc and not bullets:
         desc_lines = wrap_fit(desc, (card_w - 24) / 11, 3)
         by += 15 * (len(desc_lines) - 1) + 15
@@ -317,10 +328,17 @@ def card_image_height(card: dict, card_w: float, card_h: float) -> float:
     to [1.6, 2.2]; it elastically absorbs any card height the text zone
     does not use. Strip geometry: 10-unit inset, 8-unit gap to the text.
     """
+    if card.get("image_height") is not None:
+        return float(card["image_height"])
     strip_w = card_w - 20.0
     text_h = card_text_height(card, card_w)
     image_h = card_h - 18.0 - text_h
     return min(max(image_h, strip_w / 1.95), strip_w / 1.28)
+
+
+def card_side_image_width(card_w: float) -> float:
+    """Width reserved for a right-hand figure in a compact split card."""
+    return min(max(card_w * 0.40, 180.0), 270.0)
 
 
 def cards_panel_card_height(items: list, card_w: float) -> float:
@@ -331,8 +349,20 @@ def cards_panel_card_height(items: list, card_w: float) -> float:
     """
     height = 0.0
     for card in items:
-        text_h = card_text_height(card, card_w)
+        side_image = (card.get("image") and
+                      card.get("image_layout") == "side")
+        text_w = (card_w - card_side_image_width(card_w) - 22.0
+                  if side_image else card_w)
+        text_h = card_text_height(card, text_w)
         if card.get("image"):
+            if side_image:
+                # Figure and prose share the same vertical body. Keep enough
+                # room for a useful diagram plus its attribution strip.
+                height = max(height, text_h, 184.0)
+                continue
+            if card.get("image_height") is not None:
+                height = max(height, 18.0 + float(card["image_height"]) + text_h)
+                continue
             strip_w = card_w - 20.0
             # image_h = 0.42 * card_h and card_h = 18 + image_h + text_h.
             image_h = 0.48 / 0.52 * (18.0 + text_h)

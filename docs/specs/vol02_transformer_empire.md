@@ -4,19 +4,29 @@
 - Delivered series label in header: **Modern AI Atlas Vol.02**
 - Filename number: 2 — matches header. No discrepancy.
 - Aspect: 16:9 landscape knowledge map (`3520×1980` canvas).
-- Note: the current implementation adopts the GPT design direction: **One Architecture Changed Everything / 一个架构，改变了整个 AI 世界**. The visual center is now the Transformer family tree and cross-domain expansion route, not the older portrait family-panel wall.
+- Note: the current implementation preserves the reference poster's narrative density while redesigning it as a landscape story map. The reading order is causal: **sequential bottleneck → attention breakthrough → scalable pretraining → architecture branches → domain expansion → training and deployment lifecycle → physical-world loop**.
 
 ## 1. Header
 
 - Series line: `Modern AI Atlas` + yellow chip `Vol.02`
 - Title (en): **Transformer Empire** (huge white); below it (zh, yellow): **Transformer 帝国**
-- Tagline: **One Architecture Changed Everything · 一个架构，改变了整个 AI 世界**
+- Era chip: **2017 - NOW**
+- Header route: **Attention → Foundation Models → Multimodal → Physical AI**
+- Tagline: **From Sequential Bottlenecks to a Universal AI Engine · 从序列瓶颈到通用智能引擎**
 - Right-side quote:
-  > "Transformer 不是一个模型，而是一套把表示、注意力、规模化训练连接起来的通用计算语言。" — The AI Architect
+  > "它先让机器并行阅读，再让文字、图像、声音和行动共享同一种计算语言。" — The AI Architect
+
+The body uses neutral cool-gray surfaces and borders. Domain colors are reserved for meaning: restrained blue for language/core architecture, green for vision, purple for multimodal, orange for generation, and teal for world models/physical AI.
+
+Four source-attributed figures anchor the domain branches in concrete
+architectures: the original Transformer encoder-decoder, ViT patch
+tokenization, CLIP contrastive alignment, and DiT conditioning blocks. They
+are embedded as supporting raster figures inside the SVG; all explanatory
+poster copy remains editable vector text.
 
 ## 2. Legend row
 
-Legend box (`图例 Legend`) at **top-right**. Category color chips:
+Full-width reading legend below the header. Categories occupy the left half and relation semantics the right half so neither group can overflow or collide.
 
 | Color | zh label | Meaning |
 |-------|----------|---------|
@@ -41,48 +51,50 @@ Edge styles:
 
 ## 3. Sections (top-to-bottom)
 
-### 3.1 Transformer 发展时间线
+### 3.1 十年四幕
 
-Horizontal timeline across the top:
+The top timeline is a causal story rather than a model inventory:
 
-- 2017 Attention Is All You Need — Transformer 统一架构
-- 2018 BERT / GPT / Transformer-XL — 预训练与长上下文探索
-- 2019 T5 / XLNet / RoBERTa — 文本预训练范式扩展
-- 2020 GPT-3 / ViT / DETR — 规模化与视觉迁移
-- 2021 Swin / CLIP / DALL·E — 视觉、多模态与生成
-- 2022 PaLM / Flamingo / Stable Diffusion — 大模型与生成生态
-- 2023 LLaMA / SAM / Qwen — 开源爆发与视觉基础模型
-- 2024-2026 GPT-4o / Gemini / OpenVLA / Cosmos — 全模态、物理 AI 与世界模型
+- Act 1, 2017: attention replaces recurrent computation as the main sequence-modeling path.
+- Act 2, 2018-2020: encoder, decoder, and encoder-decoder pretraining mature; scaling and vision transfer emerge.
+- Act 3, 2021-2022: aligned representations connect language, vision, and generation.
+- Act 4, 2023-2026: open models, reasoning models, native multimodality, agents, VLA, and world models move toward action.
 
-### 3.2 Core row: 核心思想 | 标准架构 | 技术演进
+### 3.2 Core row: 瓶颈如何被击穿 | 标准架构 | 信息如何穿过模型
 
-**核心思想 (Core Ideas)**:
-- Self-Attention — 任意 token 之间直接建立依赖
-- Multi-Head Attention — 并行关注不同语义子空间
-- Positional Encoding — 把顺序、空间或时间注入表示
-- Encoder-Decoder / Decoder — 理解、生成与序列到序列统一
-- Scaling — 并行计算 + 大规模预训练释放能力
+**Problem / breakthrough / scaling flywheel**:
+- RNN sequential computation creates long dependency paths and low hardware parallelism.
+- Self-attention lets arbitrary tokens exchange information directly.
+- Parallel training makes much larger data/model/compute regimes practical.
+- Pretraining, transfer, scaling, and emergent capabilities reinforce one another.
 
-Summary formula:
-**Transformer = Attention + Parallel Computing + Large-scale Pretraining**
+Summary:
+**The breakthrough is the combined algorithm-data-hardware flywheel, not attention in isolation.**
 
 **Transformer 标准架构**:
 Input → Embedding → Positional Encoding → Multi-Head Attention → Add & Norm → Feed Forward → Add & Norm → Output
 
-**技术演进**:
-RNN → LSTM → Seq2Seq → Attention → Transformer → Foundation Models
+**One input's journey**:
+- Tokenize: split text, images, audio, state, or action into computable units.
+- Embed: convert tokens to vectors and add order, spatial, or temporal position.
+- Attend: use Q/K relevance weights to route information carried by V.
+- Transform: stack attention, FFN, residual connections, and normalization.
+- Decode: produce a representation, prediction, generated token, tool call, or action.
 
-### 3.3 Transformer 家族树
+The reusable mechanism matrix also covers the modern operating path: Q/K/V,
+causal masks and cross-attention, RoPE, FFN/MoE, residual normalization,
+MQA/GQA, FlashAttention, and KV Cache. These are mechanisms or engineering
+optimizations, not separate architecture lineages.
 
-Central horizontal family tree:
+### 3.3 三类核心架构
 
-- Encoder: BERT / RoBERTa / ALBERT / DeBERTa / T5 / ModernBERT
-- Decoder: GPT / LLaMA / Qwen / Mistral / DeepSeek / Gemini
-- Encoder-Decoder: T5 / BART / mT5 / mBART / PEGASUS / NLLB
-- Vision: ViT / Swin / DETR / DINO / SAM / EVA / SigLIP
-- Diffusion: LDM/U-Net / DiT / PixArt / MMDiT / Stable Diffusion 3 / Flux
-- Multimodal: CLIP / BLIP / Flamingo / LLaVA / GPT-4o / Qwen2-VL
-- World / Agent: JEPA / Dreamer / Cosmos / OpenVLA / VLA / Embodied Agents
+Three explanatory cards replace the previous flat taxonomy strip:
+
+- Encoder — bidirectional understanding; classification, retrieval, extraction, and embeddings; BERT / RoBERTa / DeBERTa / E5 / BGE.
+- Decoder — causal next-token generation; dialogue, writing, code, and tool use; GPT / LLaMA / Qwen / Mistral / DeepSeek.
+- Encoder-Decoder — input encoding plus cross-attention-conditioned generation; translation, summarization, and transformation; T5 / BART / mT5 / mBART / PEGASUS / NLLB.
+
+The next section owns domain expansion, so architecture families and application domains are no longer repeated in two competing maps.
 
 ### 3.4 Five empire branches
 
@@ -92,15 +104,23 @@ Central horizontal family tree:
 - 多模态帝国: CLIP aligns image/text; Flamingo/LLaVA connect vision and language; GPT-4o/Gemini move toward native multimodality.
 - 物理 AI 帝国: VLM expands to VLA; world models learn environment dynamics; agents close the execution loop.
 
-### 3.5 Cross-domain fusion and road to embodied AI
+### 3.5 Cross-domain fusion and worked examples
 
 Fusion band:
 Text / Image / Video / Audio / Action / World State → **Token + Attention + Shared Representation** → 理解 / 生成 / 预测 / 规划 / 决策
 
-Road:
-Transformer → LLM → VLM → Diffusion → World Model → Agent → Embodied AI
+Three editable SVG worked examples make the mechanism concrete:
+- Language: in “小红把书收好，因为她喜欢”, attention links “她” back to “小红” so the token representation incorporates its referent.
+- Vision: an image is divided into patch tokens, transformed as a sequence, and aggregated into a recognition result.
+- Embodied AI: perception feeds prediction/planning, planning emits an action, and environment feedback closes the loop.
 
-### 3.6 当前挑战 + 未来方向 + 后续卷连接
+The operating lifecycle closes the gap between an architecture diagram and a
+deployed system:
+Data → self-supervised pretraining (MLM / Causal LM / Denoising) → SFT →
+preference alignment (RLHF / DPO) → inference optimization (KV Cache,
+quantization, batching) → tools, memory, planning, and Agent feedback.
+
+### 3.6 当前挑战 + 未来方向 + 理解边界
 
 Challenges:
 - 长上下文效率 / KV Cache
@@ -112,16 +132,33 @@ Challenges:
 Future directions:
 - Sparse / Linear Attention
 - MoE 与动态计算
-- Long Context 百万级上下文
+- Long Context 与外部记忆
 - Unified Multimodal Transformer
 - World Models + Embodied Foundation Models
 
-Bridge:
-- Vol.03 LLM Era — GPT / LLaMA / Qwen
-- Vol.04-05 多模态与生成 — CLIP / DiT / GPT-4o
-- Vol.09-13 物理智能 — VLA / Agents / AGI
+Beginner boundary checks:
+- A Transformer is not a database; probabilistic generation still needs retrieval and verification.
+- Context is not persistent memory; durable experience needs external storage and update mechanisms.
+- Next-token prediction is not a complete agent; reliable execution needs tools, planning, feedback, and recovery.
+- Fluent language is not a world model; physical causality needs environment data, simulation, or interaction.
 
-## 4. Legacy detail retained below
+The footer bridges directly into Vol.03, the decoder branch and the LLM era.
+
+## 4. Technical verification sources
+
+- Vaswani et al., [Attention Is All You Need](https://arxiv.org/abs/1706.03762)
+- Dao et al., [FlashAttention](https://arxiv.org/abs/2205.14135)
+- Ainslie et al., [GQA: Training Generalized Multi-Query Transformer Models](https://aclanthology.org/2023.emnlp-main.298/)
+- DeepSeek-AI, [DeepSeek-V3 Technical Report](https://arxiv.org/abs/2412.19437)
+- DeepSeek-AI, [DeepSeek-R1](https://arxiv.org/abs/2501.12948)
+- Qwen Team, [Qwen3 Technical Report](https://arxiv.org/abs/2505.09388)
+- OpenAI, [Introducing GPT-4.1 in the API](https://openai.com/index/gpt-4-1/)
+- Google DeepMind, [Gemini 2.5](https://blog.google/innovation-and-ai/models-and-research/google-deepmind/gemini-model-thinking-updates-march-2025/)
+- Kim et al., [OpenVLA](https://arxiv.org/abs/2406.09246)
+- NVIDIA, [Cosmos World Foundation Model Platform](https://developer.nvidia.com/blog/advancing-physical-ai-with-nvidia-cosmos-world-foundation-model-platform/)
+- NVIDIA, [Cosmos 3](https://developer.nvidia.com/blog/develop-physical-ai-reasoning-world-and-action-models-with-nvidia-cosmos-3/)
+
+## 5. Legacy detail retained below
 
 The following detail records the previous portrait implementation and model inventory. It remains useful for content provenance, but the active poster layout is the landscape map described above.
 

@@ -1,6 +1,7 @@
 {
   "meta": {
     "layout": "bands",
+    "composition": "transformer_empire_map",
     "theme": "transformer_reference",
     "title_style": "en_main",
     "legend_box": true,
@@ -8,40 +9,47 @@
       "width": 3520,
       "height": 1980,
       "margin": 24,
-      "gap": 10
+      "gap": 2
     },
     "series": "Modern AI Atlas",
     "volume": "Vol.02",
     "title_en": "Transformer Empire",
     "title_zh": "Transformer 帝国",
-    "tagline": "One Architecture Changed Everything · 一个架构，改变了整个 AI 世界",
-    "quote": "“Transformer 不是一个模型，而是一套把表示、注意力、规模化训练连接起来的通用计算语言。”",
+    "era": "2017 - NOW",
+    "header_route": [
+      {"label": "Attention", "color": "#3157c8"},
+      {"label": "Foundation Models", "color": "#4f6594"},
+      {"label": "Multimodal", "color": "#7654c4"},
+      {"label": "Physical AI", "color": "#228c9b"}
+    ],
+    "tagline": "From Sequential Bottlenecks to a Universal AI Engine · 从序列瓶颈到通用智能引擎",
+    "quote": "“它先让机器并行阅读，再让文字、图像、声音和行动共享同一种计算语言。”",
     "quote_by": "The AI Architect"
   },
   "legend": {
     "categories": [
       {
-        "color": "#3b82f6",
+        "color": "#3569b8",
         "label": "NLP (语言)"
       },
       {
-        "color": "#22c55e",
+        "color": "#2f8f68",
         "label": "CV (视觉)"
       },
       {
-        "color": "#a855f7",
+        "color": "#7654c4",
         "label": "多模态"
       },
       {
-        "color": "#f59e0b",
+        "color": "#d9822b",
         "label": "生成模型"
       },
       {
-        "color": "#14b8a6",
+        "color": "#228c9b",
         "label": "世界模型/具身"
       },
       {
-        "color": "#64748b",
+        "color": "#667085",
         "label": "其他领域"
       }
     ],
@@ -69,312 +77,479 @@
       }
     ]
   },
+  "empire_map": {
+    "lineages": [
+      {
+        "title": "Encoder 王国",
+        "subtitle": "双向理解 / Representation",
+        "color": "#3569b8",
+        "nodes": ["bert", "roberta", "deberta", "mpnet", "e5_gte_bge", "modernbert"]
+      },
+      {
+        "title": "Decoder 王国",
+        "subtitle": "自回归生成 / Generation",
+        "color": "#3157c8",
+        "nodes": ["gpt1", "gpt2", "gpt3", "gpt4", "llama", "deepseek_v3", "deepseek_r1", "qwen3", "gpt41"]
+      },
+      {
+        "title": "Encoder-Decoder 王国",
+        "subtitle": "序列到序列 / Transformation",
+        "color": "#7654c4",
+        "nodes": ["t5", "bart", "mt5", "ul2", "flan_t5", "nllb"]
+      }
+    ],
+    "mechanisms": [
+      {"title": "Q / K / V + Multi-Head", "desc": "相关性寻址 + 多子空间信息路由"},
+      {"title": "Causal Mask / Cross-Attention", "desc": "控制可见范围，连接输入与输出"},
+      {"title": "Position → RoPE", "desc": "把顺序、距离和相对位置注入注意力"},
+      {"title": "FFN / MoE", "desc": "逐 token 变换；专家路由扩大容量"},
+      {"title": "Residual + LayerNorm", "desc": "稳定梯度与深层网络训练"},
+      {"title": "MQA / GQA", "desc": "共享 K/V 头，降低 KV Cache 开销"},
+      {"title": "FlashAttention", "desc": "IO-aware 精确注意力，提升速度并节省显存"},
+      {"title": "KV Cache", "desc": "复用历史 K/V，加速自回归逐 token 解码"}
+    ],
+    "training_lifecycle": [
+      {"title": "Data", "desc": "清洗、去重、配比"},
+      {"title": "Pretrain", "desc": "MLM / Causal LM / Denoising"},
+      {"title": "SFT", "desc": "指令与任务示范"},
+      {"title": "Preference", "desc": "RLHF / DPO 等偏好对齐"},
+      {"title": "Inference", "desc": "KV Cache / 量化 / 批处理"},
+      {"title": "Agent", "desc": "工具、记忆、规划、反馈"}
+    ],
+    "frontiers": [
+      {
+        "title": "Vision 视觉疆域",
+        "route": "把像素切成 token，统一分类、检测与分割",
+        "color": "#2f8f68",
+        "image": "images/figures/vit_overview.png",
+        "image_source": "Dosovitskiy et al. 2020 · Figure 1",
+        "nodes": ["vit", "detr", "swin", "dino", "sam"]
+      },
+      {
+        "title": "Diffusion 生成疆域",
+        "route": "Transformer 进入去噪与流模型，扩展图像和视频生成",
+        "color": "#d9822b",
+        "image": "images/figures/dit_block.png",
+        "image_source": "Peebles & Xie 2022 · Official figure",
+        "nodes": ["stable_diffusion", "dit", "pixart_sd3_mmdit", "flux"]
+      },
+      {
+        "title": "Multimodal 多模态疆域",
+        "route": "先对齐图文语义，再统一感知、理解与生成",
+        "color": "#7654c4",
+        "image": "images/figures/clip_overview.png",
+        "image_source": "Radford et al. 2021 · Figure 1",
+        "nodes": ["clip", "flamingo", "gemini", "llava", "qwen_vl", "gpt4o", "gemini25"]
+      },
+      {
+        "title": "World / Agent 物理疆域",
+        "route": "两条并行路线：学习世界变化规律；把感知与语言映射为动作",
+        "color": "#228c9b",
+        "groups": [
+          {"label": "WORLD", "nodes": ["world_models", "dreamer", "jepa", "cosmos", "cosmos3"]},
+          {"label": "ACTION", "nodes": ["vla", "openvla"]}
+        ]
+      }
+    ],
+    "key_papers": [
+      {"year": "2017", "title": "Attention Is All You Need", "authors": "Vaswani et al.", "impact": "提出标准 Transformer"},
+      {"year": "2018", "title": "BERT", "authors": "Devlin et al.", "impact": "双向预训练理解"},
+      {"year": "2018", "title": "Improving Language Understanding by GPT", "authors": "Radford et al.", "impact": "生成式预训练"},
+      {"year": "2019", "title": "Exploring Transfer Learning with T5", "authors": "Raffel et al.", "impact": "统一 Text-to-Text"},
+      {"year": "2020", "title": "An Image Is Worth 16×16 Words", "authors": "Dosovitskiy et al.", "impact": "Transformer 进入视觉"},
+      {"year": "2021", "title": "CLIP", "authors": "Radford et al.", "impact": "图文对比学习对齐"},
+      {"year": "2022", "title": "FlashAttention", "authors": "Dao et al.", "impact": "IO-aware 精确注意力"},
+      {"year": "2022", "title": "Scalable Diffusion Models with DiT", "authors": "Peebles & Xie", "impact": "Transformer 进入扩散主干"},
+      {"year": "2024", "title": "OpenVLA", "authors": "Kim et al.", "impact": "开放 VLA 路线"}
+    ],
+    "node_notes": {
+      "bert": "Google · 掩码语言模型，建立双向预训练范式",
+      "roberta": "Meta · 重做训练配方，证明数据与训练策略的重要性",
+      "deberta": "Microsoft · 解耦内容与位置注意力",
+      "mpnet": "Microsoft · 结合掩码与排列式预训练",
+      "e5_gte_bge": "面向检索和 RAG 的通用文本向量",
+      "modernbert": "长上下文、高吞吐的现代 Encoder",
+      "gpt1": "OpenAI · 生成式预训练加任务微调",
+      "gpt2": "扩大规模，展示零样本任务迁移",
+      "gpt3": "上下文学习：仅靠示例即可适配任务",
+      "gpt4": "更强推理、工具使用与多模态输入",
+      "llama": "Meta · 推动开放权重模型生态",
+      "qwen": "多语言、代码、工具调用与多模态家族",
+      "deepseek": "MoE、代码与推理模型路线",
+      "deepseek_v3": "MoE + MLA，在开放模型中推进训练效率与能力",
+      "deepseek_r1": "强化学习驱动的推理模型路线",
+      "qwen3": "Dense / MoE 家族，统一思考与非思考模式",
+      "gpt41": "长上下文、代码与指令遵循能力升级",
+      "t5": "Google · 所有 NLP 任务统一为 Text-to-Text",
+      "bart": "Meta · 去噪式序列到序列预训练",
+      "ul2": "混合去噪目标统一理解与生成",
+      "flan_t5": "指令微调提升零样本任务泛化",
+      "mt5": "覆盖多语言语料的 Text-to-Text 模型",
+      "nllb": "Meta · 面向低资源语言的多对多翻译",
+      "vit": "图像切成 Patch Token，直接送入 Encoder",
+      "detr": "用集合预测和查询 token 重构目标检测",
+      "swin": "层级窗口注意力兼顾局部结构与效率",
+      "dino": "自监督学习可迁移视觉表示",
+      "sam": "提示驱动的通用图像分割",
+      "stable_diffusion": "在潜空间去噪，大幅降低生成成本",
+      "dit": "以 Transformer 替换扩散模型主干",
+      "pixart_sd3_mmdit": "文本与图像 token 更深度联合建模",
+      "flux": "流模型与多模态 Transformer 图像生成",
+      "clip": "图文对比学习建立共享语义空间",
+      "flamingo": "连接视觉编码器与 LLM，支持少样本任务",
+      "llava": "视觉指令微调，让模型能够看图对话",
+      "qwen_vl": "多语言视觉理解、定位与工具能力",
+      "gpt4o": "面向文本、视觉与语音的实时交互",
+      "gemini": "原生多模态输入与长上下文路线",
+      "gemini25": "带思考能力的多模态模型家族",
+      "world_models": "学习环境状态及其变化规律",
+      "jepa": "在表示空间预测缺失或未来状态",
+      "dreamer": "在潜在世界模型中想象并学习策略",
+      "cosmos": "面向物理 AI 的世界基础模型",
+      "cosmos3": "面向物理 AI 的推理、世界与行动模型平台",
+      "vla": "把视觉、语言指令映射为动作 token",
+      "openvla": "开放的 Vision-Language-Action 路线"
+    }
+  },
   "sections": [
     {
       "kind": "timeline",
-      "color": "#4f7cff",
-      "title": "Transformer 发展时间线",
-      "subtitle": "Timeline · 2017-2026",
+      "narrative": true,
+      "color": "#3157c8",
+      "title": "十年四幕：一种架构如何成为现代 AI 的共同底座",
+      "subtitle": "The Story · 2017-2026",
       "milestones": [
         {
           "year": "2017",
           "title": "Attention Is All You Need",
-          "desc": "Transformer 统一架构"
+          "desc": "摆脱循环计算",
+          "desc2": "注意力成为主干"
         },
         {
           "year": "2018",
           "title": "BERT / GPT / Transformer-XL",
-          "desc": "预训练与长上下文探索"
+          "desc": "理解与生成分流",
+          "desc2": "预训练开始迁移"
         },
         {
           "year": "2019",
           "title": "T5 / XLNet / RoBERTa",
-          "desc": "文本预训练范式扩展"
+          "desc": "统一文本任务",
+          "desc2": "训练方法快速成熟"
         },
         {
           "year": "2020",
           "title": "GPT-3 / ViT / DETR",
-          "desc": "规模化与视觉迁移"
+          "desc": "规模带来涌现",
+          "desc2": "图像也变成 token"
         },
         {
           "year": "2021",
           "title": "Swin / CLIP / DALL·E",
-          "desc": "视觉、多模态与生成"
+          "desc": "图文表示对齐",
+          "desc2": "理解走向生成"
         },
         {
           "year": "2022",
           "title": "PaLM / Flamingo / Stable Diffusion",
-          "desc": "大模型与生成生态"
+          "desc": "多模态能力成形",
+          "desc2": "生成生态爆发"
         },
         {
           "year": "2023",
           "title": "LLaMA / SAM / Qwen",
-          "desc": "开源爆发与视觉基础模型"
+          "desc": "开源模型普及",
+          "desc2": "基础模型进入产业"
         },
         {
           "year": "2024-2026",
-          "title": "GPT-4o / Gemini / OpenVLA / Cosmos",
-          "desc": "全模态、物理 AI 与世界模型"
+          "title": "GPT-4o / DeepSeek-R1 / Qwen3 / Cosmos 3",
+          "desc": "推理、全模态与物理 AI",
+          "desc2": "从回答走向行动闭环"
         }
+      ],
+      "phases": [
+        {"start": 0, "end": 0, "label": "第一幕 · 架构诞生", "color": "#3157c8"},
+        {"start": 1, "end": 3, "label": "第二幕 · 预训练与规模化", "color": "#4f6594"},
+        {"start": 4, "end": 5, "label": "第三幕 · 跨模态与生成", "color": "#7654c4"},
+        {"start": 6, "end": 7, "label": "第四幕 · 开源、Agent 与物理世界", "color": "#228c9b"}
       ]
     },
     {
-      "row": [
+      "kind": "transformer_nexus",
+      "title": "Transformer 核心总图",
+      "subtitle": "Problem → Architecture → Information Flow → Three Architectural Modes",
+      "color": "#3157c8",
+      "top": [
         {
           "kind": "list",
-          "weight": 0.78,
-          "color": "#4f7cff",
-          "title": "核心思想",
-          "subtitle": "Core Ideas",
+          "weight": 0.92,
+          "color": "#3157c8",
+          "title": "旧世界的瓶颈，如何被击穿",
+          "subtitle": "Problem / Breakthrough / Scaling Flywheel",
+          "large_text": true,
+          "columns": 1,
           "items": [
             {
+              "icon": "flow",
+              "title": "问题：RNN 必须按时间步顺序计算",
+              "desc": "长距离信息要层层传递，训练慢，也容易遗忘早期内容。"
+            },
+            {
               "icon": "brain",
-              "title": "Self-Attention",
-              "desc": "任意 token 之间直接建立依赖"
+              "title": "突破：Self-Attention 让 token 直接通信",
+              "desc": "一句话中的任意位置可直接比较相关性，依赖路径显著缩短。"
             },
             {
               "icon": "layers",
-              "title": "Multi-Head Attention",
-              "desc": "并行关注不同语义子空间"
-            },
-            {
-              "icon": "target",
-              "title": "Positional Encoding",
-              "desc": "把顺序、空间或时间注入表示"
-            },
-            {
-              "icon": "flow",
-              "title": "Encoder-Decoder / Decoder",
-              "desc": "理解、生成与序列到序列统一"
+              "title": "工程优势：整段序列可以并行训练",
+              "desc": "GPU/TPU 利用率提高，模型、数据和训练规模得以持续扩大。"
             },
             {
               "icon": "bolt",
-              "title": "Scaling",
-              "desc": "并行计算 + 大规模预训练释放能力"
+              "title": "飞轮：预训练、迁移、规模化与能力涌现",
+              "desc": "同一底座先学习通用表示，再通过微调、提示或工具连接完成任务。"
             }
           ],
-          "summary": "Transformer = Attention + Parallel Computing + Large-scale Pretraining"
+          "summary": "关键不是 Attention 单点创新，而是算法、硬件与数据形成了扩展飞轮"
         },
         {
           "kind": "hero",
-          "weight": 0.9,
-          "color": "#4f7cff",
+          "compact": true,
+          "weight": 1.35,
+          "color": "#3157c8",
           "title": "Transformer 标准架构",
-          "subtitle": "Input → Embedding → Position → MHA → FFN → Output",
+          "subtitle": "Input / Embedding / Position / MHA / FFN / Output",
           "org": "Vaswani et al. · 2017",
-          "caption": "Embedding 与位置编码形成 token 表示，多头注意力进行全局信息路由，FFN、残差连接与归一化稳定深层训练。"
+          "caption": "Embedding 与位置编码形成 token 表示，多头注意力进行全局信息路由，FFN、残差连接与归一化稳定深层训练。",
+          "formula": "Attention(Q,K,V) = softmax(QKᵀ / √dₖ)V",
+          "decoder_color": "#7654c4",
+          "encoder_blocks": [
+            "Multi-Head Self-Attention",
+            "Add & Norm",
+            "Feed Forward Network",
+            "Add & Norm"
+          ],
+          "decoder_blocks": [
+            "Masked Self-Attention",
+            "Cross-Attention",
+            "Feed Forward Network",
+            "Add & Norm"
+          ]
         },
         {
-          "kind": "chevrons",
-          "weight": 0.62,
-          "color": "#64748b",
-          "title": "技术演进",
-          "subtitle": "Before Transformer",
-          "steps": [
+          "kind": "list",
+          "weight": 0.9,
+          "color": "#1f8a70",
+          "title": "一条信息如何穿过 Transformer",
+          "subtitle": "Input / Representation / Output",
+          "large_text": true,
+          "columns": 1,
+          "marker": "check",
+          "items": [
             {
-              "label": "RNN"
+              "icon": "bolt",
+              "title": "1. Tokenize：把输入切成可计算单元",
+              "desc": "文字是子词，图像是 patch，声音和动作也可编码成 token。"
             },
             {
-              "label": "LSTM"
+              "icon": "network",
+              "title": "2. Embed：把 token 变成向量",
+              "desc": "向量承载内容；位置编码补回顺序、空间或时间结构。"
             },
             {
-              "label": "Seq2Seq"
+              "icon": "layers",
+              "title": "3. Attend：计算谁应该关注谁",
+              "desc": "Q、K 衡量相关性，权重再汇聚 V 中携带的信息。"
             },
             {
-              "label": "Attention"
+              "icon": "circles",
+              "title": "4. Transform：重组并提炼表示",
+              "desc": "多头注意力、FFN、残差连接和归一化反复堆叠。"
             },
             {
-              "label": "Transformer"
-            },
-            {
-              "label": "Foundation Models"
+              "icon": "rocket",
+              "title": "5. Decode：得到理解结果或下一个 token",
+              "desc": "输出可用于分类、检索、生成，也可连接工具和动作空间。"
             }
+          ],
+          "summary": "一句话：把不同输入变成 token，用注意力路由信息，再产生表示或预测"
+        }
+      ],
+      "modes": {
+        "kind": "cards",
+        "color": "#3157c8",
+        "title": "三类核心架构",
+        "subtitle": "One Core, Three Operating Modes",
+        "large_text": true,
+        "columns": 3,
+        "compact_header": true,
+        "max_card_stretch": 1.08,
+        "items": [
+        {
+          "title": "Encoder",
+          "title_en": "Bidirectional Understanding",
+          "icon": "book",
+          "color": "#3569b8",
+          "bullet_columns": 2,
+          "desc": "每个 token 同时读取左右上下文，形成面向理解的双向表示。",
+          "summary": "例：‘这家店很好’ -> 正面情感；文档 -> 语义向量",
+          "items": [
+            "读什么：一次看见输入左右两侧的完整上下文",
+            "产出什么：句子或逐 token 的上下文表示",
+            "适合什么：分类、检索、抽取、语义匹配",
+            "代表路线：BERT、RoBERTa、DeBERTa、E5 / BGE"
+          ]
+        },
+        {
+          "title": "Decoder",
+          "title_en": "Autoregressive Generation",
+          "icon": "flow",
+          "color": "#3157c8",
+          "bullet_columns": 2,
+          "desc": "用因果掩码只读取已有 token，逐步预测下一个 token。",
+          "summary": "例：‘北京是中国的’ -> ‘首都’；提示词 -> 连续回答",
+          "items": [
+            "读什么：只能关注当前位置之前已经出现的 token",
+            "产出什么：逐步预测下一个 token，循环形成长输出",
+            "适合什么：对话、写作、代码、推理和工具调用",
+            "代表路线：GPT、LLaMA、Qwen、Mistral、DeepSeek"
+          ]
+        },
+        {
+          "title": "Encoder-Decoder",
+          "title_en": "Sequence to Sequence",
+          "icon": "network",
+          "color": "#7654c4",
+          "bullet_columns": 2,
+          "desc": "Encoder 理解输入，Decoder 通过交叉注意力按条件生成输出。",
+          "summary": "例：How are you? -> 你好吗？；长文 -> 摘要",
+          "items": [
+            "读什么：Encoder 先理解完整输入，Decoder 再读取它",
+            "产出什么：受输入条件约束、长度可不同的新序列",
+            "适合什么：翻译、摘要、改写和结构化转换",
+            "代表路线：T5 / BART / mT5 / NLLB / PEGASUS"
           ]
         }
-      ]
+        ]
+      }
     },
     {
-      "kind": "pills",
-      "color": "#4f7cff",
-      "title": "Transformer 家族树",
-      "subtitle": "The Empire Map",
-      "spread": true,
-      "label_w": 172,
-      "rows": [
-        {
-          "label": "Encoder",
-          "sublabel": "理解 / 表征",
-          "color": "#2563eb",
-          "pills": [
-            "BERT",
-            "RoBERTa",
-            "ALBERT",
-            "DeBERTa",
-            "T5",
-            "ModernBERT"
-          ]
-        },
-        {
-          "label": "Decoder",
-          "sublabel": "生成 / 对话",
-          "color": "#2563eb",
-          "pills": [
-            "GPT",
-            "LLaMA",
-            "Qwen",
-            "Mistral",
-            "DeepSeek",
-            "Gemini"
-          ]
-        },
-        {
-          "label": "Encoder-Decoder",
-          "sublabel": "序列到序列",
-          "color": "#9333ea",
-          "pills": [
-            "T5",
-            "BART",
-            "mT5",
-            "mBART",
-            "PEGASUS",
-            "NLLB"
-          ]
-        },
-        {
-          "label": "Vision",
-          "sublabel": "视觉基础模型",
-          "color": "#16a34a",
-          "pills": [
-            "ViT",
-            "Swin",
-            "DETR",
-            "DINO",
-            "SAM",
-            "EVA",
-            "SigLIP"
-          ]
-        },
-        {
-          "label": "Diffusion",
-          "sublabel": "生成模型",
-          "color": "#f97316",
-          "pills": [
-            "LDM / U-Net",
-            "DiT",
-            "PixArt",
-            "MMDiT",
-            "Stable Diffusion 3",
-            "Flux"
-          ]
-        },
-        {
-          "label": "Multimodal",
-          "sublabel": "统一模态",
-          "color": "#9333ea",
-          "pills": [
-            "CLIP",
-            "BLIP",
-            "Flamingo",
-            "LLaVA",
-            "GPT-4o",
-            "Qwen2-VL"
-          ]
-        },
-        {
-          "label": "World / Agent",
-          "sublabel": "物理 AI 延伸",
-          "color": "#0891b2",
-          "pills": [
-            "JEPA",
-            "Dreamer",
-            "Cosmos",
-            "OpenVLA",
-            "VLA",
-            "Embodied Agents"
-          ]
-        }
-      ]
-    },
-    {
-      "kind": "cards",
-      "title": "五大帝国分支",
-      "subtitle": "NLP · Vision · Diffusion · Multimodal · Physical AI",
-      "color": "#4f7cff",
-      "columns": 5,
-      "items": [
+      "kind": "transformer_expansion",
+      "title": "从一种架构到五个帝国",
+      "subtitle": "Shared Representation → Domain Branches → Concrete Capabilities",
+      "color": "#3157c8",
+      "branches": {
+        "kind": "cards",
+        "title": "五大帝国分支",
+        "subtitle": "NLP · Vision · Diffusion · Multimodal · Physical AI",
+        "large_text": true,
+        "color": "#3157c8",
+        "columns": 5,
+        "compact_header": true,
+        "items": [
         {
           "title": "NLP 帝国",
           "title_en": "Language",
           "icon": "doc",
-          "color": "#2563eb",
+          "color": "#3569b8",
           "node": "gpt3",
+          "image": "images/figures/transformer_architecture.png",
+          "image_layout": "side",
+          "image_fit": "contain",
+          "image_focus": "center",
+          "image_source": "Vaswani et al. 2017 · Figure 1",
+          "desc": "语言是第一块疆域：预训练先学通用规律，再迁移到下游任务。",
+          "summary": "例：问答、搜索、翻译、代码补全、工具调用",
           "items": [
-            "GPT / LLaMA / Qwen",
-            "Encoder 负责理解",
-            "Decoder 负责生成",
-            "T5 统一文本任务"
+            "起点：BERT / GPT 证明预训练可迁移",
+            "跃迁：GPT-3 展示规模与上下文学习",
+            "生态：LLaMA / Qwen / DeepSeek 推动开源",
+            "结果：语言模型成为自然语言的软件接口"
           ]
         },
         {
           "title": "Vision 帝国",
           "title_en": "Vision",
           "icon": "image",
-          "color": "#16a34a",
+          "color": "#2f8f68",
           "node": "vit",
+          "image": "images/figures/vit_overview.png",
+          "image_layout": "side",
+          "image_fit": "contain",
+          "image_focus": "center",
+          "image_source": "Dosovitskiy et al. 2020 · Figure 1",
+          "desc": "图像被切成 patch token，语言中的扩展规律开始迁移到视觉。",
+          "summary": "例：猫狗分类、行人检测、医学分割、图像检索",
           "items": [
-            "ViT 变图像为 patch 序列",
-            "DETR 统一检测",
-            "DINO / SAM 学习通用视觉表示",
-            "SigLIP / EVA 强化视觉语言接口"
+            "起点：ViT 把图像改写为 patch 序列",
+            "跃迁：DETR 用集合预测重构目标检测",
+            "底座：DINO / SAM 学习可迁移视觉表示",
+            "结果：分类、检测、分割共享基础模型"
           ]
         },
         {
           "title": "Diffusion 帝国",
           "title_en": "Generation",
           "icon": "star",
-          "color": "#f97316",
+          "color": "#d9822b",
           "node": "dit",
+          "image": "images/figures/dit_block.png",
+          "image_layout": "side",
+          "image_fit": "contain",
+          "image_focus": "center",
+          "image_source": "Peebles & Xie 2022 · Official figure",
+          "desc": "扩散负责逐步去噪，Transformer 负责在潜空间中建模全局关系。",
+          "summary": "例：文字生成图像、局部编辑、视频与 3D 生成",
           "items": [
-            "早期 LDM 以 U-Net 为核心",
-            "DiT 用 Transformer 替换骨干",
-            "MMDiT / SD3 融合文本图像 token",
-            "Flux 延续 transformer diffusion 路线"
+            "起点：LDM 证明潜空间扩散可高效生成",
+            "跃迁：DiT 用 Transformer 替换 U-Net 骨干",
+            "融合：MMDiT 让文本与图像 token 联合建模",
+            "结果：图像、视频生成进入可扩展架构路线"
           ]
         },
         {
           "title": "多模态帝国",
           "title_en": "Multimodal",
           "icon": "circles",
-          "color": "#9333ea",
+          "color": "#7654c4",
           "node": "clip",
+          "image": "images/figures/clip_overview.png",
+          "image_layout": "side",
+          "image_fit": "contain",
+          "image_focus": "center",
+          "image_source": "Radford et al. 2021 · Figure 1",
+          "desc": "不同模态先对齐语义，再被连接或统一进同一模型。",
+          "summary": "例：看图问答、屏幕理解、语音对话、视频摘要",
           "items": [
-            "CLIP 对齐图文空间",
-            "Flamingo / LLaVA 接入视觉",
-            "GPT-4o / Gemini 走向原生多模态",
-            "统一输入输出接口"
+            "对齐：CLIP 让图像和文本靠近同一语义空间",
+            "连接：Flamingo / LLaVA 把视觉接入语言模型",
+            "原生：GPT-4o / Gemini 统一处理多种输入输出",
+            "结果：模型开始看、听、说，并跨模态推理"
           ]
         },
         {
           "title": "物理 AI 帝国",
           "title_en": "World & Agent",
           "icon": "robot",
-          "color": "#0891b2",
+          "color": "#228c9b",
           "node": "openvla",
+          "desc": "当 token 表示动作和状态，模型便能从预测内容走向影响环境。",
+          "summary": "例：网页操作、机械臂抓取、导航与自动驾驶决策",
           "items": [
-            "VLM 扩展为 VLA",
-            "World Model 学习环境动力学",
-            "Agent 闭环执行任务",
-            "通向具身基础模型"
+            "感知：VLM 把视觉、语言和任务指令关联起来",
+            "预测：World Model 学习状态变化与可能后果",
+            "行动：VLA / Agent 输出工具调用或控制序列",
+            "边界：仍需要记忆、规划、反馈与安全机制"
           ]
         }
-      ]
-    },
-    {
-      "row": [
+        ]
+      },
+      "lower": [
         {
           "kind": "fusion",
           "weight": 1.45,
-          "color": "#4f7cff",
+          "color": "#3157c8",
           "title": "跨领域融合: Transformer 的统一表示空间",
           "modalities": [
             {
@@ -413,32 +588,31 @@
           ]
         },
         {
-          "kind": "chevrons",
+          "kind": "examples",
           "weight": 1.0,
-          "color": "#0891b2",
-          "title": "通向具身智能",
-          "subtitle": "Road to Physical AI",
-          "steps": [
+          "color": "#228c9b",
+          "title": "三个具体例子：它到底怎样工作",
+          "subtitle": "Worked Examples",
+          "items": [
             {
-              "label": "Transformer"
+              "title": "语言：注意力解析指代",
+              "visual": "attention",
+              "color": "#3569b8",
+              "tokens": ["小红", "把", "书", "收好", "因为", "她", "喜欢"],
+              "focus": [0, 5],
+              "caption": "“她”对“小红”分配更高注意力，表示随上下文更新。"
             },
             {
-              "label": "LLM"
+              "title": "视觉：图像切成 Patch Token",
+              "visual": "patches",
+              "color": "#2f8f68",
+              "caption": "像素块变成序列，经注意力聚合后完成识别。"
             },
             {
-              "label": "VLM"
-            },
-            {
-              "label": "Diffusion"
-            },
-            {
-              "label": "World Model"
-            },
-            {
-              "label": "Agent"
-            },
-            {
-              "label": "Embodied AI"
+              "title": "具身：从感知到行动闭环",
+              "visual": "loop",
+              "color": "#228c9b",
+              "caption": "观察环境，预测后果，规划动作，再用反馈修正。"
             }
           ]
         }
@@ -451,28 +625,36 @@
           "weight": 1.0,
           "color": "#ef4444",
           "marker": "dot",
+          "compact_header": true,
           "title": "当前挑战",
           "subtitle": "Open Problems",
+          "large_text": true,
+          "columns": 2,
           "items": [
             {
               "icon": "bolt",
-              "title": "长上下文效率 / KV Cache"
+              "title": "长上下文效率 / KV Cache",
+              "desc": "注意力计算与缓存随序列增长，吞吐、显存和延迟同时承压。"
             },
             {
               "icon": "chart",
-              "title": "推理成本与延迟"
+              "title": "推理成本与延迟",
+              "desc": "能力规模化后，服务成本与实时响应成为系统瓶颈。"
             },
             {
               "icon": "brain",
-              "title": "长期记忆与可解释性"
+              "title": "长期记忆与可解释性",
+              "desc": "上下文不等于持久记忆，内部决策过程仍难被可靠追踪。"
             },
             {
               "icon": "circles",
-              "title": "多模态统一表示"
+              "title": "多模态统一表示",
+              "desc": "不同模态的粒度、时序和信息密度仍难完全统一。"
             },
             {
               "icon": "globe",
-              "title": "世界建模与闭环执行"
+              "title": "世界建模与闭环执行",
+              "desc": "生成合理内容不等于理解物理后果或稳定完成长期任务。"
             }
           ]
         },
@@ -481,60 +663,72 @@
           "weight": 1.0,
           "color": "#22c55e",
           "marker": "check",
+          "compact_header": true,
           "title": "未来方向",
           "subtitle": "Future Directions",
+          "large_text": true,
+          "columns": 2,
           "items": [
             {
               "icon": "flow",
-              "title": "Sparse / Linear Attention"
+              "title": "Sparse / Linear Attention",
+              "desc": "减少全连接注意力开销，扩展可处理的序列长度。"
             },
             {
               "icon": "layers",
-              "title": "MoE 与动态计算"
+              "title": "MoE 与动态计算",
+              "desc": "只激活部分参数，让模型容量与单次计算成本逐步解耦。"
             },
             {
               "icon": "doc",
-              "title": "Long Context 百万级上下文"
+              "title": "Long Context 与外部记忆",
+              "desc": "长上下文、检索和持久记忆协同，而非只追求窗口数字。"
             },
             {
               "icon": "circles",
-              "title": "Unified Multimodal Transformer"
+              "title": "Unified Multimodal Transformer",
+              "desc": "共享表示和统一输入输出接口连接文本、视觉、音频与动作。"
             },
             {
               "icon": "robot",
-              "title": "World Models + Embodied Foundation Models"
+              "title": "World Models + Embodied Models",
+              "desc": "把预测、规划和控制接入真实或模拟环境，形成行动闭环。"
             }
           ]
         },
         {
-          "kind": "industry",
+          "kind": "list",
           "weight": 1.05,
-          "color": "#4f7cff",
-          "title": "对后续卷的连接",
-          "subtitle": "Bridge to Vol.03-13",
-          "groups": [
+          "color": "#d9822b",
+          "marker": "dot",
+          "compact_header": true,
+          "large_text": true,
+          "columns": 2,
+          "title": "理解边界：Transformer 不是什么",
+          "subtitle": "Avoid Three Common Misconceptions",
+          "items": [
             {
-              "title": "语言",
-              "items": [
-                "Vol.03 LLM Era",
-                "GPT / LLaMA / Qwen"
-              ]
+              "icon": "db",
+              "title": "不是数据库：参数记忆不保证事实正确",
+              "desc": "生成来自概率分布；需要检索、引用和验证来约束幻觉。"
             },
             {
-              "title": "多模态与生成",
-              "items": [
-                "Vol.04-05",
-                "CLIP / DiT / GPT-4o"
-              ]
+              "icon": "brain",
+              "title": "不是长期记忆：上下文窗口会结束",
+              "desc": "持续身份、经验积累和跨任务记忆需要外部存储与更新机制。"
             },
             {
-              "title": "物理智能",
-              "items": [
-                "Vol.09-13",
-                "VLA / Agents / AGI"
-              ]
+              "icon": "robot",
+              "title": "不是完整 Agent：预测 token 不等于完成任务",
+              "desc": "可靠行动还需要目标分解、工具权限、反馈闭环和失败恢复。"
+            },
+            {
+              "icon": "globe",
+              "title": "不是世界模型本身：语言合理不等于物理正确",
+              "desc": "因果、动力学和长期后果仍需环境数据、模拟或真实交互。"
             }
-          ]
+          ],
+          "summary": "Vol.03 将进入最强 Decoder 分支：大语言模型时代"
         }
       ]
     }
@@ -622,6 +816,12 @@
       "year": 2023
     },
     {
+      "id": "gpt41",
+      "label": "GPT-4.1",
+      "kind": "model",
+      "year": 2025
+    },
+    {
       "id": "llama",
       "label": "LLaMA",
       "kind": "model",
@@ -637,10 +837,28 @@
       }
     },
     {
+      "id": "qwen3",
+      "label": "Qwen3",
+      "kind": "model",
+      "year": 2025
+    },
+    {
       "id": "deepseek",
       "label": "DeepSeek",
       "kind": "model",
       "year": 2023
+    },
+    {
+      "id": "deepseek_v3",
+      "label": "DeepSeek-V3",
+      "kind": "model",
+      "year": 2024
+    },
+    {
+      "id": "deepseek_r1",
+      "label": "DeepSeek-R1",
+      "kind": "model",
+      "year": 2025
     },
     {
       "id": "mistral",
@@ -1000,6 +1218,12 @@
       "year": 2023
     },
     {
+      "id": "gemini25",
+      "label": "Gemini 2.5",
+      "kind": "model",
+      "year": 2025
+    },
+    {
       "id": "eva",
       "label": "EVA",
       "kind": "model",
@@ -1028,6 +1252,12 @@
       "label": "Cosmos",
       "kind": "model",
       "year": 2025
+    },
+    {
+      "id": "cosmos3",
+      "label": "Cosmos 3",
+      "kind": "model",
+      "year": 2026
     },
     {
       "id": "openvla",
@@ -1088,7 +1318,7 @@
     {
       "source": "bert",
       "target": "e5_gte_bge",
-      "relation": "inherits"
+      "relation": "converges"
     },
     {
       "source": "bert",
@@ -1308,7 +1538,7 @@
     {
       "source": "dit",
       "target": "pixart_sd3_mmdit",
-      "relation": "inherits"
+      "relation": "converges"
     },
     {
       "source": "dit",
@@ -1376,14 +1606,14 @@
       "relation": "converges"
     },
     {
-      "source": "llava",
+      "source": "transformer",
       "target": "gpt4o",
-      "relation": "converges"
+      "relation": "composes"
     },
     {
-      "source": "llava",
+      "source": "transformer",
       "target": "gemini",
-      "relation": "converges"
+      "relation": "composes"
     },
     {
       "source": "vit",
@@ -1396,14 +1626,14 @@
       "relation": "converges"
     },
     {
-      "source": "transformer",
+      "source": "world_models",
       "target": "jepa",
-      "relation": "converges"
+      "relation": "composes"
     },
     {
       "source": "world_models",
       "target": "dreamer",
-      "relation": "inherits"
+      "relation": "composes"
     },
     {
       "source": "world_models",
@@ -1411,19 +1641,44 @@
       "relation": "converges"
     },
     {
-      "source": "qwen_vl",
+      "source": "vla",
       "target": "openvla",
       "relation": "composes"
-    },
-    {
-      "source": "openvla",
-      "target": "vla",
-      "relation": "converges"
     },
     {
       "source": "vla",
       "target": "embodied_agents",
       "relation": "composes"
+    },
+    {
+      "source": "gpt4",
+      "target": "gpt41",
+      "relation": "inherits"
+    },
+    {
+      "source": "qwen",
+      "target": "qwen3",
+      "relation": "inherits"
+    },
+    {
+      "source": "deepseek",
+      "target": "deepseek_v3",
+      "relation": "inherits"
+    },
+    {
+      "source": "deepseek_v3",
+      "target": "deepseek_r1",
+      "relation": "inherits"
+    },
+    {
+      "source": "gemini",
+      "target": "gemini25",
+      "relation": "inherits"
+    },
+    {
+      "source": "cosmos",
+      "target": "cosmos3",
+      "relation": "inherits"
     }
   ]
 }
